@@ -1,7 +1,13 @@
+import { BrowserRouter } from 'react-router-dom'
 import './App.less'
+import RouterApp from './components/Route'
 
 function App() {
-  return <h1>This is main page</h1>
+  return (
+    <BrowserRouter>
+      <RouterApp />
+    </BrowserRouter>
+  )
 }
 
 export default App
