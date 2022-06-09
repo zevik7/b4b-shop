@@ -8,66 +8,78 @@ import {
   InputNumber,
   Rate,
   Button,
+  Image,
 } from 'antd'
 import {
   SendOutlined,
   RollbackOutlined,
   CustomerServiceOutlined,
 } from '@ant-design/icons'
+import { ImgCarousel } from '../../components'
 
 import './style.less'
 
-const contentStyle = {
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-}
+const images = [
+  'https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg',
+  'https://m.media-amazon.com/images/I/71D+KvQQ+7L._SL1500_.jpg',
+  'https://m.media-amazon.com/images/I/71Ggj0piYGL._SL1500_.jpg',
+]
 
-const { Text, Link, Title } = Typography
+const { Text, Link, Title, Paragraph } = Typography
 const { Header, Footer, Sider, Content } = Layout
 
 const BicycleDetail = () => {
   return (
     <>
       <Layout>
-        <Content className="bicycle-detail">
+        <Content className="bicycle-detail-page">
           <div className="container">
             <div className="content">
-              <Row>
+              <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
                 <Col span={9}>
-                  <Carousel autoplay>
-                    <div>
-                      <h3 style={contentStyle}>1</h3>
-                    </div>
-                    <div>
-                      <h3 style={contentStyle}>2</h3>
-                    </div>
-                    <div>
-                      <h3 style={contentStyle}>3</h3>
-                    </div>
-                    <div>
-                      <h3 style={contentStyle}>4</h3>
-                    </div>
-                  </Carousel>
+                  <ImgCarousel
+                    imgs={images}
+                    imgStyle={{
+                      height: '450px',
+                    }}
+                  />
                 </Col>
                 <Col span={9}>
-                  <Text type="secondary">Availability: 12 in stock</Text>
-                  <Title>Tailored Fit Mesh-Panel Polo</Title>
-                  <Title level={2}>$400</Title>
-                  <div className="rating-box">
-                    <Rate allowHalf defaultValue={4.5} />
-                    <Text>14 reviews</Text>
-                  </div>
-                  <div className="type">
-                    <Text>COLOR: Red</Text>
-                  </div>
-                  <div className="buy-box">
-                    <InputNumber min={1} max={10} defaultValue={3} />
-                    <Button type="primary" size="large">
-                      Buy it now
-                    </Button>
+                  <div className="detail-wrapper">
+                    <div className="detail-wrapper__info">
+                      <Text className="available-txt">
+                        Availability: <Text type="secondary">12 in stock</Text>
+                      </Text>
+                      <Title level={2} className="bicycle-name">
+                        Tailored Fit Mesh-Panel Polo
+                      </Title>
+                      <Title level={2} className="price">
+                        $400
+                      </Title>
+                      <div className="rating-box">
+                        <Rate className="rate" allowHalf defaultValue={4.5} />
+                        <Text>14 reviews</Text>
+                      </div>
+                      <Title level={5}>COLOR: Red</Title>
+                      <Paragraph className="desc">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc elementum, augue eget aliquam fringilla, odio elit
+                        commodo massa, ut rhoncus odio purus sit amet urna. In
+                        purus tortor, semper et molestie a, hendrerit et quam.
+                        Nulla bibendum sodales dolor non facilisis. Nunc
+                        vehicula ullamcorper felis nec ullamcorper. Suspendisse
+                        potenti. Curabitur tincidunt venenatis elit, in congue
+                        lacus gravida sed. Praesent eu sollicitudin arcu.
+                        Curabitur bibendum ante maximus sem ultrices, id porta
+                        nisi laoreet.
+                      </Paragraph>
+                    </div>
+                    <div className="detail-wrapper__buy-box">
+                      <InputNumber min={1} max={10} defaultValue={3} />
+                      <Button type="primary" size="large">
+                        Buy it now
+                      </Button>
+                    </div>
                   </div>
                 </Col>
                 <Col span={6}>
