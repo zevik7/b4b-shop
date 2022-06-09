@@ -2,10 +2,9 @@
 
 .bicycle-detail-page {
   padding: 100px 0;
+  background-color: @body-background;
 
   .content {
-    background-color: @body-background;
-
     .detail-wrapper {
       display: flex;
       flex-direction: column;
@@ -64,6 +63,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        margin-top: 20px;
 
         .ant-input-number {
           height: 40px;
@@ -76,6 +76,31 @@
 
         .ant-btn {
           flex: 2;
+        }
+      }
+    }
+
+    .services {
+      border: 1px solid @border-color-base;
+      padding: 20px;
+      padding-bottom: 0;
+      border-radius: 4px;
+
+      .services-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        &__icon {
+          font-size: 36px;
+          color: @primary-color;
+        }
+
+        &__content {
+          h4.ant-typography {
+            margin-bottom: 0;
+          }
         }
       }
     }
