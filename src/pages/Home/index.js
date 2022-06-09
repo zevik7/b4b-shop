@@ -7,7 +7,7 @@ import BicyclePagination from '../../components/BicyclePagination';
 
 const Home = () => {
   return (
-    <div className='homepage'>
+    <div className='homepage-product'>
     <h1>Catalog</h1>
     <Col>
       <Row className='product-search'><BicycleSearch/></Row>
