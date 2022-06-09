@@ -1,0 +1,68 @@
+.homepage {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    h5.ant-typography {
+        margin: 0;
+    }
+
+    & .filter-bar-ctn {
+        width: 400px;
+
+        & .filter-bar {
+            width: 100%;
+
+            & .price-input {
+                display: flex;
+                justify-content: center;
+
+                & .ant-input-number-input {
+                    color: #000;
+                }
+            }
+
+            & .ant-checkbox-group {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        & .button-ctn {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: fit-content;
+
+            & .ant-btn{
+                width: 150px;
+            }
+
+            & .ant-btn-circle {
+                width: fit-content;
+            }
+        }
+    }
+    
+    & .list-ctn{
+        width: 100%;
+        background-color: #ccc;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .homepage {
+        flex-direction: column;
+
+        & .filter-bar-ctn {
+            width: 100%;
+        }
+    }
+
+    
+}
+
