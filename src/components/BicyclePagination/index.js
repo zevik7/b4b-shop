@@ -1,18 +1,24 @@
-import React from 'react';
-import { Pagination } from 'antd';
+import React from 'react'
+import { Pagination } from 'antd'
 
 const itemRender = (_, type, originalElement) => {
   if (type === 'prev') {
-    return <a>Previous</a>;
+    return <a>Previous</a>
   }
 
   if (type === 'next') {
-    return <a>Next</a>;
+    return <a>Next</a>
   }
 
-  return originalElement;
-};
+  return originalElement
+}
 
-const BicyclePagination = () => <Pagination total={500} itemRender={itemRender} className="product-pagination" />;
+const BicyclePagination = () => (
+  <Pagination
+    total={500}
+    itemRender={itemRender}
+    className="product-pagination"
+  />
+)
 
-export default BicyclePagination;
+export default BicyclePagination

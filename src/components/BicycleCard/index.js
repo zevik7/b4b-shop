@@ -23,13 +23,9 @@ const BicycletCard = () => {
       }
       className="product-card"
     >
-      <Meta
-        title="Product Name"
-        description="Price: $200"
-        className="title"
-      />
+      <Meta title="Product Name" description="Price: $200" className="title" />
 
-<Button type="primary" shape="circle" icon={<ShoppingOutlined />} />
+      <Button type="primary" shape="circle" icon={<ShoppingOutlined />} />
     </Card>
   )
 }
