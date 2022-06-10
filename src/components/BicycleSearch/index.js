@@ -1,27 +1,26 @@
-import React from 'react'
+import { MinusCircleOutlined } from '@ant-design/icons'
+import { Input, Space } from 'antd'
 import './index.less'
-import { AudioOutlined } from '@ant-design/icons'
-import { Input, Space, Row, Col } from 'antd'
 
 const { Search } = Input
-const suffix = (
-  <AudioOutlined
-    style={{
-      fontSize: 16,
-      color: '#1890ff',
-    }}
-  />
-)
 
 const onSearch = (value) => console.log(value)
 
-const BicycleSearch = () => {
+const BicycleSearch = ({ setOpenSearchBar }) => {
+  const prefix = (
+    <MinusCircleOutlined
+      onClick={() => {
+        setOpenSearchBar(false)
+      }}
+      style={{ marginRight: '1rem', color: '#DD2F38', cursor: 'pointer' }}
+    />
+  )
   return (
     <Space direction="vertical">
       <Search
-        placeholder="input search text"
+        prefix={prefix}
+        placeholder="Search..."
         allowClear
-        enterButton="Search"
         size="large"
         onSearch={onSearch}
         className="product-search"
