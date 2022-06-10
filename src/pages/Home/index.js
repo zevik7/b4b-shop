@@ -10,6 +10,7 @@ import {
 import React, { useState } from 'react'
 import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
+import BicycleFooter from '../../components/BicycleFooter';
 
 const { Title } = Typography
 const { Panel } = Collapse
@@ -70,6 +71,7 @@ const Home = () => {
   }
 
   return (
+    <>
     <div className="homepage">
       <div className="filter-bar-ctn">
         <Collapse
@@ -134,6 +136,10 @@ const Home = () => {
       </div>
       <div className="list-ctn">This is List of Bicycle</div>
     </div>
+    <div className='footer-homepage'>
+    <BicycleFooter/>
+    </div>
+        </>
   )
 }
 
