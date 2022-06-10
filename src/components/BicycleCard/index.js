@@ -1,35 +1,40 @@
-import React from 'react'
-import './index.less'
-import { Avatar, Card } from 'antd'
-import { Col, Divider, Row } from 'antd'
-import { Button, Tooltip } from 'antd'
 import { ShoppingOutlined } from '@ant-design/icons'
-import { Space } from 'antd'
+import { Button, Card, Typography } from 'antd'
+import './index.less'
 
 const { Meta } = Card
+const { Title } = Typography
 
 const BicycletCard = () => {
   return (
     <Card
+      className="product-card"
       hoverable
+      bordered={true}
       style={{
-        width: 240,
+        width: '100%',
       }}
       cover={
         <img
-          alt="example"
+          className="img-card"
+          alt="bicycle"
           src="https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg"
         />
       }
-      className="product-card"
     >
-      <Meta
-        title="Product Name"
-        description="Price: $200"
-        className="title"
-      />
-
-<Button type="primary" shape="circle" icon={<ShoppingOutlined />} />
+      <div className="footer-card">
+        <Meta
+          title={<Title level={5}>Bicycle</Title>}
+          description="Price: $200"
+          className="title"
+        />
+        <Button
+          className="btn-cash"
+          type="primary"
+          shape="circle"
+          icon={<ShoppingOutlined />}
+        />
+      </div>
     </Card>
   )
 }
