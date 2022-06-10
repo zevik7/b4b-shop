@@ -1,0 +1,27 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~react-image-gallery/styles/css/image-gallery.css';
+
+.image-gallery {
+  .image-gallery-left-nav,
+  .image-gallery-right-nav {
+    svg {
+      width: 50px;
+      height: 100px;
+    }
+  }
+
+  .image-gallery-icon {
+    &:hover {
+      color: @primary-5;
+    }
+  }
+
+  .image-gallery-thumbnail {
+    &.active,
+    &:focus,
+    &:hover {
+      outline: none;
+      border: 4px solid @primary-5;
+    }
+  }
+}
