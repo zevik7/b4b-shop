@@ -1,3 +1,33 @@
-.site-layout .site-layout-background {
-  background: #fff;
+.bicycleManagement {
+  min-height: 100vh;
+
+  .header {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .trigger{
+      font-size: 25px;
+    }
+  }
+  .sidebar {
+    background-color: #fafafa;
+
+    .logo {
+      height: 50px;
+    }
+  }
+
+  .content {
+    padding: 15px;
+
+    .action {
+      padding: 10px 5px;
+      text-align: right;
+
+      button:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
 }
