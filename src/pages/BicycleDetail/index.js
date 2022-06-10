@@ -15,14 +15,23 @@ import {
   RollbackOutlined,
   CustomerServiceOutlined,
 } from '@ant-design/icons'
-import { ImgCarousel } from '../../components'
+import { ImgCarousel, HomeNavigation } from '../../components'
 
 import './style.less'
 
 const images = [
-  'https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg',
-  'https://m.media-amazon.com/images/I/71D+KvQQ+7L._SL1500_.jpg',
-  'https://m.media-amazon.com/images/I/71Ggj0piYGL._SL1500_.jpg',
+  {
+    original: 'https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg',
+    thumbnail: 'https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg',
+  },
+  {
+    original: 'https://m.media-amazon.com/images/I/71D+KvQQ+7L._SL1500_.jpg',
+    thumbnail: 'https://m.media-amazon.com/images/I/71D+KvQQ+7L._SL1500_.jpg',
+  },
+  {
+    original: 'https://m.media-amazon.com/images/I/71Ggj0piYGL._SL1500_.jpg',
+    thumbnail: 'https://m.media-amazon.com/images/I/71Ggj0piYGL._SL1500_.jpg',
+  },
 ]
 
 const { Text, Link, Title, Paragraph } = Typography
@@ -32,18 +41,14 @@ const BicycleDetail = () => {
   return (
     <>
       <Layout>
+        <HomeNavigation />
         <Content>
           <div className="bicycle-detail-page">
             <div className="container">
               <div className="content">
                 <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
                   <Col span={9}>
-                    <ImgCarousel
-                      imgs={images}
-                      imgStyle={{
-                        height: '450px',
-                      }}
-                    />
+                    <ImgCarousel images={images} />
                   </Col>
                   <Col span={9}>
                     <div className="detail-wrapper">
