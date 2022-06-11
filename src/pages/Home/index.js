@@ -1,3 +1,9 @@
+import React, { useState } from 'react'
+import './index.less'
+import BicycleGrid from '../../components/BicycleGrid'
+import BicycleSearch from '../../components/BicycleSearch'
+import BicyclePagination from '../../components/BicyclePagination'
+
 import {
   Button,
   Checkbox,
@@ -5,9 +11,9 @@ import {
   InputNumber,
   Slider,
   Space,
+  Tooltip,
   Typography,
 } from 'antd'
-import React, { useState } from 'react'
 import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
 import BicycleFooter from '../../components/BicycleFooter';
@@ -15,13 +21,7 @@ import BicycleFooter from '../../components/BicycleFooter';
 const { Title } = Typography
 const { Panel } = Collapse
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`
-
-const options = [
+const optionTypes = [
   {
     label: 'Mountain Bike',
     value: 'Mountain Bike',
@@ -48,9 +48,40 @@ const options = [
   },
 ]
 
+const optionColors = [
+  {
+    label: 'Red',
+    value: 'color 1',
+  },
+  {
+    label: 'Blue',
+    value: 'color 2',
+  },
+  {
+    label: 'Black',
+    value: 'color 3',
+  },
+]
+
+const optionGenders = [
+  {
+    label: 'Male',
+    value: 'Male',
+  },
+  {
+    label: 'Female',
+    value: 'Female',
+  },
+  {
+    label: 'Unisex',
+    value: 'Unisex',
+  },
+]
+
 const Home = () => {
   const [inputValue, setInputValue] = useState(20)
   const [inputValue2, setInputValue2] = useState(50)
+  const [openSearchBar, setOpenSearchBar] = useState(false)
 
   const onChange = (value) => {
     console.log('onChange: ', value)
@@ -98,7 +129,6 @@ const Home = () => {
                   min={2}
                   max={100}
                   defaultValue={20}
-                  // onChange={onChange}
                   value={inputValue2}
                   onChange={handleChangeSlider}
                 />
@@ -115,26 +145,65 @@ const Home = () => {
           <Panel header={<Title level={5}>Type</Title>} key="2">
             <Space direction="vertical">
               <Checkbox.Group
-                options={options}
+                options={optionTypes}
                 onChange={handleChangeCheckBox}
               />
             </Space>
           </Panel>
-          <Panel header={<Title level={5}>Brand</Title>} key="3">
-            <p>{text}</p>
+          <Panel header={<Title level={5}>Color</Title>} key="3">
+            <Space direction="vertical">
+              <Checkbox.Group
+                options={optionColors}
+                onChange={handleChangeCheckBox}
+              />
+            </Space>
           </Panel>
-          <Panel header={<Title level={5}>Color</Title>} key="4">
-            <p>{text}</p>
+          <Panel header={<Title level={5}>Gender</Title>} key="4">
+            <Space direction="vertical">
+              <Checkbox.Group
+                options={optionGenders}
+                onChange={handleChangeCheckBox}
+              />
+            </Space>
           </Panel>
+
           <div className="button-ctn">
             <Space>
               <Button type="primary">APPLY FILTER</Button>
-              <Button icon={<DeleteOutlined />} shape="circle"></Button>
+              <Button icon={<DeleteOutlined />} shape="circle" />
             </Space>
           </div>
         </Collapse>
       </div>
-      <div className="list-ctn">This is List of Bicycle</div>
+      <div className="homepage-product">
+        <Title className="shop-title">Bicycle List</Title>
+
+        <div className="product-search">
+          {openSearchBar ? (
+            <BicycleSearch setOpenSearchBar={setOpenSearchBar} />
+          ) : (
+            <Tooltip title="search">
+              <Button
+                onClick={() => {
+                  setOpenSearchBar(true)
+                }}
+                type="primary"
+                icon={<
+                      />}
+                size="large"
+              >
+                Search
+              </Button>
+            </Tooltip>
+          )}
+        </div>
+        <div className="product-grid">
+          <BicycleGrid />
+        </div>
+        <div className="product-pagination">
+          <BicyclePagination />
+        </div>
+      </div>
     </div>
     <div className='footer-homepage'>
     <BicycleFooter/>
