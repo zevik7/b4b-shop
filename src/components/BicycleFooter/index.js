@@ -5,8 +5,11 @@ import {
   TwitterOutlined,
   InstagramOutlined,
   WhatsAppOutlined,
+  EnvironmentOutlined,
+  GoogleOutlined,
 } from '@ant-design/icons'
 import { Input, Space, Button, Tooltip, Typography } from 'antd'
+import Logo from '../Logo'
 import {} from 'antd'
 import React from 'react'
 import './index.less'
@@ -28,18 +31,20 @@ const BicycleFooter = () => {
   return (
     <div className="footer">
       <section className="container">
-        <div className="item-a">
+        <div className="item-1">
           <li className="footer-title">
-            <a>B4B-Shop</a>
+            {/* <a>B4B-Shop</a> */}
+            <a className="logo-img">
+              <Logo />
+            </a>
           </li>
-          {/* <img alt="logo" src="../../assets/images/logo.png"/> */}
           <li className="shop-info">
             B4B-Shop is the one-stop shop for everything you need when buying
             your new bike. We are the US distributor and retailer for the global
             brands
           </li>
         </div>
-        <div className="item-b">
+        <div className="item-2">
           <li className="footer-title">Shop By</li>
           <li>
             <a>Your Orders</a>
@@ -54,7 +59,7 @@ const BicycleFooter = () => {
             <a>Conditions</a>
           </li>
         </div>
-        <div className="item-c">
+        <div className="item-3">
           <li className="footer-title">Products</li>
           <li>
             <a>New product</a>
@@ -66,10 +71,10 @@ const BicycleFooter = () => {
             <a>Prices drop</a>
           </li>
           <li>
-            <a>Login</a>
+            <a>Stores</a>
           </li>
         </div>
-        <div className="item-d">
+        <div className="item-4">
           <li className="footer-title">Our Company</li>
           <li>
             <a>About us</a>
@@ -81,11 +86,16 @@ const BicycleFooter = () => {
             <a>Site map</a>
           </li>
           <li>
-            <a>Stores</a>
+            <a>Help & Service</a>
           </li>
         </div>
-        <div className="item-e">
+        <div className="item-5">
           <li className="footer-title">Contact</li>
+          <li>
+            <a>
+              <EnvironmentOutlined /> Victoria Resort, Can Tho City
+            </a>
+          </li>
           <li>
             <a>
               {' '}
@@ -120,34 +130,24 @@ const BicycleFooter = () => {
                 icon={<InstagramOutlined />}
               />
             </a>
-          </li>
-          <li>
-            <span className="search-footer">
-              <Search
-                placeholder="Enter your email"
-                enterButton="Subscribe"
-                size="large"
-                suffix={suffix}
-                onSearch={onSearch}
-                className="search-input-footer"
-              />
-            </span>
+            <a>
+              <Button type="default" shape="circle" icon={<GoogleOutlined />} />
+            </a>
           </li>
         </div>
+        <div className="item-6">
+          <div className="search-footer">
+            <Search
+              placeholder="Enter your email"
+              enterButton="Subscribe"
+              size="large"
+              suffix={suffix}
+              onSearch={onSearch}
+              className="search-input-footer"
+            />
+          </div>
+        </div>
       </section>
-      {/* <div>
-    <span className="search-footer">
-    <Search
-          placeholder="Enter email"
-          enterButton="Subscribe"
-          size="large"
-          suffix={suffix}
-          onSearch={onSearch}
-          className="search-input-footer"
-        />
-    </span>
-      </div> */}
-      {/* <div className="border-footer"></div> */}
       <div className="subfooter">
         Copyright © 2022 B4B.com | All rights reserved
       </div>
