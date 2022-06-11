@@ -1,7 +1,4 @@
-import React from 'react'
-import './index.less'
-import { Col, Row, Slider } from 'antd'
-import { useState } from 'react'
+import { Col, Row } from 'antd'
 import ProductCard from '../BicycleCard'
 
 const gutters = {}
@@ -27,29 +24,22 @@ const BicycleGrid = () => {
         }}
       ></div>
       <Row gutter={[16, 16]} className="row-productGrid">
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
-          <ProductCard />
-        </Col>
-        <Col span={6}>
-          <ProductCard />
-        </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
       </Row>
