@@ -18,22 +18,6 @@ const colCounts = {}
 })
 
 const BicycleGrid = () => {
-  const [gutterKey, setGutterKey] = useState(1)
-  const [vgutterKey, setVgutterKey] = useState(1)
-  const [colCountKey, setColCountKey] = useState(2)
-  const cols = []
-  const colCount = colCounts[colCountKey]
-  let colCode = ''
-
-  // for (let i = 0; i < colCount; i++) {
-  //   cols.push(
-  //     <Col key={i.toString()} span={24 / colCount}>
-  //       <div>Column</div>
-  //     </Col>,
-  //   );
-  //   colCode += `  <Col span={${24 / colCount}} />\n`;
-  // }
-
   return (
     <>
       <div
@@ -41,48 +25,33 @@ const BicycleGrid = () => {
           width: '50%',
           marginBottom: 48,
         }}
-      >
-        {/* <Slider
-        min={0}
-        max={Object.keys(colCounts).length - 1}
-        value={colCountKey}
-        onChange={setColCountKey}
-        marks={colCounts}
-        step={null}
-        tipFormatter={(value) => value && colCounts[value]}
-      /> */}
-      </div>
-      <Row gutter={[8, 8]} className="row-productGrid">
-        {/* {cols}
-      {cols} */}
-        <Col span={8}>
+      ></div>
+      <Row gutter={[16, 16]} className="row-productGrid">
+        <Col span={6}>
           <ProductCard />
         </Col>
-        <Col span={8}>
+        <Col span={6}>
           <ProductCard />
         </Col>
-        <Col span={8}>
+        <Col span={6}>
+          <ProductCard />
+        </Col>
+        <Col span={6}>
           <ProductCard />
         </Col>
 
-        <Col span={8}>
+        <Col span={6}>
           <ProductCard />
         </Col>
-        <Col span={8}>
+        <Col span={6}>
           <ProductCard />
         </Col>
-        <Col span={8}>
+        <Col span={6}>
           <ProductCard />
         </Col>
-      </Row>
-      {/* <Row gutter={[8, 8]} className="row-productGrid">
-      <Col span={8}><ProductCard/></Col>
-      <Col span={8}><ProductCard/></Col>
-      <Col span={8}><ProductCard/></Col>
-    </Row> */}
-      <Row gutter={[gutters[gutterKey], vgutters[vgutterKey]]}>
-        {/* {cols}
-      {cols} */}
+        <Col span={6}>
+          <ProductCard />
+        </Col>
       </Row>
     </>
   )

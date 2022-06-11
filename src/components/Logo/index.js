@@ -9,7 +9,11 @@ const logoStyle = {
 
 const Logo = (props) => {
   const { style } = props
-  return <img src={LogoImg} style={{ ...logoStyle, ...style }} alt="Logo" />
+  return (
+    <>
+      <img src={LogoImg} style={{ ...logoStyle, ...style }} alt="Logo" />
+    </>
+  )
 }
 
 export default Logo
