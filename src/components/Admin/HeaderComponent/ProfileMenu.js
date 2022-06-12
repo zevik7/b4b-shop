@@ -1,11 +1,6 @@
 import React from 'react'
 import { Avatar, Menu } from 'antd'
-import {
-  DashboardOutlined,
-  LogoutOutlined,
-  UnorderedListOutlined,
-  UserOutlined,
-} from '@ant-design/icons'
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
 
 function ProfileMenu(props) {
   return (
