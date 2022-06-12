@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Typography } from 'antd'
 import './index.less'
+
+const { Title } = Typography
 
 const BicycleTrending = (props) => {
   const { children, show } = props
@@ -54,7 +57,7 @@ const BicycleTrending = (props) => {
 
   return (
     <div className="trending">
-      <h2>Trending products</h2>
+      <Title level={2}>TRENDING PRODUCTS</Title>
       <div className="carousel-container">
         <div className="carousel-wrapper">
           {currentIndex > 0 && (
