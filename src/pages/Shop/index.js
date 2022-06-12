@@ -18,7 +18,6 @@ import {
 import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
 import BicycleFooter from '../../components/BicycleFooter'
-import { HomeNavigation } from '../../components/index'
 
 import { HomeNavigation } from '../../components'
 
@@ -83,7 +82,7 @@ const optionGenders = [
   },
 ]
 
-const Home = () => {
+const Shop = () => {
   const [inputValue, setInputValue] = useState(20)
   const [inputValue2, setInputValue2] = useState(50)
   const [openSearchBar, setOpenSearchBar] = useState(false)
@@ -220,4 +219,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Shop
