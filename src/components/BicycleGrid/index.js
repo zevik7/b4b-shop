@@ -27,29 +27,23 @@ const BicycleGrid = () => {
         }}
       ></div>
       <Row gutter={[16, 16]} className="row-productGrid">
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
-          <ProductCard />
-        </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
 
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
-        <Col span={6}>
-          <ProductCard />
-        </Col>
-        <Col span={6}>
+        <Col span={8}>
           <ProductCard />
         </Col>
       </Row>
