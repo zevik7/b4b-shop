@@ -2,12 +2,13 @@ import React from 'react'
 import { Menu } from 'antd'
 import { DashboardOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import Sider from 'antd/es/layout/Sider'
+import { Logo, NavLink } from '../../../components'
 
 function Sidebar(props) {
   const { collapsed } = props
   return (
     <Sider className="sidebar" trigger={null} collapsible collapsed={collapsed}>
-      <div className="logo">Logo here</div>
+      <Logo />
       <Menu
         theme="light"
         mode="inline"
