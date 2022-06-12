@@ -1,40 +1,28 @@
-import React from 'react'
-import { Space, Table, Tag, Button } from 'antd'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import React, { useState } from 'react'
+import { Table, Button, Modal } from 'antd'
 
 function Index(props) {
+  const [selectedKey, setSelectedKey] = useState([])
+  const [visible, setVisible] = useState(false)
+  const [confirmLoading, setConfirmLoading] = useState(false)
+  const [modalText, setModalText] = useState('Content of the modal')
+
   const columns = [
     {
       title: 'Name',
       dataIndex: 'name',
-      key: 'name',
-      render: (text) => <a>{text}</a>,
     },
     {
       title: 'Color',
       dataIndex: 'color',
-      key: 'color',
     },
     {
       title: 'Description',
       dataIndex: 'description',
-      key: 'description',
     },
     {
       title: 'Price',
       dataIndex: 'price',
-      key: 'price',
-    },
-    {
-      title: 'Action',
-      key: 'action',
-      render: () => (
-        <>
-          <Button type="default" shape="default" icon={<EditOutlined />} />
-          <Button type="default" shape="default" icon={<EditOutlined />} />
-          <Button type="primary" shape="default" icon={<DeleteOutlined />} />
-        </>
-      ),
     },
   ]
   const data = [
@@ -47,7 +35,7 @@ function Index(props) {
       image: [],
       type: 'type 1',
       rating: 1,
-      id: '1',
+      key: '1',
     },
     {
       createdAt: 1654762956,
@@ -58,11 +46,66 @@ function Index(props) {
       image: [],
       type: 'type 2',
       rating: 5,
-      id: '2',
+      key: '2',
     },
   ]
 
-  return <Table columns={columns} dataSource={data} />
+  const handleDelete = () => {
+    console.log('Delete: ' + selectedKey)
+  }
+
+  const handleOk = () => {}
+
+  const handleCancel = () => {
+    setVisible(false)
+  }
+
+  const handleSelectChange = (selectedRowKeys, selectedRows) => {
+    setSelectedKey(selectedRowKeys)
+  }
+
+  const rowSelection = {
+    onChange: handleSelectChange,
+  }
+
+  return (
+    <div>
+      <div className="action">
+        <Button type="default" onClick={(e) => setVisible(true)}>
+          Add
+        </Button>
+        <Button type="primary" onClick={handleDelete}>
+          Delete
+        </Button>
+      </div>
+      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+      <Modal
+        title="Add new bicycle"
+        visible={visible}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel}
+        okText="Add"
+      >
+        <form>
+          <div class="form-group">
+            <label for=""></label>
+            <input
+              type="text"
+              name=""
+              id=""
+              class="form-control"
+              placeholder=""
+              aria-describedby="helpId"
+            />
+            <small id="helpId" class="text-muted">
+              Help text
+            </small>
+          </div>
+        </form>
+      </Modal>
+    </div>
+  )
 }
 
 export default Index
