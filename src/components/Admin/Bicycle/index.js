@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { Table, Button, Modal } from 'antd'
+import { Button } from 'antd'
+import BicycleList from './BicycleList'
+import AddBicycle from './AddBicycle'
 
-function Index(props) {
+function Bicycle(props) {
   const [selectedKey, setSelectedKey] = useState([])
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -23,12 +25,13 @@ function Index(props) {
     {
       title: 'Price',
       dataIndex: 'price',
+      sorter: (a, b) => a.price - b.price,
     },
   ]
   const data = [
     {
       createdAt: 1654763016,
-      name: 'name 1',
+      name: 'abc',
       description: 'description 1',
       price: 86,
       color: 'color 1',
@@ -48,7 +51,56 @@ function Index(props) {
       rating: 5,
       key: '2',
     },
+    {
+      createdAt: 1654762956,
+      name: 'name1',
+      description: 'description 2',
+      price: 99,
+      color: 'color 2',
+      image: [],
+      type: 'type 2',
+      rating: 5,
+      key: '3',
+    },
+    {
+      createdAt: 1654762956,
+      name: 'name 2',
+      description: 'description 2',
+      price: 99,
+      color: 'color 2',
+      image: [],
+      type: 'type 2',
+      rating: 5,
+      key: '4',
+    },
+    {
+      createdAt: 1654762956,
+      name: 'name 2',
+      description: 'description 2',
+      price: 99,
+      color: 'color 2',
+      image: [],
+      type: 'type 2',
+      rating: 5,
+      key: '5',
+    },
+    {
+      createdAt: 1654762956,
+      name: 'name 2',
+      description: 'description 2',
+      price: 99,
+      color: 'color 2',
+      image: [],
+      type: 'type 2',
+      rating: 5,
+      key: '6',
+    },
   ]
+
+  const onCreate = (values) => {
+    console.log('Received values of form: ', values)
+    // setVisible(false);
+  }
 
   const handleDelete = () => {
     console.log('Delete: ' + selectedKey)
@@ -78,34 +130,14 @@ function Index(props) {
           Delete
         </Button>
       </div>
-      <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
-      <Modal
-        title="Add new bicycle"
+      <BicycleList rowSelection={rowSelection} columns={columns} data={data} />
+      <AddBicycle
         visible={visible}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
         onCancel={handleCancel}
-        okText="Add"
-      >
-        <form>
-          <div class="form-group">
-            <label for=""></label>
-            <input
-              type="text"
-              name=""
-              id=""
-              class="form-control"
-              placeholder=""
-              aria-describedby="helpId"
-            />
-            <small id="helpId" class="text-muted">
-              Help text
-            </small>
-          </div>
-        </form>
-      </Modal>
+        onCreate={onCreate}
+      />
     </div>
   )
 }
 
-export default Index
+export default Bicycle
