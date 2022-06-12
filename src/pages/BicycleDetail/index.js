@@ -9,13 +9,22 @@ import {
   Rate,
   Button,
   Image,
+  Divider,
+  Form,
+  Input,
 } from 'antd'
 import {
   SendOutlined,
   RollbackOutlined,
   CustomerServiceOutlined,
 } from '@ant-design/icons'
-import { ImgCarousel, HomeNavigation } from '../../components'
+import {
+  ImgCarousel,
+  HomeNavigation,
+  Table,
+  Select,
+  BicycleFooter,
+} from '../../components'
 
 import './style.less'
 
@@ -34,8 +43,82 @@ const images = [
   },
 ]
 
+const detailComponentsData = [
+  {
+    key: '1',
+    name: 'Brand',
+    value: 'Fuij',
+  },
+  {
+    key: '2',
+    name: 'Type',
+    value: 'Road Bikes',
+  },
+  {
+    key: '3',
+    name: 'Gender',
+    value: 'Unisex',
+  },
+  {
+    key: '4',
+    name: 'Material',
+    value: 'Alumium',
+  },
+  {
+    key: '5',
+    name: 'Groupset',
+    value: 'Shimano Claris',
+  },
+  {
+    key: '6',
+    name: 'Braking Type',
+    value: 'Rim Brakes',
+  },
+  {
+    key: '7',
+    name: 'Item condition',
+    value: 'New',
+  },
+  {
+    key: '8',
+    name: 'Availability',
+    value: 'Buy online, In-store',
+  },
+]
+
+const detailComponentsColumns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    className: 'name-column',
+  },
+  {
+    title: 'Value',
+    dataIndex: 'value',
+    key: 'value',
+  },
+]
+
+const selectOptions = [
+  {
+    key: 'Grey / 52cm / Small',
+    value: 'Grey / 52cm / Small',
+  },
+  { key: 'Grey / 49cm / XS/S', value: 'Grey / 49cm / XS/S' },
+  { key: 'Grey / 54cm / Medium', value: 'Grey / 54cm / Medium' },
+]
+
 const { Text, Link, Title, Paragraph } = Typography
 const { Header, Footer, Sider, Content } = Layout
+
+const formLayout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 8 },
+}
+const formTailLayout = {
+  wrapperCol: { offset: 8, span: 16 },
+}
 
 const BicycleDetail = () => {
   return (
@@ -53,6 +136,10 @@ const BicycleDetail = () => {
                   <Col span={9}>
                     <div className="detail-wrapper">
                       <div className="detail-wrapper__info">
+                        <Text className="available-txt">
+                          Availability:{' '}
+                          <Text type="secondary">12 in stock</Text>
+                        </Text>
                         <Title level={2} className="bicycle-name">
                           Tailored Fit Mesh-Panel Polo
                         </Title>
@@ -63,7 +150,7 @@ const BicycleDetail = () => {
                           <Rate className="rate" allowHalf defaultValue={4.5} />
                           <Text>14 reviews</Text>
                         </div>
-                        <Title level={5}>COLOR: Red</Title>
+                        <Divider />
                         <Paragraph className="desc">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Nunc elementum, augue eget aliquam fringilla,
@@ -76,16 +163,39 @@ const BicycleDetail = () => {
                           eu sollicitudin arcu. Curabitur bibendum ante maximus
                           sem ultrices, id porta nisi laoreet.
                         </Paragraph>
-                        <Text className="available-txt">
-                          Availability:{' '}
-                          <Text type="secondary">12 in stock</Text>
-                        </Text>
                       </div>
                       <div className="detail-wrapper__buy-box">
-                        <InputNumber min={1} max={10} defaultValue={3} />
-                        <Button type="primary" size="large">
-                          Buy it now
-                        </Button>
+                        <Form layout="vertical" className="form">
+                          <div className="form-content">
+                            <Form.Item
+                              className="select-item"
+                              name="select-type"
+                              label="Select Color, Size CM, and Size"
+                            >
+                              <Select
+                                options={selectOptions}
+                                defaultValue="Grey / 49cm / XS/S"
+                              />
+                            </Form.Item>
+                            <Form.Item
+                              className="input-num-item"
+                              name="quantity"
+                              label="Quantity"
+                            >
+                              <InputNumber min={1} max={10} defaultValue={3} />
+                            </Form.Item>
+                          </div>
+                          <Form.Item>
+                            <Button
+                              className="submit-btn"
+                              type="primary"
+                              size="large"
+                              htmlType="submit"
+                            >
+                              BUY IT NOW
+                            </Button>
+                          </Form.Item>
+                        </Form>
                       </div>
                     </div>
                   </Col>
@@ -125,12 +235,23 @@ const BicycleDetail = () => {
                         </div>
                       </div>
                     </div>
+                    <div className="bicycle-parts">
+                      <Title level={5}>Bicycle parts</Title>
+                      <Table
+                        data={detailComponentsData}
+                        cols={detailComponentsColumns}
+                        showHeader={false}
+                        bordered={true}
+                        pagination={false}
+                      />
+                    </div>
                   </Col>
                 </Row>
               </div>
             </div>
           </div>
         </Content>
+        <BicycleFooter />
       </Layout>
     </>
   )

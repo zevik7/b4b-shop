@@ -60,22 +60,24 @@
       }
 
       &__buy-box {
-        display: flex;
-        align-items: center;
-        gap: 20px;
         margin-top: 20px;
 
-        .ant-input-number {
-          height: 40px;
-        }
+        .form {
+          .form-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
 
-        .ant-input-number {
-          flex: 1;
-          border-radius: 5px;
-        }
+            .select-item {
+              flex: 1;
+            }
+          }
 
-        .ant-btn {
-          flex: 2;
+          .submit-btn {
+            width: 100%;
+            min-height: 60px;
+            font-size: 24px;
+          }
         }
       }
     }
@@ -101,6 +103,17 @@
           h4.ant-typography {
             margin-bottom: 0;
           }
+        }
+      }
+    }
+
+    .bicycle-parts {
+      padding-top: 20px;
+
+      .ant-table {
+        .name-column {
+          text-transform: uppercase;
+          font-weight: 600;
         }
       }
     }
