@@ -30,7 +30,7 @@ const HomeNavigation = () => {
   return (
     <Header
       className="home-navigation"
-      style={{ position: 'fixed', zIndex: 1, width: '100%' }}
+      style={{ position: 'fixed', zIndex: 10, width: '100%' }}
     >
       <Logo />
       <div className="menu">

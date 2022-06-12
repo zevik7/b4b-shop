@@ -18,7 +18,13 @@ import {
   RollbackOutlined,
   CustomerServiceOutlined,
 } from '@ant-design/icons'
-import { ImgCarousel, HomeNavigation, Table, Select } from '../../components'
+import {
+  ImgCarousel,
+  HomeNavigation,
+  Table,
+  Select,
+  BicycleFooter,
+} from '../../components'
 
 import './style.less'
 
@@ -245,6 +251,7 @@ const BicycleDetail = () => {
             </div>
           </div>
         </Content>
+        <BicycleFooter />
       </Layout>
     </>
   )
