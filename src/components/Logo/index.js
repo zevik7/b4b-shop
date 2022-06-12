@@ -1,8 +1,8 @@
-import LogoImg from '../../assets/images/logo.webp'
+import LogoImg from '../../assets/images/logo_shop.jpg'
 
 const logoStyle = {
-  float: 'left',
-  width: '120px',
+  // float: 'left',
+  width: '200px',
   height: '100%',
   objectFit: 'contain',
 }

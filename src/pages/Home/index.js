@@ -15,7 +15,8 @@ import {
   Typography,
 } from 'antd'
 import './index.less'
-import { DeleteOutlined, SearchOutlined } from '@ant-design/icons'
+import { DeleteOutlined } from '@ant-design/icons'
+import BicycleFooter from '../../components/BicycleFooter';
 
 const { Title } = Typography
 const { Panel } = Collapse
@@ -101,6 +102,7 @@ const Home = () => {
   }
 
   return (
+    <>
     <div className="homepage">
       <div className="filter-bar-ctn">
         <Collapse
@@ -186,7 +188,8 @@ const Home = () => {
                   setOpenSearchBar(true)
                 }}
                 type="primary"
-                icon={<SearchOutlined />}
+                icon={<
+                      />}
                 size="large"
               >
                 Search
@@ -202,6 +205,10 @@ const Home = () => {
         </div>
       </div>
     </div>
+    <div className='footer-homepage'>
+    <BicycleFooter/>
+    </div>
+        </>
   )
 }
 
