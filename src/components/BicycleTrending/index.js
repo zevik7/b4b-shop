@@ -57,7 +57,6 @@ const BicycleTrending = (props) => {
       <h2>Trending products</h2>
       <div className="carousel-container">
         <div className="carousel-wrapper">
-          {/* You can alwas change the content of the button to other things */}
           {currentIndex > 0 && (
             <button onClick={prev} className="left-arrow">
               &lt;
@@ -77,7 +76,7 @@ const BicycleTrending = (props) => {
               {children}
             </div>
           </div>
-          {/* You can alwas change the content of the button to other things */}
+
           {currentIndex < length - show && (
             <button onClick={next} className="right-arrow">
               &gt;
