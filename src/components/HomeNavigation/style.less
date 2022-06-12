@@ -1,0 +1,24 @@
+@import '~antd/lib/style/themes/default.less';
+
+.home-navigation {
+  display: flex;
+  align-items: center;
+  background-color: @body-background;
+  box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.05);
+
+  .ant-menu {
+    flex: 1;
+    border: none;
+    .ant-menu-item {
+      font-weight: 600;
+    }
+  }
+
+  .auth-btn {
+    margin-left: auto;
+
+    .ant-btn:not(:last-of-type) {
+      margin-right: 10px;
+    }
+  }
+}
