@@ -8,7 +8,7 @@ import {
 import { Layout, Menu } from 'antd'
 import React, { useState } from 'react'
 import './style.less'
-import { BicycleTable, HeaderComponent, Sidebar } from '../../../components'
+import { Bicycle, HeaderComponent, Sidebar } from '../../../components'
 
 const { Header, Sider, Content } = Layout
 
@@ -20,7 +20,7 @@ const BicycleManagement = () => {
       <Layout className="site-layout">
         <HeaderComponent collapsed={collapsed} toggleSidebar={setCollapsed} />
         <Content className="content">
-          <BicycleTable />
+          <Bicycle />
         </Content>
       </Layout>
     </Layout>
