@@ -18,6 +18,7 @@ import {
 import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
 import BicycleFooter from '../../components/BicycleFooter'
+import { HomeNavigation } from '../../components/index'
 
 import { HomeNavigation } from '../../components'
 
