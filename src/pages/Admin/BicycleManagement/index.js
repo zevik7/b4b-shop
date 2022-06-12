@@ -15,11 +15,11 @@ const { Header, Sider, Content } = Layout
 const BicycleManagement = () => {
   const [collapsed, setCollapsed] = useState(false)
   return (
-    <Layout>
+    <Layout className="bicycleManagement">
       <Sidebar collapsed={collapsed} />
       <Layout className="site-layout">
         <HeaderComponent collapsed={collapsed} toggleSidebar={setCollapsed} />
-        <Content className="site-layout-background">
+        <Content className="content">
           <BicycleTable />
         </Content>
       </Layout>
