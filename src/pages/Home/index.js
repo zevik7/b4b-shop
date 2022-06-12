@@ -1,11 +1,8 @@
 import { useState } from 'react'
+import BrandList from './BrandList'
 
 const Landing = () => {
-  return (
-    <>
-      <h1>This is landing page</h1>
-    </>
-  )
+  return <></>
 }
 
 export default Landing
