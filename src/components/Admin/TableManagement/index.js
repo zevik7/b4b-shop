@@ -1,14 +1,16 @@
 import React from 'react'
 import { Table } from 'antd'
 
-function TableManagement({ rowSelection, columns, data }) {
+function TableManagement({ rowSelection, columns, data, onClickRow }) {
   return (
     <Table
       rowSelection={rowSelection}
       columns={columns}
       dataSource={data}
-      expandable={{
-        expandedRowRender: (record) => 'abc',
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: () => onClickRow(record),
+        }
       }}
     />
   )

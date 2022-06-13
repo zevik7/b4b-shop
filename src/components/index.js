@@ -5,6 +5,7 @@ export { default as TableManagement } from './Admin/TableManagement'
 //BicycleManagement
 export { default as BicycleManageAction } from './Admin/BicycleManageAction'
 export { default as AddBicycleModal } from './Admin/AddBicycleModal'
+export { default as EditBicycleModal } from './Admin/EditBicycleModal'
 
 export { default as ImgCarousel } from './ImgCarousel'
 export { default as HomeNavigation } from './HomeNavigation'

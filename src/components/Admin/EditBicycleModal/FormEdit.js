@@ -12,9 +12,26 @@ import {
 import { UploadOutlined } from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
 
-function FormAdd({ form }) {
+function FormEdit({ form, disabled }) {
+  const initialValues = {
+    brand: 'Fuji',
+    color: 'a',
+    description: 'a',
+    gender: 'Unisex',
+    image: undefined,
+    material: 'a',
+    name: 'nam',
+    price: 1,
+    type: 'Road Bike',
+  }
   return (
-    <Form form={form} layout="vertical" name="formAddBicycle">
+    <Form
+      form={form}
+      layout="vertical"
+      name="formEditBicycle"
+      initialValues={initialValues}
+      disabled={disabled}
+    >
       <Row>
         <Col span={24}>
           <Form.Item
@@ -31,7 +48,6 @@ function FormAdd({ form }) {
           </Form.Item>
         </Col>
       </Row>
-
       <Row gutter={8}>
         <Col span={12}>
           <Form.Item
@@ -76,7 +92,6 @@ function FormAdd({ form }) {
           </Form.Item>
         </Col>
       </Row>
-
       <Row gutter={8}>
         <Col span={12}>
           <Form.Item
@@ -111,7 +126,6 @@ function FormAdd({ form }) {
           </Form.Item>
         </Col>
       </Row>
-
       <Row gutter={8}>
         <Col span={12}>
           <Form.Item
@@ -167,4 +181,4 @@ function FormAdd({ form }) {
   )
 }
 
-export default FormAdd
+export default FormEdit

@@ -1,21 +1,33 @@
 import { Layout } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.less'
 import {
   AddBicycleModal,
   BicycleManageAction,
+  EditBicycleModal,
   HeaderComponent,
   Sidebar,
   TableManagement,
 } from '../../../components'
+import { useDispatch, useSelector } from 'react-redux'
+// import {getBicycles} from "./bicycleManagementSlice";
 
 const { Content } = Layout
 
 const BicycleManagement = () => {
   //Initialization
+  const dispatch = useDispatch()
+
+  // const bicyclesState = useSelector((state) => state.bicycles)
   const [collapsed, setCollapsed] = useState(false)
-  const [visible, setVisible] = useState(false)
+  const [visibleAdd, setVisibleAdd] = useState(false)
+  const [visibleEdit, setVisibleEdit] = useState(false)
   const [selectedKey, setSelectedKey] = useState([])
+
+  //handle get bicycles
+  // useEffect(() => {
+  //   dispatch(getBicycles())
+  // }, [])
 
   //columns data for table list bicycles
   const columns = [
@@ -115,8 +127,16 @@ const BicycleManagement = () => {
   }
 
   //func handle when modal is canceled
-  const handleModalCancel = () => {
-    setVisible(false)
+  const handleModalAddCancel = () => {
+    setVisibleAdd(false)
+  }
+  const handleModalEditCancel = () => {
+    setVisibleEdit(false)
+  }
+
+  const handleOnClickRow = (record) => {
+    console.log(record)
+    setVisibleEdit(true)
   }
 
   //func handle when modal add summit
@@ -128,6 +148,11 @@ const BicycleManagement = () => {
     console.log('Delete ', selectedKey)
   }
 
+  const handleUpdate = (value) => {
+    console.log(value)
+    setVisibleEdit(false)
+  }
+
   return (
     <Layout className="bicycleManagement">
       <Sidebar collapsed={collapsed} />
@@ -135,7 +160,7 @@ const BicycleManagement = () => {
         <HeaderComponent collapsed={collapsed} toggleSidebar={setCollapsed} />
         <Content className="content">
           <BicycleManageAction
-            setVisible={setVisible}
+            setVisible={setVisibleAdd}
             handleDelete={handleDelete}
           />
           <TableManagement
@@ -144,13 +169,19 @@ const BicycleManagement = () => {
             }}
             columns={columns}
             data={data}
+            onClickRow={handleOnClickRow}
           />
         </Content>
       </Layout>
       <AddBicycleModal
-        onCancel={handleModalCancel}
+        onCancel={handleModalAddCancel}
         onCreate={handleCreate}
-        visible={visible}
+        visible={visibleAdd}
+      />
+      <EditBicycleModal
+        onUpdate={handleUpdate}
+        onCancel={handleModalEditCancel}
+        visible={visibleEdit}
       />
     </Layout>
   )
