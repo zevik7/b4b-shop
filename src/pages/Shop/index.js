@@ -96,6 +96,7 @@ const Shop = () => {
   const [openSearchBar, setOpenSearchBar] = useState(true)
 
   const bicycles = useSelector(bicyclesSelector)
+  console.log(bicycles)
 
   // Load data
   useEffect(() => {
@@ -223,9 +224,20 @@ const Shop = () => {
                     </div>
                     <div className="product-grid">
                       <Row>
-                        {bicycles.map((bicycle) => (
-                          <Col span={6}>HI</Col>
-                        ))}
+                        {bicycles.status === 'loading' ? (
+                          <h1>Loading</h1>
+                        ) : (
+                          bicycles.data.map((bicycle) => (
+                            <Col span={6}>
+                              <BicycleCard
+                                img={bicycle.image[0]}
+                                title={bicycle.name}
+                                price={bicycle.price}
+                                brand={bicycle.brand}
+                              />
+                            </Col>
+                          ))
+                        )}
                       </Row>
                     </div>
                     <div className="product-pagination">

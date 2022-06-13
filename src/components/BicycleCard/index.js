@@ -7,7 +7,8 @@ import './index.less'
 const { Meta } = Card
 const { Title } = Typography
 
-const BicycletCard = () => {
+const BicycletCard = (props) => {
+  const { img, title, price, brand } = props
   const navigate = useNavigate()
 
   return (
@@ -19,29 +20,22 @@ const BicycletCard = () => {
         width: '100%',
       }}
       cover={
-        <img
-          className="img-card"
-          alt="bicycle"
-          src="https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg"
-        />
+        <img className="img-card" alt="bicycle" src={'/bikeImage/' + img} />
       }
       onClick={() => navigate('/shop/bicycle-detail/:id')}
     >
       <div className="footer-card">
         <Row style={{ marginBottom: 12 }}>
           <Col>
-            <Meta
-              title={<Title level={5}>Tailored Fit Mesh-Panel Polo</Title>}
-              className="title"
-            />
+            <Meta title={<Title level={5}>{title}</Title>} className="title" />
           </Col>
         </Row>
         <Row>
           <Col span={12}>
-            <Meta description="Price: $200" className="title" />
+            <Meta description={`Price: ${price}`} className="title" />
           </Col>
           <Col className="product-brand" span={12}>
-            <span>Brand: Fuij</span>
+            <span>Brand: {brand}</span>
           </Col>
         </Row>
       </div>
