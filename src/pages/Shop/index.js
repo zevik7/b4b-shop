@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'antd'
 import './index.less'
 
-import BicycleGrid from '../../components/BicycleGrid'
+import BicycleCard from '../../components/BicycleCard'
 import BicycleSearch from '../../components/BicycleSearch'
 import BicyclePagination from '../../components/BicyclePagination'
 
@@ -22,6 +22,11 @@ import { DeleteOutlined } from '@ant-design/icons'
 import BicycleFooter from '../../components/BicycleFooter'
 
 import { HomeNavigation } from '../../components'
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { bicyclesSelector } from '../../redux/selectors'
+import shopSlice, { fetchBicycles } from './shopSlice'
 
 const { Title } = Typography
 const { Panel } = Collapse
@@ -85,9 +90,17 @@ const optionGenders = [
 ]
 
 const Shop = () => {
+  const dispatch = useDispatch()
   const [inputValue, setInputValue] = useState(20)
   const [inputValue2, setInputValue2] = useState(50)
   const [openSearchBar, setOpenSearchBar] = useState(true)
+
+  const bicycles = useSelector(bicyclesSelector)
+
+  // Load data
+  useEffect(() => {
+    dispatch(fetchBicycles())
+  }, [])
 
   const onChange = (value) => {
     console.log('onChange: ', value)
@@ -209,7 +222,11 @@ const Shop = () => {
                       )}
                     </div>
                     <div className="product-grid">
-                      <BicycleGrid />
+                      <Row>
+                        {bicycles.map((bicycle) => (
+                          <Col span={6}>HI</Col>
+                        ))}
+                      </Row>
                     </div>
                     <div className="product-pagination">
                       <BicyclePagination />
