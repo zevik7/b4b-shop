@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Home from '../../pages/Home'
 import Shop from '../../pages/Shop'
+import Checkout from '../../pages/Checkout'
 import BicycleDetail from '../../pages/BicycleDetail'
 import BicycleManagement from '../../pages/Admin/BicycleManagement'
 import Login from '../../pages/Admin/Login'
@@ -15,6 +16,7 @@ const RoutesApp = () => {
       {/* For Users */}
       <Route path="/" element={<Home />} />
       <Route path="/shop" element={<Shop />} />
+      <Route path="/checkout" element={<Checkout />} />
       <Route path="/shop/bicycle-detail/:id" element={<BicycleDetail />} />
 
       {/* For Admins */}
