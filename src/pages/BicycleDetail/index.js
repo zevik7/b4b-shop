@@ -30,16 +30,16 @@ import './style.less'
 
 const images = [
   {
-    original: 'https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg',
-    thumbnail: 'https://m.media-amazon.com/images/I/81wGn2TQJeL._SL1500_.jpg',
+    original: '/bikeImage/b7fSGdiGDw9t2t5edta6MYRns.avif',
+    thumbnail: '/bikeImage/b7fSGdiGDw9t2t5edta6MYRns.avif',
   },
   {
-    original: 'https://m.media-amazon.com/images/I/71D+KvQQ+7L._SL1500_.jpg',
-    thumbnail: 'https://m.media-amazon.com/images/I/71D+KvQQ+7L._SL1500_.jpg',
+    original: '/bikeImage/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
+    thumbnail: '/bikeImage/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
   },
   {
-    original: 'https://m.media-amazon.com/images/I/71Ggj0piYGL._SL1500_.jpg',
-    thumbnail: 'https://m.media-amazon.com/images/I/71Ggj0piYGL._SL1500_.jpg',
+    original: '/bikeImage/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
+    thumbnail: '/bikeImage/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
   },
 ]
 
