@@ -1,6 +1,6 @@
 export { default as Sidebar } from './Admin/Sidebar'
 export { default as HeaderComponent } from './Admin/HeaderComponent'
-export { default as BicycleTable } from './Admin/BicycleTable'
+export { default as Bicycle } from './Admin/Bicycle'
 export { default as ImgCarousel } from './ImgCarousel'
 export { default as HomeNavigation } from './HomeNavigation'
 export { default as Logo } from './Logo'

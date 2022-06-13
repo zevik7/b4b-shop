@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 const logoStyle = {
   // float: 'left',
+  padding: '8px',
   width: '200px',
-  height: '100%',
+  maxHeight: '64px',
   objectFit: 'contain',
   cursor: 'pointer',
 }
