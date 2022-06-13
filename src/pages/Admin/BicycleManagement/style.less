@@ -6,10 +6,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .trigger{
+
+    .trigger {
       font-size: 25px;
     }
   }
+
   .sidebar {
     background-color: #fafafa;
 
@@ -20,14 +22,22 @@
 
   .content {
     padding: 15px;
+    background-color: aliceblue;
 
     .action {
-      padding: 10px 5px;
       text-align: right;
-
+      padding-bottom: 15px;
       button:not(:last-child) {
         margin-right: 10px;
       }
     }
   }
+}
+
+.modalAddBicycle {
+  width: 50% !important;
+  min-width: 500px;
+  //padding-bottom: 0px;
+  //top: 50%;
+  //transform: translateY(-50%);
 }
