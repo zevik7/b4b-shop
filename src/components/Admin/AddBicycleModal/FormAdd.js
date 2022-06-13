@@ -10,6 +10,7 @@ import {
   Upload,
 } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
+import TextArea from 'antd/es/input/TextArea'
 
 function FormAdd({ form }) {
   return (
@@ -144,7 +145,7 @@ function FormAdd({ form }) {
       <Row>
         <Col span={24}>
           <Form.Item name="description" label="Description">
-            <Input type="textarea" />
+            <TextArea rows={2} />
           </Form.Item>
         </Col>
       </Row>
