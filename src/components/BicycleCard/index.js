@@ -1,6 +1,7 @@
-import { ShoppingOutlined } from '@ant-design/icons'
+// import { ShoppingOutlined } from '@ant-design/icons'
 import { Button, Card, Typography } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { Col, Row } from 'antd'
 import './index.less'
 
 const { Meta } = Card
@@ -27,17 +28,22 @@ const BicycletCard = () => {
       onClick={() => navigate('/shop/bicycle-detail/:id')}
     >
       <div className="footer-card">
-        <Meta
-          title={<Title level={5}>Bicycle</Title>}
-          description="Price: $200"
-          className="title"
-        />
-        <Button
-          className="btn-cash"
-          type="primary"
-          shape="circle"
-          icon={<ShoppingOutlined />}
-        />
+        <Row style={{ marginBottom: 12 }}>
+          <Col>
+            <Meta
+              title={<Title level={5}>Tailored Fit Mesh-Panel Polo</Title>}
+              className="title"
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <Meta description="Price: $200" className="title" />
+          </Col>
+          <Col className="product-brand" span={12}>
+            <span>Brand: Fuij</span>
+          </Col>
+        </Row>
       </div>
     </Card>
   )
