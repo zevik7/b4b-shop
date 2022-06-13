@@ -41,10 +41,16 @@ const HomeNavigation = () => {
         ))}
       </div>
       <div className="auth-btn">
-        <Button type="primary" onClick={() => navigate('/admin/register')}>
+        <Button
+          type="primary"
+          onClick={() => navigate('/admin/bicycle-management')}
+        >
           Register
         </Button>
-        <Button type="outlined" onClick={() => navigate('/admin/login')}>
+        <Button
+          type="outlined"
+          onClick={() => navigate('/admin/bicycle-management')}
+        >
           Login
         </Button>
       </div>

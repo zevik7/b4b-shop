@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { Col, Row } from 'antd'
 import './index.less'
+
 import BicycleGrid from '../../components/BicycleGrid'
 import BicycleSearch from '../../components/BicycleSearch'
 import BicyclePagination from '../../components/BicyclePagination'
@@ -81,10 +83,10 @@ const optionGenders = [
   },
 ]
 
-const Home = () => {
+const Shop = () => {
   const [inputValue, setInputValue] = useState(20)
   const [inputValue2, setInputValue2] = useState(50)
-  const [openSearchBar, setOpenSearchBar] = useState(false)
+  const [openSearchBar, setOpenSearchBar] = useState(true)
 
   const onChange = (value) => {
     console.log('onChange: ', value)
@@ -111,104 +113,109 @@ const Home = () => {
         <div className="shop-page">
           <div className="container">
             <div className="shop-page__wrapper">
-              <div className="filter-bar-ctn">
-                <Collapse
-                  className="filter-bar"
-                  style={{ height: '100%', borderRight: 0 }}
-                  defaultActiveKey={['1', '2', '3', '4', '5']}
-                  onChange={onChange}
-                  expandIconPosition="end"
-                  bordered={false}
-                >
-                  <Panel header={<Title level={5}>Price</Title>} key="1">
-                    <div className="price-input">
-                      <Space>
-                        <InputNumber
-                          disabled
-                          min={1}
-                          max={99}
-                          defaultValue={10}
-                          value={inputValue}
-                          onChange={handleChangeSlider}
-                        />
-                        <InputNumber
-                          disabled
-                          min={2}
-                          max={100}
-                          defaultValue={20}
-                          value={inputValue2}
-                          onChange={handleChangeSlider}
-                        />
-                      </Space>
-                    </div>
+              <Title className="shop-title">Our products</Title>
+              <Row>
+                <Col span={6}>
+                  <div className="filter-bar-ctn">
+                    <Collapse
+                      className="filter-bar"
+                      style={{ height: '100%', borderRight: 0 }}
+                      defaultActiveKey={['1', '2', '3', '4', '5']}
+                      onChange={onChange}
+                      expandIconPosition="end"
+                      bordered={false}
+                    >
+                      <Panel header={<Title level={5}>Price</Title>} key="1">
+                        <div className="price-input">
+                          <Space>
+                            <InputNumber
+                              disabled
+                              min={1}
+                              max={99}
+                              defaultValue={10}
+                              value={inputValue}
+                              onChange={handleChangeSlider}
+                            />
+                            <InputNumber
+                              disabled
+                              min={2}
+                              max={100}
+                              defaultValue={20}
+                              value={inputValue2}
+                              onChange={handleChangeSlider}
+                            />
+                          </Space>
+                        </div>
 
-                    <Slider
-                      range
-                      defaultValue={[20, 50]}
-                      onChange={handleChangeSlider}
-                      onAfterChange={onAfterChangeSlider}
-                    />
-                  </Panel>
-                  <Panel header={<Title level={5}>Type</Title>} key="2">
-                    <Space direction="vertical">
-                      <Checkbox.Group
-                        options={optionTypes}
-                        onChange={handleChangeCheckBox}
-                      />
-                    </Space>
-                  </Panel>
-                  <Panel header={<Title level={5}>Color</Title>} key="3">
-                    <Space direction="vertical">
-                      <Checkbox.Group
-                        options={optionColors}
-                        onChange={handleChangeCheckBox}
-                      />
-                    </Space>
-                  </Panel>
-                  <Panel header={<Title level={5}>Gender</Title>} key="4">
-                    <Space direction="vertical">
-                      <Checkbox.Group
-                        options={optionGenders}
-                        onChange={handleChangeCheckBox}
-                      />
-                    </Space>
-                  </Panel>
+                        <Slider
+                          range
+                          defaultValue={[20, 50]}
+                          onChange={handleChangeSlider}
+                          onAfterChange={onAfterChangeSlider}
+                        />
+                      </Panel>
+                      <Panel header={<Title level={5}>Type</Title>} key="2">
+                        <Space direction="vertical">
+                          <Checkbox.Group
+                            options={optionTypes}
+                            onChange={handleChangeCheckBox}
+                          />
+                        </Space>
+                      </Panel>
+                      <Panel header={<Title level={5}>Color</Title>} key="3">
+                        <Space direction="vertical">
+                          <Checkbox.Group
+                            options={optionColors}
+                            onChange={handleChangeCheckBox}
+                          />
+                        </Space>
+                      </Panel>
+                      <Panel header={<Title level={5}>Gender</Title>} key="4">
+                        <Space direction="vertical">
+                          <Checkbox.Group
+                            options={optionGenders}
+                            onChange={handleChangeCheckBox}
+                          />
+                        </Space>
+                      </Panel>
 
-                  <div className="button-ctn">
-                    <Space>
-                      <Button type="primary">APPLY FILTER</Button>
-                      <Button icon={<DeleteOutlined />} shape="circle" />
-                    </Space>
+                      <div className="button-ctn">
+                        <Space>
+                          <Button type="primary">APPLY FILTER</Button>
+                          <Button icon={<DeleteOutlined />} shape="circle" />
+                        </Space>
+                      </div>
+                    </Collapse>
                   </div>
-                </Collapse>
-              </div>
-              <div className="shop-page-product">
-                <Title className="shop-title">Bicycle List</Title>
-
-                <div className="product-search">
-                  {openSearchBar ? (
-                    <BicycleSearch setOpenSearchBar={setOpenSearchBar} />
-                  ) : (
-                    <Tooltip title="search">
-                      <Button
-                        onClick={() => {
-                          setOpenSearchBar(true)
-                        }}
-                        type="primary"
-                        size="large"
-                      >
-                        Search
-                      </Button>
-                    </Tooltip>
-                  )}
-                </div>
-                <div className="product-grid">
-                  <BicycleGrid />
-                </div>
-                <div className="product-pagination">
-                  <BicyclePagination />
-                </div>
-              </div>
+                </Col>
+                <Col span={18}>
+                  <div className="shop-page-product">
+                    <div className="product-search">
+                      {openSearchBar ? (
+                        <BicycleSearch setOpenSearchBar={setOpenSearchBar} />
+                      ) : (
+                        <Tooltip title="search">
+                          <Button
+                            onClick={() => {
+                              setOpenSearchBar(true)
+                            }}
+                            type="primary"
+                            size="large"
+                          >
+                            Search
+                          </Button>
+                        </Tooltip>
+                      )}
+                    </div>
+                    <div className="product-grid">
+                      <BicycleGrid />
+                    </div>
+                    <div className="product-pagination">
+                      <BicyclePagination />
+                    </div>
+                  </div>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
@@ -218,4 +225,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Shop
