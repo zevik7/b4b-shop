@@ -26,13 +26,20 @@ const BicycletCard = (props) => {
     >
       <div className="footer-card">
         <Row style={{ marginBottom: 12 }}>
-          <Col>
-            <Meta title={<Title level={5}>{title}</Title>} className="title" />
+          <Col span={24}>
+            <Meta
+              title={
+                <Title ellipsis={true} level={5}>
+                  {title}
+                </Title>
+              }
+              className="title"
+            />
           </Col>
         </Row>
         <Row>
           <Col span={12}>
-            <Meta description={`Price: ${price}`} className="title" />
+            <Meta description={`Price: $${price}`} className="title" />
           </Col>
           <Col className="product-brand" span={12}>
             <span>Brand: {brand}</span>
