@@ -7,7 +7,7 @@ function ModalEditBicycle({ visible, onUpdate, onCancel }) {
   const [disabled, setDisabled] = useState(true)
   return (
     <Modal
-      className="modalAddBicycle"
+      className="modalEditBicycle"
       visible={visible}
       title="Bicycle Infomation"
       onCancel={onCancel}

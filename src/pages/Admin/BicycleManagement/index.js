@@ -10,7 +10,12 @@ import {
   TableManagement,
 } from '../../../components'
 import { useDispatch, useSelector } from 'react-redux'
-// import {getBicycles} from "./bicycleManagementSlice";
+import {
+  createBicycle,
+  fetchBicycles,
+} from '../../../redux/bicycle/bicycleSlice'
+import { bicyclesSelector } from '../../../redux/selectors'
+import _ from 'lodash'
 
 const { Content } = Layout
 
@@ -18,104 +23,61 @@ const BicycleManagement = () => {
   //Initialization
   const dispatch = useDispatch()
 
-  // const bicyclesState = useSelector((state) => state.bicycles)
+  const bicyclesData = useSelector(bicyclesSelector)
+
+  const [bicycleState, setBicycleState] = useState([])
   const [collapsed, setCollapsed] = useState(false)
   const [visibleAdd, setVisibleAdd] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [selectedKey, setSelectedKey] = useState([])
 
+  const [isLoading, setIsLoading] = useState(false)
+
   //handle get bicycles
-  // useEffect(() => {
-  //   dispatch(getBicycles())
-  // }, [])
+  useEffect(() => {
+    setIsLoading(true)
+    setTimeout(() => {
+      dispatch(fetchBicycles())
+    }, 500)
+  }, [])
+
+  useEffect(() => {
+    if (!_.isEmpty(bicyclesData)) {
+      setIsLoading(false)
+      let newState = []
+      bicyclesData.forEach((bikeData) => {
+        bikeData = {
+          ...bikeData,
+          key: bikeData.id,
+        }
+        newState.push(bikeData)
+      })
+      setBicycleState(newState)
+    }
+  }, [bicyclesData])
 
   //columns data for table list bicycles
   const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-    },
-    {
-      title: 'Color',
-      dataIndex: 'color',
-    },
-    {
-      title: 'Description',
-      dataIndex: 'description',
-    },
     {
       title: 'Price',
       dataIndex: 'price',
       sorter: (a, b) => a.price - b.price,
     },
-  ]
-  //data list bicycles
-  const data = [
     {
-      createdAt: 1654763016,
-      name: 'abc',
-      description: 'description 1',
-      price: 86,
-      color: 'color 1',
-      image: [],
-      type: 'type 1',
-      rating: 1,
-      key: '1',
+      title: 'Name',
+      dataIndex: 'name',
     },
     {
-      createdAt: 1654762956,
-      name: 'name 2',
-      description: 'description 2',
-      price: 99,
-      color: 'color 2',
-      image: [],
-      type: 'type 2',
-      rating: 5,
-      key: '2',
+      title: 'Brand',
+      dataIndex: 'brand',
     },
     {
-      createdAt: 1654762956,
-      name: 'name1',
-      description: 'description 2',
-      price: 99,
-      color: 'color 2',
-      image: [],
-      type: 'type 2',
-      rating: 5,
-      key: '3',
+      title: 'Type',
+      dataIndex: 'type',
     },
     {
-      createdAt: 1654762956,
-      name: 'name 2',
-      description: 'description 2',
-      price: 99,
-      color: 'color 2',
-      image: [],
-      type: 'type 2',
-      rating: 5,
-      key: '4',
-    },
-    {
-      createdAt: 1654762956,
-      name: 'name 2',
-      description: 'description 2',
-      price: 99,
-      color: 'color 2',
-      image: [],
-      type: 'type 2',
-      rating: 5,
-      key: '5',
-    },
-    {
-      createdAt: 1654762956,
-      name: 'name 2',
-      description: 'description 2',
-      price: 99,
-      color: 'color 2',
-      image: [],
-      type: 'type 2',
-      rating: 5,
-      key: '6',
+      title: 'Color',
+      dataIndex: 'color',
     },
   ]
 
@@ -140,8 +102,16 @@ const BicycleManagement = () => {
   }
 
   //func handle when modal add summit
-  const handleCreate = (value) => {
-    console.log(value)
+  const handleCreate = (bikeData) => {
+    let images = []
+    bikeData.images.fileList.forEach((img) => {
+      images.push(img.name)
+    })
+    bikeData = {
+      ...bikeData,
+      images,
+    }
+    dispatch(createBicycle(bikeData))
   }
   //func handle delete selected
   const handleDelete = () => {
@@ -153,6 +123,7 @@ const BicycleManagement = () => {
     setVisibleEdit(false)
   }
 
+  // console.log("render")
   return (
     <Layout className="bicycleManagement">
       <Sidebar collapsed={collapsed} />
@@ -168,7 +139,8 @@ const BicycleManagement = () => {
               onChange: handleSelectChange,
             }}
             columns={columns}
-            data={data}
+            data={bicycleState}
+            loading={isLoading}
             onClickRow={handleOnClickRow}
           />
         </Content>
