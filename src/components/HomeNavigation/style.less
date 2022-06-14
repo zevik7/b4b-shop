@@ -3,26 +3,18 @@
 .home-navigation {
   display: flex;
   align-items: center;
+  gap: 10px;
   background-color: @body-background;
   box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.05);
+  font-size: 15px;
+  font-weight: 500;
 
   .menu {
     flex: 1;
     border: none;
-    margin-left: 10px;
-    
-    .nav-link {
-      font-weight: 600;
-    }
   }
 
   .ant-select {
-    margin-right: 10px;
-  }
-
-  .auth-btns {
-    .ant-btn:not(:last-of-type) {
-      margin-right: 10px;
-    }
+    min-width: 130px;
   }
 }
