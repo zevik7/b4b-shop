@@ -22,7 +22,7 @@ const BicycletCard = (props) => {
       cover={
         <img className="img-card" alt="bicycle" src={'/bikeImage/' + img} />
       }
-      onClick={() => navigate('/shop/bicycle-detail/:id')}
+      onClick={() => navigate('/shop/Bicycle-detail/:id')}
     >
       <div className="footer-card">
         <Row style={{ marginBottom: 12 }}>

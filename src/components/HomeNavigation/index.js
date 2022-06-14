@@ -43,13 +43,13 @@ const HomeNavigation = () => {
       <div className="auth-btn">
         <Button
           type="primary"
-          onClick={() => navigate('/admin/bicycle-management')}
+          onClick={() => navigate('/admin/Bicycle-management')}
         >
           Register
         </Button>
         <Button
           type="outlined"
-          onClick={() => navigate('/admin/bicycle-management')}
+          onClick={() => navigate('/admin/Bicycle-management')}
         >
           Login
         </Button>
