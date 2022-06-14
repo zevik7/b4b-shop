@@ -118,6 +118,10 @@ const optionBrands = [
     label: 'Giant',
     value: 'Giant',
   },
+  {
+    label: 'Fuji',
+    value: 'Fuji',
+  },
 ]
 
 const optionMaterials = [
@@ -135,7 +139,6 @@ const Shop = () => {
   const dispatch = useDispatch()
   const [inputValue, setInputValue] = useState(20)
   const [inputValue2, setInputValue2] = useState(50)
-  const [openSearchBar, setOpenSearchBar] = useState(true)
 
   const bicycles = useSelector(bicyclesSelector)
   console.log(bicycles)
@@ -248,7 +251,7 @@ const Shop = () => {
                         </Space>
                       </Panel>
 
-                      <Panel header={<Title level={5}>Brands</Title>} key="4">
+                      <Panel header={<Title level={5}>Brands</Title>} key="5">
                         <Space direction="vertical">
                           <Checkbox.Group
                             options={optionBrands}
@@ -262,21 +265,7 @@ const Shop = () => {
                 <Col span={18}>
                   <div className="shop-page-product">
                     <div className="product-search">
-                      {openSearchBar ? (
-                        <BicycleSearch setOpenSearchBar={setOpenSearchBar} />
-                      ) : (
-                        <Tooltip title="search">
-                          <Button
-                            onClick={() => {
-                              setOpenSearchBar(true)
-                            }}
-                            type="primary"
-                            size="large"
-                          >
-                            Search
-                          </Button>
-                        </Tooltip>
-                      )}
+                      <BicycleSearch />
                     </div>
                     <div className="product-grid">
                       <Row gutter={[16, 16]}>
