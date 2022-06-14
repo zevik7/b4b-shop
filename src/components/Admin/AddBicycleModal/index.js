@@ -1,10 +1,13 @@
-import { Form, Input, Modal, Radio } from 'antd'
+import React from 'react'
 import FormAdd from './FormAdd'
+import { Form, Modal } from 'antd'
 
-const AddBicycle = ({ visible, onCreate, onCancel }) => {
+function ModalAddBicycle({ visible, onCreate, onCancel }) {
   const [form] = Form.useForm()
+
   return (
     <Modal
+      className="modalAddBicycle"
       visible={visible}
       title="Add a new bicycle"
       okText="Add"
@@ -26,4 +29,5 @@ const AddBicycle = ({ visible, onCreate, onCancel }) => {
     </Modal>
   )
 }
-export default AddBicycle
+
+export default ModalAddBicycle
