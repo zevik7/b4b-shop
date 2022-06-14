@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getBicycles } from '../../api'
+import { bicycle } from '../../api'
 
 const initialState = {
   filter: {
@@ -44,7 +44,7 @@ export default createSlice({
 export const fetchBicycles = createAsyncThunk(
   'shop/fetchBicycles',
   async () => {
-    const res = await getBicycles()
+    const res = await bicycle.getList()
     return res.data
   }
 )
