@@ -1,9 +1,19 @@
 import axios from 'axios'
 
-export const getBicycles = () => axios.get(`/bicycles`)
+const getList = () => axios.get(`/bicycles`)
 
-export const updateBicycle = (data) => axios.put(`/bicycles`, data)
+const get = (id) => axios.get(`/bicycles/${id}`)
 
-export const storeBicycle = (data) => axios.post(`/bicycles`, data)
+const create = (data) => axios.post(`/bicycles`, data)
 
-export const destroyBicycles = (id) => axios.delete(`/bicycles/${id}`)
+const update = (data) => axios.put(`/bicycles`, data)
+
+const destroy = (id) => axios.delete(`/bicycles/${id}`)
+
+export default {
+  getList,
+  get,
+  create,
+  update,
+  destroy,
+}
