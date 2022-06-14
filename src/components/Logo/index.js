@@ -1,4 +1,4 @@
-import LogoImg from '../../assets/images/logo_shop.jpg'
+import LogoImg from '../../assets/images/logo.png'
 import { useNavigate } from 'react-router-dom'
 
 const logoStyle = {
