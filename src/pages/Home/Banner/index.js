@@ -30,16 +30,16 @@ const Banner = () => {
             <Text>Mountain Bikes</Text>
           </section>
           <section>
+            <img src={kidbike} alt="ebike" />
+            <Text>Kid Bikes</Text>
+          </section>
+          <section>
             <img src={roadbike} alt="ebike" />
             <Text>Road Bikes</Text>
           </section>
           <section>
             <img src={gravbike} alt="ebike" />
             <Text>Gravel Bikes</Text>
-          </section>
-          <section>
-            <img src={kidbike} alt="ebike" />
-            <Text>Kid Bikes</Text>
           </section>
         </div>
       </div>
