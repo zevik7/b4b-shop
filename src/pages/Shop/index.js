@@ -206,6 +206,7 @@ const Shop = () => {
                             title={bicycle.name}
                             price={bicycle.price}
                             brand={bicycle.brand}
+                            id={bicycle.id}
                           />
                         </Col>
                       ))
