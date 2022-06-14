@@ -1,12 +1,16 @@
 import { BrowserRouter } from 'react-router-dom'
 import './App.less'
 import RouterApp from './components/Route'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 function App() {
   return (
-    <BrowserRouter>
-      <RouterApp />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <RouterApp />
+      </BrowserRouter>
+    </Provider>
   )
 }
 

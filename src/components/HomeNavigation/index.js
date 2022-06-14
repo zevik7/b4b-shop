@@ -84,13 +84,13 @@ const HomeNavigation = () => {
       <div className="auth-btns">
         <Button
           type="primary"
-          onClick={() => navigate('/admin/bicycle-management')}
+          onClick={() => navigate('/admin/Bicycle-management')}
         >
           {t('cta.register')}
         </Button>
         <Button
           type="outlined"
-          onClick={() => navigate('/admin/bicycle-management')}
+          onClick={() => navigate('/admin/Bicycle-management')}
         >
           {t('cta.login')}
         </Button>
