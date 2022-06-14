@@ -28,7 +28,10 @@ import Searchbar from './SearchBar'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { bicyclesSelector } from '../../redux/selectors'
+import {
+  bicyclesRemainingSelector,
+  bicyclesSelector,
+} from '../../redux/selectors'
 import shopSlice, { fetchBicycles } from './shopSlice'
 
 const { Title } = Typography
@@ -143,7 +146,7 @@ const Shop = () => {
   const [inputValue, setInputValue] = useState(20)
   const [inputValue2, setInputValue2] = useState(50)
 
-  const bicycles = useSelector(bicyclesSelector)
+  const bicycles = useSelector(bicyclesRemainingSelector)
   console.log(bicycles)
 
   // Load data
@@ -194,7 +197,7 @@ const Shop = () => {
                           bicycles.data.map((bicycle) => (
                             <Col span={8}>
                               <BicycleCard
-                                img={bicycle.image[0]}
+                                img={bicycle.image}
                                 title={bicycle.name}
                                 price={bicycle.price}
                                 brand={bicycle.brand}
