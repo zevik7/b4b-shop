@@ -34,43 +34,59 @@ const { Content } = Layout
 
 const optionTypes = [
   {
-    label: 'Mountain Bike',
-    value: 'Mountain Bike',
+    label: 'Mountain Bikes',
+    value: 'Mountain Bikes',
   },
   {
-    label: 'Road Bike',
-    value: 'Road Bike',
+    label: 'Road Bikes',
+    value: 'Road Bikes',
   },
   {
-    label: 'Touring Bike',
-    value: 'Touring Bike',
+    label: 'Kids Bikes',
+    value: 'Kids Bikes',
   },
   {
-    label: 'Folding Bike',
-    value: 'Folding Bike',
+    label: 'Folding Bikes',
+    value: 'Folding Bikes',
   },
   {
-    label: 'Electric Bike',
-    value: 'Electric Bike',
-  },
-  {
-    label: 'City Bike',
-    value: 'City Bike',
+    label: 'Electric Bikes',
+    value: 'Electric Bikes',
   },
 ]
 
 const optionColors = [
   {
     label: 'Red',
-    value: 'color 1',
+    value: 'Red',
   },
   {
-    label: 'Blue',
-    value: 'color 2',
+    label: 'Bronze',
+    value: 'Bronze',
   },
   {
     label: 'Black',
-    value: 'color 3',
+    value: 'Black',
+  },
+  {
+    label: 'Blue',
+    value: 'Blue',
+  },
+  {
+    label: 'Carbon',
+    value: 'Carbon',
+  },
+  {
+    label: 'Mint Green',
+    value: 'Mint Green',
+  },
+  {
+    label: 'Silver',
+    value: 'Silver',
+  },
+  {
+    label: 'Teal',
+    value: 'Teal',
   },
 ]
 
@@ -86,6 +102,32 @@ const optionGenders = [
   {
     label: 'Unisex',
     value: 'Unisex',
+  },
+]
+
+const optionBrands = [
+  {
+    label: 'Marin',
+    value: 'Marin',
+  },
+  {
+    label: 'Scott',
+    value: 'Scott',
+  },
+  {
+    label: 'Giant',
+    value: 'Giant',
+  },
+]
+
+const optionMaterials = [
+  {
+    label: 'Carbon',
+    value: 'Carbon',
+  },
+  {
+    label: 'Aluminum',
+    value: 'Aluminum',
   },
 ]
 
@@ -148,7 +190,7 @@ const Shop = () => {
                               min={1}
                               max={99}
                               defaultValue={10}
-                              value={inputValue}
+                              value={`$ ${inputValue}`}
                               onChange={handleChangeSlider}
                             />
                             <InputNumber
@@ -156,7 +198,7 @@ const Shop = () => {
                               min={2}
                               max={100}
                               defaultValue={20}
-                              value={inputValue2}
+                              value={`$ ${inputValue2}`}
                               onChange={handleChangeSlider}
                             />
                           </Space>
@@ -194,12 +236,26 @@ const Shop = () => {
                         </Space>
                       </Panel>
 
-                      <div className="button-ctn">
-                        <Space>
-                          <Button type="primary">APPLY FILTER</Button>
-                          <Button icon={<DeleteOutlined />} shape="circle" />
+                      <Panel
+                        header={<Title level={5}>Materials</Title>}
+                        key="4"
+                      >
+                        <Space direction="vertical">
+                          <Checkbox.Group
+                            options={optionMaterials}
+                            onChange={handleChangeCheckBox}
+                          />
                         </Space>
-                      </div>
+                      </Panel>
+
+                      <Panel header={<Title level={5}>Brands</Title>} key="4">
+                        <Space direction="vertical">
+                          <Checkbox.Group
+                            options={optionBrands}
+                            onChange={handleChangeCheckBox}
+                          />
+                        </Space>
+                      </Panel>
                     </Collapse>
                   </div>
                 </Col>
@@ -223,12 +279,12 @@ const Shop = () => {
                       )}
                     </div>
                     <div className="product-grid">
-                      <Row>
+                      <Row gutter={[16, 16]}>
                         {bicycles.status === 'loading' ? (
                           <h1>Loading</h1>
                         ) : (
                           bicycles.data.map((bicycle) => (
-                            <Col span={6}>
+                            <Col span={8}>
                               <BicycleCard
                                 img={bicycle.image[0]}
                                 title={bicycle.name}
