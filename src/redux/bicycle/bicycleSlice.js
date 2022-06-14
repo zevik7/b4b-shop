@@ -72,6 +72,7 @@ export const fetchBicycles = createAsyncThunk(
   'bicycle/fetchBicycles',
   async () => {
     const res = await bicycle.getList()
+    console.log(res)
     return res.data
   }
 )

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import {
   Col,
   Row,
@@ -25,6 +26,11 @@ import {
   Select,
   BicycleFooter,
 } from '../../components'
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { bicycleSelectedSelector } from '../../redux/selectors'
+import { getBicycle } from '../../redux/bicycle/bicycleSlice'
 
 import './style.less'
 
@@ -121,6 +127,18 @@ const formTailLayout = {
 }
 
 const BicycleDetail = () => {
+  const { id } = useParams()
+  const dispatch = useDispatch()
+  const bicycle = useSelector(bicycleSelectedSelector)
+
+  console.log(bicycle)
+
+  useEffect(() => {
+    dispatch(getBicycle(id))
+  }, [])
+
+  if (!bicycle.image) return <h1>Loading</h1>
+
   return (
     <>
       <Layout>
@@ -131,7 +149,12 @@ const BicycleDetail = () => {
               <div className="content">
                 <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
                   <Col span={9}>
-                    <ImgCarousel images={images} />
+                    <ImgCarousel
+                      images={bicycle.image.map((img) => ({
+                        original: '/bikeImage/' + img,
+                        thumbnail: '/bikeImage/' + img,
+                      }))}
+                    />
                   </Col>
                   <Col span={9}>
                     <div className="detail-wrapper">
@@ -141,27 +164,22 @@ const BicycleDetail = () => {
                           <Text type="secondary">12 in stock</Text>
                         </Text>
                         <Title level={2} className="bicycle-name">
-                          Tailored Fit Mesh-Panel Polo
+                          {bicycle.name}
                         </Title>
                         <Title level={2} className="price">
-                          $400
+                          {bicycle.price} $
                         </Title>
                         <div className="rating-box">
-                          <Rate className="rate" allowHalf defaultValue={4.5} />
-                          <Text>14 reviews</Text>
+                          <Rate
+                            className="rate"
+                            allowHalf
+                            defaultValue={bicycle.rating}
+                          />
+                          <Text>{bicycle.rating} reviews</Text>
                         </div>
                         <Divider />
                         <Paragraph className="desc">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Nunc elementum, augue eget aliquam fringilla,
-                          odio elit commodo massa, ut rhoncus odio purus sit
-                          amet urna. In purus tortor, semper et molestie a,
-                          hendrerit et quam. Nulla bibendum sodales dolor non
-                          facilisis. Nunc vehicula ullamcorper felis nec
-                          ullamcorper. Suspendisse potenti. Curabitur tincidunt
-                          venenatis elit, in congue lacus gravida sed. Praesent
-                          eu sollicitudin arcu. Curabitur bibendum ante maximus
-                          sem ultrices, id porta nisi laoreet.
+                          {bicycle.description}
                         </Paragraph>
                       </div>
                       <div className="detail-wrapper__buy-box">

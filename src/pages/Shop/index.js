@@ -29,7 +29,7 @@ import Filter from './Filters'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicyclesSelector } from '../../redux/selectors'
-import shopSlice, { fetchBicycles } from './shopSlice'
+import { fetchBicycles } from '../../redux/bicycle/bicycleSlice'
 
 const { Title, Text } = Typography
 const { Panel } = Collapse
@@ -141,7 +141,6 @@ const Shop = () => {
   const [openSearchBar, setOpenSearchBar] = useState(true)
 
   const bicycles = useSelector(bicyclesSelector)
-  console.log(bicycles)
 
   // Load data
   useEffect(() => {
@@ -202,7 +201,7 @@ const Shop = () => {
                       bicycles.data.map((bicycle) => (
                         <Col span={8}>
                           <BicycleCard
-                            img={bicycle.image[0]}
+                            img={bicycle?.image[0]}
                             title={bicycle.name}
                             price={bicycle.price}
                             brand={bicycle.brand}
