@@ -119,7 +119,7 @@ const BicycleManagement = () => {
     },
   ]
 
-  //func handle when bicycle selected change
+  //func handle when Bicycle selected change
   const handleSelectChange = (selectedRowKeys, selectedRows) => {
     console.log(selectedRowKeys)
     console.log(selectedRows)

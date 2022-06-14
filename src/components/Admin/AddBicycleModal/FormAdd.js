@@ -23,7 +23,7 @@ function FormAdd({ form }) {
             rules={[
               {
                 required: true,
-                message: 'Please input the Name of bicycle!',
+                message: 'Please input the Name of Bicycle!',
               },
             ]}
           >
@@ -40,7 +40,7 @@ function FormAdd({ form }) {
             rules={[
               {
                 required: true,
-                message: 'Please select the Brand of bicycle!',
+                message: 'Please select the Brand of Bicycle!',
               },
             ]}
           >
@@ -60,7 +60,7 @@ function FormAdd({ form }) {
             rules={[
               {
                 required: true,
-                message: 'Please select the Type of bicycle!',
+                message: 'Please select the Type of Bicycle!',
               },
             ]}
           >
@@ -103,7 +103,7 @@ function FormAdd({ form }) {
             rules={[
               {
                 required: true,
-                message: 'Please input the Material of bicycle!',
+                message: 'Please input the Material of Bicycle!',
               },
             ]}
           >
@@ -120,7 +120,7 @@ function FormAdd({ form }) {
             rules={[
               {
                 required: true,
-                message: 'Please input the Price of bicycle!',
+                message: 'Please input the Price of Bicycle!',
               },
             ]}
           >
@@ -134,7 +134,7 @@ function FormAdd({ form }) {
             rules={[
               {
                 required: true,
-                message: 'Please input the Color of bicycle!',
+                message: 'Please input the Color of Bicycle!',
               },
             ]}
           >
