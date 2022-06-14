@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'antd'
 import './index.less'
 
+import { ArrowDownOutlined } from '@ant-design/icons'
+
 import BicycleCard from '../../components/BicycleCard'
-import BicycleSearch from '../../components/BicycleSearch'
 import BicyclePagination from '../../components/BicyclePagination'
 
 import {
@@ -21,17 +22,16 @@ import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
 import BicycleFooter from '../../components/BicycleFooter'
 
-import { HomeNavigation } from '../../components'
+import { HomeNavigation, SearchInput } from '../../components'
 
 import Filter from './Filters'
-import Searchbar from './SearchBar'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicyclesSelector } from '../../redux/selectors'
 import shopSlice, { fetchBicycles } from './shopSlice'
 
-const { Title } = Typography
+const { Title, Text } = Typography
 const { Panel } = Collapse
 const { Content } = Layout
 
@@ -172,39 +172,47 @@ const Shop = () => {
       <Content>
         <div className="shop-page">
           <div className="container">
-            <div className="shop-page__wrapper">
-              <Title className="shop-title">Our products</Title>
-              <Row>
+            <div className="shop-page-wrapper">
+              <Title className="shop-page-title" level={2}>
+                Our products
+              </Title>
+              <Row gutter={[16, 16]}>
                 <Col span={6}>
                   <Filter />
                 </Col>
                 <Col span={18}>
-                  <div className="shop-page-product">
-                    <div className="product-search">
-                      <Searchbar />
-                    </div>
-                    <div className="product-grid">
-                      <Row gutter={[16, 16]}>
-                        {bicycles.status === 'loading' ? (
-                          <h1>Loading</h1>
-                        ) : (
-                          bicycles.data.map((bicycle) => (
-                            <Col span={8}>
-                              <BicycleCard
-                                img={bicycle.image[0]}
-                                title={bicycle.name}
-                                price={bicycle.price}
-                                brand={bicycle.brand}
-                              />
-                            </Col>
-                          ))
-                        )}
+                  <Row gutter={[16, 16]}>
+                    <Col span={24}>
+                      <Row>
+                        <Col span={16}>
+                          <div className="order-by">
+                            <Text className="order-by-label">ORDER BY</Text>
+                            <Button icon={<ArrowDownOutlined />}>New</Button>
+                            <Button icon={<ArrowDownOutlined />}>Price</Button>
+                          </div>
+                        </Col>
+                        <Col span={8}>
+                          <SearchInput />
+                        </Col>
                       </Row>
-                    </div>
-                    <div className="product-pagination">
-                      <BicyclePagination />
-                    </div>
-                  </div>
+                    </Col>
+                    {bicycles.status === 'loading' ? (
+                      <h1>Loading</h1>
+                    ) : (
+                      bicycles.data.map((bicycle) => (
+                        <Col span={8}>
+                          <BicycleCard
+                            img={bicycle.image[0]}
+                            title={bicycle.name}
+                            price={bicycle.price}
+                            brand={bicycle.brand}
+                            id={bicycle.id}
+                          />
+                        </Col>
+                      ))
+                    )}
+                  </Row>
+                  <BicyclePagination />
                 </Col>
               </Row>
             </div>
