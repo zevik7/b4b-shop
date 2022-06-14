@@ -2,6 +2,8 @@
 export { default as Sidebar } from './Admin/Sidebar'
 export { default as HeaderComponent } from './Admin/HeaderComponent'
 export { default as TableManagement } from './Admin/TableManagement'
+export { default as UploadImage } from './Admin/UploadImage'
+
 //BicycleManagement
 export { default as BicycleManageAction } from './Admin/BicycleManageAction'
 export { default as AddBicycleModal } from './Admin/AddBicycleModal'

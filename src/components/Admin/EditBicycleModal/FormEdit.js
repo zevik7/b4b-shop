@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Button,
   Col,
   Form,
+  Image,
   Input,
   InputNumber,
   Row,
@@ -11,6 +12,7 @@ import {
 } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
+import { UploadImage } from '../../index'
 
 function FormEdit({ form, disabled }) {
   const initialValues = {
@@ -18,12 +20,17 @@ function FormEdit({ form, disabled }) {
     color: 'a',
     description: 'a',
     gender: 'Unisex',
-    image: undefined,
+    image: [],
     material: 'a',
     name: 'nam',
     price: 1,
     type: 'Road Bike',
   }
+
+  const setImage = (images) => {
+    initialValues.image = images
+  }
+
   return (
     <Form
       form={form}
@@ -164,18 +171,9 @@ function FormEdit({ form, disabled }) {
         </Col>
       </Row>
       <Row>
-        <Col span={24}>
-          <Form.Item name="image" label="Image">
-            <Upload
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              listType="picture"
-              maxCount={3}
-              multiple
-            >
-              <Button icon={<UploadOutlined />}>Upload (Max: 3)</Button>
-            </Upload>
-          </Form.Item>
-        </Col>
+        <Form.Item name="image" label="Image" valuePropName="fileList">
+          <UploadImage setImage={setImage} disabled={disabled} />
+        </Form.Item>
       </Row>
     </Form>
   )
