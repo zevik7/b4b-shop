@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { useTranslation, Trans } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { Button, Layout, Menu } from 'antd'
 import './style.less'
-import { Logo, NavLink } from '../../components'
-import { useNavigate } from 'react-router-dom'
+import { Logo, NavLink, Select } from '../../components'
+import vietnameIcon from '../../assets/icons/vietnam.png'
+import englishIcon from '../../assets/icons/united-kingdom.png'
 
 const { Header } = Layout
 
@@ -18,14 +21,47 @@ const menuItems = [
     to: '/shop',
   },
   {
+    key: 'clothing',
+    label: 'Clothing',
+    to: '/clothing',
+  },
+  {
+    key: 'helmet-and-shoes',
+    label: 'Helmet & Shoes',
+    to: '/helmet-and-shoes',
+  },
+  {
+    key: 'components',
+    label: 'Components',
+    to: '/components',
+  },
+  {
     key: 'about',
     label: 'About Us',
     to: '/about',
   },
 ]
 
+const languageOptions = [
+  {
+    key: 'vi',
+    value: 'Vietnamese',
+    icon: vietnameIcon,
+  },
+  {
+    key: 'en',
+    value: 'English',
+    icon: englishIcon,
+  },
+]
+
 const HomeNavigation = () => {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng)
+  }
 
   return (
     <Header
@@ -40,18 +76,23 @@ const HomeNavigation = () => {
           </NavLink>
         ))}
       </div>
-      <div className="auth-btn">
+      <Select
+        defaultValue={'en'}
+        options={languageOptions}
+        onChange={changeLanguage}
+      />
+      <div className="auth-btns">
         <Button
           type="primary"
           onClick={() => navigate('/admin/Bicycle-management')}
         >
-          Register
+          {t('cta.register')}
         </Button>
         <Button
           type="outlined"
           onClick={() => navigate('/admin/Bicycle-management')}
         >
-          Login
+          {t('cta.login')}
         </Button>
       </div>
     </Header>

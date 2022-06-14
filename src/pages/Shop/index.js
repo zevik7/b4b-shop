@@ -23,6 +23,9 @@ import BicycleFooter from '../../components/BicycleFooter'
 
 import { HomeNavigation } from '../../components'
 
+import Filter from './Filters'
+import Searchbar from './SearchBar'
+
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicyclesSelector } from '../../redux/selectors'
@@ -176,96 +179,12 @@ const Shop = () => {
               <Title className="shop-title">Our products</Title>
               <Row>
                 <Col span={6}>
-                  <div className="filter-bar-ctn">
-                    <Collapse
-                      className="filter-bar"
-                      style={{ height: '100%', borderRight: 0 }}
-                      defaultActiveKey={['1', '2', '3', '4', '5']}
-                      onChange={onChange}
-                      expandIconPosition="end"
-                      bordered={false}
-                    >
-                      <Panel header={<Title level={5}>Price</Title>} key="1">
-                        <div className="price-input">
-                          <Space>
-                            <InputNumber
-                              disabled
-                              min={1}
-                              max={99}
-                              defaultValue={10}
-                              value={`$ ${inputValue}`}
-                              onChange={handleChangeSlider}
-                            />
-                            <InputNumber
-                              disabled
-                              min={2}
-                              max={100}
-                              defaultValue={20}
-                              value={`$ ${inputValue2}`}
-                              onChange={handleChangeSlider}
-                            />
-                          </Space>
-                        </div>
-
-                        <Slider
-                          range
-                          defaultValue={[20, 50]}
-                          onChange={handleChangeSlider}
-                          onAfterChange={onAfterChangeSlider}
-                        />
-                      </Panel>
-                      <Panel header={<Title level={5}>Type</Title>} key="2">
-                        <Space direction="vertical">
-                          <Checkbox.Group
-                            options={optionTypes}
-                            onChange={handleChangeCheckBox}
-                          />
-                        </Space>
-                      </Panel>
-                      <Panel header={<Title level={5}>Color</Title>} key="3">
-                        <Space direction="vertical">
-                          <Checkbox.Group
-                            options={optionColors}
-                            onChange={handleChangeCheckBox}
-                          />
-                        </Space>
-                      </Panel>
-                      <Panel header={<Title level={5}>Gender</Title>} key="4">
-                        <Space direction="vertical">
-                          <Checkbox.Group
-                            options={optionGenders}
-                            onChange={handleChangeCheckBox}
-                          />
-                        </Space>
-                      </Panel>
-
-                      <Panel
-                        header={<Title level={5}>Materials</Title>}
-                        key="4"
-                      >
-                        <Space direction="vertical">
-                          <Checkbox.Group
-                            options={optionMaterials}
-                            onChange={handleChangeCheckBox}
-                          />
-                        </Space>
-                      </Panel>
-
-                      <Panel header={<Title level={5}>Brands</Title>} key="5">
-                        <Space direction="vertical">
-                          <Checkbox.Group
-                            options={optionBrands}
-                            onChange={handleChangeCheckBox}
-                          />
-                        </Space>
-                      </Panel>
-                    </Collapse>
-                  </div>
+                  <Filter />
                 </Col>
                 <Col span={18}>
                   <div className="shop-page-product">
                     <div className="product-search">
-                      <BicycleSearch />
+                      <Searchbar />
                     </div>
                     <div className="product-grid">
                       <Row gutter={[16, 16]}>
