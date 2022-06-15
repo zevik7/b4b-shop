@@ -8,7 +8,7 @@ const { Meta } = Card
 const { Title } = Typography
 
 const BicycletCard = (props) => {
-  const { img, title, price, brand } = props
+  const { img, title, price, brand, id } = props
   const navigate = useNavigate()
 
   return (
@@ -22,7 +22,7 @@ const BicycletCard = (props) => {
       cover={
         <img className="img-card" alt="bicycle" src={'/bikeImage/' + img} />
       }
-      onClick={() => navigate('/shop/Bicycle-detail/:id')}
+      onClick={() => navigate(`/shop/Bicycle-detail/${id}`)}
     >
       <div className="footer-card">
         <Row style={{ marginBottom: 12 }}>

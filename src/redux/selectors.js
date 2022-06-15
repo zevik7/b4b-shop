@@ -1,8 +1,10 @@
 import { createSelector } from 'reselect'
 
-export const bicyclesSelector = (state) => state.shop.bicycles
+export const bicyclesSelector = (state) => state.bicycles
 
-export const bicycleStatusSelector = (state) => state.shop.bicycles.status
+export const bicycleSelectedSelector = (state) => state.bicycles.selected
+
+export const bicycleStatusSelector = (state) => state.bicycles.status
 
 export const filterPriceSelector = (state) => state.shopFilter.price
 

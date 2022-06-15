@@ -4,12 +4,11 @@
   padding: 100px 0;
   background-color: @body-background;
 
-  &__wrapper {
-
-    h5.ant-typography {
-      margin: 0;
+  .shop-page-wrapper {
+    .shop-page-title {
+      text-align: center;
     }
-    
+
     .shop-page-product {
       padding: 0 30px;
       max-width: 100%;
@@ -27,27 +26,15 @@
 
       .product-grid {
         margin-top: 2rem;
-      }
 
-      .product-pagination {
-        display: flex;
-        justify-content: flex-end;
-        margin: 1rem 0;
-      }
-    }
-  }
-}
+        .order-by {
+          .order-by-label {
+            padding-right: 10px;
+          }
 
-@media only screen and (max-width: 768px) {
-  .shop-page {
-    &__wrapper {
-      flex-direction: column;
-
-      & .filter-bar-ctn {
-        width: 100%;
-
-        & .button-ctn {
-          position: static;
+          .ant-btn {
+            margin-right: 10px;
+          }
         }
       }
     }

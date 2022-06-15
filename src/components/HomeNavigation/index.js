@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Layout, Menu } from 'antd'
 import './style.less'
 import { Logo, NavLink, Select } from '../../components'
+import tranlationIcon from '../../assets/icons/translation.png'
 import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
 
@@ -76,25 +77,24 @@ const HomeNavigation = () => {
           </NavLink>
         ))}
       </div>
+      <Button
+        type="primary"
+        onClick={() => navigate('/admin/Bicycle-management')}
+      >
+        {t('cta.register')}
+      </Button>
+      <Button
+        type="outlined"
+        onClick={() => navigate('/admin/Bicycle-management')}
+      >
+        {t('cta.login')}
+      </Button>
       <Select
+        suffixIcon={tranlationIcon}
         defaultValue={'en'}
         options={languageOptions}
         onChange={changeLanguage}
       />
-      <div className="auth-btns">
-        <Button
-          type="primary"
-          onClick={() => navigate('/admin/Bicycle-management')}
-        >
-          {t('cta.register')}
-        </Button>
-        <Button
-          type="outlined"
-          onClick={() => navigate('/admin/Bicycle-management')}
-        >
-          {t('cta.login')}
-        </Button>
-      </div>
     </Header>
   )
 }
