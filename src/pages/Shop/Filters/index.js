@@ -85,12 +85,12 @@ const optionColors = [
 
 const optionGenders = [
   {
-    label: 'Male',
-    value: 'Male',
+    label: 'Mens',
+    value: 'Mens',
   },
   {
-    label: 'Female',
-    value: 'Female',
+    label: 'Womens',
+    value: 'Womens',
   },
   {
     label: 'Unisex',
@@ -147,6 +147,7 @@ const Filter = () => {
   }
 
   const handleGenderChange = (value) => {
+    console.log(value)
     dispatch(filterSlice.actions.genderChange(value))
   }
 
