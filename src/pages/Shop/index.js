@@ -208,7 +208,7 @@ const Shop = () => {
                       bicycles.data.map((bicycle) => (
                         <Col span={8}>
                           <BicycleCard
-                            img={bicycle?.image[0]}
+                            img={bicycle?.images[0]}
                             title={bicycle.name}
                             price={bicycle.price}
                             brand={bicycle.brand}

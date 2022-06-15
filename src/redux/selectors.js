@@ -24,9 +24,11 @@ export const bicyclesRemainingSelector = createSelector(
   filterMaterialSelector,
   (bicycles, status, price, type, color, gender, brand, material) => {
     const data = bicycles.data
-      .filter((item) => {
-        return price.length ? price.includes(item.price) : true
-      })
+      // .filter((item) => {
+      //   if (item.price >= price[0] && item.price <= price[1]) {
+      //     return true
+      //   } else return true
+      // })
       .filter((item) => {
         return type.length ? type.includes(item.type) : true
       })
