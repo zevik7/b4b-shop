@@ -1,4 +1,4 @@
-import BicycleSearch from '../../../components/BicycleSearch'
+import BicycleSearch from '../../../components/SearchInput'
 
 const SearchBar = () => {
   const setOpenSearchBar = true

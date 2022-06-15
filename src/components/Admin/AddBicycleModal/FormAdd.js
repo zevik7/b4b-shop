@@ -151,7 +151,7 @@ function FormAdd({ form }) {
       </Row>
       <Row>
         <Col span={24}>
-          <Form.Item name="image" label="Image">
+          <Form.Item name="images" label="Images">
             <Upload
               action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               listType="picture"

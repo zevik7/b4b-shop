@@ -3,7 +3,6 @@ import { Col, Row } from 'antd'
 import './style.less'
 
 import BicycleCard from '../../../components/BicycleCard'
-import BicycleSearch from '../../../components/BicycleSearch'
 import BicyclePagination from '../../../components/BicyclePagination'
 
 import {
