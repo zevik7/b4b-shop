@@ -52,7 +52,7 @@ const Features = () => {
           </Col>
         </Row>
         <Row>
-          <Col span={16} offset={4}>
+          <Col span={24}>
             <img src={bikehelp} alt="bikehelp" />
           </Col>
         </Row>
