@@ -1,4 +1,5 @@
 import { Layout } from 'antd'
+import 'react-toastify/dist/ReactToastify.css'
 import React, { useEffect, useState } from 'react'
 import './style.less'
 import {
@@ -18,6 +19,7 @@ import {
 } from '../../../redux/bicycle/bicycleSlice'
 import { bicycleDataSelector } from '../../../redux/selectors'
 import _ from 'lodash'
+import { toast, ToastContainer } from 'react-toastify'
 
 const { Content } = Layout
 
@@ -116,17 +118,25 @@ const BicycleManagement = () => {
     }
     dispatch(createBicycle(bikeData))
     setVisibleAdd(false)
+    toast.success('Create bicycle is successful!')
   }
   //func handle delete selected
   const handleDelete = () => {
-    selectedKey.forEach((key) => {
-      dispatch(deleteBicycle(key))
-    })
+    if (
+      // eslint-disable-next-line no-restricted-globals
+      confirm('Delete this bikes?')
+    ) {
+      selectedKey.forEach((key) => {
+        dispatch(deleteBicycle(key))
+      })
+      toast.success('Delete bicycle is successful!')
+    }
   }
 
   const handleUpdate = (value) => {
     dispatch(updateBicycle({ id: selectedKey, data: value }))
     setVisibleEdit(false)
+    toast.success('Update bicycle is successful!')
   }
 
   return (
@@ -162,6 +172,7 @@ const BicycleManagement = () => {
           initialData={rowClicked}
         />
       )}
+      <ToastContainer />
     </Layout>
   )
 }
