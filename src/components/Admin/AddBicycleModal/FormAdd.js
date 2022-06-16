@@ -8,15 +8,20 @@ import {
   Row,
   Select,
   Upload,
+  Space,
 } from 'antd'
-import { UploadOutlined } from '@ant-design/icons'
+import {
+  UploadOutlined,
+  MinusCircleOutlined,
+  PlusOutlined,
+} from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
 
 function FormAdd({ form }) {
   return (
     <Form form={form} layout="vertical" name="formAddBicycle">
-      <Row>
-        <Col span={24}>
+      <Row gutter={8}>
+        <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="name"
             label="Name"
@@ -30,10 +35,21 @@ function FormAdd({ form }) {
             <Input />
           </Form.Item>
         </Col>
-      </Row>
-
-      <Row gutter={8}>
-        <Col span={12}>
+        <Col xxl={8} sm={12} xs={24}>
+          <Form.Item
+            name="price"
+            label="Price"
+            rules={[
+              {
+                required: true,
+                message: 'Please input the Price of Bicycle!',
+              },
+            ]}
+          >
+            <InputNumber style={{ width: '100%' }} />
+          </Form.Item>
+        </Col>
+        <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="brand"
             label="Brand"
@@ -53,7 +69,7 @@ function FormAdd({ form }) {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="type"
             label="Type"
@@ -65,20 +81,19 @@ function FormAdd({ form }) {
             ]}
           >
             <Select placeholder="Please select a type">
-              <Select.Option value="Mountain Bike">Mountain Bike</Select.Option>
-              <Select.Option value="Road Bike">Road Bike</Select.Option>
-              <Select.Option value="Kids Bike">Kids Bike</Select.Option>
-              <Select.Option value="Hybrid Bike">Hybrid Bike</Select.Option>
+              <Select.Option value="Mountain Bikes">
+                Mountain Bikes
+              </Select.Option>
+              <Select.Option value="Road Bikes">Road Bikes</Select.Option>
+              <Select.Option value="Kids Bikes">Kids Bikes</Select.Option>
+              <Select.Option value="Hybrid Bikes">Hybrid Bikes</Select.Option>
               <Select.Option value="Electric & Power Assisted Bikes">
                 Electric & Power Assisted Bikes
               </Select.Option>
             </Select>
           </Form.Item>
         </Col>
-      </Row>
-
-      <Row gutter={8}>
-        <Col span={12}>
+        <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="gender"
             label="Gender"
@@ -96,7 +111,7 @@ function FormAdd({ form }) {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="material"
             label="Material"
@@ -110,48 +125,111 @@ function FormAdd({ form }) {
             <Input />
           </Form.Item>
         </Col>
-      </Row>
-
-      <Row gutter={8}>
-        <Col span={12}>
-          <Form.Item
-            name="price"
-            label="Price"
-            rules={[
-              {
-                required: true,
-                message: 'Please input the Price of Bicycle!',
-              },
-            ]}
-          >
-            <InputNumber style={{ width: '100%' }} />
-          </Form.Item>
-        </Col>
-        <Col span={12}>
-          <Form.Item
-            name="color"
-            label="Color"
-            rules={[
-              {
-                required: true,
-                message: 'Please input the Color of Bicycle!',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row>
+        <Col span={24}>Variants</Col>
         <Col span={24}>
+          <Form.List name="variants">
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map(({ key, name, ...restField }) => (
+                  <Row>
+                    <Col span={1}>
+                      <MinusCircleOutlined onClick={() => remove(name)} />
+                    </Col>
+                    <Col span={23}>
+                      <Row gutter={8}>
+                        <Col xxl={6} sm={12} xs={24}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, 'color']}
+                            rules={[
+                              {
+                                required: true,
+                                message: 'Missing color',
+                              },
+                            ]}
+                          >
+                            <Input placeholder="Color" />
+                          </Form.Item>
+                        </Col>
+                        <Col xxl={6} sm={12} xs={24}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, 'frame']}
+                            rules={[
+                              {
+                                required: true,
+                                message: 'Missing frame',
+                              },
+                            ]}
+                          >
+                            <Input placeholder="Frame" />
+                          </Form.Item>
+                        </Col>
+                        <Col xxl={6} sm={12} xs={24}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, 'size']}
+                            rules={[
+                              {
+                                required: true,
+                                message: 'Missing size',
+                              },
+                            ]}
+                          >
+                            <Input placeholder="Size" />
+                          </Form.Item>
+                        </Col>
+                        <Col xxl={6} sm={12} xs={24}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, 'quantity']}
+                            rules={[
+                              {
+                                required: true,
+                                message: 'Missing quantity',
+                              },
+                            ]}
+                          >
+                            <InputNumber
+                              style={{ width: '100%' }}
+                              placeholder="Quantity"
+                            />
+                          </Form.Item>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                ))}
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => add()}
+                    block
+                    icon={<PlusOutlined />}
+                  >
+                    Add variant
+                  </Button>
+                </Form.Item>
+              </>
+            )}
+          </Form.List>
+        </Col>
+        <Col xxl={24} sm={24} xs={24}>
           <Form.Item name="description" label="Description">
             <TextArea rows={2} />
           </Form.Item>
         </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
-          <Form.Item name="images" label="Images">
+        <Col xxl={24} sm={24} xs={24}>
+          <Form.Item
+            name="images"
+            label="Images"
+            rules={[
+              {
+                required: true,
+                message: 'Please upload least one picture of Bicycle!',
+              },
+            ]}
+          >
             <Upload
               action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               listType="picture"

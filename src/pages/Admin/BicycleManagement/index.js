@@ -14,7 +14,7 @@ import {
   createBicycle,
   fetchBicycles,
 } from '../../../redux/bicycle/bicycleSlice'
-import { bicyclesSelector } from '../../../redux/selectors'
+import { bicycleDataSelector } from '../../../redux/selectors'
 import _ from 'lodash'
 
 const { Content } = Layout
@@ -23,7 +23,7 @@ const BicycleManagement = () => {
   //Initialization
   const dispatch = useDispatch()
 
-  const bicyclesData = useSelector(bicyclesSelector)
+  const bicyclesData = useSelector(bicycleDataSelector)
 
   const [bicycleState, setBicycleState] = useState([])
   const [collapsed, setCollapsed] = useState(false)
@@ -109,9 +109,11 @@ const BicycleManagement = () => {
     })
     bikeData = {
       ...bikeData,
+      variants: bikeData.variants ? bikeData.variants : [],
       images,
     }
     dispatch(createBicycle(bikeData))
+    setVisibleAdd(false)
   }
   //func handle delete selected
   const handleDelete = () => {
