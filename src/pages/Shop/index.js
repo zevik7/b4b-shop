@@ -28,7 +28,10 @@ import Filter from './Filters'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { bicyclesSelector } from '../../redux/selectors'
+import {
+  bicyclesSelector,
+  bicyclesRemainingSelector,
+} from '../../redux/selectors'
 import { fetchBicycles } from '../../redux/bicycle/bicycleSlice'
 
 const { Title, Text } = Typography
@@ -121,6 +124,10 @@ const optionBrands = [
     label: 'Giant',
     value: 'Giant',
   },
+  {
+    label: 'Fuji',
+    value: 'Fuji',
+  },
 ]
 
 const optionMaterials = [
@@ -139,8 +146,11 @@ const Shop = () => {
   const [inputValue, setInputValue] = useState(20)
   const [inputValue2, setInputValue2] = useState(50)
   const [openSearchBar, setOpenSearchBar] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
 
-  const bicycles = useSelector(bicyclesSelector)
+  const bicycles = useSelector(bicyclesRemainingSelector)
+  console.log(bicycles)
 
   // Load data
   useEffect(() => {
@@ -195,23 +205,34 @@ const Shop = () => {
                         </Col>
                       </Row>
                     </Col>
-                    {bicycles.status === 'loading' ? (
+                    {bicycles.status === "loading" ? (
                       <h1>Loading</h1>
                     ) : (
-                      bicycles.data.map((bicycle) => (
-                        <Col span={8}>
-                          <BicycleCard
-                            img={bicycle?.image[0]}
-                            title={bicycle.name}
-                            price={bicycle.price}
-                            brand={bicycle.brand}
-                            id={bicycle.id}
-                          />
-                        </Col>
-                      ))
+                      bicycles.data
+                        .slice(
+                          (currentPage - 1) * pageSize,
+                          currentPage * pageSize
+                        )
+                        .map((bicycle, index) => (
+                          <Col span={8} key={index}>
+                            <BicycleCard
+                              img={bicycle?.images[0]}
+                              title={bicycle.name}
+                              price={bicycle.price}
+                              brand={bicycle.brand}
+                              id={bicycle.id}
+                            />
+                          </Col>
+                        ))
                     )}
                   </Row>
-                  <BicyclePagination />
+                  <BicyclePagination
+                    items={bicycles.data}
+                    onChange={setCurrentPage}
+                    current={currentPage}
+                    total={bicycles.data.length}
+                    pageSize={pageSize}
+                  />
                 </Col>
               </Row>
             </div>
