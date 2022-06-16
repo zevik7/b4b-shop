@@ -13,11 +13,14 @@ const itemRender = (_, type, originalElement) => {
   return originalElement
 }
 
-const BicyclePagination = () => (
+const BicyclePagination = (props) => (
   <Pagination
-    total={500}
+    total={props.total}
+    pageSize={props.pageSize}
+    current={props.current}
     itemRender={itemRender}
     className="product-pagination"
+    onChange={props.onChange}
   />
 )
 
