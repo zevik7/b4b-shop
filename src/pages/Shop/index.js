@@ -28,7 +28,10 @@ import Filter from './Filters'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { bicyclesSelector } from '../../redux/selectors'
+import {
+  bicyclesSelector,
+  bicyclesRemainingSelector,
+} from '../../redux/selectors'
 import { fetchBicycles } from '../../redux/bicycle/bicycleSlice'
 
 const { Title, Text } = Typography
@@ -121,6 +124,10 @@ const optionBrands = [
     label: 'Giant',
     value: 'Giant',
   },
+  {
+    label: 'Fuji',
+    value: 'Fuji',
+  },
 ]
 
 const optionMaterials = [
@@ -142,7 +149,8 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
 
-  const bicycles = useSelector(bicyclesSelector)
+  const bicycles = useSelector(bicyclesRemainingSelector)
+  console.log(bicycles)
 
   // Load data
   useEffect(() => {

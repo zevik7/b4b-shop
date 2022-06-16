@@ -1,14 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getBicycles } from '../../api'
 
 const initialState = {
-  price: {
-    min: 10,
-    max: 2000,
-  },
+  price: [],
   type: [],
   color: [],
   gender: [],
+  brand: [],
+  material: [],
 }
 
 export default createSlice({
@@ -17,6 +15,21 @@ export default createSlice({
   reducers: {
     priceChange: (state, action) => {
       state.price = action.payload
+    },
+    typeChange: (state, action) => {
+      state.type = action.payload
+    },
+    colorChange: (state, action) => {
+      state.color = action.payload
+    },
+    genderChange: (state, action) => {
+      state.gender = action.payload
+    },
+    brandChange: (state, action) => {
+      state.brand = action.payload
+    },
+    materialChange: (state, action) => {
+      state.material = action.payload
     },
   },
 })

@@ -2,16 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { bicycle } from '../../api'
 
 const initialState = {
-  filter: {
-    search: '',
-    price: {
-      min: 10,
-      max: 2000,
-    },
-    type: [],
-    color: [],
-    gender: [],
-  },
   bicycles: {
     status: 'idle',
     data: [],
