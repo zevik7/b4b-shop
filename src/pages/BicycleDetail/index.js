@@ -137,7 +137,7 @@ const BicycleDetail = () => {
     dispatch(getBicycle(id))
   }, [])
 
-  if (!bicycle.image) return <h1>Loading</h1>
+  if (!bicycle.images) return <h1>Loading</h1>
 
   return (
     <>
@@ -150,7 +150,7 @@ const BicycleDetail = () => {
                 <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
                   <Col span={9}>
                     <ImgCarousel
-                      images={bicycle.image.map((img) => ({
+                      images={bicycle.images.map((img) => ({
                         original: '/bikeImage/' + img,
                         thumbnail: '/bikeImage/' + img,
                       }))}
