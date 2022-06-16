@@ -7,6 +7,7 @@ import checkoutSlice from './checkout/checkoutSlice'
 const store = configureStore({
   reducer: {
     shop: shopSlice.reducer,
+    shopFilter: filterSlice.reducer,
     bicycles: bicycleSlice.reducer,
     checkouts: checkoutSlice.reducer,
   },
