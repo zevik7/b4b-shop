@@ -6,9 +6,13 @@ const initialState = {
   gender: [],
   brand: [],
   material: [],
+  order: {
+    name: 'new',
+    value: 'asc',
+  },
 }
 
-export default createSlice({
+const filterSlice = createSlice({
   name: 'filterSlice',
   initialState,
   reducers: {
@@ -30,5 +34,20 @@ export default createSlice({
     materialChange: (state, action) => {
       state.material = action.payload
     },
+    orderChange: (state, action) => {
+      state.order = action.payload
+    },
   },
 })
+
+export const {
+  priceChange,
+  typeChange,
+  colorChange,
+  genderChange,
+  brandChange,
+  materialChange,
+  orderChange,
+} = filterSlice.actions
+
+export default filterSlice

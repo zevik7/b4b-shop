@@ -10,10 +10,7 @@ import {
   TableManagement,
 } from '../../../components'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  createBicycle,
-  fetchBicycles,
-} from '../../../redux/bicycle/bicycleSlice'
+import { createBicycle, fetchBicycles } from '../../../redux/slices'
 import { bicycleDataSelector } from '../../../redux/selectors'
 import _ from 'lodash'
 

@@ -11,8 +11,6 @@ const searchSlice = createSlice({
   reducers: {
     onChange: (state, action) => {
       state.value = action.payload
-
-      console.log(action.payload)
     },
   },
 })

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Input, Space } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchSelector } from '../../redux/selectors'
-import { onChange } from '../../redux/search/searchSlice'
+import { onChange } from '../../redux/slices'
 
 import _ from 'lodash'
 
@@ -16,7 +16,7 @@ const SearchCustom = (props) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // dispatch()
+    dispatch(onChange(text))
 
     const timerId = setTimeout(() => {
       dispatch(onChange(text))

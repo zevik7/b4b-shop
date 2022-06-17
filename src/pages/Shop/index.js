@@ -24,6 +24,7 @@ import BicycleFooter from '../../components/BicycleFooter'
 
 import { HomeNavigation, SearchInput } from '../../components'
 
+// import filter from '../../redux/slices/filterSlice'
 import Filter from './Filters'
 
 // Redux
@@ -32,7 +33,7 @@ import {
   bicyclesSelector,
   bicyclesRemainingSelector,
 } from '../../redux/selectors'
-import { fetchBicycles } from '../../redux/bicycle/bicycleSlice'
+import { fetchBicycles } from '../../redux/slices'
 
 const { Title, Text } = Typography
 const { Panel } = Collapse
