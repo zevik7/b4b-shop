@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Input, Space } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { searchSelector } from '../../redux/selectors'
-import { onChange } from '../../redux/slices'
+import {
+  bicyclesSelector,
+  searchSelector,
+  bicyclesRemainingSelector,
+} from '../../redux/selectors'
+import { fetchBicycles, onChange, setLoading } from '../../redux/slices'
 
 import _ from 'lodash'
 
@@ -16,10 +20,10 @@ const SearchCustom = (props) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(onChange(text))
-
+    dispatch(setLoading('loading'))
     const timerId = setTimeout(() => {
       dispatch(onChange(text))
+      dispatch(setLoading('idle'))
     }, 1000)
 
     return () => clearTimeout(timerId)
@@ -32,15 +36,15 @@ const SearchCustom = (props) => {
       value={text}
       onChange={(e) => setText(e.target.value)}
       style={{ ...style }}
-      // suffix={
-      //   <AudioOutlined
-      //     style={{
-      //       fontSize: 20,
-      //       color: 'gray',
-      //     }}
-      //     onClick={() => console.log('Mic search test...')}
-      //   />
-      // }
+      suffix={
+        <AudioOutlined
+          style={{
+            fontSize: 20,
+            color: 'gray',
+          }}
+          onClick={() => console.log('Mic search test...')}
+        />
+      }
     />
   )
 }

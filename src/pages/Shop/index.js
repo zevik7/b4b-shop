@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'antd'
+import { Col, Row, Skeleton } from 'antd'
 import './index.less'
 
 import { ArrowDownOutlined } from '@ant-design/icons'
@@ -22,7 +22,7 @@ import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
 import BicycleFooter from '../../components/BicycleFooter'
 
-import { HomeNavigation, SearchInput } from '../../components'
+import { HomeNavigation, SearchInput, LoadingAnimation } from '../../components'
 
 // import filter from '../../redux/slices/filterSlice'
 import Filter from './Filters'
@@ -34,6 +34,7 @@ import {
   bicyclesRemainingSelector,
 } from '../../redux/selectors'
 import { fetchBicycles } from '../../redux/slices'
+import EmptyData from '../../components/EmptyData'
 
 const { Title, Text } = Typography
 const { Panel } = Collapse
@@ -48,6 +49,58 @@ const Shop = () => {
   useEffect(() => {
     dispatch(fetchBicycles())
   }, [])
+
+  const BicycleList = () => {
+    if (bicycles.status === 'loading') {
+      return (
+        <>
+          <Col span={8}>
+            <BicycleCard loading={true} />
+          </Col>
+          <Col span={8}>
+            <BicycleCard loading={true} />
+          </Col>
+          <Col span={8}>
+            <BicycleCard loading={true} />
+          </Col>
+          <Col span={8}>
+            <BicycleCard loading={true} />
+          </Col>
+          <Col span={8}>
+            <BicycleCard loading={true} />
+          </Col>
+        </>
+      )
+    }
+
+    if (!bicycles.data.length)
+      return (
+        <Col span={24}>
+          <Space
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+              minHeight: '50vh',
+            }}
+          >
+            <EmptyData />
+          </Space>
+        </Col>
+      )
+
+    return bicycles.data.map((bicycle, index) => (
+      <Col span={8} key={index}>
+        <BicycleCard
+          id={bicycle.id}
+          price={bicycle.price}
+          brand={bicycle.brand}
+          img={bicycle?.images[0]}
+          title={bicycle.name}
+        />
+      </Col>
+    ))
+  }
 
   return (
     <Layout>
@@ -79,28 +132,8 @@ const Shop = () => {
                         </Col>
                       </Row>
                     </Col>
-                    {bicycles.status === 'loading' ? (
-                      <h1>Loading</h1>
-                    ) : (
-                      bicycles.data.map((bicycle, index) => (
-                        <Col span={8} key={index}>
-                          <BicycleCard
-                            img={bicycle?.images[0]}
-                            title={bicycle.name}
-                            price={bicycle.price}
-                            brand={bicycle.brand}
-                            id={bicycle.id}
-                          />
-                        </Col>
-                      ))
-                    )}
+                    <BicycleList />
                   </Row>
-                  {/* <BicyclePagination
-                    items={bicycles.data}
-                    onChange={setCurrentPage}
-                    current={currentPage}
-                    total={bicycles.data.length}
-                  /> */}
                 </Col>
               </Row>
             </div>

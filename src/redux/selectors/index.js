@@ -26,6 +26,12 @@ export const bicyclesRemainingSelector = createSelector(
   filterMaterialSelector,
   searchSelector,
   (bicycles, status, price, type, gender, brand, material, search) => {
+    if (bicycles.data.length === 0)
+      return {
+        status,
+        data: [],
+      }
+
     const data = bicycles.data
       .filter((item) => {
         if (item.price >= price[0] && item.price <= price[1]) {
@@ -46,7 +52,7 @@ export const bicyclesRemainingSelector = createSelector(
       })
       .filter((item) => {
         if (search === '') return true
-        return item.name.toLowerCase().includes(search.toLowerCase())
+        return item.name.toLowerCase().includes(search.toLowerCase()) // Need optimize performance?
       })
 
     return {
