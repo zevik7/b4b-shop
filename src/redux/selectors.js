@@ -10,17 +10,17 @@ export const bicycleStatusSelector = (state) => state.bicycles.status
 
 export const filterPriceSelector = (state) => state.shopFilter.price
 export const filterTypeSelector = (state) => state.shopFilter.type
-export const filterColorSelector = (state) => state.shopFilter.color
 export const filterGenderSelector = (state) => state.shopFilter.gender
 export const filterBrandSelector = (state) => state.shopFilter.brand
 export const filterMaterialSelector = (state) => state.shopFilter.material
+
+export const searchSelector = (state) => state.search.value
 
 export const bicyclesRemainingSelector = createSelector(
   bicyclesSelector,
   bicycleStatusSelector,
   filterPriceSelector,
   filterTypeSelector,
-  filterColorSelector,
   filterGenderSelector,
   filterBrandSelector,
   filterMaterialSelector,
@@ -28,10 +28,12 @@ export const bicyclesRemainingSelector = createSelector(
   (bicycles, status, price, type, color, gender, brand, material, search) => {
     const data = bicycles.data
       .filter((item) => {
-        return type.length ? type.includes(item.type) : true
+        if (item.price >= price[0] && item.price <= price[1]) {
+          return true
+        } else return false
       })
       .filter((item) => {
-        return color.length ? color.includes(item.color) : true
+        return type.length ? type.includes(item.type) : true
       })
       .filter((item) => {
         return gender.length ? gender.includes(item.gender) : true
@@ -48,5 +50,3 @@ export const bicyclesRemainingSelector = createSelector(
     }
   }
 )
-
-export const searchSelector = (state) => state.search.value

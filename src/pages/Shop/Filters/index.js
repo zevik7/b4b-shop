@@ -16,7 +16,14 @@ import {
   Typography,
   Layout,
 } from 'antd'
-import { DeleteOutlined } from '@ant-design/icons'
+import {
+  DashboardOutlined,
+  DeleteOutlined,
+  DollarOutlined,
+  ManOutlined,
+  RocketOutlined,
+  SketchOutlined,
+} from '@ant-design/icons'
 import BicycleFooter from '../../../components/BicycleFooter'
 
 import { HomeNavigation } from '../../../components'
@@ -49,37 +56,6 @@ const optionTypes = [
   {
     label: 'Electric Bikes',
     value: 'Electric Bikes',
-  },
-]
-
-const optionColors = [
-  {
-    label: 'Red',
-    value: 'Red',
-  },
-  {
-    label: 'Blue',
-    value: 'Blue',
-  },
-  {
-    label: 'Black',
-    value: 'Black',
-  },
-  {
-    label: 'Carbon',
-    value: 'Carbon',
-  },
-  {
-    label: 'Mint Green',
-    value: 'Mint Green',
-  },
-  {
-    label: 'Silver',
-    value: 'Silver',
-  },
-  {
-    label: 'Teal',
-    value: 'Teal',
   },
 ]
 
@@ -129,10 +105,11 @@ const optionMaterials = [
 ]
 
 const Filter = () => {
-  const [inputValue, setInputValue] = useState(100)
-  const [inputValue2, setInputValue2] = useState(10000)
-
+  const priceSelector = useSelector((state) => state.shopFilter.price)
   const dispatch = useDispatch()
+
+  const [inputValue, setInputValue] = useState(priceSelector[0])
+  const [inputValue2, setInputValue2] = useState(priceSelector[1])
 
   const onChange = (value) => {
     console.log('onChange: ', value)
@@ -180,7 +157,15 @@ const Filter = () => {
         expandIconPosition="end"
         bordered={false}
       >
-        <Panel header={<Title level={5}>Price</Title>} key="1">
+        <Panel
+          header={
+            <Title level={5}>
+              <DollarOutlined className="icon-antd" />
+              Price
+            </Title>
+          }
+          key="1"
+        >
           <div className="price-input">
             <Space>
               <InputNumber
@@ -211,28 +196,15 @@ const Filter = () => {
             onAfterChange={onAfterChangeSlider}
           />
         </Panel>
-        <Panel header={<Title level={5}>Type</Title>} key="2">
-          <Space direction="vertical">
-            <Checkbox.Group options={optionTypes} onChange={handleTypeChange} />
-          </Space>
-        </Panel>
-        <Panel header={<Title level={5}>Color</Title>} key="3">
-          <Space direction="vertical">
-            <Checkbox.Group
-              options={optionColors}
-              onChange={handleColorChange}
-            />
-          </Space>
-        </Panel>
-        <Panel header={<Title level={5}>Gender</Title>} key="4">
-          <Space direction="vertical">
-            <Checkbox.Group
-              options={optionGenders}
-              onChange={handleGenderChange}
-            />
-          </Space>
-        </Panel>
-        <Panel header={<Title level={5}>Brand</Title>} key="5">
+        <Panel
+          header={
+            <Title level={5}>
+              <RocketOutlined className="icon-antd" />
+              Brand
+            </Title>
+          }
+          key="2"
+        >
           <Space direction="vertical">
             <Checkbox.Group
               options={optionBrands}
@@ -240,12 +212,48 @@ const Filter = () => {
             />
           </Space>
         </Panel>
-        <Panel header={<Title level={5}>Material</Title>} key="6">
+        <Panel
+          header={
+            <Title level={5}>
+              <SketchOutlined className="icon-antd" />
+              Material
+            </Title>
+          }
+          key="3"
+        >
           <Space direction="vertical">
             <Checkbox.Group
               options={optionMaterials}
               onChange={handleMaterialChange}
             />
+          </Space>
+        </Panel>
+        <Panel
+          header={
+            <Title level={5}>
+              <ManOutlined className="icon-antd" /> Gender
+            </Title>
+          }
+          key="4"
+        >
+          <Space direction="vertical">
+            <Checkbox.Group
+              options={optionGenders}
+              onChange={handleGenderChange}
+            />
+          </Space>
+        </Panel>
+        <Panel
+          header={
+            <Title level={5}>
+              <DashboardOutlined className="icon-antd" />
+              Type
+            </Title>
+          }
+          key="5"
+        >
+          <Space direction="vertical">
+            <Checkbox.Group options={optionTypes} onChange={handleTypeChange} />
           </Space>
         </Panel>
       </Collapse>
