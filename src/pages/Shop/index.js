@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Col, Row, Skeleton } from 'antd'
 import './index.less'
 
-import { ArrowDownOutlined } from '@ant-design/icons'
+import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 
 import BicycleCard from '../../components/BicycleCard'
 import BicyclePagination from '../../components/BicyclePagination'
@@ -22,7 +22,12 @@ import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
 import BicycleFooter from '../../components/BicycleFooter'
 
-import { HomeNavigation, SearchInput, LoadingAnimation } from '../../components'
+import {
+  HomeNavigation,
+  SearchInput,
+  LoadingAnimation,
+  Select,
+} from '../../components'
 
 // import filter from '../../redux/slices/filterSlice'
 import Filter from './Filters'
@@ -44,6 +49,7 @@ const Shop = () => {
   const dispatch = useDispatch()
 
   const bicycles = useSelector(bicyclesRemainingSelector)
+  // const order
 
   // Load data
   useEffect(() => {
@@ -109,9 +115,6 @@ const Shop = () => {
         <div className="shop-page">
           <div className="container">
             <div className="shop-page-wrapper">
-              <Title className="shop-page-title" level={2}>
-                Our products
-              </Title>
               <Row gutter={[16, 16]}>
                 <Col span={6}>
                   <Filter />
@@ -123,8 +126,22 @@ const Shop = () => {
                         <Col span={16}>
                           <div className="order-by">
                             <Text className="order-by-label">ORDER BY</Text>
-                            <Button icon={<ArrowDownOutlined />}>New</Button>
-                            <Button icon={<ArrowDownOutlined />}>Price</Button>
+                            <Select
+                              style={{
+                                minWidth: '140px',
+                              }}
+                              defaultValue={'asc'}
+                              options={[
+                                {
+                                  key: 'asc',
+                                  value: 'Low to High',
+                                },
+                                {
+                                  key: 'desc',
+                                  value: 'High to Low',
+                                },
+                              ]}
+                            />
                           </div>
                         </Col>
                         <Col span={8}>

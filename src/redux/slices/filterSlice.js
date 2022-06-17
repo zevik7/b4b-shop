@@ -34,7 +34,7 @@ const filterSlice = createSlice({
     materialChange: (state, action) => {
       state.material = action.payload
     },
-    orderChange: (state, action) => {
+    orderPriceChange: (state, action) => {
       state.order = action.payload
     },
   },
