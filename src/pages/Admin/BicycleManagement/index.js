@@ -1,4 +1,5 @@
 import { Layout } from 'antd'
+import 'react-toastify/dist/ReactToastify.css'
 import React, { useEffect, useState } from 'react'
 import './style.less'
 import {
@@ -12,10 +13,13 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import {
   createBicycle,
+  deleteBicycle,
   fetchBicycles,
+  updateBicycle,
 } from '../../../redux/bicycle/bicycleSlice'
 import { bicycleDataSelector } from '../../../redux/selectors'
 import _ from 'lodash'
+import { toast, ToastContainer } from 'react-toastify'
 
 const { Content } = Layout
 
@@ -30,12 +34,10 @@ const BicycleManagement = () => {
   const [visibleAdd, setVisibleAdd] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [selectedKey, setSelectedKey] = useState([])
-
-  const [isLoading, setIsLoading] = useState(false)
+  const [rowClicked, setRowClicked] = useState({})
 
   //handle get bicycles
   useEffect(() => {
-    setIsLoading(true)
     setTimeout(() => {
       dispatch(fetchBicycles())
     }, 500)
@@ -43,7 +45,6 @@ const BicycleManagement = () => {
 
   useEffect(() => {
     if (!_.isEmpty(bicyclesData)) {
-      setIsLoading(false)
       let newState = []
       bicyclesData.forEach((bikeData) => {
         bikeData = {
@@ -76,15 +77,17 @@ const BicycleManagement = () => {
       dataIndex: 'type',
     },
     {
-      title: 'Color',
-      dataIndex: 'color',
+      title: 'Gender',
+      dataIndex: 'gender',
+    },
+    {
+      title: 'Material',
+      dataIndex: 'material',
     },
   ]
 
   //func handle when Bicycle selected change
   const handleSelectChange = (selectedRowKeys, selectedRows) => {
-    console.log(selectedRowKeys)
-    console.log(selectedRows)
     setSelectedKey(selectedRowKeys)
   }
 
@@ -97,7 +100,8 @@ const BicycleManagement = () => {
   }
 
   const handleOnClickRow = (record) => {
-    console.log(record)
+    setRowClicked(record)
+    setSelectedKey(record.id)
     setVisibleEdit(true)
   }
 
@@ -114,18 +118,27 @@ const BicycleManagement = () => {
     }
     dispatch(createBicycle(bikeData))
     setVisibleAdd(false)
+    toast.success('Create bicycle is successful!')
   }
   //func handle delete selected
   const handleDelete = () => {
-    console.log('Delete ', selectedKey)
+    if (
+      // eslint-disable-next-line no-restricted-globals
+      confirm('Delete this bikes?')
+    ) {
+      selectedKey.forEach((key) => {
+        dispatch(deleteBicycle(key))
+      })
+      toast.success('Delete bicycle is successful!')
+    }
   }
 
   const handleUpdate = (value) => {
-    console.log(value)
+    dispatch(updateBicycle({ id: selectedKey, data: value }))
     setVisibleEdit(false)
+    toast.success('Update bicycle is successful!')
   }
 
-  // console.log("render")
   return (
     <Layout className="bicycleManagement">
       <Sidebar collapsed={collapsed} />
@@ -142,7 +155,6 @@ const BicycleManagement = () => {
             }}
             columns={columns}
             data={bicycleState}
-            loading={isLoading}
             onClickRow={handleOnClickRow}
           />
         </Content>
@@ -152,11 +164,15 @@ const BicycleManagement = () => {
         onCreate={handleCreate}
         visible={visibleAdd}
       />
-      <EditBicycleModal
-        onUpdate={handleUpdate}
-        onCancel={handleModalEditCancel}
-        visible={visibleEdit}
-      />
+      {visibleEdit && (
+        <EditBicycleModal
+          onUpdate={handleUpdate}
+          onCancel={handleModalEditCancel}
+          visible={visibleEdit}
+          initialData={rowClicked}
+        />
+      )}
+      <ToastContainer />
     </Layout>
   )
 }

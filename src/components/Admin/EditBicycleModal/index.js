@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FormEdit from './FormEdit'
 import { Button, Form, Modal } from 'antd'
 
-function ModalEditBicycle({ visible, onUpdate, onCancel }) {
+function ModalEditBicycle({ visible, onUpdate, onCancel, initialData }) {
   const [form] = Form.useForm()
   const [disabled, setDisabled] = useState(true)
+
   return (
     <Modal
       className="modalEditBicycle"
@@ -48,9 +49,8 @@ function ModalEditBicycle({ visible, onUpdate, onCancel }) {
         ),
       ]}
     >
-      <FormEdit disabled={disabled} form={form} />
+      <FormEdit initialData={initialData} disabled={disabled} form={form} />
     </Modal>
   )
 }
-
 export default ModalEditBicycle
