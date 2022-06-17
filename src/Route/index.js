@@ -6,10 +6,11 @@ import Shop from '../pages/Shop'
 import Checkout from '../pages/Checkout'
 import BicycleDetail from '../pages/BicycleDetail'
 import BicycleManagement from '../pages/Admin/BicycleManagement'
-import Login from '../pages/Admin/Login'
-import Register from '../pages/Admin/Register'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 import NoMatch from '../pages/NoMatch'
 import OrderManagement from '../pages/Admin/OrderManagement'
+import Admin from '../pages/Admin'
 
 const RoutesApp = () => {
   return (
@@ -21,10 +22,13 @@ const RoutesApp = () => {
       <Route path="/shop/bicycle-detail/:id" element={<BicycleDetail />} />
 
       {/* For Admins */}
-      <Route path="/admin/bicycle" element={<BicycleManagement />} />
-      <Route path="/admin/order" element={<OrderManagement />} />
-      <Route path="/admin/login" element={<Login />} />
-      <Route path="/admin/register" element={<Register />} />
+      <Route path="/admin/" element={<Admin />}>
+        <Route path="bicycle" element={<BicycleManagement />} />
+        <Route path="order" element={<OrderManagement />} />
+      </Route>
+
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       <Route path="*" element={<NoMatch />} />
     </Routes>

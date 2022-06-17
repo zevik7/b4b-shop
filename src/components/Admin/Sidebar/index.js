@@ -29,7 +29,6 @@ function Sidebar(props) {
         theme="light"
         mode="inline"
         onClick={handleClick}
-        defaultSelectedKeys={['2']}
         items={[
           {
             key: '1',
