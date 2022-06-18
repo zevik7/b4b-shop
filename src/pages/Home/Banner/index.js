@@ -1,6 +1,6 @@
-import './style.less'
-
 import { Space, Typography, Layout } from 'antd'
+import { motion } from 'framer-motion'
+import './style.less'
 
 import ebike from '../../../assets/images/ebike-icon.svg'
 import mountbike from '../../../assets/images/mtb-icon.svg'

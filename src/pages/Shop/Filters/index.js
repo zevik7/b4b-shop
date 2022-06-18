@@ -24,7 +24,7 @@ import {
   RocketOutlined,
   SketchOutlined,
 } from '@ant-design/icons'
-import BicycleFooter from '../../../components/BicycleFooter'
+import HomeFooter from '../../../components/HomeFooter'
 
 import { HomeNavigation } from '../../../components'
 

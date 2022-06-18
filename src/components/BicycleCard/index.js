@@ -24,7 +24,11 @@ const BicycleCard = (props) => {
             shape={'square'}
           />
         ) : (
-          <img className="img-card" alt="bicycle" src={'/bikeImage/' + img} />
+          <img
+            className="img-card"
+            alt="bicycle"
+            src={'/images/bikes/' + img}
+          />
         )
       }
       onClick={() => navigate(`/shop/Bicycle-detail/${id}`)}

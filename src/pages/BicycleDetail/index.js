@@ -24,7 +24,7 @@ import {
   HomeNavigation,
   Table,
   Select,
-  BicycleFooter,
+  HomeFooter,
 } from '../../components'
 
 // Redux
@@ -36,16 +36,16 @@ import './style.less'
 
 const images = [
   {
-    original: '/bikeImage/b7fSGdiGDw9t2t5edta6MYRns.avif',
-    thumbnail: '/bikeImage/b7fSGdiGDw9t2t5edta6MYRns.avif',
+    original: '/images/bikes/b7fSGdiGDw9t2t5edta6MYRns.avif',
+    thumbnail: '/images/bikes/b7fSGdiGDw9t2t5edta6MYRns.avif',
   },
   {
-    original: '/bikeImage/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
-    thumbnail: '/bikeImage/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
+    original: '/images/bikes/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
+    thumbnail: '/images/bikes/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
   },
   {
-    original: '/bikeImage/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
-    thumbnail: '/bikeImage/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
+    original: '/images/bikes/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
+    thumbnail: '/images/bikes/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
   },
 ]
 
@@ -151,8 +151,8 @@ const BicycleDetail = () => {
                   <Col span={9}>
                     <ImgCarousel
                       images={bicycle.images.map((img) => ({
-                        original: '/bikeImage/' + img,
-                        thumbnail: '/bikeImage/' + img,
+                        original: '/images/bikes/' + img,
+                        thumbnail: '/images/bikes/' + img,
                       }))}
                     />
                   </Col>
@@ -269,7 +269,7 @@ const BicycleDetail = () => {
             </div>
           </div>
         </Content>
-        <BicycleFooter />
+        <HomeFooter />
       </Layout>
     </>
   )

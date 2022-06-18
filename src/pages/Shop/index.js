@@ -20,7 +20,7 @@ import {
 } from 'antd'
 import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
-import BicycleFooter from '../../components/BicycleFooter'
+import HomeFooter from '../../components/HomeFooter'
 
 import {
   HomeNavigation,
@@ -157,7 +157,7 @@ const Shop = () => {
           </div>
         </div>
       </Content>
-      <BicycleFooter />
+      <HomeFooter />
     </Layout>
   )
 }

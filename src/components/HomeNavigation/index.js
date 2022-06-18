@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Button, Layout, Menu } from 'antd'
 import './style.less'
 import { Logo, NavLink, Select } from '../../components'
-import tranlationIcon from '../../assets/icons/translation.png'
+
 import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
 

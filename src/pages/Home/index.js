@@ -3,7 +3,7 @@ import { Space, Typography, Layout } from 'antd'
 import './index.less'
 
 import BicycleTrendingList from '../../components/BicycleTrendingList'
-import { BicycleFooter, HomeNavigation } from '../../components'
+import { HomeFooter, HomeNavigation } from '../../components'
 import BrandList from './BrandList'
 import AdsCarousel from './AdsCarousel'
 import Banner from './Banner'
@@ -28,7 +28,7 @@ const Landing = () => {
             </div>
           </div>
         </Content>
-        <BicycleFooter />
+        <HomeFooter />
       </Layout>
     </>
   )

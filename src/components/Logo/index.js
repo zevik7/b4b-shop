@@ -1,27 +1,29 @@
-import LogoImg from '../../assets/images/logo.png'
+import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import LogoImg from '../../assets/images/system/main-logo.png'
 
 const logoStyle = {
-  // float: 'left',
   padding: '8px',
   width: '200px',
   maxHeight: '64px',
   objectFit: 'contain',
   cursor: 'pointer',
 }
-
 const Logo = (props) => {
   const { style } = props
   const navigate = useNavigate()
 
   return (
     <>
-      <img
-        src={LogoImg}
-        style={{ ...logoStyle, ...style }}
-        alt="Logo"
-        onClick={() => navigate('/')}
-      />
+      <motion.div whileHover={{ scale: 1.1 }}>
+        <img
+          src={LogoImg}
+          style={{ ...logoStyle, ...style }}
+          alt="Shop logo"
+          onClick={() => navigate('/')}
+          className="shop-logo"
+        />
+      </motion.div>
     </>
   )
 }

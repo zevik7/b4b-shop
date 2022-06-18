@@ -1,6 +1,6 @@
 import { Col, Layout, Row, Typography } from 'antd'
 import '../../assets/less/grid.less'
-import { BicycleFooter, HomeNavigation } from '../../components'
+import { HomeFooter, HomeNavigation } from '../../components'
 import CheckoutForm from './CheckoutForm'
 import CheckoutInfo from './CheckoutInfo'
 import './index.less'
@@ -28,7 +28,7 @@ const Checkout = () => {
             </div>
           </div>
         </Content>
-        <BicycleFooter />
+        <HomeFooter />
       </Layout>
     </>
   )
