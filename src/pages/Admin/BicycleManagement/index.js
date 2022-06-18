@@ -1,38 +1,59 @@
-import { Layout } from 'antd'
 import React, { useEffect, useState } from 'react'
-import './style.less'
+import { Col, Row } from 'antd'
 import {
   AddBicycleModal,
   BicycleManageAction,
-  EditBicycleModal,
-  HeaderComponent,
-  Sidebar,
   TableManagement,
 } from '../../../components'
 import { useDispatch, useSelector } from 'react-redux'
-import { createBicycle, fetchBicycles } from '../../../redux/slices'
+import {
+  createBicycle,
+  fetchBicycles,
+  deleteBicycle,
+} from '../../../redux/slices'
 import { bicycleDataSelector } from '../../../redux/selectors'
+import { toast } from 'react-toastify'
 import _ from 'lodash'
 
-const { Content } = Layout
-
-const BicycleManagement = () => {
+function BicycleManagement(props) {
   //Initialization
   const dispatch = useDispatch()
-
   const bicyclesData = useSelector(bicycleDataSelector)
-
+  //State
   const [bicycleState, setBicycleState] = useState([])
-  const [collapsed, setCollapsed] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [visibleAdd, setVisibleAdd] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [selectedKey, setSelectedKey] = useState([])
+  const [rowClicked, setRowClicked] = useState({})
 
-  const [isLoading, setIsLoading] = useState(false)
+  //columns data for table list bicycles
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      sorter: (a, b) => a.name.length - b.name.length,
+    },
+    {
+      title: 'Brand',
+      dataIndex: 'brand',
+      sorter: (a, b) => a.brand.length - b.brand.length,
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      sorter: (a, b) => a.price - b.price,
+    },
+    {
+      title: 'Type',
+      dataIndex: 'type',
+      sorter: (a, b) => a.type.length - b.type.length,
+    },
+  ]
 
   //handle get bicycles
   useEffect(() => {
-    setIsLoading(true)
+    setLoading(true)
     setTimeout(() => {
       dispatch(fetchBicycles())
     }, 500)
@@ -40,7 +61,6 @@ const BicycleManagement = () => {
 
   useEffect(() => {
     if (!_.isEmpty(bicyclesData)) {
-      setIsLoading(false)
       let newState = []
       bicyclesData.forEach((bikeData) => {
         bikeData = {
@@ -50,52 +70,37 @@ const BicycleManagement = () => {
         newState.push(bikeData)
       })
       setBicycleState(newState)
+      setLoading(false)
     }
   }, [bicyclesData])
 
-  //columns data for table list bicycles
-  const columns = [
-    {
-      title: 'Price',
-      dataIndex: 'price',
-      sorter: (a, b) => a.price - b.price,
-    },
-    {
-      title: 'Name',
-      dataIndex: 'name',
-    },
-    {
-      title: 'Brand',
-      dataIndex: 'brand',
-    },
-    {
-      title: 'Type',
-      dataIndex: 'type',
-    },
-    {
-      title: 'Color',
-      dataIndex: 'color',
-    },
-  ]
-
   //func handle when Bicycle selected change
   const handleSelectChange = (selectedRowKeys, selectedRows) => {
-    console.log(selectedRowKeys)
-    console.log(selectedRows)
     setSelectedKey(selectedRowKeys)
+  }
+  // handle row onClick
+  const handleOnClickRow = (record) => {
+    setRowClicked(record)
+    setSelectedKey(record.id)
+    setVisibleEdit(true)
+  }
+
+  //func handle delete selected
+  const handleDelete = () => {
+    if (
+      // eslint-disable-next-line no-restricted-globals
+      confirm('Delete this bikes?')
+    ) {
+      selectedKey.forEach((key) => {
+        dispatch(deleteBicycle(key))
+      })
+      toast.success('Delete bicycle is successful!')
+    }
   }
 
   //func handle when modal is canceled
   const handleModalAddCancel = () => {
     setVisibleAdd(false)
-  }
-  const handleModalEditCancel = () => {
-    setVisibleEdit(false)
-  }
-
-  const handleOnClickRow = (record) => {
-    console.log(record)
-    setVisibleEdit(true)
   }
 
   //func handle when modal add summit
@@ -112,49 +117,32 @@ const BicycleManagement = () => {
     dispatch(createBicycle(bikeData))
     setVisibleAdd(false)
   }
-  //func handle delete selected
-  const handleDelete = () => {
-    console.log('Delete ', selectedKey)
-  }
 
-  const handleUpdate = (value) => {
-    console.log(value)
-    setVisibleEdit(false)
-  }
-
-  // console.log("render")
   return (
-    <Layout className="bicycleManagement">
-      <Sidebar collapsed={collapsed} />
-      <Layout className="site-layout">
-        <HeaderComponent collapsed={collapsed} toggleSidebar={setCollapsed} />
-        <Content className="content">
-          <BicycleManageAction
-            setVisible={setVisibleAdd}
-            handleDelete={handleDelete}
-          />
-          <TableManagement
-            rowSelection={{
-              onChange: handleSelectChange,
-            }}
-            columns={columns}
-            data={bicycleState}
-            loading={isLoading}
-            onClickRow={handleOnClickRow}
-          />
-        </Content>
-      </Layout>
+    <Row>
+      <Col span={24}>
+        <BicycleManageAction
+          setVisible={setVisibleAdd}
+          handleDelete={handleDelete}
+        />
+      </Col>
+      <Col span={24}>
+        <TableManagement
+          rowSelection={{
+            onChange: handleSelectChange,
+          }}
+          columns={columns}
+          data={bicycleState}
+          onClickRow={handleOnClickRow}
+          loading={loading}
+        />
+      </Col>
       <AddBicycleModal
         onCancel={handleModalAddCancel}
         onCreate={handleCreate}
         visible={visibleAdd}
       />
-      <EditBicycleModal
-        onUpdate={handleUpdate}
-        onCancel={handleModalEditCancel}
-        visible={visibleEdit}
-      />
-    </Layout>
+    </Row>
   )
 }
 

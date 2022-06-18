@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { bicycle } from '../../api'
+import _ from 'lodash'
 
 const initialState = {
   status: '',
@@ -48,6 +49,7 @@ const bicycleSlice = createSlice({
       })
       .addCase(createBicycle.fulfilled, (state, action) => {
         state.status = 'idle'
+        state.data.push(action.payload)
       })
       // update
       .addCase(updateBicycle.pending, (state, action) => {
@@ -58,6 +60,8 @@ const bicycleSlice = createSlice({
       })
       .addCase(updateBicycle.fulfilled, (state, action) => {
         state.status = 'idle'
+        let index = _.findIndex(state.data, (o) => o.id === action.payload.id)
+        state.data[index] = action.payload
       })
       // delete
       .addCase(deleteBicycle.pending, (state, action) => {
@@ -99,8 +103,8 @@ export const createBicycle = createAsyncThunk(
 
 export const updateBicycle = createAsyncThunk(
   'bicycle/updateBicycle',
-  async (bicycle) => {
-    const res = await bicycle.update(bicycle)
+  async ({ id, data }) => {
+    const res = await bicycle.update(id, data)
     return res.data
   }
 )

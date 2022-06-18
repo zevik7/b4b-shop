@@ -77,16 +77,10 @@ const HomeNavigation = () => {
           </NavLink>
         ))}
       </div>
-      <Button
-        type="primary"
-        onClick={() => navigate('/admin/Bicycle-management')}
-      >
+      <Button type="primary" onClick={() => navigate('/admin/bicycle')}>
         {t('cta.register')}
       </Button>
-      <Button
-        type="outlined"
-        onClick={() => navigate('/admin/Bicycle-management')}
-      >
+      <Button type="outlined" onClick={() => navigate('/admin/bicycle')}>
         {t('cta.login')}
       </Button>
       <Select

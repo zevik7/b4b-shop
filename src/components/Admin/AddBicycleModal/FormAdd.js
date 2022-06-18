@@ -131,7 +131,7 @@ function FormAdd({ form }) {
             {(fields, { add, remove }) => (
               <>
                 {fields.map(({ key, name, ...restField }) => (
-                  <Row>
+                  <Row key={key}>
                     <Col span={1}>
                       <MinusCircleOutlined onClick={() => remove(name)} />
                     </Col>
