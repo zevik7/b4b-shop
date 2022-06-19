@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Typography } from 'antd'
+import { LeftOutlined, RightOutlined} from '@ant-design/icons';
+import { Button, Tooltip } from 'antd';
 import './index.less'
 
 const { Title } = Typography
@@ -61,9 +63,7 @@ const BicycleTrending = (props) => {
       <div className="carousel-container">
         <div className="carousel-wrapper">
           {currentIndex > 0 && (
-            <button onClick={prev} className="left-arrow">
-              &lt;
-            </button>
+            <Button onClick={prev} className="left-arrow" shape="circle" icon={<LeftOutlined />} />
           )}
           <div
             className="carousel-content-wrapper"
@@ -81,9 +81,7 @@ const BicycleTrending = (props) => {
           </div>
 
           {currentIndex < length - show && (
-            <button onClick={next} className="right-arrow">
-              &gt;
-            </button>
+            <Button onClick={next} className="right-arrow" shape="circle" icon={<RightOutlined />} />
           )}
         </div>
       </div>

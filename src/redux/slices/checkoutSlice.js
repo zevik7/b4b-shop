@@ -3,7 +3,26 @@ import { checkout } from '../../api'
 
 const initialState = {
   status: '',
-  selected: {},
+  selected: {
+    user: {
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+    },
+    bicycle: {
+      id: 1,
+      name: 'Giant Fathom 29 2 2022',
+      price: 1500,
+      variants: {
+        color: 'Grey',
+        frame: 19,
+        size: 'Large',
+      },
+      quantity: 2,
+    },
+    note: '',
+  },
   data: [],
 }
 
@@ -86,8 +105,8 @@ export const getCheckout = createAsyncThunk(
 
 export const createCheckout = createAsyncThunk(
   'checkout/createCheckout',
-  async (checkout) => {
-    const res = await checkout.create(checkout)
+  async (data) => {
+    const res = await checkout.create(data)
     return res.data
   }
 )
