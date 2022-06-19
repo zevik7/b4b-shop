@@ -45,11 +45,9 @@ const bicycleSlice = createSlice({
       // fetch
       .addCase(getBicycle.pending, (state, action) => {
         state.status = 'loading'
-        state.selected = initialState.selected
       })
       .addCase(getBicycle.rejected, (state, action) => {
         state.status = 'error'
-        state.selected = initialState.selected
       })
       .addCase(getBicycle.fulfilled, (state, action) => {
         state.status = 'idle'

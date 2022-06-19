@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
   Col,
   Row,
@@ -26,7 +26,7 @@ import {
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicycleSelectedSelector } from '../../redux/selectors'
-import { getBicycle } from '../../redux/slices'
+import { getBicycle, setCheckoutBicycle } from '../../redux/slices'
 import './style.less'
 
 const detailComponentsColumns = [
@@ -47,16 +47,25 @@ const { Text, Link, Title, Paragraph } = Typography
 const { Header, Footer, Sider, Content } = Layout
 
 const BicycleDetail = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
   const dispatch = useDispatch()
   const bicycle = useSelector(bicycleSelectedSelector)
   const [form, setForm] = useState({
+    id,
+    name: '',
+    price: '',
+    variantIndex: 0,
     quantity: 1,
-    typeIndex: 0,
   })
 
   useEffect(() => {
     dispatch(getBicycle(id))
+    setForm({
+      ...form,
+      name: bicycle.name,
+      price: bicycle.price,
+    })
   }, [])
 
   const detailComponentsData = [
@@ -108,7 +117,22 @@ const BicycleDetail = () => {
   }))
 
   const handleSelectChange = (key) => {
-    setForm({ ...form, typeIndex: key })
+    setForm({ ...form, variantIndex: key })
+  }
+
+  const handleSubmit = () => {
+    const variant = bicycle.variants.find(
+      (variant, i) => i == form.variantIndex
+    )
+    const bicycleCheckout = {
+      id: form.id,
+      name: form.name,
+      price: form.price,
+      variants: { ...variant, quantity: form.quantity },
+    }
+
+    dispatch(setCheckoutBicycle(bicycleCheckout))
+    navigate('/checkout')
   }
 
   return (
@@ -164,7 +188,7 @@ const BicycleDetail = () => {
                             >
                               <Select
                                 options={selectTypeOptions}
-                                defaultValue={'0'}
+                                defaultValue={form.variantIndex.toString()}
                                 onChange={handleSelectChange}
                               />
                             </Form.Item>
@@ -189,6 +213,7 @@ const BicycleDetail = () => {
                               type="primary"
                               size="large"
                               htmlType="submit"
+                              onClick={handleSubmit}
                             >
                               BUY IT NOW
                             </Button>

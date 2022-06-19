@@ -6,6 +6,9 @@ export const bicycleSelectedSelector = (state) => state.bicycles.selected
 export const bicycleDataSelector = (state) => state.bicycles.data
 export const bicycleStatusSelector = (state) => state.bicycles.status
 
+// Checkout page
+export const checkoutSelector = (state) => state.checkouts
+
 // Filter
 export const filterPriceSelector = (state) => state.shopFilter.price
 export const filterTypeSelector = (state) => state.shopFilter.type
