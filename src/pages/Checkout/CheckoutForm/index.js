@@ -6,15 +6,18 @@ import {
 } from '@ant-design/icons'
 import { Button, Form, Input, Typography } from 'antd'
 import './index.less'
-import { useDispatch, useSelector } from "react-redux";
-import { createCheckout } from "../../../redux/checkout/checkoutSlice";
-import { checkoutSelectedSelector, checkoutsSelector } from "../../../redux/selectors";
+import { useDispatch, useSelector } from 'react-redux'
+import { createCheckout } from '../../../redux/slices'
+import {
+  checkoutSelectedSelector,
+  checkoutsSelector,
+} from '../../../redux/selectors'
 
 const { Title } = Typography
 
 const CheckoutForm = () => {
-  const dispatch = useDispatch();
-  const checkoutSelected = useSelector(checkoutSelectedSelector);
+  const dispatch = useDispatch()
+  const checkoutSelected = useSelector(checkoutSelectedSelector)
   const onFinish = (values) => {
     let data = {
       user: {
@@ -25,10 +28,10 @@ const CheckoutForm = () => {
       },
       bicycle: checkoutSelected.bicycle,
       note: values.note,
-    };
-    dispatch(createCheckout(data));
-    alert("Success");
-    console.log("Received values of form: ", data);
+    }
+    dispatch(createCheckout(data))
+    alert('Success')
+    console.log('Received values of form: ', data)
   }
 
   return (

@@ -1,13 +1,16 @@
-import { Col, Layout, Row, Typography } from "antd";
-import "../../assets/less/grid.less";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { BicycleFooter, HomeNavigation } from "../../components";
-import CheckoutForm from "./CheckoutForm";
-import CheckoutInfo from "./CheckoutInfo";
-import { checkoutSelectedSelector, checkoutsSelector } from "../../redux/selectors";
-import { fetchCheckouts, getCheckout } from "../../redux/checkout/checkoutSlice";
-import "./index.less";
+import { Col, Layout, Row, Typography } from 'antd'
+import '../../assets/less/grid.less'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { BicycleFooter, HomeNavigation } from '../../components'
+import CheckoutForm from './CheckoutForm'
+import CheckoutInfo from './CheckoutInfo'
+import {
+  checkoutSelectedSelector,
+  checkoutsSelector,
+} from '../../redux/selectors'
+import { fetchCheckouts, getCheckout } from '../../redux/slices'
+import './index.less'
 
 const { Title } = Typography
 const { Header, Content, Footer } = Layout
