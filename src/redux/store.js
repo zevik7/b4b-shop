@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+
 import filterSlice from './slices/filterSlice'
 import bicycleSlice from './slices/bicycleSlice'
 import checkoutSlice from './slices/checkoutSlice'
