@@ -13,19 +13,19 @@ const BicycleCard = (props) => {
 
   return (
     <Card
-      className="product-card"
+      className="bicycle-card"
       hoverable
       bordered={true}
       cover={
         loading ? (
           <Skeleton.Avatar
-            className="img-card"
             active={true}
             shape={'square'}
+            className="img-cover"
           />
         ) : (
           <img
-            className="img-card"
+            className="img-cover"
             alt="bicycle"
             src={'/images/bikes/' + img}
           />
@@ -33,39 +33,26 @@ const BicycleCard = (props) => {
       }
       onClick={() => navigate(`/shop/Bicycle-detail/${id}`)}
     >
-      <Row gutter={[16, 16]}>
+      <Row gutter={[8, 8]}>
         <Col span={24}>
-          {loading ? (
-            <Skeleton.Input active={true} width="100%" />
-          ) : (
-            <Title ellipsis={true} level={5}>
-              {title}
-            </Title>
-          )}
-        </Col>
-        <Col span={24}>
+          <Title ellipsis={true} level={5}>
+            {loading ? <Skeleton.Input active={true} size="small" /> : title}
+          </Title>
           <Space
             style={{
               display: 'flex',
+              alignItems: 'center',
               justifyContent: 'space-between',
+              overflow: 'hidden',
+              maxHeight: '22px',
             }}
           >
-            {loading ? (
-              <Space
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                }}
-              >
-                <Skeleton.Input active={true} width="100%" />
-              </Space>
-            ) : (
-              <>
-                <Meta description={`Price: $${price}`} className="title" />
-                <Meta description={`Brand: $${brand}`} className="title" />
-              </>
-            )}
+            <Text>
+              {loading ? <Skeleton.Input active={true} size="small" /> : price}
+            </Text>
+            <Text>
+              {loading ? <Skeleton.Input active={true} size="small" /> : brand}
+            </Text>
           </Space>
         </Col>
       </Row>

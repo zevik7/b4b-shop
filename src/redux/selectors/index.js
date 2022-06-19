@@ -12,8 +12,9 @@ export const filterTypeSelector = (state) => state.shopFilter.type
 export const filterGenderSelector = (state) => state.shopFilter.gender
 export const filterBrandSelector = (state) => state.shopFilter.brand
 export const filterMaterialSelector = (state) => state.shopFilter.material
+export const filterOrderPriceSelector = (state) => state.shopFilter.orderPrice
 
-// Search bar
+// Search
 export const searchSelector = (state) => state.search.value
 
 export const bicyclesRemainingSelector = createSelector(
@@ -24,8 +25,19 @@ export const bicyclesRemainingSelector = createSelector(
   filterGenderSelector,
   filterBrandSelector,
   filterMaterialSelector,
+  filterOrderPriceSelector,
   searchSelector,
-  (bicycles, status, price, type, gender, brand, material, search) => {
+  (
+    bicycles,
+    status,
+    price,
+    type,
+    gender,
+    brand,
+    material,
+    orderPrice,
+    search
+  ) => {
     if (bicycles.data.length === 0)
       return {
         status,
@@ -53,6 +65,11 @@ export const bicyclesRemainingSelector = createSelector(
       .filter((item) => {
         if (search === '') return true
         return item.name.toLowerCase().includes(search.toLowerCase()) // Need optimize performance?
+      })
+      .sort((a, b) => {
+        if (orderPrice === 'default') return 0
+        if (orderPrice === 'asc') return a.price - b.price
+        if (orderPrice === 'desc') return b.price - a.price
       })
 
     return {

@@ -36,15 +36,15 @@ const SearchCustom = (props) => {
       value={text}
       onChange={(e) => setText(e.target.value)}
       style={{ ...style }}
-      suffix={
-        <AudioOutlined
-          style={{
-            fontSize: 20,
-            color: 'gray',
-          }}
-          onClick={() => console.log('Mic search test...')}
-        />
-      }
+      // suffix={
+      //   <AudioOutlined
+      //     style={{
+      //       fontSize: 20,
+      //       color: 'gray',
+      //     }}
+      //     onClick={() => console.log('Mic search test...')}
+      //   />
+      // }
     />
   )
 }

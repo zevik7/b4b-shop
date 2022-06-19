@@ -18,8 +18,8 @@ const menuItems = [
     to: '/',
   },
   {
-    key: 'shop',
-    label: 'Shop',
+    key: 'bicycles',
+    label: 'Bicycles',
     to: '/shop',
   },
   {

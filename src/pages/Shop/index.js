@@ -38,7 +38,7 @@ import {
   bicyclesSelector,
   bicyclesRemainingSelector,
 } from '../../redux/selectors'
-import { fetchBicycles } from '../../redux/slices'
+import { fetchBicycles, orderPriceChange } from '../../redux/slices'
 import EmptyData from '../../components/EmptyData'
 
 const { Title, Text } = Typography
@@ -47,14 +47,16 @@ const { Content } = Layout
 
 const Shop = () => {
   const dispatch = useDispatch()
-
   const bicycles = useSelector(bicyclesRemainingSelector)
-  // const order
 
   // Load data
   useEffect(() => {
     dispatch(fetchBicycles())
   }, [])
+
+  const handleChangeOrderPrice = (value) => {
+    dispatch(orderPriceChange(value))
+  }
 
   const BicycleList = () => {
     if (bicycles.status === 'loading') {
@@ -130,8 +132,13 @@ const Shop = () => {
                               style={{
                                 minWidth: '140px',
                               }}
-                              defaultValue={'asc'}
+                              onChange={handleChangeOrderPrice}
+                              defaultValue={'default'}
                               options={[
+                                {
+                                  key: 'default',
+                                  value: 'Price',
+                                },
                                 {
                                   key: 'asc',
                                   value: 'Low to High',
