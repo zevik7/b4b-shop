@@ -66,7 +66,7 @@ const CheckoutForm = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: 'Please input your email!',
             },
           ]}
         >
