@@ -18,7 +18,7 @@ const initialState = {
   },
 }
 
-export default createSlice({
+export const shopSlice = createSlice({
   name: 'shopSlice',
   initialState,
   reducers: {
