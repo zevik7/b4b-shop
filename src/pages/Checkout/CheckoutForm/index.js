@@ -6,12 +6,30 @@ import {
 } from '@ant-design/icons'
 import { Button, Form, Input, Typography } from 'antd'
 import './index.less'
+import { useDispatch, useSelector } from 'react-redux'
+import { createCheckout } from '../../../redux/slices'
+import { checkoutSelector } from '../../../redux/selectors'
 
 const { Title } = Typography
 
 const CheckoutForm = () => {
+  const dispatch = useDispatch()
+  const checkout = useSelector(checkoutSelector)
+
   const onFinish = (values) => {
-    console.log('Received values of form: ', values)
+    let data = {
+      user: {
+        name: values.fullname,
+        email: values.email,
+        phone: values.phone,
+        address: values.address,
+      },
+      bicycle: checkout.bicycle,
+      note: values.note,
+    }
+    dispatch(createCheckout(data))
+    alert('Success')
+    console.log('Received values of form: ', data)
   }
 
   return (
@@ -49,7 +67,7 @@ const CheckoutForm = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: 'Please input your email!',
             },
           ]}
         >

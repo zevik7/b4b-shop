@@ -5,12 +5,15 @@ const initialState = {
   value: '',
 }
 
-export default createSlice({
+const searchSlice = createSlice({
   name: 'searchSlice',
   initialState,
   reducers: {
-    priceChange: (state, action) => {
-      state.price = action.payload
+    onChange: (state, action) => {
+      state.value = action.payload
     },
   },
 })
+
+export const { onChange } = searchSlice.actions
+export default searchSlice

@@ -3,17 +3,37 @@ import { checkout } from '../../api'
 
 const initialState = {
   status: '',
-  selected: {},
-  data: [],
+  user: {
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+  },
+  bicycle: {
+    id: '',
+    name: '',
+    price: '',
+    variants: {
+      color: '',
+      frame: '',
+      size: '',
+    },
+    quantity: 1,
+  },
+  note: '',
 }
 
-export default createSlice({
+const checkoutSlice = createSlice({
   name: 'checkoutSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setCheckoutBicycle: (state, action) => {
+      state.bicycle = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder
-      // fetch
+      // fetch all
       .addCase(fetchCheckouts.pending, (state, action) => {
         state.status = 'loading'
       })
@@ -68,6 +88,10 @@ export default createSlice({
   },
 })
 
+export default checkoutSlice
+
+export const { setCheckoutBicycle } = checkoutSlice.actions
+
 export const fetchCheckouts = createAsyncThunk(
   'checkout/fetchCheckouts',
   async () => {
@@ -86,8 +110,8 @@ export const getCheckout = createAsyncThunk(
 
 export const createCheckout = createAsyncThunk(
   'checkout/createCheckout',
-  async (checkout) => {
-    const res = await checkout.create(checkout)
+  async (data) => {
+    const res = await checkout.create(data)
     return res.data
   }
 )

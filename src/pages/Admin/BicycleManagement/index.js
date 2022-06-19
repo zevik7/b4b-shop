@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Row, Space, message, Layout } from 'antd'
+import { Button, Col, Row, Space, message } from 'antd'
 import {
   AddBicycleModal,
   BicycleManageAction,
@@ -7,15 +7,15 @@ import {
   TableManagement,
 } from '../../../components'
 import { useDispatch, useSelector } from 'react-redux'
+import { bicycleDataSelector } from '../../../redux/selectors'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import {
   createBicycle,
   deleteBicycle,
   fetchBicycles,
   updateBicycle,
-} from '../../../redux/bicycle/bicycleSlice'
+} from '../../../redux/slices'
 import _ from 'lodash'
-import { bicycleDataSelector } from '../../../redux/selectors'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 
 function BicycleManagement(props) {
   //Initialization
