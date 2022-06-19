@@ -19,6 +19,11 @@ const initialState = {
     id: '',
   },
   data: [],
+  pagination: {
+    current: 1,
+    pageSize: 3,
+    total: null,
+  },
 }
 
 const bicycleSlice = createSlice({
@@ -27,6 +32,9 @@ const bicycleSlice = createSlice({
   reducers: {
     setLoading: (state, action) => {
       state.status = action.payload
+    },
+    changeCurrentPage: (state, action) => {
+      state.pagination.current = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -39,8 +47,9 @@ const bicycleSlice = createSlice({
         state.status = 'error'
       })
       .addCase(fetchBicycles.fulfilled, (state, action) => {
-        state.data = action.payload
         state.status = 'idle'
+        state.data = action.payload
+        state.pagination.total = action.payload.length
       })
       // fetch
       .addCase(getBicycle.pending, (state, action) => {
@@ -91,7 +100,7 @@ const bicycleSlice = createSlice({
 
 export default bicycleSlice
 
-export const { setLoading } = bicycleSlice.actions
+export const { setLoading, changeCurrentPage } = bicycleSlice.actions
 
 export const fetchBicycles = createAsyncThunk(
   'bicycle/fetchBicycles',

@@ -4,9 +4,6 @@ import './index.less'
 
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 
-import BicycleCard from '../../components/BicycleCard'
-import BicyclePagination from '../../components/BicyclePagination'
-
 import {
   Button,
   Checkbox,
@@ -26,6 +23,8 @@ import {
   HomeNavigation,
   SearchInput,
   LoadingAnimation,
+  Pagination,
+  BicycleCard,
   Select,
 } from '../../components'
 
@@ -38,7 +37,11 @@ import {
   bicyclesSelector,
   bicyclesRemainingSelector,
 } from '../../redux/selectors'
-import { fetchBicycles, orderPriceChange } from '../../redux/slices'
+import {
+  fetchBicycles,
+  orderPriceChange,
+  changeCurrentPage,
+} from '../../redux/slices'
 import EmptyData from '../../components/EmptyData'
 
 const { Title, Text } = Typography
@@ -157,6 +160,16 @@ const Shop = () => {
                       </Row>
                     </Col>
                     <BicycleList />
+                  </Row>
+                  <Row gutter={[16, 16]}>
+                    <Col span={24}>
+                      <Pagination
+                        total={bicycles.pagination.total}
+                        current={bicycles.pagination.current}
+                        pageSize={bicycles.pagination.pageSize}
+                        onChange={(num) => dispatch(changeCurrentPage(num))}
+                      />
+                    </Col>
                   </Row>
                 </Col>
               </Row>

@@ -4,7 +4,6 @@ import { createSelector } from 'reselect'
 export const bicyclesSelector = (state) => state.bicycles
 export const bicycleSelectedSelector = (state) => state.bicycles.selected
 export const bicycleDataSelector = (state) => state.bicycles.data
-export const bicycleStatusSelector = (state) => state.bicycles.status
 
 // Checkout page
 export const checkoutSelector = (state) => state.checkouts
@@ -22,7 +21,6 @@ export const searchSelector = (state) => state.search.value
 
 export const bicyclesRemainingSelector = createSelector(
   bicyclesSelector,
-  bicycleStatusSelector,
   filterPriceSelector,
   filterTypeSelector,
   filterGenderSelector,
@@ -30,29 +28,9 @@ export const bicyclesRemainingSelector = createSelector(
   filterMaterialSelector,
   filterOrderPriceSelector,
   searchSelector,
-  (
-    bicycles,
-    status,
-    price,
-    type,
-    gender,
-    brand,
-    material,
-    orderPrice,
-    search
-  ) => {
-    if (bicycles.data.length === 0)
-      return {
-        status,
-        data: [],
-      }
-
-    const data = bicycles.data
-      .filter((item) => {
-        if (item.price >= price[0] && item.price <= price[1]) {
-          return true
-        } else return false
-      })
+  (bicycle, price, type, gender, brand, material, orderPrice, search) => {
+    const data = bicycle.data
+      .filter((item) => item.price >= price[0] && item.price <= price[1])
       .filter((item) => {
         return type.length ? type.includes(item.type) : true
       })
@@ -74,9 +52,14 @@ export const bicyclesRemainingSelector = createSelector(
         if (orderPrice === 'asc') return a.price - b.price
         if (orderPrice === 'desc') return b.price - a.price
       })
+      .slice(
+        (bicycle.pagination.current - 1) * bicycle.pagination.pageSize,
+        (bicycle.pagination.current - 1) * bicycle.pagination.pageSize +
+          bicycle.pagination.pageSize
+      )
 
     return {
-      status,
+      ...bicycle,
       data,
     }
   }
