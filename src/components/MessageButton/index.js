@@ -1,17 +1,14 @@
-import { Button, message, Space } from 'antd';
+import { Button, message, Space } from "antd";
 
-const success = () => {
-    message.success('This is a success message');
-};
-
-const MessageButton = () => {
+const MessageButton = (props) => {
     return (
-    <Space style={{float: 'right'}}>
-    <Button onClick={success} type="primary"
-            htmlType="submit">ORDER
-    </Button>
-    </Space>
-    )
-}
+        <Space style={{ float: "right" }}>
+        <Button onClick={props.onClick} type="primary" htmlType="submit">
+            ORDER
+        </Button>
+        </Space>
+    );
+    };
 
-export default MessageButton
+export default MessageButton;
+
