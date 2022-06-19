@@ -30,7 +30,7 @@ import { HomeNavigation } from '../../../components'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import filterSlice from './filterSlice'
+import filterSlice from '../../../redux/slices/filterSlice'
 
 const { Title } = Typography
 const { Panel } = Collapse

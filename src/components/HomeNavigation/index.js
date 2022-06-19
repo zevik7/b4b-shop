@@ -84,7 +84,6 @@ const HomeNavigation = () => {
         {t('cta.login')}
       </Button>
       <Select
-        suffixIcon={tranlationIcon}
         defaultValue={'en'}
         options={languageOptions}
         onChange={changeLanguage}

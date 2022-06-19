@@ -30,7 +30,7 @@ import {
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicycleSelectedSelector } from '../../redux/selectors'
-import { getBicycle } from '../../redux/bicycle/bicycleSlice'
+import { getBicycle } from '../../redux/slices'
 
 import './style.less'
 

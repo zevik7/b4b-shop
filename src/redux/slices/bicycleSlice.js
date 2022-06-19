@@ -8,10 +8,14 @@ const initialState = {
   data: [],
 }
 
-export default createSlice({
+const bicycleSlice = createSlice({
   name: 'bicycleSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setLoading: (state, action) => {
+      state.status = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder
       // fetch
@@ -71,6 +75,10 @@ export default createSlice({
       })
   },
 })
+
+export default bicycleSlice
+
+export const { setLoading } = bicycleSlice.actions
 
 export const fetchBicycles = createAsyncThunk(
   'bicycle/fetchBicycles',

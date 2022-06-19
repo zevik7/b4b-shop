@@ -8,12 +8,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import {
   createBicycle,
-  deleteBicycle,
   fetchBicycles,
-} from '../../../redux/bicycle/bicycleSlice'
+  deleteBicycle,
+} from '../../../redux/slices'
+import { bicycleDataSelector } from '../../../redux/selectors'
 import { toast } from 'react-toastify'
 import _ from 'lodash'
-import { bicycleDataSelector } from '../../../redux/selectors'
 
 function BicycleManagement(props) {
   //Initialization

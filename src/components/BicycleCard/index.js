@@ -1,14 +1,14 @@
 // import { ShoppingOutlined } from '@ant-design/icons'
-import { Button, Card, Typography } from 'antd'
+import { Skeleton, Card, Typography, Space } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { Col, Row } from 'antd'
 import './index.less'
 
 const { Meta } = Card
-const { Title } = Typography
+const { Title, Text } = Typography
 
-const BicycletCard = (props) => {
-  const { img, title, price, brand, id } = props
+const BicycleCard = (props) => {
+  const { loading, img, title, price, brand, id } = props
   const navigate = useNavigate()
 
   return (
@@ -16,38 +16,57 @@ const BicycletCard = (props) => {
       className="product-card"
       hoverable
       bordered={true}
-      style={{
-        width: '100%',
-      }}
       cover={
-        <img className="img-card" alt="bicycle" src={'/bikeImage/' + img} />
+        loading ? (
+          <Skeleton.Avatar
+            className="img-card"
+            active={true}
+            shape={'square'}
+          />
+        ) : (
+          <img className="img-card" alt="bicycle" src={'/bikeImage/' + img} />
+        )
       }
       onClick={() => navigate(`/shop/Bicycle-detail/${id}`)}
     >
-      <div className="footer-card">
-        <Row style={{ marginBottom: 12 }}>
-          <Col span={24}>
-            <Meta
-              title={
-                <Title ellipsis={true} level={5}>
-                  {title}
-                </Title>
-              }
-              className="title"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
-            <Meta description={`Price: $${price}`} className="title" />
-          </Col>
-          <Col className="product-brand" span={12}>
-            <span>Brand: {brand}</span>
-          </Col>
-        </Row>
-      </div>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          {loading ? (
+            <Skeleton.Input active={true} width="100%" />
+          ) : (
+            <Title ellipsis={true} level={5}>
+              {title}
+            </Title>
+          )}
+        </Col>
+        <Col span={24}>
+          <Space
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            {loading ? (
+              <Space
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                }}
+              >
+                <Skeleton.Input active={true} width="100%" />
+              </Space>
+            ) : (
+              <>
+                <Meta description={`Price: $${price}`} className="title" />
+                <Meta description={`Brand: $${brand}`} className="title" />
+              </>
+            )}
+          </Space>
+        </Col>
+      </Row>
     </Card>
   )
 }
 
-export default BicycletCard
+export default BicycleCard
