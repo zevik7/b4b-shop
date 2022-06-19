@@ -6,10 +6,10 @@ const success = () => {
 
 const MessageButton = () => {
     return (
-    <Space>
+    <Space style={{float: 'right'}}>
     <Button onClick={success} type="primary"
-            htmlType="submit"
-            style={{float: 'right' }}>ORDER</Button>
+            htmlType="submit">ORDER
+    </Button>
     </Space>
     )
 }
