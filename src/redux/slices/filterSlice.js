@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   price: [100, 10000],
@@ -6,10 +6,7 @@ const initialState = {
   gender: [],
   brand: [],
   material: [],
-  order: {
-    name: 'new',
-    value: 'asc',
-  },
+  orderPrice: 'none',
 }
 
 const filterSlice = createSlice({
@@ -35,7 +32,7 @@ const filterSlice = createSlice({
       state.material = action.payload
     },
     orderPriceChange: (state, action) => {
-      state.order = action.payload
+      state.orderPrice = action.payload
     },
   },
 })
@@ -47,7 +44,7 @@ export const {
   genderChange,
   brandChange,
   materialChange,
-  orderChange,
+  orderPriceChange,
 } = filterSlice.actions
 
 export default filterSlice

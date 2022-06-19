@@ -4,11 +4,9 @@ import { createSelector } from 'reselect'
 export const bicyclesSelector = (state) => state.bicycles
 export const bicycleSelectedSelector = (state) => state.bicycles.selected
 export const bicycleDataSelector = (state) => state.bicycles.data
-export const bicycleStatusSelector = (state) => state.bicycles.status
 
 // Checkout page
-export const checkoutsSelector = (state) => state.checkouts
-export const checkoutSelectedSelector = (state) => state.checkouts.selected
+export const checkoutSelector = (state) => state.checkouts
 
 // Filter
 export const filterPriceSelector = (state) => state.shopFilter.price
@@ -16,32 +14,23 @@ export const filterTypeSelector = (state) => state.shopFilter.type
 export const filterGenderSelector = (state) => state.shopFilter.gender
 export const filterBrandSelector = (state) => state.shopFilter.brand
 export const filterMaterialSelector = (state) => state.shopFilter.material
+export const filterOrderPriceSelector = (state) => state.shopFilter.orderPrice
 
-// Search bar
+// Search
 export const searchSelector = (state) => state.search.value
 
 export const bicyclesRemainingSelector = createSelector(
   bicyclesSelector,
-  bicycleStatusSelector,
   filterPriceSelector,
   filterTypeSelector,
   filterGenderSelector,
   filterBrandSelector,
   filterMaterialSelector,
+  filterOrderPriceSelector,
   searchSelector,
-  (bicycles, status, price, type, gender, brand, material, search) => {
-    if (bicycles.data.length === 0)
-      return {
-        status,
-        data: [],
-      }
-
-    const data = bicycles.data
-      .filter((item) => {
-        if (item.price >= price[0] && item.price <= price[1]) {
-          return true
-        } else return false
-      })
+  (bicycle, price, type, gender, brand, material, orderPrice, search) => {
+    const data = bicycle.data
+      .filter((item) => item.price >= price[0] && item.price <= price[1])
       .filter((item) => {
         return type.length ? type.includes(item.type) : true
       })
@@ -58,9 +47,19 @@ export const bicyclesRemainingSelector = createSelector(
         if (search === '') return true
         return item.name.toLowerCase().includes(search.toLowerCase()) // Need optimize performance?
       })
+      .sort((a, b) => {
+        if (orderPrice === 'default') return 0
+        if (orderPrice === 'asc') return a.price - b.price
+        if (orderPrice === 'desc') return b.price - a.price
+      })
+      .slice(
+        (bicycle.pagination.current - 1) * bicycle.pagination.pageSize,
+        (bicycle.pagination.current - 1) * bicycle.pagination.pageSize +
+          bicycle.pagination.pageSize
+      )
 
     return {
-      status,
+      ...bicycle,
       data,
     }
   }

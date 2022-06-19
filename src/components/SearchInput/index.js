@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Input, Space } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -19,11 +19,17 @@ const SearchCustom = (props) => {
   const [text, setText] = useState('')
   const dispatch = useDispatch()
 
+  const firstUpdate = useRef(true)
+
   useEffect(() => {
-    dispatch(setLoading('loading'))
+    if (firstUpdate.current) {
+      firstUpdate.current = false
+      return
+    }
+
     const timerId = setTimeout(() => {
       dispatch(onChange(text))
-      dispatch(setLoading('idle'))
+      dispatch(fetchBicycles())
     }, 1000)
 
     return () => clearTimeout(timerId)
@@ -36,15 +42,15 @@ const SearchCustom = (props) => {
       value={text}
       onChange={(e) => setText(e.target.value)}
       style={{ ...style }}
-      suffix={
-        <AudioOutlined
-          style={{
-            fontSize: 20,
-            color: 'gray',
-          }}
-          onClick={() => console.log('Mic search test...')}
-        />
-      }
+      // suffix={
+      //   <AudioOutlined
+      //     style={{
+      //       fontSize: 20,
+      //       color: 'gray',
+      //     }}
+      //     onClick={() => console.log('Mic search test...')}
+      //   />
+      // }
     />
   )
 }

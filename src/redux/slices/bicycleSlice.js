@@ -4,8 +4,26 @@ import _ from 'lodash'
 
 const initialState = {
   status: '',
-  selected: {},
+  selected: {
+    createdAt: '',
+    name: '',
+    price: '',
+    brand: '',
+    type: '',
+    gender: '',
+    material: '',
+    variants: [],
+    description: '',
+    images: [],
+    rating: '',
+    id: '',
+  },
   data: [],
+  pagination: {
+    current: 1,
+    pageSize: 3,
+    total: null,
+  },
 }
 
 const bicycleSlice = createSlice({
@@ -15,10 +33,13 @@ const bicycleSlice = createSlice({
     setLoading: (state, action) => {
       state.status = action.payload
     },
+    changeCurrentPage: (state, action) => {
+      state.pagination.current = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
-      // fetch
+      // fetch all
       .addCase(fetchBicycles.pending, (state, action) => {
         state.status = 'loading'
       })
@@ -26,8 +47,9 @@ const bicycleSlice = createSlice({
         state.status = 'error'
       })
       .addCase(fetchBicycles.fulfilled, (state, action) => {
-        state.data = action.payload
         state.status = 'idle'
+        state.data = action.payload
+        state.pagination.total = action.payload.length
       })
       // fetch
       .addCase(getBicycle.pending, (state, action) => {
@@ -37,8 +59,8 @@ const bicycleSlice = createSlice({
         state.status = 'error'
       })
       .addCase(getBicycle.fulfilled, (state, action) => {
-        state.selected = action.payload
         state.status = 'idle'
+        state.selected = action.payload
       })
       // create
       .addCase(createBicycle.pending, (state, action) => {
@@ -78,7 +100,7 @@ const bicycleSlice = createSlice({
 
 export default bicycleSlice
 
-export const { setLoading } = bicycleSlice.actions
+export const { setLoading, changeCurrentPage } = bicycleSlice.actions
 
 export const fetchBicycles = createAsyncThunk(
   'bicycle/fetchBicycles',

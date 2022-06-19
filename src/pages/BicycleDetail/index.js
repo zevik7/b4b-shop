@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
   Col,
   Row,
-  Carousel,
   Layout,
   Typography,
   InputNumber,
   Rate,
   Button,
-  Image,
   Divider,
   Form,
-  Input,
 } from 'antd'
 import {
   SendOutlined,
@@ -24,73 +21,13 @@ import {
   HomeNavigation,
   Table,
   Select,
-  BicycleFooter,
+  HomeFooter,
 } from '../../components'
-
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicycleSelectedSelector } from '../../redux/selectors'
-import { getBicycle } from '../../redux/slices'
-
+import { getBicycle, setCheckoutBicycle } from '../../redux/slices'
 import './style.less'
-
-const images = [
-  {
-    original: '/bikeImage/b7fSGdiGDw9t2t5edta6MYRns.avif',
-    thumbnail: '/bikeImage/b7fSGdiGDw9t2t5edta6MYRns.avif',
-  },
-  {
-    original: '/bikeImage/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
-    thumbnail: '/bikeImage/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
-  },
-  {
-    original: '/bikeImage/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
-    thumbnail: '/bikeImage/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
-  },
-]
-
-const detailComponentsData = [
-  {
-    key: '1',
-    name: 'Brand',
-    value: 'Fuij',
-  },
-  {
-    key: '2',
-    name: 'Type',
-    value: 'Road Bikes',
-  },
-  {
-    key: '3',
-    name: 'Gender',
-    value: 'Unisex',
-  },
-  {
-    key: '4',
-    name: 'Material',
-    value: 'Alumium',
-  },
-  {
-    key: '5',
-    name: 'Groupset',
-    value: 'Shimano Claris',
-  },
-  {
-    key: '6',
-    name: 'Braking Type',
-    value: 'Rim Brakes',
-  },
-  {
-    key: '7',
-    name: 'Item condition',
-    value: 'New',
-  },
-  {
-    key: '8',
-    name: 'Availability',
-    value: 'Buy online, In-store',
-  },
-]
 
 const detailComponentsColumns = [
   {
@@ -106,38 +43,97 @@ const detailComponentsColumns = [
   },
 ]
 
-const selectOptions = [
-  {
-    key: 'Grey / 52cm / Small',
-    value: 'Grey / 52cm / Small',
-  },
-  { key: 'Grey / 49cm / XS/S', value: 'Grey / 49cm / XS/S' },
-  { key: 'Grey / 54cm / Medium', value: 'Grey / 54cm / Medium' },
-]
-
 const { Text, Link, Title, Paragraph } = Typography
 const { Header, Footer, Sider, Content } = Layout
 
-const formLayout = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 8 },
-}
-const formTailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-}
-
 const BicycleDetail = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
   const dispatch = useDispatch()
   const bicycle = useSelector(bicycleSelectedSelector)
-
-  console.log(bicycle)
+  const [form, setForm] = useState({
+    id,
+    name: '',
+    price: '',
+    variantIndex: 0,
+    quantity: 1,
+  })
 
   useEffect(() => {
     dispatch(getBicycle(id))
+    setForm({
+      ...form,
+      name: bicycle.name,
+      price: bicycle.price,
+    })
   }, [])
 
-  if (!bicycle.images) return <h1>Loading</h1>
+  const detailComponentsData = [
+    {
+      key: '1',
+      name: 'Brand',
+      value: bicycle.brand,
+    },
+    {
+      key: '2',
+      name: 'Type',
+      value: bicycle.type,
+    },
+    {
+      key: '3',
+      name: 'Gender',
+      value: bicycle.gender,
+    },
+    {
+      key: '4',
+      name: 'Material',
+      value: bicycle.material,
+    },
+    {
+      key: '5',
+      name: 'Groupset',
+      value: 'Shimano Claris',
+    },
+    {
+      key: '6',
+      name: 'Braking Type',
+      value: 'Rim Brakes',
+    },
+    {
+      key: '7',
+      name: 'Item condition',
+      value: 'New',
+    },
+    {
+      key: '8',
+      name: 'Availability',
+      value: 'Buy online, In-store',
+    },
+  ]
+
+  const selectTypeOptions = bicycle.variants.map((variant, i) => ({
+    key: i,
+    value: `${variant.color} / ${variant.frame} / ${variant.size}`,
+  }))
+
+  const handleSelectChange = (key) => {
+    setForm({ ...form, variantIndex: key })
+  }
+
+  const handleSubmit = () => {
+    const variant = bicycle.variants.find(
+      (variant, i) => i == form.variantIndex
+    )
+    const bicycleCheckout = {
+      id: form.id,
+      name: form.name,
+      price: form.price,
+      variants: { ...variant, quantity: form.quantity },
+    }
+
+    dispatch(setCheckoutBicycle(bicycleCheckout))
+    navigate('/checkout')
+  }
 
   return (
     <>
@@ -151,8 +147,8 @@ const BicycleDetail = () => {
                   <Col span={9}>
                     <ImgCarousel
                       images={bicycle.images.map((img) => ({
-                        original: '/bikeImage/' + img,
-                        thumbnail: '/bikeImage/' + img,
+                        original: '/images/bikes/' + img,
+                        thumbnail: '/images/bikes/' + img,
                       }))}
                     />
                   </Col>
@@ -191,8 +187,9 @@ const BicycleDetail = () => {
                               label="Select Color, Size CM, and Size"
                             >
                               <Select
-                                options={selectOptions}
-                                defaultValue="Grey / 49cm / XS/S"
+                                options={selectTypeOptions}
+                                defaultValue={form.variantIndex.toString()}
+                                onChange={handleSelectChange}
                               />
                             </Form.Item>
                             <Form.Item
@@ -200,7 +197,14 @@ const BicycleDetail = () => {
                               name="quantity"
                               label="Quantity"
                             >
-                              <InputNumber min={1} max={10} defaultValue={3} />
+                              <InputNumber
+                                min={1}
+                                max={4}
+                                defaultValue={form.quantity}
+                                onChange={(value) =>
+                                  setForm({ ...form, quantity: value })
+                                }
+                              />
                             </Form.Item>
                           </div>
                           <Form.Item>
@@ -209,6 +213,7 @@ const BicycleDetail = () => {
                               type="primary"
                               size="large"
                               htmlType="submit"
+                              onClick={handleSubmit}
                             >
                               BUY IT NOW
                             </Button>
@@ -269,7 +274,7 @@ const BicycleDetail = () => {
             </div>
           </div>
         </Content>
-        <BicycleFooter />
+        <HomeFooter />
       </Layout>
     </>
   )

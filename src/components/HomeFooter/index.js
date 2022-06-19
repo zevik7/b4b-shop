@@ -27,7 +27,7 @@ const suffix = (
 
 const onSearch = (value) => console.log(value)
 
-const BicycleFooter = () => {
+const HomeFooter = () => {
   return (
     <div className="footer">
       <section className="container">
@@ -155,4 +155,4 @@ const BicycleFooter = () => {
   )
 }
 
-export default BicycleFooter
+export default HomeFooter

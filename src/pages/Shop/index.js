@@ -4,9 +4,6 @@ import './index.less'
 
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 
-import BicycleCard from '../../components/BicycleCard'
-import BicyclePagination from '../../components/BicyclePagination'
-
 import {
   Button,
   Checkbox,
@@ -20,12 +17,14 @@ import {
 } from 'antd'
 import './index.less'
 import { DeleteOutlined } from '@ant-design/icons'
-import BicycleFooter from '../../components/BicycleFooter'
+import HomeFooter from '../../components/HomeFooter'
 
 import {
   HomeNavigation,
   SearchInput,
   LoadingAnimation,
+  Pagination,
+  BicycleCard,
   Select,
 } from '../../components'
 
@@ -38,7 +37,11 @@ import {
   bicyclesSelector,
   bicyclesRemainingSelector,
 } from '../../redux/selectors'
-import { fetchBicycles } from '../../redux/slices'
+import {
+  fetchBicycles,
+  orderPriceChange,
+  changeCurrentPage,
+} from '../../redux/slices'
 import EmptyData from '../../components/EmptyData'
 
 const { Title, Text } = Typography
@@ -47,14 +50,16 @@ const { Content } = Layout
 
 const Shop = () => {
   const dispatch = useDispatch()
-
   const bicycles = useSelector(bicyclesRemainingSelector)
-  // const order
 
   // Load data
   useEffect(() => {
     dispatch(fetchBicycles())
   }, [])
+
+  const handleChangeOrderPrice = (value) => {
+    dispatch(orderPriceChange(value))
+  }
 
   const BicycleList = () => {
     if (bicycles.status === 'loading') {
@@ -130,8 +135,13 @@ const Shop = () => {
                               style={{
                                 minWidth: '140px',
                               }}
-                              defaultValue={'asc'}
+                              onChange={handleChangeOrderPrice}
+                              defaultValue={'default'}
                               options={[
+                                {
+                                  key: 'default',
+                                  value: 'Price',
+                                },
                                 {
                                   key: 'asc',
                                   value: 'Low to High',
@@ -151,13 +161,23 @@ const Shop = () => {
                     </Col>
                     <BicycleList />
                   </Row>
+                  <Row gutter={[16, 16]}>
+                    <Col span={24}>
+                      <Pagination
+                        total={bicycles.pagination.total}
+                        current={bicycles.pagination.current}
+                        pageSize={bicycles.pagination.pageSize}
+                        onChange={(num) => dispatch(changeCurrentPage(num))}
+                      />
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </div>
           </div>
         </div>
       </Content>
-      <BicycleFooter />
+      <HomeFooter />
     </Layout>
   )
 }

@@ -8,16 +8,14 @@ import { Button, Form, Input, Typography } from 'antd'
 import './index.less'
 import { useDispatch, useSelector } from 'react-redux'
 import { createCheckout } from '../../../redux/slices'
-import {
-  checkoutSelectedSelector,
-  checkoutsSelector,
-} from '../../../redux/selectors'
+import { checkoutSelector } from '../../../redux/selectors'
 
 const { Title } = Typography
 
 const CheckoutForm = () => {
   const dispatch = useDispatch()
-  const checkoutSelected = useSelector(checkoutSelectedSelector)
+  const checkout = useSelector(checkoutSelector)
+
   const onFinish = (values) => {
     let data = {
       user: {
@@ -26,7 +24,7 @@ const CheckoutForm = () => {
         phone: values.phone,
         address: values.address,
       },
-      bicycle: checkoutSelected.bicycle,
+      bicycle: checkout.bicycle,
       note: values.note,
     }
     dispatch(createCheckout(data))
