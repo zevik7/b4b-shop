@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import {
   Col,
   Row,
-  Carousel,
   Layout,
   Typography,
   InputNumber,
   Rate,
   Button,
-  Image,
   Divider,
   Form,
-  Input,
 } from 'antd'
 import {
   SendOutlined,
@@ -26,71 +23,11 @@ import {
   Select,
   HomeFooter,
 } from '../../components'
-
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicycleSelectedSelector } from '../../redux/selectors'
 import { getBicycle } from '../../redux/slices'
-
 import './style.less'
-
-const images = [
-  {
-    original: '/images/bikes/b7fSGdiGDw9t2t5edta6MYRns.avif',
-    thumbnail: '/images/bikes/b7fSGdiGDw9t2t5edta6MYRns.avif',
-  },
-  {
-    original: '/images/bikes/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
-    thumbnail: '/images/bikes/PcrXtG5JytjSxmlrF6KcjmU5o.avif',
-  },
-  {
-    original: '/images/bikes/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
-    thumbnail: '/images/bikes/mUfm71BbG9VZeTEN9nyyhEj_Q.avif',
-  },
-]
-
-const detailComponentsData = [
-  {
-    key: '1',
-    name: 'Brand',
-    value: 'Fuij',
-  },
-  {
-    key: '2',
-    name: 'Type',
-    value: 'Road Bikes',
-  },
-  {
-    key: '3',
-    name: 'Gender',
-    value: 'Unisex',
-  },
-  {
-    key: '4',
-    name: 'Material',
-    value: 'Alumium',
-  },
-  {
-    key: '5',
-    name: 'Groupset',
-    value: 'Shimano Claris',
-  },
-  {
-    key: '6',
-    name: 'Braking Type',
-    value: 'Rim Brakes',
-  },
-  {
-    key: '7',
-    name: 'Item condition',
-    value: 'New',
-  },
-  {
-    key: '8',
-    name: 'Availability',
-    value: 'Buy online, In-store',
-  },
-]
 
 const detailComponentsColumns = [
   {
@@ -106,38 +43,73 @@ const detailComponentsColumns = [
   },
 ]
 
-const selectOptions = [
-  {
-    key: 'Grey / 52cm / Small',
-    value: 'Grey / 52cm / Small',
-  },
-  { key: 'Grey / 49cm / XS/S', value: 'Grey / 49cm / XS/S' },
-  { key: 'Grey / 54cm / Medium', value: 'Grey / 54cm / Medium' },
-]
-
 const { Text, Link, Title, Paragraph } = Typography
 const { Header, Footer, Sider, Content } = Layout
-
-const formLayout = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 8 },
-}
-const formTailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-}
 
 const BicycleDetail = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const bicycle = useSelector(bicycleSelectedSelector)
-
-  console.log(bicycle)
+  const [form, setForm] = useState({
+    quantity: 1,
+    typeIndex: 0,
+  })
 
   useEffect(() => {
     dispatch(getBicycle(id))
   }, [])
 
-  if (!bicycle.images) return <h1>Loading</h1>
+  const detailComponentsData = [
+    {
+      key: '1',
+      name: 'Brand',
+      value: bicycle.brand,
+    },
+    {
+      key: '2',
+      name: 'Type',
+      value: bicycle.type,
+    },
+    {
+      key: '3',
+      name: 'Gender',
+      value: bicycle.gender,
+    },
+    {
+      key: '4',
+      name: 'Material',
+      value: bicycle.material,
+    },
+    {
+      key: '5',
+      name: 'Groupset',
+      value: 'Shimano Claris',
+    },
+    {
+      key: '6',
+      name: 'Braking Type',
+      value: 'Rim Brakes',
+    },
+    {
+      key: '7',
+      name: 'Item condition',
+      value: 'New',
+    },
+    {
+      key: '8',
+      name: 'Availability',
+      value: 'Buy online, In-store',
+    },
+  ]
+
+  const selectTypeOptions = bicycle.variants.map((variant, i) => ({
+    key: i,
+    value: `${variant.color} / ${variant.frame} / ${variant.size}`,
+  }))
+
+  const handleSelectChange = (key) => {
+    setForm({ ...form, typeIndex: key })
+  }
 
   return (
     <>
@@ -191,8 +163,9 @@ const BicycleDetail = () => {
                               label="Select Color, Size CM, and Size"
                             >
                               <Select
-                                options={selectOptions}
-                                defaultValue="Grey / 49cm / XS/S"
+                                options={selectTypeOptions}
+                                defaultValue={'0'}
+                                onChange={handleSelectChange}
                               />
                             </Form.Item>
                             <Form.Item
@@ -200,7 +173,14 @@ const BicycleDetail = () => {
                               name="quantity"
                               label="Quantity"
                             >
-                              <InputNumber min={1} max={10} defaultValue={3} />
+                              <InputNumber
+                                min={1}
+                                max={4}
+                                defaultValue={form.quantity}
+                                onChange={(value) =>
+                                  setForm({ ...form, quantity: value })
+                                }
+                              />
                             </Form.Item>
                           </div>
                           <Form.Item>

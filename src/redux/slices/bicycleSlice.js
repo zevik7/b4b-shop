@@ -4,7 +4,20 @@ import _ from 'lodash'
 
 const initialState = {
   status: '',
-  selected: {},
+  selected: {
+    createdAt: '',
+    name: '',
+    price: '',
+    brand: '',
+    type: '',
+    gender: '',
+    material: '',
+    variants: [],
+    description: '',
+    images: [],
+    rating: '',
+    id: '',
+  },
   data: [],
 }
 
@@ -18,7 +31,7 @@ const bicycleSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // fetch
+      // fetch all
       .addCase(fetchBicycles.pending, (state, action) => {
         state.status = 'loading'
       })
@@ -32,13 +45,15 @@ const bicycleSlice = createSlice({
       // fetch
       .addCase(getBicycle.pending, (state, action) => {
         state.status = 'loading'
+        state.selected = initialState.selected
       })
       .addCase(getBicycle.rejected, (state, action) => {
         state.status = 'error'
+        state.selected = initialState.selected
       })
       .addCase(getBicycle.fulfilled, (state, action) => {
-        state.selected = action.payload
         state.status = 'idle'
+        state.selected = action.payload
       })
       // create
       .addCase(createBicycle.pending, (state, action) => {
