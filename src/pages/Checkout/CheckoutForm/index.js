@@ -5,6 +5,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import { Button, Form, Input, Typography } from 'antd'
+import MessageButton from '../../../components/MessageButton'
 import './index.less'
 import { useDispatch, useSelector } from 'react-redux'
 import { createCheckout } from '../../../redux/slices'
@@ -128,13 +129,14 @@ const CheckoutForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button
+          {/* <Button
             type="primary"
             htmlType="submit"
             style={{ width: '30%', float: 'right' }}
           >
             ORDER
-          </Button>
+          </Button> */}
+          <MessageButton />
         </Form.Item>
       </Form>
     </div>
