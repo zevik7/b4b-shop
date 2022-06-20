@@ -29,7 +29,7 @@ const checkoutSlice = createSlice({
   initialState,
   reducers: {
     setCheckoutBicycle: (state, action) => {
-      state.bicycle = action.payload
+      state.bicycle = _.cloneDeep(action.payload)
     },
   },
   extraReducers: (builder) => {
