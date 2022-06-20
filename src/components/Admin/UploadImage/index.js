@@ -12,34 +12,20 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error)
   })
 
-const UploadImage = ({ disabled, setImage }) => {
+const UploadImage = ({ disabled, images }) => {
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
-  const [fileList, setFileList] = useState([
-    {
-      uid: '-1',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-    {
-      uid: '-2',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-    {
-      uid: '-3',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-  ])
+  const [fileList, setFileList] = useState([])
 
   useEffect(() => {
-    setImage(fileList)
-  }, [fileList])
+    const imagesList = images.map((image, index) => ({
+      name: image,
+      status: 'done',
+      url: '/images/bikes/' + image,
+    }))
+    setFileList(imagesList)
+  }, [images])
 
   const handleCancel = () => setPreviewVisible(false)
 
@@ -78,7 +64,7 @@ const UploadImage = ({ disabled, setImage }) => {
         onPreview={handlePreview}
         onChange={handleChange}
       >
-        {fileList.length >= 4 || disabled ? null : uploadButton}
+        {fileList.length >= 3 || disabled ? null : uploadButton}
       </Upload>
       <Modal
         visible={previewVisible}

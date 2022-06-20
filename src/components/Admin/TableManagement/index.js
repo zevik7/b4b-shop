@@ -8,11 +8,6 @@ function TableManagement({ rowSelection, columns, data, onClickRow, loading }) {
       columns={columns}
       dataSource={data}
       loading={loading}
-      onRow={(record, rowIndex) => {
-        return {
-          onClick: () => onClickRow(record),
-        }
-      }}
     />
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Select } from 'antd'
 import './style.less'
-import { DownCircleTwoTone } from '@ant-design/icons'
+import { DownOutlined } from '@ant-design/icons'
 
 const { Option } = Select
 
@@ -11,9 +11,9 @@ const SelectCustom = (props) => {
   return (
     <>
       <Select
-        suffixIcon={<DownCircleTwoTone />}
+        suffixIcon={suffixIcon || <DownOutlined />}
         defaultValue={defaultValue}
-        style={{ ...style }}
+        style={style}
         onChange={onChange}
       >
         {options.map((option) => (

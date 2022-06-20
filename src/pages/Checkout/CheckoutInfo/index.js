@@ -1,10 +1,14 @@
 import { List, Typography } from 'antd'
 import React from 'react'
 import './index.less'
+import { useDispatch, useSelector } from 'react-redux'
+import { checkoutSelector } from '../../../redux/selectors'
 
 const { Title, Text } = Typography
 
 const CheckoutInfo = () => {
+  const checkout = useSelector(checkoutSelector)
+
   return (
     <div className="info-ctn">
       <div className="info-header">
@@ -14,19 +18,27 @@ const CheckoutInfo = () => {
         <List.Item>
           <List.Item.Meta
             title={<Text strong>Type</Text>}
-            description={<Text italic>Number: 1 x $3000</Text>}
+            description={
+              <Text italic>
+                Number: {checkout.bicycle.quantity} x ${checkout.bicycle.price}
+              </Text>
+            }
           />
           <div>
-            <Text strong>Kid Bike</Text>
+            <Text strong>{checkout.bicycle.name}</Text>
           </div>
         </List.Item>
         <List.Item>
           <Text strong>Provisional</Text>
-          <Text italic>$3000</Text>
+          <Text italic>
+            ${checkout.bicycle.quantity * checkout.bicycle.price}
+          </Text>
         </List.Item>
         <List.Item>
           <Text strong>Total</Text>
-          <Text type="danger">$3000</Text>
+          <Text type="danger">
+            ${checkout.bicycle.quantity * checkout.bicycle.price}
+          </Text>
         </List.Item>
         <List.Item style={{ justifyContent: 'center' }}>
           10% TAX NOT INCLUDED
