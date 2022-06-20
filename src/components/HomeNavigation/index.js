@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Button, Layout, Menu } from 'antd'
 import './style.less'
 import { Logo, NavLink, Select } from '../../components'
-import tranlationIcon from '../../assets/icons/translation.png'
+
 import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
 
@@ -17,8 +18,8 @@ const menuItems = [
     to: '/',
   },
   {
-    key: 'shop',
-    label: 'Shop',
+    key: 'bicycles',
+    label: 'Bicycles',
     to: '/shop',
   },
   {
@@ -77,20 +78,13 @@ const HomeNavigation = () => {
           </NavLink>
         ))}
       </div>
-      <Button
-        type="primary"
-        onClick={() => navigate('/admin/Bicycle-management')}
-      >
+      <Button type="primary" onClick={() => navigate('/admin/bicycle')}>
         {t('cta.register')}
       </Button>
-      <Button
-        type="outlined"
-        onClick={() => navigate('/admin/Bicycle-management')}
-      >
+      <Button type="outlined" onClick={() => navigate('/admin/bicycle')}>
         {t('cta.login')}
       </Button>
       <Select
-        suffixIcon={tranlationIcon}
         defaultValue={'en'}
         options={languageOptions}
         onChange={changeLanguage}

@@ -1,36 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'antd'
 import './style.less'
-
-import BicycleCard from '../../../components/BicycleCard'
-import BicyclePagination from '../../../components/BicyclePagination'
-
+import { Col, Row } from 'antd'
 import {
-  Button,
   Checkbox,
   Collapse,
   InputNumber,
   Slider,
   Space,
-  Tooltip,
   Typography,
   Layout,
 } from 'antd'
 import {
   DashboardOutlined,
-  DeleteOutlined,
   DollarOutlined,
   ManOutlined,
   RocketOutlined,
   SketchOutlined,
 } from '@ant-design/icons'
-import BicycleFooter from '../../../components/BicycleFooter'
 
-import { HomeNavigation } from '../../../components'
+import { BicycleCard } from '../../../components'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import filterSlice from './filterSlice'
+import filterSlice from '../../../redux/slices/filterSlice'
 
 const { Title } = Typography
 const { Panel } = Collapse

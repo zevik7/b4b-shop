@@ -1,15 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import filterSlice from '../pages/Shop/Filters/filterSlice'
-import shopSlice from '../pages/Shop/shopSlice'
-import bicycleSlice from './bicycle/bicycleSlice'
-import checkoutSlice from './checkout/checkoutSlice'
+
+import filterSlice from './slices/filterSlice'
+import bicycleSlice from './slices/bicycleSlice'
+import checkoutSlice from './slices/checkoutSlice'
+import searchSlice from './slices/searchSlice'
 
 const store = configureStore({
   reducer: {
-    shop: shopSlice.reducer,
     shopFilter: filterSlice.reducer,
     bicycles: bicycleSlice.reducer,
     checkouts: checkoutSlice.reducer,
+    search: searchSlice.reducer,
   },
 })
 

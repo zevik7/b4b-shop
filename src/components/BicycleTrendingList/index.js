@@ -3,7 +3,7 @@ import BicycleTrending from '../BicycleTrending'
 import BicycletCard from '../BicycleCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { bicyclesSelector } from '../../redux/selectors'
-import { fetchBicycles } from '../../redux/bicycle/bicycleSlice'
+import { fetchBicycles } from '../../redux/slices'
 
 const BicycleTrendingList = () => {
   const dispatch = useDispatch()
@@ -30,6 +30,7 @@ const BicycleTrendingList = () => {
               <div key={key}>
                 <div style={{ padding: 8 }}>
                   <BicycletCard
+                    id={bicycle.id}
                     img={bicycle.images[0]}
                     title={bicycle.name}
                     price={bicycle.price}

@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import './App.less'
-import RouterApp from './components/Route'
+import RouterApp from './Route'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 

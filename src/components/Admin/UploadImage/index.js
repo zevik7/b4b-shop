@@ -22,7 +22,7 @@ const UploadImage = ({ disabled, images }) => {
     const imagesList = images.map((image, index) => ({
       name: image,
       status: 'done',
-      url: '/bikeImage/' + image,
+      url: '/images/bikes/' + image,
     }))
     setFileList(imagesList)
   }, [images])
