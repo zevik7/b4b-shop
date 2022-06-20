@@ -6,7 +6,7 @@ import {
   PlusCircleOutlined,
 } from '@ant-design/icons'
 
-function BicycleManageAction({ setVisible, handleDelete }) {
+function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
   const actionForMenu = {
     1: handleDelete,
   }
@@ -27,13 +27,13 @@ function BicycleManageAction({ setVisible, handleDelete }) {
 
   return (
     <div className="action">
-      <Dropdown overlay={menu}>
+      <Dropdown disabled={disabledActions} overlay={menu}>
         <Button icon={<DownOutlined />}>Actions</Button>
       </Dropdown>
       <Button
         icon={<PlusCircleOutlined />}
         type="default"
-        onClick={(e) => setVisible(true)}
+        onClick={(e) => setVisibleAdd(true)}
       >
         Add
       </Button>
