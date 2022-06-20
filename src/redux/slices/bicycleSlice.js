@@ -94,6 +94,8 @@ const bicycleSlice = createSlice({
       })
       .addCase(deleteBicycle.fulfilled, (state, action) => {
         state.status = 'idle'
+        let index = _.findIndex(state.data, (o) => o.id === action.payload.id)
+        state.data.splice(index, 1)
       })
   },
 })
