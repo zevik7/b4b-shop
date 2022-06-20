@@ -20,7 +20,8 @@ const CheckoutInfo = () => {
             title={<Text strong>Type</Text>}
             description={
               <Text italic>
-                Number: {checkout.bicycle.quantity} x ${checkout.bicycle.price}
+                Number: {checkout.bicycle.variant.quantity} x $
+                {checkout.bicycle.price}
               </Text>
             }
           />
@@ -31,13 +32,13 @@ const CheckoutInfo = () => {
         <List.Item>
           <Text strong>Provisional</Text>
           <Text italic>
-            ${checkout.bicycle.quantity * checkout.bicycle.price}
+            ${checkout.bicycle.variant.quantity * checkout.bicycle.price}
           </Text>
         </List.Item>
         <List.Item>
           <Text strong>Total</Text>
           <Text type="danger">
-            ${checkout.bicycle.quantity * checkout.bicycle.price}
+            ${checkout.bicycle.variant.quantity * checkout.bicycle.price}
           </Text>
         </List.Item>
         <List.Item style={{ justifyContent: 'center' }}>

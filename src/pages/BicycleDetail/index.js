@@ -124,11 +124,12 @@ const BicycleDetail = () => {
     const variant = bicycle.variants.find(
       (variant, i) => i == form.variantIndex
     )
+
     const bicycleCheckout = {
       id: form.id,
       name: form.name,
       price: form.price,
-      variants: { ...variant, quantity: form.quantity },
+      variant: { ...variant, quantity: form.quantity },
     }
 
     dispatch(setCheckoutBicycle(bicycleCheckout))
