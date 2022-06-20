@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import _ from 'lodash'
 import { checkout } from '../../api'
 
 const initialState = {
@@ -13,12 +14,12 @@ const initialState = {
     id: '',
     name: '',
     price: '',
-    variants: {
+    variant: {
       color: '',
       frame: '',
       size: '',
+      quantity: 1,
     },
-    quantity: 1,
   },
   note: '',
 }
