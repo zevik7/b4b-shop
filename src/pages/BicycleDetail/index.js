@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bicycleSelectedSelector } from '../../redux/selectors'
 import { getBicycle, setCheckoutBicycle } from '../../redux/slices'
 import './style.less'
+import { useTranslation } from 'react-i18next'
 
 const detailComponentsColumns = [
   {
@@ -59,6 +60,8 @@ const BicycleDetail = () => {
     quantity: 1,
   })
 
+  const { t } = useTranslation()
+
   useEffect(() => {
     dispatch(getBicycle(id))
     setForm({
@@ -71,42 +74,42 @@ const BicycleDetail = () => {
   const detailComponentsData = [
     {
       key: '1',
-      name: 'Brand',
+      name: `${t('detail-page.bicycle-part.item.brand')}`,
       value: bicycle.brand,
     },
     {
       key: '2',
-      name: 'Type',
+      name: `${t('detail-page.bicycle-part.item.type')}`,
       value: bicycle.type,
     },
     {
       key: '3',
-      name: 'Gender',
+      name: `${t('detail-page.bicycle-part.item.gender')}`,
       value: bicycle.gender,
     },
     {
       key: '4',
-      name: 'Material',
+      name: `${t('detail-page.bicycle-part.item.material')}`,
       value: bicycle.material,
     },
     {
       key: '5',
-      name: 'Groupset',
+      name: `${t('detail-page.bicycle-part.item.groupset')}`,
       value: 'Shimano Claris',
     },
     {
       key: '6',
-      name: 'Braking Type',
+      name: `${t('detail-page.bicycle-part.item.braking-type')}`,
       value: 'Rim Brakes',
     },
     {
       key: '7',
-      name: 'Item condition',
+      name: `${t('detail-page.bicycle-part.item.item-condition')}`,
       value: 'New',
     },
     {
       key: '8',
-      name: 'Availability',
+      name: `${t('detail-page.bicycle-part.item.availability')}`,
       value: 'Buy online, In-store',
     },
   ]
@@ -156,8 +159,12 @@ const BicycleDetail = () => {
                     <div className="detail-wrapper">
                       <div className="detail-wrapper__info">
                         <Text className="available-txt">
-                          Availability:{' '}
-                          <Text type="secondary">12 in stock</Text>
+                          {t('detail-page.availability.title')}
+                          <Text type="secondary">
+                            {t('detail-page.availability.content', {
+                              number: 12,
+                            })}
+                          </Text>
                         </Text>
                         <Title level={2} className="bicycle-name">
                           {bicycle.name}
@@ -171,7 +178,11 @@ const BicycleDetail = () => {
                             allowHalf
                             defaultValue={bicycle.rating}
                           />
-                          <Text>{bicycle.rating} reviews</Text>
+                          <Text>
+                            {t('detail-page.rating', {
+                              rating: bicycle.rating,
+                            })}
+                          </Text>
                         </div>
                         <Divider />
                         <Paragraph className="desc">
@@ -184,7 +195,7 @@ const BicycleDetail = () => {
                             <Form.Item
                               className="select-item"
                               name="select-type"
-                              label="Select Color, Size CM, and Size"
+                              label={t('field.select_detail_page')}
                             >
                               <Select
                                 options={selectTypeOptions}
@@ -195,7 +206,7 @@ const BicycleDetail = () => {
                             <Form.Item
                               className="input-num-item"
                               name="quantity"
-                              label="Quantity"
+                              label={t('field.quantity')}
                             >
                               <InputNumber
                                 min={1}
@@ -215,7 +226,7 @@ const BicycleDetail = () => {
                               htmlType="submit"
                               onClick={handleSubmit}
                             >
-                              BUY IT NOW
+                              {t('cta.buy-it-now')}
                             </Button>
                           </Form.Item>
                         </Form>
@@ -229,9 +240,11 @@ const BicycleDetail = () => {
                           <SendOutlined />
                         </div>
                         <div className="services-item__content">
-                          <Title level={4}>FREE SHIPPING</Title>
+                          <Title level={4}>
+                            {t('detail-page.banner.free-shipping.title')}
+                          </Title>
                           <Text type="secondary">
-                            Free shipping on all US order or order above $99
+                            {t('detail-page.banner.free-shipping.content')}
                           </Text>
                         </div>
                       </div>
@@ -240,9 +253,11 @@ const BicycleDetail = () => {
                           <CustomerServiceOutlined />
                         </div>
                         <div className="services-item__content">
-                          <Title level={4}>SUPPORT 24/7</Title>
+                          <Title level={4}>
+                            {t('detail-page.banner.support.title')}
+                          </Title>
                           <Text type="secondary">
-                            Contact us 24 hours a day, 7 days a week
+                            {t('detail-page.banner.support.content')}
                           </Text>
                         </div>
                       </div>
@@ -251,15 +266,19 @@ const BicycleDetail = () => {
                           <RollbackOutlined />
                         </div>
                         <div className="services-item__content">
-                          <Title level={4}>30 DAYS RETURN</Title>
+                          <Title level={4}>
+                            {t('detail-page.banner.return-title.title')}
+                          </Title>
                           <Text type="secondary">
-                            Simply return it within 30 days
+                            {t('detail-page.banner.return-title.content')}
                           </Text>
                         </div>
                       </div>
                     </div>
                     <div className="bicycle-parts">
-                      <Title level={5}>Bicycle parts</Title>
+                      <Title level={5}>
+                        {t('detail-page.bicycle-part.title')}
+                      </Title>
                       <Table
                         data={detailComponentsData}
                         cols={detailComponentsColumns}

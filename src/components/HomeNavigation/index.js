@@ -74,7 +74,7 @@ const HomeNavigation = () => {
       <div className="menu">
         {menuItems.map((item) => (
           <NavLink key={item.key} to={item.to}>
-            {item.label}
+            {t(`home-navigation.${item.key}`)}
           </NavLink>
         ))}
       </div>

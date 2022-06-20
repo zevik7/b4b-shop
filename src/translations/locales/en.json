@@ -23,23 +23,25 @@
     "download_order_pdf": "Order (PDF)",
     "download_order_csv": "CSV",
     "upload_order_confirmation": "Upload Confirmation",
+    "place_holder_input-email": "Enter your email",
+    "place-holder-search": "Type anything to search",
     "back_to_list": "Back to List",
     "show_history": "Show History",
     "subscribe": "Subscribe",
     "search": "Search",
     "buy-it-now": "BUY IT NOW"
   },
+
   "home-navigation": {
     "home": "Home",
     "bicycles": "Bicycles",
     "clothing": "Clothing",
-    "helmet-shoe": "Helmet & Shoes",
+    "helmet-and-shoes": "Helmet & Shoes",
     "components": "Components",
-    "about-us": "About Us"
+    "about": "About Us"
   },
 
   "home-page": {
-    "title-homepage": "WHERE THE WORLD RIDES",
     "categories":  {
       "title": "POPULAR CATEGORIES",
       "item": {
@@ -95,45 +97,77 @@
     }
   },
 
-    "filter": {
-      "filter-bar": {
-        "price": {
-          "title": "Price"
-        },
-        "brand": {
-          "title": "Brand",
-          "marin": "Marin",
-          "scott": "Scott",
-          "giant": "Giant",
-          "fuji": "Fuji"
-        },
-        "material": {
-          "title": "Material",
-          "carbon": "Carbon",
-          "aluminum": "Aluminum"
-        },
-        "gender": {
-          "title": "Gender",
-          "men": "Mens",
-          "women": "Womens",
-          "unisex": "Unisex"
-        },
-        "type": {
-          "title": "Type",
-          "electric-bike": "Electric Bikes",
-          "mountain-bike": "Mountain Bikes",
-          "kid-bike": "Kid Bikes",
-          "road-bike": "Road Bikes",
-          "gravel-bike": "Gravel Bikes"
-        }
+  "filter": {
+    "filter-bar": {
+      "price": {
+        "title": "Price"
+      },
+      "brand": {
+        "title": "Brand"
+      },
+      "material": {
+        "title": "Material",
+        "carbon": "Carbon",
+        "aluminum": "Aluminum"
+      },
+      "gender": {
+        "title": "Gender",
+        "men": "Mens",
+        "women": "Womens",
+        "unisex": "Unisex"
+      },
+      "type": {
+        "title": "Type",
+        "electric-bike": "Electric Bikes",
+        "mountain-bike": "Mountain Bikes",
+        "kid-bike": "Kid Bikes",
+        "road-bike": "Road Bikes",
+        "gravel-bike": "Gravel Bikes"
+      }
+    }
+  },
+
+  "detail-page": {
+    "availability": {
+      "title": "Avalibility: ",
+      "content": "{{number}} in stock"
+    },
+    "price": "{{val, currency(currency: USD)}}",
+    "rating": "{{rating}} reviews",
+    "banner": {
+      "free-shipping": {
+        "title": "FREE SHIPPING",
+        "content": "Free shipping on all US order or order above $99"
+      },
+      "support": {
+        "title": "SUPPORT 24/7",
+        "content": "Contact us 24 hours a day, 7 days a week"
+      },
+      "return-title": {
+        "title": "30 DAYS RETURN",
+        "content": "Simply return it within 30 days"
       }
     },
+    "bicycle-part": {
+      "title": "Bicycle parts",
+      "item": {
+        "brand": "BRAND",
+        "type": "TYPE",
+        "gender": "GENDER",
+        "material": "MATERIAL",
+        "groupset": "GROUPSET",
+        "braking-type": "BRAKING TYPE",
+        "item-condition": "ITEM CONDITION",
+        "availability": "AVAILABILITY"
+      } 
+    }
+  },
 
   "common": {
     "update": "Update",
     "update_confirm": "Are you sure to save this update ?",
     "delete_confirm": "Are you sure to delete ?",
-    "order": "Order",
+    "order": "ORDER BY",
     "file_id": "File ID",
     "available": "Available",
     "disabled": "Disabled",
@@ -157,8 +191,12 @@
     "to": "To",
     "action": "Action",
     "history": "History",
-    "supplier_number": "{{number}} suppliers"
+    "supplier_number": "{{number}} suppliers",
+    "price": "{{val, currency(currency: USD)}}",
+    "asc": "Low to High",
+    "desc": "High to Low"
   },
+
   "field": {
     "no": "No",
     "order_id": "Order ID",
@@ -204,7 +242,8 @@
     "remarks": "Remarks",
     "thresholds": "Thresholds",
     "delivery_date": "Delivery Date",
-    "duration": "Duration"
+    "duration": "Duration",
+    "select_detail_page": "Select Color, Size CM, and Size"
   },
   "error": {
     "order_upload": {
