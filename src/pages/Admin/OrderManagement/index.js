@@ -11,6 +11,22 @@ function OrderManagement(props) {
   //Initialization
   const [selectedKey, setSelectedKey] = useState([])
 
+  const data = [
+    {
+      customer: 'Phú Nguyên',
+      email: 'nguyen@gmail.vom',
+      phone: '0987654321',
+      address: 'viet nam',
+      bicycleName: 'Fuji Altamira 2.2 Shimano 105 - 2013 demo  Playtri -Tyler',
+      price: 1799,
+      color: 'Carbon',
+      frame: '55cm',
+      size: 'Medium',
+      quantity: 1,
+      status: 'status 2',
+      key: '2',
+    },
+  ]
   //columns data for table list bicycles
   const columns = [
     {
@@ -33,28 +49,22 @@ function OrderManagement(props) {
       dataIndex: 'phone',
       sorter: (a, b) => a.phone.length - b.phone.length,
     },
-
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      sorter: (a, b) => a.status.length - b.status.length,
+    },
     {
       title: 'Action',
       key: 'action',
       align: 'center',
       render: (_, record) => (
-        <Space>
-          <Button
-            type="default"
-            shape="default"
-            // onClick={(e) => showEdit(record)}
-            icon={<InfoCircleOutlined />}
-          />
-          <Button
-            type="primary"
-            shape="default"
-            onClick={() => {
-              // handleDelete(record.id)
-            }}
-            icon={<DeleteOutlined />}
-          />
-        </Space>
+        <Button
+          type="primary"
+          shape="default"
+          // onClick={(e) => showEdit(record)}
+          icon={<InfoCircleOutlined />}
+        />
       ),
     },
   ]
@@ -66,15 +76,15 @@ function OrderManagement(props) {
 
   return (
     <>
-      <Row className="bicycleManagement">
+      <Row className="orderManagementPage">
         <Col span={24}>
           <TableManagement
             rowSelection={{
               onChange: handleSelectChange,
             }}
             columns={columns}
-            // data={bicycleState}
-            loading={true}
+            data={data}
+            // loading={true}
           />
         </Col>
       </Row>
