@@ -19,7 +19,7 @@ import TextArea from 'antd/es/input/TextArea'
 import { UploadImage } from '../../index'
 import _ from 'lodash'
 
-function FormEdit({ form, disabled, initialData, setImageUpdate }) {
+function FormEdit({ form, disabled, initialData }) {
   return (
     <Form
       form={form}
