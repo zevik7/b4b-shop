@@ -4,7 +4,8 @@ import {
   PhoneOutlined,
   UserOutlined,
 } from '@ant-design/icons'
-import { Button, Form, Input, Typography } from 'antd'
+import { Button, Form, Input, Typography, message } from 'antd'
+import MessageButton from '../../../components/MessageButton'
 import './index.less'
 import { useDispatch, useSelector } from 'react-redux'
 import { createCheckout } from '../../../redux/slices'
@@ -27,9 +28,9 @@ const CheckoutForm = () => {
       bicycle: checkout.bicycle,
       note: values.note,
     }
-    dispatch(createCheckout(data))
-    alert('Success')
-    console.log('Received values of form: ', data)
+    dispatch(createCheckout(data));
+    message.success("Order successful!");
+    console.log("Received values of form: ", data);
   }
 
   return (
@@ -126,13 +127,14 @@ const CheckoutForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button
+          {/* <Button
             type="primary"
             htmlType="submit"
             style={{ width: '30%', float: 'right' }}
           >
             ORDER
-          </Button>
+          </Button> */}
+          <MessageButton />
         </Form.Item>
       </Form>
     </div>
