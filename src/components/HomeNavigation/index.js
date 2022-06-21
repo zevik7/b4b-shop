@@ -59,7 +59,9 @@ const HomeNavigation = () => {
       <ul className="home-navigation__links">
         {menuItems.map((item) => (
           <li>
-            <NavLink to={item.to}>{item.label}</NavLink>
+            <NavLink to={item.to} key="{item.label}">
+              {item.label}
+            </NavLink>
           </li>
         ))}
       </ul>

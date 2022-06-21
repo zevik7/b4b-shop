@@ -102,7 +102,7 @@ const Shop = () => {
       )
 
     return bicycles.data.map((bicycle, index) => (
-      <Col span={8} key={index} className="bicycles-data">
+      <Col span={8} key={index} className="bicycles-data" style={{}}>
         <BicycleCard
           id={bicycle.id}
           price={bicycle.price}
