@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Button, Layout, Space, Menu } from 'antd'
+import { Button, Layout, Space, Menu, Tabs } from 'antd'
 import './style.less'
 import { Logo, NavLink, LanguageSelect } from '../../components'
+import { MenuOutlined } from '@ant-design/icons'
 
 import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
 
 const { Header } = Layout
+const { TabPane } = Tabs
 
 const menuItems = [
   {
@@ -44,22 +46,9 @@ const menuItems = [
   },
 ]
 
-const languageOptions = [
-  {
-    key: 'vi',
-    value: 'Vietnamese',
-    icon: vietnameIcon,
-  },
-  {
-    key: 'en',
-    value: 'English',
-    icon: englishIcon,
-  },
-]
-
 const HomeNavigation = () => {
   const navigate = useNavigate()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <Header
@@ -67,18 +56,13 @@ const HomeNavigation = () => {
       style={{ position: 'fixed', zIndex: 10, width: '100%' }}
     >
       <Logo />
-      {/* <div className="menu">
+      <ul class="home-navigation__links">
         {menuItems.map((item) => (
-          <NavLink key={item.key} to={item.to}>
-            {item.label}
-          </NavLink>
+          <li>
+            <NavLink to={item.to}>{item.label}</NavLink>
+          </li>
         ))}
-      </div> */}
-      <Menu mode="horizontal">
-        {menuItems.map((item) => (
-          <Menu.Item key={item.key}>{item.label}</Menu.Item>
-        ))}
-      </Menu>
+      </ul>
       <Space className="home-navigation__actions">
         <Button type="primary" onClick={() => navigate('/admin/bicycle')}>
           {t('cta.register')}
@@ -88,6 +72,8 @@ const HomeNavigation = () => {
         </Button>
         <LanguageSelect />
       </Space>
+      {/* For mobile */}
+      <MenuOutlined className="hamburger-icon" />
     </Header>
   )
 }
