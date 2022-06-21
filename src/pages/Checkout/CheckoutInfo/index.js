@@ -19,7 +19,7 @@ const CheckoutInfo = () => {
       <List>
         <List.Item>
           <Row>
-            <Col span={9}>
+            <Col span={12}>
               <List.Item.Meta
                 title={<Text strong>Type</Text>}
                 description={
@@ -30,7 +30,7 @@ const CheckoutInfo = () => {
                 }
               />
             </Col>
-            <Col span={14}>
+            <Col span={12}>
               <div>
                 <Text strong className="name-bicycle">
                   {checkout.bicycle.name}

@@ -43,6 +43,7 @@ import {
   changeCurrentPage,
 } from '../../redux/slices'
 import EmptyData from '../../components/EmptyData'
+import Column from 'antd/lib/table/Column'
 
 const { Title, Text } = Typography
 const { Panel } = Collapse
@@ -101,7 +102,7 @@ const Shop = () => {
       )
 
     return bicycles.data.map((bicycle, index) => (
-      <Col span={8} key={index}>
+      <Col span={8} key={index} className="bicycles-data">
         <BicycleCard
           id={bicycle.id}
           price={bicycle.price}
@@ -159,7 +160,7 @@ const Shop = () => {
                         </Col>
                       </Row>
                     </Col>
-                    <BicycleList />
+                    <BicycleList className="bicycle-list" />
                   </Row>
                   <Row gutter={[16, 16]}>
                     <Col span={24}>

@@ -56,7 +56,7 @@ const HomeNavigation = () => {
       style={{ position: 'fixed', zIndex: 10, width: '100%' }}
     >
       <Logo />
-      <ul class="home-navigation__links">
+      <ul className="home-navigation__links">
         {menuItems.map((item) => (
           <li>
             <NavLink to={item.to}>{item.label}</NavLink>
