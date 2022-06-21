@@ -6,36 +6,38 @@ import {
   EditOutlined,
   InfoCircleOutlined,
 } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
 
 function OrderManagement(props) {
   //Initialization
   const [selectedKey, setSelectedKey] = useState([])
+  const { t } = useTranslation()
 
   //columns data for table list bicycles
   const columns = [
     {
-      title: 'Bicycle',
+      title: `${t('admin_page.order_table.bicycle')}`,
       dataIndex: 'bicycleName',
       sorter: (a, b) => a.bicycleName.length - b.bicycleName.length,
     },
     {
-      title: 'Quantity',
+      title: `${t('admin_page.order_table.quantity')}`,
       dataIndex: 'quantity',
       sorter: (a, b) => a.quantity.length - b.quantity.length,
     },
     {
-      title: 'Customer',
+      title: `${t('admin_page.order_table.customer')}`,
       dataIndex: 'customer',
       sorter: (a, b) => a.customer.length - b.customer.length,
     },
     {
-      title: 'Phone Number',
+      title: `${t('admin_page.order_table.phone_number')}`,
       dataIndex: 'phone',
       sorter: (a, b) => a.phone.length - b.phone.length,
     },
 
     {
-      title: 'Action',
+      title: `${t('admin_page.order_table.action.title')}`,
       key: 'action',
       align: 'center',
       render: (_, record) => (

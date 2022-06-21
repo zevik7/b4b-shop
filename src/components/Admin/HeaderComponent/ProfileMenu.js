@@ -1,8 +1,10 @@
 import React from 'react'
 import { Avatar, Menu } from 'antd'
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
 
 function ProfileMenu(props) {
+  const { t } = useTranslation()
   return (
     <Menu
       items={[
@@ -14,7 +16,7 @@ function ProfileMenu(props) {
         {
           key: '2',
           icon: <LogoutOutlined />,
-          label: 'Logout',
+          label: `${t('cta.logout')}`,
         },
       ]}
     />

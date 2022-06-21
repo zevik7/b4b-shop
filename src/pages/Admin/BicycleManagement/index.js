@@ -16,11 +16,13 @@ import {
   updateBicycle,
 } from '../../../redux/slices'
 import _ from 'lodash'
+import { useTranslation } from 'react-i18next'
 
 function BicycleManagement(props) {
   //Initialization
   const dispatch = useDispatch()
   const bicyclesData = useSelector(bicycleDataSelector)
+  const { t } = useTranslation()
   //State
   const [bicycleState, setBicycleState] = useState([])
   const [loading, setLoading] = useState(false)
@@ -32,28 +34,28 @@ function BicycleManagement(props) {
   //columns data for table list bicycles
   const columns = [
     {
-      title: 'Name',
+      title: `${t('admin_page.table.name')}`,
       dataIndex: 'name',
       sorter: (a, b) => a.name.length - b.name.length,
     },
     {
-      title: 'Brand',
+      title: `${t('admin_page.table.brand')}`,
       dataIndex: 'brand',
       sorter: (a, b) => a.brand.length - b.brand.length,
     },
     {
-      title: 'Price ($)',
+      title: `${t('admin_page.table.price')}`,
       dataIndex: 'price',
       align: 'right',
       sorter: (a, b) => a.price - b.price,
     },
     {
-      title: 'Type',
+      title: `${t('admin_page.table.type')}`,
       dataIndex: 'type',
       sorter: (a, b) => a.type.length - b.type.length,
     },
     {
-      title: 'Action',
+      title: `${t('admin_page.table.action.title')}`,
       key: 'action',
       align: 'center',
       render: (_, record) => (

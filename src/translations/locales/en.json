@@ -2,6 +2,7 @@
   "hello": "Hello world!!",
   "cta": {
     "login": "Login",
+    "logout": "Logout",
     "register": "Register",
     "refresh": "Refresh",
     "save": "Save",
@@ -29,7 +30,10 @@
     "show_history": "Show History",
     "subscribe": "Subscribe",
     "search": "Search",
-    "buy-it-now": "BUY IT NOW"
+    "buy-it-now": "BUY IT NOW",
+    "add": "Add",
+    "cancle": "Cancle",
+    "update": "Update"
   },
 
   "home-navigation": {
@@ -160,6 +164,54 @@
         "item-condition": "ITEM CONDITION",
         "availability": "AVAILABILITY"
       } 
+    }
+  },
+
+  "admin_page": {
+    "table": {
+      "name": "Name",
+      "brand": "Brand",
+      "price": "Price ($)",
+      "type": "Type",
+      "action": {
+        "title": "Action",
+        "content": "Delete Selected"
+      }
+    }, 
+    
+    "side_bar": {
+      "dashboard": "Dashboard",
+      "bicycle": "Bicycle",
+      "order": "Order"
+    },
+
+    "order_table": {
+      "bicycle": "Bicycle",
+      "quantity": "Quantity",
+      "customer": "Customer",
+      "phone_number": "Phone Number",
+      "action": {
+        "title": "Action",
+        "content": "Delete Selected"
+      }
+    },
+
+    "form": {
+      "add_form": {
+        "title": "Add a new bicycle"
+      },
+      "edit_form": {
+        "title": "Edit Bicycle"
+      },
+      "name": "Name",
+      "brand": "Brand",
+      "gender": "Gender",
+      "material": "Material",
+      "price": "Price",
+      "type": "Type",
+      "variants": "Variants",
+      "description": "Description",
+      "image": "Image"
     }
   },
 

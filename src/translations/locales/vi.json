@@ -2,7 +2,8 @@
   "hello": "Xin chao",
   "cta": {
     "login": "Đăng nhập",
-    "register": "Đăng xuất",
+    "logout": "Đăng xuất",
+    "register": "Đăng ký",
     "refresh": "Refresh",
     "save": "Save",
     "delete": "Delete",
@@ -29,7 +30,10 @@
     "show_history": "Show History",
     "subscribe": "Gửi",
     "search": "Tìm kiếm",
-    "buy-it-now": "MUA NGAY"
+    "buy-it-now": "MUA NGAY",
+    "add": "Thêm",
+    "cancle": "Trở về",
+    "update": "Cập nhật"
   },
 
   "home-navigation": {
@@ -160,6 +164,54 @@
         "item-condition": "TÌNH TRẠNG",
         "availability": "KHẢ DỤNG"
       } 
+    }
+  },
+
+  "admin_page": {
+    "table": {
+      "name": "Tên",
+      "brand": "Thương hiệu",
+      "price": "Giá ($)",
+      "type": "Loại hình",
+      "action": {
+        "title": "Hành động",
+        "content": "Xóa lựa chọn"
+      }
+    }, 
+    
+    "side_bar": {
+      "dashboard": "Bảng Điều Khiển",
+      "bicycle": "Xe đạp",
+      "order": "Đơn đặt hàng"
+    },
+
+    "order_table": {
+      "bicycle": "Xe đạp",
+      "quantity": "Số lượng",
+      "customer": "Khách hàng",
+      "phone_number": "Số điện thoại",
+      "action": {
+        "title": "Hành động",
+        "content": "Xóa lựa chọn"
+      }
+    },
+
+    "form": {
+      "add_form": {
+        "title": "Thêm xe đạp"
+      },
+      "edit_form": {
+        "title": "Sửa thông tin xe"
+      },
+      "name": "Tên",
+      "brand": "Thương hiệu",
+      "gender": "Giới tính",
+      "material": "Chất liệu",
+      "price": "Giá",
+      "type": "Loại hình",
+      "variants": "Bổ sung",
+      "description": "Mô tả",
+      "image": "Hình"
     }
   },
 
