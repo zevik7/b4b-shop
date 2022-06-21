@@ -49,13 +49,10 @@ const { Header, Footer, Sider, Content } = Layout
 
 const BicycleDetail = () => {
   const navigate = useNavigate()
-  const { id } = useParams()
   const dispatch = useDispatch()
+  const { id } = useParams()
   const bicycle = useSelector(bicycleSelectedSelector)
   const [form, setForm] = useState({
-    id,
-    name: '',
-    price: '',
     variantIndex: 0,
     quantity: 1,
   })
@@ -64,11 +61,6 @@ const BicycleDetail = () => {
 
   useEffect(() => {
     dispatch(getBicycle(id))
-    setForm({
-      ...form,
-      name: bicycle.name,
-      price: bicycle.price,
-    })
   }, [])
 
   const detailComponentsData = [
@@ -127,11 +119,12 @@ const BicycleDetail = () => {
     const variant = bicycle.variants.find(
       (variant, i) => i == form.variantIndex
     )
+
     const bicycleCheckout = {
-      id: form.id,
-      name: form.name,
-      price: form.price,
-      variants: { ...variant, quantity: form.quantity },
+      id: bicycle.id,
+      name: bicycle.name,
+      price: bicycle.price,
+      variant: { ...variant, quantity: form.quantity },
     }
 
     dispatch(setCheckoutBicycle(bicycleCheckout))

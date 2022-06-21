@@ -32,7 +32,7 @@ const SearchCustom = (props) => {
     const timerId = setTimeout(() => {
       dispatch(onChange(text))
       dispatch(fetchBicycles())
-    }, 1000)
+    }, 500)
 
     return () => clearTimeout(timerId)
   }, [text])
