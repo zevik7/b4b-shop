@@ -1,17 +1,12 @@
 import { useState } from 'react'
-import { useTranslation, Trans } from 'react-i18next'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Button, Layout, Space, Menu, Tabs } from 'antd'
+import { Button, Layout, Space } from 'antd'
 import './style.less'
 import { Logo, NavLink, LanguageSelect } from '../../components'
-import { MenuOutlined } from '@ant-design/icons'
-
-import vietnameIcon from '../../assets/icons/vietnam.png'
-import englishIcon from '../../assets/icons/united-kingdom.png'
 
 const { Header } = Layout
-const { TabPane } = Tabs
 
 const menuItems = [
   {
@@ -46,12 +41,13 @@ const HomeNavigation = () => {
   }
 
   return (
-    <Header
-      className="home-navigation"
-      style={{ position: 'fixed', zIndex: 10, width: '100%' }}
-    >
-      <Logo />
-      <ul class={'home-navigation__menu ' + (isMoble ? 'open' : '')}>
+    <Header className="home-navigation">
+      <Logo
+        style={{
+          marginRight: '20px',
+        }}
+      />
+      <ul className={'home-navigation__menu ' + (isMoble ? 'open' : '')}>
         {menuItems.map((item) => (
           <li className={isMoble ? 'fade' : ''}>
             <NavLink to={item.to}>{item.label}</NavLink>
@@ -71,12 +67,12 @@ const HomeNavigation = () => {
       </ul>
       {/* For mobile */}
       <div
-        class={'hamburger ' + (isMoble ? 'toggle' : '')}
+        className={'hamburger ' + (isMoble ? 'toggle' : '')}
         onClick={handleHamburger}
       >
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
       </div>
     </Header>
   )
