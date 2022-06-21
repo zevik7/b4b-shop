@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Button, Layout, Menu } from 'antd'
+import { Button, Layout, Space, Menu } from 'antd'
 import './style.less'
-import { Logo, NavLink, Select } from '../../components'
+import { Logo, NavLink, LanguageSelect } from '../../components'
 
 import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
@@ -58,12 +58,8 @@ const languageOptions = [
 ]
 
 const HomeNavigation = () => {
-  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng)
-  }
+  const { t, i18n } = useTranslation()
 
   return (
     <Header
@@ -71,24 +67,27 @@ const HomeNavigation = () => {
       style={{ position: 'fixed', zIndex: 10, width: '100%' }}
     >
       <Logo />
-      <div className="menu">
+      {/* <div className="menu">
         {menuItems.map((item) => (
           <NavLink key={item.key} to={item.to}>
             {item.label}
           </NavLink>
         ))}
-      </div>
-      <Button type="primary" onClick={() => navigate('/admin/bicycle')}>
-        {t('cta.register')}
-      </Button>
-      <Button type="outlined" onClick={() => navigate('/admin/bicycle')}>
-        {t('cta.login')}
-      </Button>
-      <Select
-        defaultValue={'en'}
-        options={languageOptions}
-        onChange={changeLanguage}
-      />
+      </div> */}
+      <Menu mode="horizontal">
+        {menuItems.map((item) => (
+          <Menu.Item key={item.key}>{item.label}</Menu.Item>
+        ))}
+      </Menu>
+      <Space className="home-navigation__actions">
+        <Button type="primary" onClick={() => navigate('/admin/bicycle')}>
+          {t('cta.register')}
+        </Button>
+        <Button type="outlined" onClick={() => navigate('/admin/bicycle')}>
+          {t('cta.login')}
+        </Button>
+        <LanguageSelect />
+      </Space>
     </Header>
   )
 }

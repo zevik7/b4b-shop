@@ -1,20 +1,18 @@
 @import '~antd/lib/style/themes/default.less';
 
 .home-navigation {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   background-color: @body-background;
   box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.05);
-  font-size: 15px;
   font-weight: 500;
 
-  .menu {
-    flex: 1;
+  .ant-menu {
     border: none;
   }
 
-  .ant-select {
-    min-width: 130px;
+  &__actions {
+    margin-left: auto;
+    .ant-select {
+      min-width: 130px;
+    }
   }
 }

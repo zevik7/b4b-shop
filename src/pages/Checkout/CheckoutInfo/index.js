@@ -1,4 +1,4 @@
-import { List, Typography } from 'antd'
+import { List, Typography, Col, Layout, Row } from 'antd'
 import React from 'react'
 import './index.less'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,6 +9,8 @@ const { Title, Text } = Typography
 const CheckoutInfo = () => {
   const checkout = useSelector(checkoutSelector)
 
+  console.log(checkout)
+
   return (
     <div className="info-ctn">
       <div className="info-header">
@@ -16,28 +18,37 @@ const CheckoutInfo = () => {
       </div>
       <List>
         <List.Item>
-          <List.Item.Meta
-            title={<Text strong>Type</Text>}
-            description={
-              <Text italic>
-                Number: {checkout.bicycle.quantity} x ${checkout.bicycle.price}
-              </Text>
-            }
-          />
-          <div>
-            <Text strong>{checkout.bicycle.name}</Text>
-          </div>
+          <Row>
+            <Col span={9}>
+              <List.Item.Meta
+                title={<Text strong>Type</Text>}
+                description={
+                  <Text italic>
+                    Number: {checkout.bicycle.variant.quantity} x $
+                    {checkout.bicycle.price}
+                  </Text>
+                }
+              />
+            </Col>
+            <Col span={14}>
+              <div>
+                <Text strong className="name-bicycle">
+                  {checkout.bicycle.name}
+                </Text>
+              </div>
+            </Col>
+          </Row>
         </List.Item>
         <List.Item>
           <Text strong>Provisional</Text>
           <Text italic>
-            ${checkout.bicycle.quantity * checkout.bicycle.price}
+            ${checkout.bicycle.variant.quantity * checkout.bicycle.price}
           </Text>
         </List.Item>
         <List.Item>
           <Text strong>Total</Text>
           <Text type="danger">
-            ${checkout.bicycle.quantity * checkout.bicycle.price}
+            ${checkout.bicycle.variant.quantity * checkout.bicycle.price}
           </Text>
         </List.Item>
         <List.Item style={{ justifyContent: 'center' }}>
