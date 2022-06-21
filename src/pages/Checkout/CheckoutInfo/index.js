@@ -1,4 +1,4 @@
-import { List, Typography, Col, Layout, Row } from 'antd'
+import { List, Typography, Col, Row } from 'antd'
 import React from 'react'
 import './index.less'
 import { useDispatch, useSelector } from 'react-redux'

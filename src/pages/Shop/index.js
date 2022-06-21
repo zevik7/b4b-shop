@@ -102,7 +102,16 @@ const Shop = () => {
       )
 
     return bicycles.data.map((bicycle, index) => (
-      <Col span={8} key={index} className="bicycles-data" style={{}}>
+      <Col
+        xxl={8}
+        xl={8}
+        lg={8}
+        md={12}
+        sm={12}
+        xs={24}
+        key={index}
+        className="bicycles-data"
+      >
         <BicycleCard
           id={bicycle.id}
           price={bicycle.price}
@@ -160,6 +169,8 @@ const Shop = () => {
                         </Col>
                       </Row>
                     </Col>
+                  </Row>
+                  <Row gutter={8}>
                     <BicycleList className="bicycle-list" />
                   </Row>
                   <Row gutter={[16, 16]}>
