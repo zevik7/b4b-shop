@@ -6,35 +6,51 @@ import OrderDetailModal from '../../../components/Admin/OrderDetailModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCheckouts } from '../../../redux/slices'
 import { checkoutDataSelector } from '../../../redux/selectors'
+import _ from 'lodash'
 
 function OrderManagement(props) {
   //Initialization
   const checkoutData = useSelector(checkoutDataSelector)
   const [selectedKey, setSelectedKey] = useState([])
   const [showDetail, setShowDetail] = useState(false)
+  const [checkouts, setCheckouts] = useState([])
+  const [checkoutDetail, setCheckoutDetail] = useState({})
+  const [loading, setLoading] = useState(false)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchCheckouts())
+    setLoading(true)
+    setTimeout(() => {
+      dispatch(fetchCheckouts())
+    }, 500)
   }, [])
-  useEffect(() => {}, [checkoutData])
+  useEffect(() => {
+    if (!_.isEmpty(checkoutData)) {
+      const checkouts = []
+      checkoutData.forEach((checkout) => {
+        let newCheckout = {
+          customer: checkout.user.name,
+          email: checkout.user.email,
+          phone: checkout.user.phone,
+          address: checkout.user.address,
+          bicycleName: checkout.bicycle.name,
+          price: checkout.bicycle.price,
+          color: checkout.bicycle.variant.color,
+          frame: checkout.bicycle.variant.frame,
+          size: checkout.bicycle.variant.size,
+          quantity: checkout.bicycle.variant.quantity,
+          status: checkout.status,
+          key: checkout.id,
+          note: checkout.note,
+        }
+        checkouts.push(newCheckout)
+      })
+      setCheckouts(checkouts)
+      setLoading(false)
+    }
+  }, [checkoutData])
 
-  const data = [
-    {
-      customer: 'Phú Nguyên',
-      email: 'nguyen@gmail.vom',
-      phone: '0987654321',
-      address: 'viet nam',
-      bicycleName: 'Fuji Altamira 2.2 Shimano 105 - 2013 demo  Playtri -Tyler',
-      price: 1799,
-      color: 'Carbon',
-      frame: '55cm',
-      size: 'Medium',
-      quantity: 1,
-      status: 'status 2',
-      key: '2',
-    },
-  ]
   //columns data for table list bicycles
   const columns = [
     {
@@ -80,6 +96,7 @@ function OrderManagement(props) {
   //func handle showDetail
   const handleShowDetail = (record) => {
     setShowDetail(true)
+    setCheckoutDetail(record)
   }
 
   //func handle when Bicycle selected change
@@ -96,12 +113,16 @@ function OrderManagement(props) {
               onChange: handleSelectChange,
             }}
             columns={columns}
-            data={data}
-            // loading={true}
+            data={checkouts}
+            loading={loading}
           />
         </Col>
       </Row>
-      <OrderDetailModal visible={showDetail} setVisible={setShowDetail} />
+      <OrderDetailModal
+        checkout={checkoutDetail}
+        visible={showDetail}
+        setVisible={setShowDetail}
+      />
     </>
   )
 }
