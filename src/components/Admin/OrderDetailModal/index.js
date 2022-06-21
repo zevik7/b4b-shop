@@ -1,17 +1,28 @@
 import React from 'react'
 import { Button, Col, Layout, Modal, Row } from 'antd'
 
-function OrderDetailModal({ visible, setVisible, checkout }) {
+function OrderDetailModal({
+  visible,
+  setVisible,
+  checkout,
+  cancelOrder,
+  acceptOrder,
+}) {
   return (
     <Modal
+      className="orderDetailModal"
       title="Order Detail"
       visible={visible}
       style={{ minWidth: '50%' }}
       footer={[
-        <Button key="cancel" onClick="">
+        <Button key="cancel" onClick={() => cancelOrder(checkout.key)}>
           Cancel Order
         </Button>,
-        <Button key="accept" type="primary" onClick={() => {}}>
+        <Button
+          key="accept"
+          type="primary"
+          onClick={() => acceptOrder(checkout.key)}
+        >
           Accept
         </Button>,
       ]}
@@ -60,7 +71,7 @@ function OrderDetailModal({ visible, setVisible, checkout }) {
           Price:
         </Col>
         <Col xs={24} sm={16} lg={8}>
-          {checkout.price}
+          {checkout.price}$
         </Col>
         <Col xs={24} sm={8} lg={4}>
           Color:

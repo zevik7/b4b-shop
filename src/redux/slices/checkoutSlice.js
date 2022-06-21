@@ -2,28 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import _ from 'lodash'
 import { checkout } from '../../api'
 
-// const initialState = {
-//   status: '',
-//   user: {
-//     name: '',
-//     email: '',
-//     phone: '',
-//     address: '',
-//   },
-//   bicycle: {
-//     id: '',
-//     name: '',
-//     price: '',
-//     variant: {
-//       color: '',
-//       frame: '',
-//       size: '',
-//       quantity: 1,
-//     },
-//   },
-//   note: '',
-// }
-
 const initialState = {
   status: '',
   data: [],
@@ -80,6 +58,11 @@ const checkoutSlice = createSlice({
       })
       .addCase(updateCheckout.fulfilled, (state, action) => {
         state.status = 'idle'
+        let index = _.findIndex(
+          state.data,
+          (checkout) => checkout.id === action.payload.id
+        )
+        state.data[index] = action.payload
       })
       // delete
       .addCase(deleteCheckout.pending, (state, action) => {
@@ -124,8 +107,8 @@ export const createCheckout = createAsyncThunk(
 
 export const updateCheckout = createAsyncThunk(
   'checkout/updateCheckout',
-  async (checkout) => {
-    const res = await checkout.update(checkout)
+  async ({ id, data }) => {
+    const res = await checkout.update({ id, data })
     return res.data
   }
 )

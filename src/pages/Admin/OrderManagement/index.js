@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Row } from 'antd'
+import { Button, Col, message, Row } from 'antd'
 import { TableManagement } from '../../../components'
 import { InfoCircleOutlined } from '@ant-design/icons'
 import OrderDetailModal from '../../../components/Admin/OrderDetailModal'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCheckouts } from '../../../redux/slices'
+import { fetchCheckouts, updateCheckout } from '../../../redux/slices'
 import { checkoutDataSelector } from '../../../redux/selectors'
 import _ from 'lodash'
 
 function OrderManagement(props) {
   //Initialization
   const checkoutData = useSelector(checkoutDataSelector)
-  const [selectedKey, setSelectedKey] = useState([])
   const [showDetail, setShowDetail] = useState(false)
   const [checkouts, setCheckouts] = useState([])
   const [checkoutDetail, setCheckoutDetail] = useState({})
@@ -82,6 +81,7 @@ function OrderManagement(props) {
       title: 'Action',
       key: 'action',
       align: 'center',
+      fixed: 'right',
       render: (_, record) => (
         <Button
           type="primary"
@@ -99,9 +99,24 @@ function OrderManagement(props) {
     setCheckoutDetail(record)
   }
 
-  //func handle when Bicycle selected change
-  const handleSelectChange = (selectedRowKeys, selectedRows) => {
-    setSelectedKey(selectedRowKeys)
+  const handleCancelOrder = (id) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (!confirm('Cancel this order?')) {
+      return false
+    }
+    dispatch(updateCheckout({ id, data: { status: 'Canceled' } }))
+    message.success('Order is canceled!')
+    setShowDetail(false)
+  }
+
+  const handleAcceptOrder = (id) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (!confirm('Accept this order?')) {
+      return false
+    }
+    dispatch(updateCheckout({ id, data: { status: 'Accepted' } }))
+    message.success('Accept order success!')
+    setShowDetail(false)
   }
 
   return (
@@ -109,9 +124,6 @@ function OrderManagement(props) {
       <Row className="orderManagementPage">
         <Col span={24}>
           <TableManagement
-            rowSelection={{
-              onChange: handleSelectChange,
-            }}
             columns={columns}
             data={checkouts}
             loading={loading}
@@ -122,6 +134,8 @@ function OrderManagement(props) {
         checkout={checkoutDetail}
         visible={showDetail}
         setVisible={setShowDetail}
+        acceptOrder={handleAcceptOrder}
+        cancelOrder={handleCancelOrder}
       />
     </>
   )
