@@ -2,26 +2,31 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import _ from 'lodash'
 import { checkout } from '../../api'
 
+// const initialState = {
+//   status: '',
+//   user: {
+//     name: '',
+//     email: '',
+//     phone: '',
+//     address: '',
+//   },
+//   bicycle: {
+//     id: '',
+//     name: '',
+//     price: '',
+//     variant: {
+//       color: '',
+//       frame: '',
+//       size: '',
+//       quantity: 1,
+//     },
+//   },
+//   note: '',
+// }
+
 const initialState = {
   status: '',
-  user: {
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-  },
-  bicycle: {
-    id: '',
-    name: '',
-    price: '',
-    variant: {
-      color: '',
-      frame: '',
-      size: '',
-      quantity: 1,
-    },
-  },
-  note: '',
+  data: [],
 }
 
 const checkoutSlice = createSlice({

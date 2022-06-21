@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
-import { Button, Col, Row, Space } from 'antd'
-import { BicycleManageAction, TableManagement } from '../../../components'
-import {
-  DeleteOutlined,
-  EditOutlined,
-  InfoCircleOutlined,
-} from '@ant-design/icons'
+import React, { useEffect, useState } from 'react'
+import { Button, Col, Row } from 'antd'
+import { TableManagement } from '../../../components'
+import { InfoCircleOutlined } from '@ant-design/icons'
+import OrderDetailModal from '../../../components/Admin/OrderDetailModal'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCheckouts } from '../../../redux/slices'
+import { checkoutDataSelector } from '../../../redux/selectors'
 
 function OrderManagement(props) {
   //Initialization
+  const checkoutData = useSelector(checkoutDataSelector)
   const [selectedKey, setSelectedKey] = useState([])
+  const [showDetail, setShowDetail] = useState(false)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCheckouts())
+  }, [])
+  useEffect(() => {}, [checkoutData])
 
   const data = [
     {
@@ -62,12 +70,17 @@ function OrderManagement(props) {
         <Button
           type="primary"
           shape="default"
-          // onClick={(e) => showEdit(record)}
+          onClick={(e) => handleShowDetail(record)}
           icon={<InfoCircleOutlined />}
         />
       ),
     },
   ]
+
+  //func handle showDetail
+  const handleShowDetail = (record) => {
+    setShowDetail(true)
+  }
 
   //func handle when Bicycle selected change
   const handleSelectChange = (selectedRowKeys, selectedRows) => {
@@ -88,6 +101,7 @@ function OrderManagement(props) {
           />
         </Col>
       </Row>
+      <OrderDetailModal visible={showDetail} setVisible={setShowDetail} />
     </>
   )
 }
