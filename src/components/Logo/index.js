@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import LogoImg from '../../assets/images/system/main-logo.png'
 
 const logoStyle = {
-  padding: '8px',
-  width: '200px',
+  width: '160px',
   maxHeight: '64px',
   objectFit: 'contain',
   cursor: 'pointer',
