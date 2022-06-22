@@ -28,7 +28,6 @@ import {
   Select,
 } from '../../components'
 
-// import filter from '../../redux/slices/filterSlice'
 import Filter from './Filters'
 
 // Redux

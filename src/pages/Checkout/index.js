@@ -21,10 +21,10 @@ const Checkout = () => {
             <div className="checkout-content">
               <Title level={2}>CHECKOUT DETAILS</Title>
               <Row style={{ gap: '2rem' }}>
-                <Col span={14}>
+                <Col xxl={14} xl={14} lg={14} md={24} sm={24} xs={24}>
                   <CheckoutForm />
                 </Col>
-                <Col span={9}>
+                <Col xxl={9} xl={9} lg={9} md={24} sm={24} xs={24}>
                   <CheckoutInfo />
                 </Col>
               </Row>

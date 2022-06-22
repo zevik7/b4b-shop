@@ -9,12 +9,14 @@ import {
   GoogleOutlined,
 } from '@ant-design/icons'
 import { Input, Space, Button, Tooltip, Typography } from 'antd'
+import { Layout } from 'antd'
 import Logo from '../Logo'
 import {} from 'antd'
 import React from 'react'
 import './index.less'
 import { useTranslation } from 'react-i18next'
 
+const { Footer } = Layout
 const { Title } = Typography
 const { Search } = Input
 const suffix = (
@@ -31,11 +33,10 @@ const onSearch = (value) => console.log(value)
 const HomeFooter = () => {
   const { t } = useTranslation()
   return (
-    <div className="footer">
+    <Footer className="footer">
       <section className="container">
         <div className="item-1">
           <li className="footer-title">
-            {/* <a>B4B-Shop</a> */}
             <a className="logo-img">
               <Logo />
             </a>
@@ -150,7 +151,7 @@ const HomeFooter = () => {
       <div className="subfooter">
         Copyright © 2022 B4B.com | All rights reserved
       </div>
-    </div>
+    </Footer>
   )
 }
 
