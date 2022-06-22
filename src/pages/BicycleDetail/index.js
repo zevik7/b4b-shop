@@ -23,6 +23,7 @@ import {
   Select,
   HomeFooter,
 } from '../../components'
+
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { bicycleSelectedSelector } from '../../redux/selectors'
@@ -140,93 +141,89 @@ const BicycleDetail = () => {
             <div className="container">
               <div className="content">
                 <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
-                  <Col span={9}>
-                    <ImgCarousel
-                      images={bicycle.images.map((img) => ({
-                        original: '/images/bikes/' + img,
-                        thumbnail: '/images/bikes/' + img,
-                      }))}
-                    />
-                  </Col>
-                  <Col span={9}>
-                    <div className="detail-wrapper">
-                      <div className="detail-wrapper__info">
-                        <Text className="available-txt">
-                          {t('detail-page.availability.title')}
-                          <Text type="secondary">
-                            {t('detail-page.availability.content', {
-                              number: 12,
-                            })}
-                          </Text>
-                        </Text>
-                        <Title level={2} className="bicycle-name">
-                          {bicycle.name}
-                        </Title>
-                        <Title level={2} className="price">
-                          {bicycle.price} $
-                        </Title>
-                        <div className="rating-box">
-                          <Rate
-                            className="rate"
-                            allowHalf
-                            defaultValue={bicycle.rating}
-                          />
-                          <Text>
-                            {t('detail-page.rating', {
-                              rating: bicycle.rating,
-                            })}
-                          </Text>
-                        </div>
-                        <Divider />
-                        <Paragraph className="desc">
-                          {bicycle.description}
-                        </Paragraph>
-                      </div>
-                      <div className="detail-wrapper__buy-box">
-                        <Form layout="vertical" className="form">
-                          <div className="form-content">
-                            <Form.Item
-                              className="select-item"
-                              name="select-type"
-                              label={t('field.select_detail_page')}
-                            >
-                              <Select
-                                options={selectTypeOptions}
-                                defaultValue={form.variantIndex.toString()}
-                                onChange={handleSelectChange}
+                  <Col lg={18} md={16} sm={24}>
+                    <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
+                      <Col lg={12} md={24}>
+                        <ImgCarousel
+                          images={bicycle.images.map((img) => ({
+                            original: '/images/bikes/' + img,
+                            thumbnail: '/images/bikes/' + img,
+                          }))}
+                        />
+                      </Col>
+                      <Col lg={12} md={24}>
+                        <div className="detail-wrapper">
+                          <div className="detail-wrapper__info">
+                            <Text className="available-txt">
+                              Availability:{' '}
+                              <Text type="secondary">12 in stock</Text>
+                            </Text>
+                            <Title level={2} className="bicycle-name">
+                              {bicycle.name}
+                            </Title>
+                            <Title level={2} className="price">
+                              {bicycle.price} $
+                            </Title>
+                            <div className="rating-box">
+                              <Rate
+                                className="rate"
+                                allowHalf
+                                defaultValue={bicycle.rating}
                               />
-                            </Form.Item>
-                            <Form.Item
-                              className="input-num-item"
-                              name="quantity"
-                              label={t('field.quantity')}
-                            >
-                              <InputNumber
-                                min={1}
-                                max={4}
-                                defaultValue={form.quantity}
-                                onChange={(value) =>
-                                  setForm({ ...form, quantity: value })
-                                }
-                              />
-                            </Form.Item>
+                              <Text>{bicycle.rating} reviews</Text>
+                            </div>
+                            <Divider />
+                            <Paragraph className="desc">
+                              {bicycle.description}
+                            </Paragraph>
                           </div>
-                          <Form.Item>
-                            <Button
-                              className="submit-btn"
-                              type="primary"
-                              size="large"
-                              htmlType="submit"
-                              onClick={handleSubmit}
-                            >
-                              {t('cta.buy-it-now')}
-                            </Button>
-                          </Form.Item>
-                        </Form>
-                      </div>
-                    </div>
+                          <div className="detail-wrapper__buy-box">
+                            <Form layout="vertical" className="form">
+                              <div className="form-content">
+                                <Form.Item
+                                  className="select-item"
+                                  name="select-type"
+                                  label="Select Color, Size CM, and Size"
+                                >
+                                  <Select
+                                    options={selectTypeOptions}
+                                    defaultValue={form.variantIndex.toString()}
+                                    onChange={handleSelectChange}
+                                  />
+                                </Form.Item>
+                                <Form.Item
+                                  className="input-num-item"
+                                  name="quantity"
+                                  label="Quantity"
+                                >
+                                  <InputNumber
+                                    min={1}
+                                    max={4}
+                                    defaultValue={form.quantity}
+                                    onChange={(value) =>
+                                      setForm({ ...form, quantity: value })
+                                    }
+                                  />
+                                </Form.Item>
+                              </div>
+                              <Form.Item>
+                                <Button
+                                  className="submit-btn"
+                                  type="primary"
+                                  size="large"
+                                  htmlType="submit"
+                                  onClick={handleSubmit}
+                                >
+                                  BUY IT NOW
+                                </Button>
+                              </Form.Item>
+                            </Form>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
                   </Col>
-                  <Col span={6}>
+                  <Col lg={6} md={8} sm={24}>
                     <div className="services">
                       <div className="services-item">
                         <div className="services-item__icon">
