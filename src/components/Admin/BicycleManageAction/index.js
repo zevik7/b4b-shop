@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
 
-function BicycleManageAction({ setVisible, handleDelete }) {
+function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
   const { t } = useTranslation()
   const actionForMenu = {
     1: handleDelete,
@@ -29,7 +29,7 @@ function BicycleManageAction({ setVisible, handleDelete }) {
 
   return (
     <div className="action">
-      <Dropdown overlay={menu}>
+      <Dropdown disabled={disabledActions} overlay={menu}>
         <Button icon={<DownOutlined />}>
           {t('admin_page.table.action.title')}
         </Button>
@@ -37,7 +37,7 @@ function BicycleManageAction({ setVisible, handleDelete }) {
       <Button
         icon={<PlusCircleOutlined />}
         type="default"
-        onClick={(e) => setVisible(true)}
+        onClick={(e) => setVisibleAdd(true)}
       >
         {t('cta.add')}
       </Button>

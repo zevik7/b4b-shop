@@ -36,28 +36,35 @@ function BicycleManagement(props) {
     {
       title: `${t('admin_page.table.name')}`,
       dataIndex: 'name',
+      width: 250,
       sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: `${t('admin_page.table.brand')}`,
       dataIndex: 'brand',
+      width: 125,
       sorter: (a, b) => a.brand.length - b.brand.length,
     },
     {
       title: `${t('admin_page.table.price')}`,
       dataIndex: 'price',
       align: 'right',
+      width: 125,
+
       sorter: (a, b) => a.price - b.price,
     },
     {
       title: `${t('admin_page.table.type')}`,
       dataIndex: 'type',
+      width: 150,
       sorter: (a, b) => a.type.length - b.type.length,
     },
     {
       title: `${t('admin_page.table.action.title')}`,
       key: 'action',
       align: 'center',
+      fixed: 'right',
+      width: 100,
       render: (_, record) => (
         <Space>
           <Button
@@ -153,8 +160,9 @@ function BicycleManagement(props) {
       <Row className="bicycleManagement">
         <Col span={24}>
           <BicycleManageAction
-            setVisible={setVisibleAdd}
+            setVisibleAdd={setVisibleAdd}
             handleDelete={handleDelete}
+            disabledActions={_.isEmpty(selectedKey)}
           />
         </Col>
         <Col span={24}>
