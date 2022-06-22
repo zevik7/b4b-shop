@@ -35,7 +35,6 @@ const HomeFooter = () => {
       <section className="container">
         <div className="item-1">
           <li className="footer-title">
-            {/* <a>B4B-Shop</a> */}
             <a className="logo-img">
               <Logo />
             </a>
