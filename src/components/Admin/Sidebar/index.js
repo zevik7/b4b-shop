@@ -33,10 +33,18 @@ function Sidebar(props) {
   ]
 
   return (
-    <Sider className="sidebar" trigger={null} collapsible collapsed={collapsed}>
-      <Logo />
+    <Sider
+      className="sidebar"
+      trigger={null}
+      collapsedWidth="65"
+      collapsed={collapsed}
+    >
+      <Logo
+        style={
+          collapsed && { paddingLeft: '0', paddingRight: '0', width: '160px' }
+        }
+      />
       <Menu theme="light" mode="inline" defaultSelectedKeys items={Items} />
-    </Sider>
   )
 }
 
