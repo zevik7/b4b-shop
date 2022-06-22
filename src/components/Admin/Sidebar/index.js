@@ -44,7 +44,8 @@ function Sidebar(props) {
           collapsed && { paddingLeft: '0', paddingRight: '0', width: '160px' }
         }
       />
-      <Menu theme="light" mode="inline" defaultSelectedKeys items={Items} />
+      <Menu theme="light" mode="inline" items={Items} />
+    </Sider>
   )
 }
 
