@@ -1,8 +1,8 @@
 @import '~antd/lib/style/themes/default.less';
 
-.home-navigation {
+.home-header {
   position: fixed;
-  zindex: 10;
+  z-index: 10;
   width: 100%;
   display: flex;
   align-items: center;
@@ -10,20 +10,24 @@
   box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.05);
   font-weight: 500;
 
-  &__menu {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
+  nav {
+    width: 100%;
+    
+    .nav-list {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
 
-    li {
-      margin: 0 0.8vw;
+      li {
+        margin: 0 0.8vw;
 
-      &.actions {
-        margin-left: auto;
+        &.actions {
+          margin-left: auto;
 
-        .ant-select {
-          min-width: 150px;
+          .ant-select {
+            min-width: 150px;
+          }
         }
       }
     }
@@ -57,7 +61,7 @@
 
 // For responsive
 @media screen and (max-width: 992px) {
-  .home-navigation {
+  .home-header {
     .hamburger {
       display: block;
       margin-left: auto;
@@ -65,60 +69,62 @@
       transition: all 0.7s ease;
     }
 
-    &__menu {
-      position: fixed;
-      background-color: @background-color-base;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      flex-direction: column;
-      clip-path: circle(50px at 92.5% -10%);
-      transition: all 0.5s ease-out;
-      pointer-events: none;
-      z-index: 1;
+    nav {
+      .nav-list {
+        position: fixed;
+        background-color: @background-color-base;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        clip-path: circle(50px at 92.5% -10%);
+        transition: all 0.5s ease-out;
+        pointer-events: none;
+        z-index: 1;
 
-      &.open {
-        pointer-events: all;
-        clip-path: circle(1500px at 92.5% -10%);
-      }
-
-      & > li {
-        opacity: 0;
-        margin: 0;
-
-        &:nth-child(1) {
-          transition: all 0.5s ease 0.2s;
-        }
-        &:nth-child(2) {
-          transition: all 0.5s ease 0.4s;
-        }
-        &:nth-child(3) {
-          transition: all 0.5s ease 0.6s;
-        }
-        &:nth-child(4) {
-          transition: all 0.5s ease 0.8s;
-        }
-        &:nth-child(5) {
-          transition: all 0.5s ease 0.9s;
-        }
-        &:nth-child(6) {
-          transition: all 0.5s ease 1s;
+        &.open {
+          pointer-events: all;
+          clip-path: circle(1500px at 92.5% -10%);
         }
 
-        &.fade {
-          opacity: 1;
-        }
+        & > li {
+          opacity: 0;
+          margin: 0;
 
-        &.actions {
-          margin-left: 0;
-          .ant-space {
-            flex-direction: column;
+          &:nth-child(1) {
+            transition: all 0.5s ease 0.2s;
           }
-        }
+          &:nth-child(2) {
+            transition: all 0.5s ease 0.4s;
+          }
+          &:nth-child(3) {
+            transition: all 0.5s ease 0.6s;
+          }
+          &:nth-child(4) {
+            transition: all 0.5s ease 0.8s;
+          }
+          &:nth-child(5) {
+            transition: all 0.5s ease 0.9s;
+          }
+          &:nth-child(6) {
+            transition: all 0.5s ease 1s;
+          }
 
-        & > a {
-          padding: 0 20px;
+          &.fade {
+            opacity: 1;
+          }
+
+          &.actions {
+            margin-left: 0;
+            .ant-space {
+              flex-direction: column;
+            }
+          }
+
+          & > a {
+            padding: 0 20px;
+          }
         }
       }
     }

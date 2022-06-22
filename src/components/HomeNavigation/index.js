@@ -41,30 +41,35 @@ const HomeNavigation = () => {
   }
 
   return (
-    <Header className="home-navigation">
+    <Header className="home-header">
       <Logo
         style={{
           marginRight: '20px',
         }}
       />
-      <ul className={'home-navigation__menu ' + (isMoble ? 'open' : '')}>
-        {menuItems.map((item) => (
-          <li className={isMoble ? 'fade' : ''}>
-            <NavLink to={item.to}>{item.label}</NavLink>
+      <nav>
+        <ul className={'nav-list ' + (isMoble ? 'open' : '')}>
+          {menuItems.map((item) => (
+            <li key={item.key} className={isMoble ? 'fade' : ''}>
+              <NavLink to={item.to}>{item.label}</NavLink>
+            </li>
+          ))}
+          <li className={'actions ' + (isMoble ? 'fade' : '')}>
+            <Space>
+              <Button type="primary" onClick={() => navigate('/admin/bicycle')}>
+                {t('cta.register')}
+              </Button>
+              <Button
+                type="outlined"
+                onClick={() => navigate('/admin/bicycle')}
+              >
+                {t('cta.login')}
+              </Button>
+              <LanguageSelect />
+            </Space>
           </li>
-        ))}
-        <li className={'actions ' + (isMoble ? 'fade' : '')}>
-          <Space>
-            <Button type="primary" onClick={() => navigate('/admin/bicycle')}>
-              {t('cta.register')}
-            </Button>
-            <Button type="outlined" onClick={() => navigate('/admin/bicycle')}>
-              {t('cta.login')}
-            </Button>
-            <LanguageSelect />
-          </Space>
-        </li>
-      </ul>
+        </ul>
+      </nav>
       {/* For mobile */}
       <div
         className={'hamburger ' + (isMoble ? 'toggle' : '')}
