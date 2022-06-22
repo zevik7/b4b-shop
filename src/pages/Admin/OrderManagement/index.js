@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, message, Row } from 'antd'
 import { TableManagement } from '../../../components'
-import { InfoCircleOutlined } from '@ant-design/icons'
 import OrderDetailModal from '../../../components/Admin/OrderDetailModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCheckouts, updateCheckout } from '../../../redux/slices'
@@ -26,25 +25,21 @@ function OrderManagement(props) {
   }, [])
   useEffect(() => {
     if (!_.isEmpty(checkoutData)) {
-      const checkouts = []
-      checkoutData.forEach((checkout) => {
-        let newCheckout = {
-          customer: checkout.user.name,
-          email: checkout.user.email,
-          phone: checkout.user.phone,
-          address: checkout.user.address,
-          bicycleName: checkout.bicycle.name,
-          price: checkout.bicycle.price,
-          color: checkout.bicycle.variant.color,
-          frame: checkout.bicycle.variant.frame,
-          size: checkout.bicycle.variant.size,
-          quantity: checkout.bicycle.variant.quantity,
-          status: checkout.status,
-          key: checkout.id,
-          note: checkout.note,
-        }
-        checkouts.push(newCheckout)
-      })
+      const checkouts = checkoutData.map((checkout, index) => ({
+        customer: checkout.user.name,
+        email: checkout.user.email,
+        phone: checkout.user.phone,
+        address: checkout.user.address,
+        bicycleName: checkout.bicycle.name,
+        price: checkout.bicycle.price,
+        color: checkout.bicycle.variant.color,
+        frame: checkout.bicycle.variant.frame,
+        size: checkout.bicycle.variant.size,
+        quantity: checkout.bicycle.variant.quantity,
+        status: checkout.status,
+        key: checkout.id,
+        note: checkout.note,
+      }))
       setCheckouts(checkouts)
       setLoading(false)
     }
@@ -84,11 +79,12 @@ function OrderManagement(props) {
       fixed: 'right',
       render: (_, record) => (
         <Button
-          type="primary"
+          type="default"
           shape="default"
           onClick={(e) => handleShowDetail(record)}
-          icon={<InfoCircleOutlined />}
-        />
+        >
+          View
+        </Button>
       ),
     },
   ]
