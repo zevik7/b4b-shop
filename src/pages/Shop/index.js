@@ -43,6 +43,8 @@ import {
   changeCurrentPage,
 } from '../../redux/slices'
 import EmptyData from '../../components/EmptyData'
+import { t } from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 const { Title, Text } = Typography
 const { Panel } = Collapse
@@ -51,6 +53,8 @@ const { Content } = Layout
 const Shop = () => {
   const dispatch = useDispatch()
   const bicycles = useSelector(bicyclesRemainingSelector)
+
+  const { t } = useTranslation()
 
   // Load data
   useEffect(() => {
@@ -130,7 +134,9 @@ const Shop = () => {
                       <Row>
                         <Col span={16}>
                           <div className="order-by">
-                            <Text className="order-by-label">ORDER BY</Text>
+                            <Text className="order-by-label">
+                              {t('common.order')}
+                            </Text>
                             <Select
                               style={{
                                 minWidth: '140px',
@@ -140,15 +146,17 @@ const Shop = () => {
                               options={[
                                 {
                                   key: 'default',
-                                  value: 'Price',
+                                  value: `${t(
+                                    'filter.filter-bar.price.title'
+                                  )}`,
                                 },
                                 {
                                   key: 'asc',
-                                  value: 'Low to High',
+                                  value: `${t('common.asc')}`,
                                 },
                                 {
                                   key: 'desc',
-                                  value: 'High to Low',
+                                  value: `${t('common.desc')}`,
                                 },
                               ]}
                             />

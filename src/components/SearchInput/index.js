@@ -11,12 +11,14 @@ import { fetchBicycles, onChange, setLoading } from '../../redux/slices'
 import _ from 'lodash'
 
 import { AudioOutlined } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
 
 const { Search } = Input
 
 const SearchCustom = (props) => {
   const { style } = props
   const [text, setText] = useState('')
+  const { t } = useTranslation()
   const dispatch = useDispatch()
 
   const firstUpdate = useRef(true)
@@ -37,8 +39,8 @@ const SearchCustom = (props) => {
 
   return (
     <Search
-      placeholder="Type anything to search"
-      enterButton="Search"
+      placeholder={t('cta.place-holder-search')}
+      enterButton={t('cta.search')}
       value={text}
       onChange={(e) => setText(e.target.value)}
       style={{ ...style }}

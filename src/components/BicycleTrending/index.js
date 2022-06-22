@@ -3,6 +3,8 @@ import { Typography } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Tooltip } from 'antd'
 import './index.less'
+import { useTranslation } from 'react-i18next'
+import { t } from 'i18next'
 
 const { Title } = Typography
 
@@ -13,6 +15,8 @@ const BicycleTrending = (props) => {
   const [length, setLength] = useState(children.length)
 
   const [touchPosition, setTouchPosition] = useState(null)
+
+  const { t } = useTranslation()
 
   // Set the length to match current children from props
   useEffect(() => {
@@ -59,7 +63,7 @@ const BicycleTrending = (props) => {
 
   return (
     <div className="trending">
-      <Title level={2}>TRENDING PRODUCTS</Title>
+      <Title level={2}>{t('home-page.trending')}</Title>
       <div className="carousel-container">
         <div className="carousel-wrapper">
           {currentIndex > 0 && (

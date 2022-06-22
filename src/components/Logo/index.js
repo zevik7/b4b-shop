@@ -7,6 +7,7 @@ const logoStyle = {
   maxHeight: '64px',
   objectFit: 'contain',
   cursor: 'pointer',
+  transition: 'all 0.2s linear',
 }
 const Logo = (props) => {
   const { style } = props

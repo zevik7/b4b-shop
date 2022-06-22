@@ -2,6 +2,7 @@
   "hello": "Hello world!!",
   "cta": {
     "login": "Login",
+    "logout": "Logout",
     "register": "Register",
     "refresh": "Refresh",
     "save": "Save",
@@ -23,14 +24,202 @@
     "download_order_pdf": "Order (PDF)",
     "download_order_csv": "CSV",
     "upload_order_confirmation": "Upload Confirmation",
+    "place_holder_input-email": "Enter your email",
+    "place-holder-search": "Type anything to search",
     "back_to_list": "Back to List",
-    "show_history": "Show History"
+    "show_history": "Show History",
+    "subscribe": "Subscribe",
+    "search": "Search",
+    "buy-it-now": "BUY IT NOW",
+    "add": "Add",
+    "cancle": "Cancle",
+    "update": "Update"
   },
+
+  "home-navigation": {
+    "home": "Home",
+    "bicycles": "Bicycles",
+    "clothing": "Clothing",
+    "helmet-and-shoes": "Helmet & Shoes",
+    "components": "Components",
+    "about": "About Us"
+  },
+
+  "home-page": {
+    "categories":  {
+      "title": "POPULAR CATEGORIES",
+      "item": {
+        "electric-bike": "Electric Bikes",
+        "mountain-bike": "Mountain Bikes",
+        "kid-bike": "Kid Bikes",
+        "road-bike": "Road Bikes",
+        "gravel-bike": "Gravel Bikes"
+      }
+    },
+    "trending": "TRENDING PRODUCTS",
+    "brand": "BRANDS",
+    "retailer": {
+      "title": "OUR FEATURED RETAILERS",
+      "description": "B4B Shop is the place to buy or sell any bike, accessory, component or part from anyone, anywhere, anytime. Shop and browse through thousands of bikes & cycling products for sale from hundreds of bike shops and thousands of brands nationwide."
+    }
+  },
+
+  "footer": {
+    "title": "B4B-Shop is the one-stop shop for everything you need when buying your new bike. We are the US distributor and retailer for the global brands",
+    "shop-by": {
+      "title": "Shop By",
+      "item": {
+        "your-order": "Your Orders",
+        "payment": "Payment",
+        "delivery": "Delivery",
+        "condition": "Conditions"
+      }
+    },
+    "product": {
+      "title": "Products",
+      "item": {
+        "new-product": "New product",
+        "best-sale": "Best sales",
+        "price-drop": "Prices drop",
+        "store": "Stores"
+      }
+    },
+    "our-company": {
+      "title": "Our Company",
+      "item": {
+        "about-us": "About Us",
+        "contact-us": "Contact us",
+        "site-map": "Site map",
+        "help-service": "Help & Service"
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "item": {
+        "location": "Victoria Resort, Can Tho City"
+      }
+    }
+  },
+
+  "filter": {
+    "filter-bar": {
+      "price": {
+        "title": "Price"
+      },
+      "brand": {
+        "title": "Brand"
+      },
+      "material": {
+        "title": "Material",
+        "carbon": "Carbon",
+        "aluminum": "Aluminum"
+      },
+      "gender": {
+        "title": "Gender",
+        "men": "Mens",
+        "women": "Womens",
+        "unisex": "Unisex"
+      },
+      "type": {
+        "title": "Type",
+        "electric-bike": "Electric Bikes",
+        "mountain-bike": "Mountain Bikes",
+        "kid-bike": "Kid Bikes",
+        "road-bike": "Road Bikes",
+        "gravel-bike": "Gravel Bikes"
+      }
+    }
+  },
+
+  "detail-page": {
+    "availability": {
+      "title": "Avalibility: ",
+      "content": "{{number}} in stock"
+    },
+    "price": "{{val, currency(currency: USD)}}",
+    "rating": "{{rating}} reviews",
+    "banner": {
+      "free-shipping": {
+        "title": "FREE SHIPPING",
+        "content": "Free shipping on all US order or order above $99"
+      },
+      "support": {
+        "title": "SUPPORT 24/7",
+        "content": "Contact us 24 hours a day, 7 days a week"
+      },
+      "return-title": {
+        "title": "30 DAYS RETURN",
+        "content": "Simply return it within 30 days"
+      }
+    },
+    "bicycle-part": {
+      "title": "Bicycle parts",
+      "item": {
+        "brand": "BRAND",
+        "type": "TYPE",
+        "gender": "GENDER",
+        "material": "MATERIAL",
+        "groupset": "GROUPSET",
+        "braking-type": "BRAKING TYPE",
+        "item-condition": "ITEM CONDITION",
+        "availability": "AVAILABILITY"
+      } 
+    }
+  },
+
+  "admin_page": {
+    "table": {
+      "name": "Name",
+      "brand": "Brand",
+      "price": "Price ($)",
+      "type": "Type",
+      "action": {
+        "title": "Action",
+        "content": "Delete Selected"
+      }
+    }, 
+    
+    "side_bar": {
+      "dashboard": "Dashboard",
+      "bicycle": "Bicycle",
+      "order": "Order"
+    },
+
+    "order_table": {
+      "bicycle": "Bicycle",
+      "quantity": "Quantity",
+      "customer": "Customer",
+      "phone_number": "Phone Number",
+      "action": {
+        "title": "Action",
+        "content": "Delete Selected"
+      }
+    },
+
+    "form": {
+      "add_form": {
+        "title": "Add a new bicycle"
+      },
+      "edit_form": {
+        "title": "Edit Bicycle"
+      },
+      "name": "Name",
+      "brand": "Brand",
+      "gender": "Gender",
+      "material": "Material",
+      "price": "Price",
+      "type": "Type",
+      "variants": "Variants",
+      "description": "Description",
+      "image": "Image"
+    }
+  },
+
   "common": {
     "update": "Update",
     "update_confirm": "Are you sure to save this update ?",
     "delete_confirm": "Are you sure to delete ?",
-    "order": "Order",
+    "order": "ORDER BY",
     "file_id": "File ID",
     "available": "Available",
     "disabled": "Disabled",
@@ -54,8 +243,12 @@
     "to": "To",
     "action": "Action",
     "history": "History",
-    "supplier_number": "{{number}} suppliers"
+    "supplier_number": "{{number}} suppliers",
+    "price": "{{val, currency(currency: USD)}}",
+    "asc": "Low to High",
+    "desc": "High to Low"
   },
+
   "field": {
     "no": "No",
     "order_id": "Order ID",
@@ -101,7 +294,8 @@
     "remarks": "Remarks",
     "thresholds": "Thresholds",
     "delivery_date": "Delivery Date",
-    "duration": "Duration"
+    "duration": "Duration",
+    "select_detail_page": "Select Color, Size CM, and Size"
   },
   "error": {
     "order_upload": {
