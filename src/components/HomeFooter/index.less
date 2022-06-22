@@ -1,9 +1,7 @@
 @import '~antd/lib/style/themes/default.less';
 
 .footer {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  background-color: #fff;
+  background-color: @body-background;
   border-top: 1px solid @border-color-base;
   .item-1 {
     grid-area: item-1;
@@ -31,8 +29,7 @@
     grid-template-areas:
       'item-1 item-2 item-3 item-4 item-5'
       'item-6 item-6 item-6 item-6 item-6';
-    gap: 100px;
-    row-gap: 2rem;
+    gap: 40px;
     grid-row-gap: 2rem;
     padding-top: 40px;
     border-bottom: 1px solid #b3b3b3;
@@ -43,6 +40,7 @@
         .search-input-footer {
           padding-bottom: 30px;
           width: 50%;
+          min-width: 300px;
         }
       }
     }
@@ -53,7 +51,7 @@
     .item-5 {
       list-style-type: none;
       .footer-title {
-        font-size: 25px;
+        font-size: 22px;
         color: #000 !important;
         .logo-img {
           float: none !important;
@@ -90,69 +88,26 @@
 @media (max-width: 1267px) {
   .footer {
     .container {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: stretch;
-      align-content: space-between;
-      grid-template-areas:
-        'item-1 item-2 item-3 item-4'
-        'item-5 item-5 item-5 item-5'
-        'item-6 item-6 item-6 item-6';
-      gap: 100px;
-      row-gap: 2rem;
-      grid-row-gap: 2rem;
-      padding-top: 40px;
-      border-bottom: 1px solid #b3b3b3;
+      gap: 20px;
     }
   }
 }
 
-@media (max-width: 792px) {
+@media (max-width: 992px) {
   .footer {
+    padding: 20px;
     .container {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: stretch;
-      align-content: space-between;
       grid-template-areas:
-        'item-1 item-2 item-3 item-3'
-        'item-4 item-4 item-5 item-5'
+        'item-1 item-1 item-1 item-1'
+        'item-2 item-3 item-4 item-5'
         'item-6 item-6 item-6 item-6';
-      gap: 100px;
-      row-gap: 2rem;
-      grid-row-gap: 2rem;
-      padding-top: 40px;
-      border-bottom: 1px solid #b3b3b3;
     }
   }
 }
-@media (max-width: 650px) {
+
+@media (max-width: 600px) {
   .footer {
     .container {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: stretch;
-      align-content: space-between;
-      grid-template-areas:
-        'item-1 item-2'
-        'item-3 item-4'
-        'item-5 item-5'
-        'item-6 item-6';
-      gap: 100px;
-      row-gap: 2rem;
-      grid-row-gap: 2rem;
-      padding-top: 40px;
-      border-bottom: 1px solid #b3b3b3;
-    }
-  }
-}
-@media (max-width: 402px) {
-  .footer {
-    .container {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: stretch;
-      align-content: space-between;
       grid-template-areas:
         'item-1'
         'item-2'
@@ -160,11 +115,6 @@
         'item-4'
         'item-5'
         'item-6';
-      gap: 100px;
-      row-gap: 2rem;
-      grid-row-gap: 2rem;
-      padding-top: 40px;
-      border-bottom: 1px solid #b3b3b3;
     }
   }
 }
