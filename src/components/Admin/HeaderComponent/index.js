@@ -4,9 +4,11 @@ import {
   MenuUnfoldOutlined,
   UserOutlined,
 } from '@ant-design/icons'
+import './index.less'
 import { Header } from 'antd/es/layout/layout'
 import { Avatar, Dropdown } from 'antd'
 import ProfileMenu from './ProfileMenu'
+import LanguageSelect from '../../LanguageSelect'
 
 function HeaderComponent(props) {
   const { toggleSidebar, collapsed } = props
@@ -20,11 +22,14 @@ function HeaderComponent(props) {
         className: 'trigger',
         onClick: () => setCollapsed(!collapsed),
       })}
-      <Dropdown overlay={<ProfileMenu />}>
-        <a onClick={(e) => e.preventDefault()}>
-          <Avatar size="large" icon={<UserOutlined />} />
-        </a>
-      </Dropdown>
+      <div className="header__right-control">
+        <LanguageSelect />
+        <Dropdown overlay={<ProfileMenu />}>
+          <a onClick={(e) => e.preventDefault()}>
+            <Avatar size="large" icon={<UserOutlined />} />
+          </a>
+        </Dropdown>
+      </div>
     </Header>
   )
 }

@@ -18,8 +18,10 @@ import {
 import TextArea from 'antd/es/input/TextArea'
 import { UploadImage } from '../../index'
 import _ from 'lodash'
+import { useTranslation } from 'react-i18next'
 
 function FormEdit({ form, disabled, initialData }) {
+  const { t } = useTranslation()
   return (
     <Form
       form={form}
@@ -32,7 +34,7 @@ function FormEdit({ form, disabled, initialData }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="name"
-            label="Name"
+            label={t('admin_page.form.name')}
             rules={[
               {
                 required: true,
@@ -46,7 +48,7 @@ function FormEdit({ form, disabled, initialData }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="price"
-            label="Price"
+            label={t('admin_page.form.price')}
             rules={[
               {
                 required: true,
@@ -60,7 +62,7 @@ function FormEdit({ form, disabled, initialData }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="brand"
-            label="Brand"
+            label={t('admin_page.form.brand')}
             rules={[
               {
                 required: true,
@@ -80,7 +82,7 @@ function FormEdit({ form, disabled, initialData }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="type"
-            label="Type"
+            label={t('admin_page.form.type')}
             rules={[
               {
                 required: true,
@@ -104,7 +106,7 @@ function FormEdit({ form, disabled, initialData }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="gender"
-            label="Gender"
+            label={t('admin_page.form.gender')}
             rules={[
               {
                 required: true,
@@ -122,7 +124,7 @@ function FormEdit({ form, disabled, initialData }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="material"
-            label="Material"
+            label={t('admin_page.form.material')}
             rules={[
               {
                 required: true,
@@ -133,7 +135,7 @@ function FormEdit({ form, disabled, initialData }) {
             <Input />
           </Form.Item>
         </Col>
-        <Col span={24}>Variants</Col>
+        <Col span={24}>{t('admin_page.form.variants')}</Col>
         <Col span={24}>
           <Form.List name="variants">
             {(fields, { add, remove }) => (
@@ -215,7 +217,7 @@ function FormEdit({ form, disabled, initialData }) {
                     block
                     icon={<PlusOutlined />}
                   >
-                    Add variant
+                    {t('cta.add')}
                   </Button>
                 </Form.Item>
               </>
@@ -223,14 +225,17 @@ function FormEdit({ form, disabled, initialData }) {
           </Form.List>
         </Col>
         <Col xxl={24} sm={24} xs={24}>
-          <Form.Item name="description" label="Description">
+          <Form.Item
+            name="description"
+            label={t('admin_page.form.description')}
+          >
             <TextArea rows={2} />
           </Form.Item>
         </Col>
         <Col xxl={24} sm={24} xs={24}>
           <Form.Item
             name="images"
-            label="Images"
+            label={t('admin_page.form.image')}
             rules={[
               {
                 required: true,

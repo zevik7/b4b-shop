@@ -1,5 +1,6 @@
 import { Col, Divider, Row, Typography } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import batch from '../../../assets/images/brands/batch.avif'
 import cannondale from '../../../assets/images/brands/cannondale.avif'
@@ -15,9 +16,10 @@ import './style.less'
 const { Title } = Typography
 
 const BrandList = () => {
+  const { t } = useTranslation()
   return (
     <div className="brand-list">
-      <Title level={2}>BRANDS</Title>
+      <Title level={2}>{t('home-page.brand')}</Title>
       <Row
         gutter={[
           {
