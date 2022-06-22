@@ -7,6 +7,7 @@ export const bicycleDataSelector = (state) => state.bicycles.data
 
 // Checkout page
 export const checkoutSelector = (state) => state.checkouts
+export const checkoutDataSelector = (state) => state.checkouts.data
 
 // Filter
 export const filterPriceSelector = (state) => state.shopFilter.price

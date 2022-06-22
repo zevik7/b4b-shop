@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Menu } from 'antd'
 import {
   CheckSquareOutlined,
@@ -6,21 +6,31 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons'
 import Sider from 'antd/es/layout/Sider'
-import { Logo, NavLink } from '../../../components'
-import { useNavigate } from 'react-router-dom'
+import { Logo } from '../../../components'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Sidebar(props) {
   const { collapsed } = props
   const navigate = useNavigate()
 
-  const url = {
-    1: '',
-    2: '/admin/bicycle',
-    3: '/admin/order',
+  const getItem = (label, key, icon, children) => {
+    return {
+      key,
+      icon,
+      children,
+      label,
+    }
   }
-  const handleClick = (e) => {
-    navigate(url[e.key])
-  }
+
+  const Items = [
+    getItem(<Link to="/admin/">Dashboard</Link>, 1, <DashboardOutlined />),
+    getItem(
+      <Link to="/admin/bicycle">Bicycle</Link>,
+      2,
+      <UnorderedListOutlined />
+    ),
+    getItem(<Link to="/admin/order">Order</Link>, 3, <CheckSquareOutlined />),
+  ]
 
   return (
     <Sider
@@ -34,29 +44,7 @@ function Sidebar(props) {
           collapsed && { paddingLeft: '0', paddingRight: '0', width: '160px' }
         }
       />
-      <Menu
-        theme="light"
-        mode="inline"
-        onClick={handleClick}
-        items={[
-          {
-            key: '1',
-            icon: <DashboardOutlined />,
-            label: 'Dashboard',
-          },
-          {
-            key: '2',
-            icon: <UnorderedListOutlined />,
-            label: 'Bicycle',
-          },
-          {
-            key: '3',
-            icon: <CheckSquareOutlined />,
-            label: 'Order',
-          },
-        ]}
-      />
-    </Sider>
+      <Menu theme="light" mode="inline" defaultSelectedKeys items={Items} />
   )
 }
 

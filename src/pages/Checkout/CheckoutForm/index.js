@@ -28,9 +28,9 @@ const CheckoutForm = () => {
       bicycle: checkout.bicycle,
       note: values.note,
     }
-    dispatch(createCheckout(data));
-    message.success("Order successful!");
-    console.log("Received values of form: ", data);
+    dispatch(createCheckout(data))
+    message.success('Order successful!')
+    console.log('Received values of form: ', data)
   }
 
   return (
