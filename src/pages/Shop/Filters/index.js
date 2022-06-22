@@ -1,15 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import './style.less'
-import { Col, Row } from 'antd'
-import {
-  Checkbox,
-  Collapse,
-  InputNumber,
-  Slider,
-  Space,
-  Typography,
-  Layout,
-} from 'antd'
 import {
   DashboardOutlined,
   DollarOutlined,
@@ -17,13 +5,24 @@ import {
   RocketOutlined,
   SketchOutlined,
 } from '@ant-design/icons'
-
-import { BicycleCard } from '../../../components'
-
+import { Col, Row } from 'antd'
+import {
+  Checkbox,
+  Collapse,
+  InputNumber,
+  Layout,
+  Slider,
+  Space,
+  Typography,
+} from 'antd'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
+
+import { BicycleCard } from '../../../components'
 import filterSlice from '../../../redux/slices/filterSlice'
-import { useTranslation } from 'react-i18next'
+import './style.less'
 
 const { Title } = Typography
 const { Panel } = Collapse

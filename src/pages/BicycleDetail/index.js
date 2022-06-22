@@ -1,34 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
 import {
-  Col,
-  Row,
-  Layout,
-  Typography,
-  InputNumber,
-  Rate,
-  Button,
-  Divider,
-  Form,
-} from 'antd'
-import {
-  SendOutlined,
-  RollbackOutlined,
   CustomerServiceOutlined,
+  RollbackOutlined,
+  SendOutlined,
 } from '@ant-design/icons'
 import {
-  ImgCarousel,
-  HomeNavigation,
-  Table,
-  Select,
-  HomeFooter,
-} from '../../components'
+  Button,
+  Col,
+  Divider,
+  Form,
+  InputNumber,
+  Layout,
+  Rate,
+  Row,
+  Typography,
+} from 'antd'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+
+import {
+  HomeFooter,
+  HomeNavigation,
+  ImgCarousel,
+  Select,
+  Table,
+} from '../../components'
 import { bicycleSelectedSelector } from '../../redux/selectors'
 import { getBicycle, setCheckoutBicycle } from '../../redux/slices'
 import './style.less'
-import { useTranslation } from 'react-i18next'
 
 const detailComponentsColumns = [
   {

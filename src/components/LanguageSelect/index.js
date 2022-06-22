@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { useTranslation, Trans } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { Button, Layout, Menu } from 'antd'
-import { Logo, NavLink, Select } from '../../components'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
-import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
+import vietnameIcon from '../../assets/icons/vietnam.png'
+import { Logo, NavLink, Select } from '../../components'
 
 const { Header } = Layout
 

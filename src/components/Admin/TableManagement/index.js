@@ -1,5 +1,5 @@
-import React from 'react'
 import { Table } from 'antd'
+import React from 'react'
 
 function TableManagement({ rowSelection, columns, data, onClickRow, loading }) {
   return (

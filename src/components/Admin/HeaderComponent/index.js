@@ -1,14 +1,15 @@
-import React from 'react'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UserOutlined,
 } from '@ant-design/icons'
-import './index.less'
-import { Header } from 'antd/es/layout/layout'
 import { Avatar, Dropdown } from 'antd'
-import ProfileMenu from './ProfileMenu'
+import { Header } from 'antd/es/layout/layout'
+import React from 'react'
+
 import LanguageSelect from '../../LanguageSelect'
+import ProfileMenu from './ProfileMenu'
+import './index.less'
 
 function HeaderComponent(props) {
   const { toggleSidebar, collapsed } = props

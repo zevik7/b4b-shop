@@ -1,4 +1,8 @@
-import React from 'react'
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  UploadOutlined,
+} from '@ant-design/icons'
 import {
   Button,
   Col,
@@ -7,15 +11,11 @@ import {
   InputNumber,
   Row,
   Select,
-  Upload,
   Space,
+  Upload,
 } from 'antd'
-import {
-  UploadOutlined,
-  MinusCircleOutlined,
-  PlusOutlined,
-} from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 function FormAdd({ form }) {

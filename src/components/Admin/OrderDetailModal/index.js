@@ -1,5 +1,5 @@
-import React from 'react'
 import { Button, Col, Layout, Modal, Row } from 'antd'
+import React from 'react'
 
 function OrderDetailModal({
   visible,

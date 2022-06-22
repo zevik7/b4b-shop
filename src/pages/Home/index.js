@@ -1,13 +1,13 @@
+import { Layout, Space, Typography } from 'antd'
 import { useState } from 'react'
-import { Space, Typography, Layout } from 'antd'
-import './index.less'
 
-import BicycleTrendingList from '../../components/BicycleTrendingList'
 import { HomeFooter, HomeNavigation } from '../../components'
-import BrandList from './BrandList'
+import BicycleTrendingList from '../../components/BicycleTrendingList'
 import AdsCarousel from './AdsCarousel'
 import Banner from './Banner'
+import BrandList from './BrandList'
 import Features from './Features'
+import './index.less'
 
 const { Title, Text } = Typography
 const { Header, Content, Footer } = Layout

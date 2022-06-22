@@ -1,6 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { bicycle } from '../../api'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import _ from 'lodash'
+
+import { bicycle } from '../../api'
 
 const initialState = {
   status: '',

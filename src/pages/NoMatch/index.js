@@ -1,6 +1,7 @@
+import { Button, Result } from 'antd'
 import React from 'react'
-import { Result, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
+
 import { HomeFooter, HomeNavigation } from '../../components'
 
 const NoMatch = () => {

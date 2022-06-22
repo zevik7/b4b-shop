@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Col, Row, Space, message } from 'antd'
+import _ from 'lodash'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+
 import {
   AddBicycleModal,
   BicycleManageAction,
   EditBicycleModal,
   TableManagement,
 } from '../../../components'
-import { useDispatch, useSelector } from 'react-redux'
 import { bicycleDataSelector } from '../../../redux/selectors'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import {
   createBicycle,
   deleteBicycle,
   fetchBicycles,
   updateBicycle,
 } from '../../../redux/slices'
-import _ from 'lodash'
-import { useTranslation } from 'react-i18next'
 
 function BicycleManagement(props) {
   //Initialization

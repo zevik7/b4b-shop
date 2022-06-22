@@ -1,13 +1,13 @@
-import { Space, Typography, Layout } from 'antd'
+import { Layout, Space, Typography } from 'antd'
 import { motion } from 'framer-motion'
-import './style.less'
+import { useTranslation } from 'react-i18next'
 
 import ebike from '../../../assets/images/ebike-icon.svg'
-import mountbike from '../../../assets/images/mtb-icon.svg'
-import roadbike from '../../../assets/images/road-icon.svg'
 import gravbike from '../../../assets/images/gravel-icon.svg'
 import kidbike from '../../../assets/images/kids-icon.svg'
-import { useTranslation } from 'react-i18next'
+import mountbike from '../../../assets/images/mtb-icon.svg'
+import roadbike from '../../../assets/images/road-icon.svg'
+import './style.less'
 
 const { Title, Text } = Typography
 

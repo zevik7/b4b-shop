@@ -1,13 +1,13 @@
+import { Button, Col, Row, message } from 'antd'
+import _ from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { Button, Col, message, Row } from 'antd'
+import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { TableManagement } from '../../../components'
 import OrderDetailModal from '../../../components/Admin/OrderDetailModal'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchCheckouts, updateCheckout } from '../../../redux/slices'
 import { checkoutDataSelector } from '../../../redux/selectors'
-import { useTranslation } from 'react-i18next'
-
-import _ from 'lodash'
+import { fetchCheckouts, updateCheckout } from '../../../redux/slices'
 
 function OrderManagement(props) {
   //Initialization

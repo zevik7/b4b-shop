@@ -1,11 +1,12 @@
 import { Col, Layout, Row, Typography } from 'antd'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import '../../assets/less/grid.less'
 import { HomeFooter, HomeNavigation } from '../../components'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { fetchCheckouts, getCheckout } from '../../redux/slices'
 import CheckoutForm from './CheckoutForm'
 import CheckoutInfo from './CheckoutInfo'
-import { fetchCheckouts, getCheckout } from '../../redux/slices'
 import './index.less'
 
 const { Title } = Typography

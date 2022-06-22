@@ -1,19 +1,20 @@
 import {
   AndroidOutlined,
-  MailOutlined,
-  FacebookOutlined,
-  TwitterOutlined,
-  InstagramOutlined,
-  WhatsAppOutlined,
   EnvironmentOutlined,
+  FacebookOutlined,
   GoogleOutlined,
+  InstagramOutlined,
+  MailOutlined,
+  TwitterOutlined,
+  WhatsAppOutlined,
 } from '@ant-design/icons'
-import { Input, Space, Button, Tooltip, Typography } from 'antd'
-import Logo from '../Logo'
-import {} from 'antd'
+import { Button, Input, Space, Tooltip, Typography } from 'antd'
+import 'antd'
 import React from 'react'
-import './index.less'
 import { useTranslation } from 'react-i18next'
+
+import Logo from '../Logo'
+import './index.less'
 
 const { Title } = Typography
 const { Search } = Input

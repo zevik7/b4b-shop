@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { useTranslation, Trans } from 'react-i18next'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Button, Layout, Space, Menu, Tabs } from 'antd'
-import './style.less'
-import { Logo, NavLink, LanguageSelect } from '../../components'
 import { MenuOutlined } from '@ant-design/icons'
+import { Button, Layout, Menu, Space, Tabs } from 'antd'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
+import vietnameIcon from '../../assets/icons/vietnam.png'
+import { LanguageSelect, Logo, NavLink } from '../../components'
+import './style.less'
 
 const { Header } = Layout
 const { TabPane } = Tabs

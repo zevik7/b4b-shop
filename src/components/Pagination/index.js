@@ -1,5 +1,5 @@
-import React from 'react'
 import { Pagination } from 'antd'
+import React from 'react'
 
 const itemRender = (_, type, originalElement) => {
   if (type === 'prev') {

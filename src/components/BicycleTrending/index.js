@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { Typography } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
+import { Typography } from 'antd'
 import { Button, Tooltip } from 'antd'
-import './index.less'
-import { useTranslation } from 'react-i18next'
 import { t } from 'i18next'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import './index.less'
 
 const { Title } = Typography
 

@@ -1,13 +1,12 @@
 import { Col, Divider, Row, Typography } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
+import bikehelp from '../../../assets/images/features/bikehelp.gif'
 import mack from '../../../assets/images/features/mack.avif'
 import pulse from '../../../assets/images/features/pulse.avif'
 import ride from '../../../assets/images/features/ride.avif'
-import bikehelp from '../../../assets/images/features/bikehelp.gif'
-
 import './style.less'
-import { useTranslation } from 'react-i18next'
 
 const { Title } = Typography
 

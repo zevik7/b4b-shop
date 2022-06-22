@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  UploadOutlined,
+} from '@ant-design/icons'
 import {
   Button,
   Col,
@@ -10,15 +14,12 @@ import {
   Select,
   Upload,
 } from 'antd'
-import {
-  MinusCircleOutlined,
-  PlusOutlined,
-  UploadOutlined,
-} from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
-import { UploadImage } from '../../index'
 import _ from 'lodash'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { UploadImage } from '../../index'
 
 function FormEdit({ form, disabled, initialData }) {
   const { t } = useTranslation()

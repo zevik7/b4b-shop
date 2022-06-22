@@ -1,17 +1,16 @@
-import { useState, useEffect, useRef } from 'react'
+import { AudioOutlined } from '@ant-design/icons'
 import { Input, Space } from 'antd'
+import _ from 'lodash'
+import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
+
 import {
+  bicyclesRemainingSelector,
   bicyclesSelector,
   searchSelector,
-  bicyclesRemainingSelector,
 } from '../../redux/selectors'
 import { fetchBicycles, onChange, setLoading } from '../../redux/slices'
-
-import _ from 'lodash'
-
-import { AudioOutlined } from '@ant-design/icons'
-import { useTranslation } from 'react-i18next'
 
 const { Search } = Input
 

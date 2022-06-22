@@ -10,7 +10,6 @@ import fouriii from '../../../assets/images/brands/fouriii.avif'
 import fuji from '../../../assets/images/brands/fuji.avif'
 import giant from '../../../assets/images/brands/giant.avif'
 import sole from '../../../assets/images/brands/sole.avif'
-
 import './style.less'
 
 const { Title } = Typography
