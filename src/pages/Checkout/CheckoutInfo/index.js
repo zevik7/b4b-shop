@@ -1,4 +1,4 @@
-import { List, Typography, Col, Layout, Row } from 'antd'
+import { List, Typography, Col, Row } from 'antd'
 import React from 'react'
 import './index.less'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,7 +19,7 @@ const CheckoutInfo = () => {
       <List>
         <List.Item>
           <Row>
-            <Col span={9}>
+            <Col span={12}>
               <List.Item.Meta
                 title={<Text strong>Type</Text>}
                 description={
@@ -30,7 +30,7 @@ const CheckoutInfo = () => {
                 }
               />
             </Col>
-            <Col span={14}>
+            <Col span={12}>
               <div>
                 <Text strong className="name-bicycle">
                   {checkout.bicycle.name}

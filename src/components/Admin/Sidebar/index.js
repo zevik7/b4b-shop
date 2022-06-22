@@ -47,6 +47,7 @@ function Sidebar(props) {
         }
       />
       <Menu theme="light" mode="inline" defaultSelectedKeys items={Items} />
+    </Sider>
   )
 }
 

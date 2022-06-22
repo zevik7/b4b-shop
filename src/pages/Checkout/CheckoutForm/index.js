@@ -127,13 +127,6 @@ const CheckoutForm = () => {
         </Form.Item>
 
         <Form.Item>
-          {/* <Button
-            type="primary"
-            htmlType="submit"
-            style={{ width: '30%', float: 'right' }}
-          >
-            ORDER
-          </Button> */}
           <MessageButton />
         </Form.Item>
       </Form>
