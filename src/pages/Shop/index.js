@@ -20,14 +20,14 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import {
   BicycleCard,
+  EmptyData,
+  HomeFooter,
   HomeNavigation,
   LoadingAnimation,
   Pagination,
   SearchInput,
   Select,
 } from '../../components'
-import EmptyData from '../../components/EmptyData'
-import HomeFooter from '../../components/HomeFooter'
 import {
   bicyclesRemainingSelector,
   bicyclesSelector,
@@ -37,8 +37,8 @@ import {
   fetchBicycles,
   orderPriceChange,
 } from '../../redux/slices'
-// import filter from '../../redux/slices/filterSlice'
 import Filter from './Filters'
+// import filter from '../../redux/slices/filterSlice'
 import './index.less'
 import './index.less'
 
@@ -101,7 +101,16 @@ const Shop = () => {
       )
 
     return bicycles.data.map((bicycle, index) => (
-      <Col span={8} key={index}>
+      <Col
+        xxl={8}
+        xl={8}
+        lg={8}
+        md={12}
+        sm={12}
+        xs={24}
+        key={index}
+        className="bicycles-data"
+      >
         <BicycleCard
           id={bicycle.id}
           price={bicycle.price}
@@ -121,14 +130,14 @@ const Shop = () => {
           <div className="container">
             <div className="shop-page-wrapper">
               <Row gutter={[16, 16]}>
-                <Col span={6}>
+                <Col xl={6} md={8} sm={24} xs={24}>
                   <Filter />
                 </Col>
-                <Col span={18}>
+                <Col xl={18} md={16} sm={24} xs={24}>
                   <Row gutter={[16, 16]}>
                     <Col span={24}>
-                      <Row>
-                        <Col span={16}>
+                      <Row className="filter-search">
+                        <Col xl={16} md={12} sm={24} xs={24}>
                           <div className="order-by">
                             <Text className="order-by-label">
                               {t('common.order')}
@@ -158,12 +167,20 @@ const Shop = () => {
                             />
                           </div>
                         </Col>
-                        <Col span={8}>
+                        <Col
+                          xl={8}
+                          md={12}
+                          sm={24}
+                          xs={24}
+                          className="search-input"
+                        >
                           <SearchInput />
                         </Col>
                       </Row>
                     </Col>
-                    <BicycleList />
+                  </Row>
+                  <Row gutter={8}>
+                    <BicycleList className="bicycle-list" />
                   </Row>
                   <Row gutter={[16, 16]}>
                     <Col span={24}>

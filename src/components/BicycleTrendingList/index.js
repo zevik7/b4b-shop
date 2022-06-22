@@ -9,7 +9,7 @@ import BicycleTrending from '../BicycleTrending'
 const BicycleTrendingList = () => {
   const dispatch = useDispatch()
   const bicycles = useSelector(bicyclesSelector)
-  // Load data
+
   useEffect(() => {
     dispatch(fetchBicycles())
   }, [])

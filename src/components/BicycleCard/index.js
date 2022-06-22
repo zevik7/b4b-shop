@@ -1,4 +1,3 @@
-// import { ShoppingOutlined } from '@ant-design/icons'
 import { Card, Skeleton, Space, Typography } from 'antd'
 import { Col, Row } from 'antd'
 import { useNavigate } from 'react-router-dom'

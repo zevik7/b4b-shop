@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
-import { Menu } from 'antd'
 import {
   CheckSquareOutlined,
   DashboardOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
+import { Menu } from 'antd'
 import Sider from 'antd/es/layout/Sider'
-import { Logo, NavLink } from '../../../components'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { Logo, NavLink } from '../../../components'
 
 function Sidebar(props) {
   const { collapsed } = props
@@ -47,6 +48,7 @@ function Sidebar(props) {
         }
       />
       <Menu theme="light" mode="inline" defaultSelectedKeys items={Items} />
+    </Sider>
   )
 }
 

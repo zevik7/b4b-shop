@@ -9,6 +9,10 @@
       text-align: center;
     }
 
+    .filter-search {
+      margin-bottom: 1rem;
+    }
+
     .order-by {
       .order-by-label {
         padding-right: 10px;
@@ -24,5 +28,21 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .shop-page {
+    .container {
+      .shop-page-wrapper {
+        .order-by {
+          margin-bottom: 1rem;
+        }
+
+        .search-input {
+          margin-bottom: 1rem;
+        }
+      }
+    }
   }
 }
