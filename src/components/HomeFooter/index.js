@@ -13,6 +13,7 @@ import Logo from '../Logo'
 import {} from 'antd'
 import React from 'react'
 import './index.less'
+import { useTranslation } from 'react-i18next'
 
 const { Title } = Typography
 const { Search } = Input
@@ -28,6 +29,7 @@ const suffix = (
 const onSearch = (value) => console.log(value)
 
 const HomeFooter = () => {
+  const { t } = useTranslation()
   return (
     <div className="footer">
       <section className="container">
@@ -38,62 +40,59 @@ const HomeFooter = () => {
               <Logo />
             </a>
           </li>
-          <li className="shop-info">
-            B4B-Shop is the one-stop shop for everything you need when buying
-            your new bike. We are the US distributor and retailer for the global
-            brands
-          </li>
+          <li className="shop-info">{t('footer.title')}</li>
         </div>
         <div className="item-2">
-          <li className="footer-title">Shop By</li>
+          <li className="footer-title">{t('footer.shop-by.title')}</li>
           <li>
-            <a>Your Orders</a>
+            <a>{t('footer.shop-by.item.your-order')}</a>
           </li>
           <li>
-            <a>Payment</a>
+            <a>{t('footer.shop-by.item.payment')}</a>
           </li>
           <li>
-            <a>Delivery</a>
+            <a>{t('footer.shop-by.item.delivery')}</a>
           </li>
           <li>
-            <a>Conditions</a>
+            <a>{t('footer.shop-by.item.condition')}</a>
           </li>
         </div>
         <div className="item-3">
-          <li className="footer-title">Products</li>
+          <li className="footer-title">{t('footer.product.title')}</li>
           <li>
-            <a>New product</a>
+            <a>{t('footer.product.item.new-product')}</a>
           </li>
           <li>
-            <a>Best sales</a>
+            <a>{t('footer.product.item.best-sale')}</a>
           </li>
           <li>
-            <a>Prices drop</a>
+            <a>{t('footer.product.item.price-drop')}</a>
           </li>
           <li>
-            <a>Stores</a>
+            <a>{t('footer.product.item.store')}</a>
           </li>
         </div>
         <div className="item-4">
-          <li className="footer-title">Our Company</li>
+          <li className="footer-title">{t('footer.our-company.title')}</li>
           <li>
-            <a>About us</a>
+            <a>{t('footer.our-company.item.about-us')}</a>
           </li>
           <li>
-            <a>Contact us</a>
+            <a>{t('footer.our-company.item.contact-us')}</a>
           </li>
           <li>
-            <a>Site map</a>
+            <a>{t('footer.our-company.item.site-map')}</a>
           </li>
           <li>
-            <a>Help & Service</a>
+            <a>{t('footer.our-company.item.help-service')}</a>
           </li>
         </div>
         <div className="item-5">
-          <li className="footer-title">Contact</li>
+          <li className="footer-title">{t('footer.contact.title')}</li>
           <li>
             <a>
-              <EnvironmentOutlined /> Victoria Resort, Can Tho City
+              <EnvironmentOutlined />
+              {t('footer.contact.item.location')}
             </a>
           </li>
           <li>
@@ -138,8 +137,8 @@ const HomeFooter = () => {
         <div className="item-6">
           <div className="search-footer">
             <Search
-              placeholder="Enter your email"
-              enterButton="Subscribe"
+              placeholder={t('cta.place_holder_input-email')}
+              enterButton={t('cta.subscribe')}
               size="large"
               suffix={suffix}
               onSearch={onSearch}

@@ -2,7 +2,8 @@
   "hello": "Xin chao",
   "cta": {
     "login": "Đăng nhập",
-    "register": "Đăng xuất",
+    "logout": "Đăng xuất",
+    "register": "Đăng ký",
     "refresh": "Refresh",
     "save": "Save",
     "delete": "Delete",
@@ -23,14 +24,202 @@
     "download_order_pdf": "Order (PDF)",
     "download_order_csv": "CSV",
     "upload_order_confirmation": "Upload Confirmation",
+    "place_holder_input-email": "Gửi thư góp ý",
+    "place-holder-search": "Nhập để gửi",
     "back_to_list": "Back to List",
-    "show_history": "Show History"
+    "show_history": "Show History",
+    "subscribe": "Gửi",
+    "search": "Tìm kiếm",
+    "buy-it-now": "MUA NGAY",
+    "add": "Thêm",
+    "cancle": "Trở về",
+    "update": "Cập nhật"
   },
+
+  "home-navigation": {
+    "home": "Trang chủ",
+    "bicycles": "Xe đạp",
+    "clothing": "Quần áo",
+    "helmet-and-shoes": "Mũ Bảo Hiểm & Giày",
+    "components": "Các Bộ Phận",
+    "about": "Về chúng tôi"
+  },
+
+  "home-page": {
+    "categories":  {
+      "title": "CÁC DANH MỤC PHỔ BIẾN",
+      "item": {
+        "electric-bike": "Xe đạp điện",
+        "mountain-bike": "Xe đạp leo núi",
+        "kid-bike": "Xe đạp trẻ em",
+        "road-bike": "Xe đạp đường trường",
+        "gravel-bike": "Xe đạp sỏi"
+      }
+    },
+    "trending": "SẢN PHẨM XU HƯỚNG",
+    "brand": "NHÃN HIỆU",
+    "retailer": {
+      "title": "NHÀ PHÂN PHỐI",
+      "description": "B4B Shop là nơi để mua hoặc bán bất kỳ xe đạp, phụ kiện, linh kiện hoặc bộ phận nào từ bất kỳ ai, ở bất kỳ đâu, bất kỳ lúc nào. Mua sắm và duyệt qua hàng nghìn sản phẩm xe đạp & xe đạp được bày bán từ hàng trăm cửa hàng xe đạp và hàng nghìn thương hiệu trên toàn quốc."
+    }
+  },
+
+  "footer": {
+    "title": "B4B-Shop là nơi cung cấp mọi thứ bạn cần khi mua xe đạp mới. Chúng tôi là nhà phân phối và bán lẻ của Hoa Kỳ cho các thương hiệu toàn cầu",
+    "shop-by": {
+      "title": "Mua Sắm",
+      "item": {
+        "your-order": "Đơn đặt hàng của bạn",
+        "payment": "Thanh toán",
+        "delivery": "Vận chuyển",
+        "condition": "Các điều kiện"
+      }
+    },
+    "product": {
+      "title": "Sản Phẩm",
+      "item": {
+        "new-product": "Sản phẩm mới",
+        "best-sale": "Mặt hàng bán chạy nhất",
+        "price-drop": "Giảm giá",
+        "store": "Cửa hàng"
+      }
+    },
+    "our-company": {
+      "title": "Công Ty",
+      "item": {
+        "about-us": "Về chúng tôi",
+        "contact-us": "Liên hệ chúng tôi",
+        "site-map": "Sơ đồ trang web",
+        "help-service": "Trợ giúp & Dịch vụ"
+      }
+    },
+    "contact": {
+      "title": "Liên hệ",
+      "item": {
+        "location": "Victoria Resort, Thành phố Cần Thơ"
+      }
+    }
+  },
+
+  "filter": {
+    "filter-bar": {
+      "price": {
+        "title": "Giá bán"
+      },
+      "brand": {
+        "title": "Thương hiệu"
+      },
+      "material": {
+        "title": "Chất Liệu",
+        "carbon": "Carbon",
+        "aluminum": "Nhôm"
+      },
+      "gender": {
+        "title": "Giới tính",
+        "men": "Nam",
+        "women": "Nữ",
+        "unisex": "Unisex"
+      },
+      "type": {
+        "title": "Loại hình",
+        "electric-bike": "Xe đạp điện",
+        "mountain-bike": "Xe đạp leo núi",
+        "kid-bike": "Xe đạp trẻ em",
+        "road-bike": "Xe đạp đường trường",
+        "gravel-bike": "Xe đạp sỏi"
+      }
+    }
+  },
+
+  "detail-page": {
+    "availability": {
+      "title": "Còn lại:",
+      "content": " {{number}} chiếc trong kho"
+    },
+    "price": "{{val, currency(currency: VND)}}",
+    "rating": "{{rating}} đánh giá",
+    "banner": {
+      "free-shipping": {
+        "title": "MIỄN PHÍ VẬN CHUYỂN",
+        "content": "Giao hàng miễn phí cho tất cả các đơn đặt hàng tại Hoa Kỳ hoặc đơn đặt hàng trên 1,999,000 vnđ"
+      },
+      "support": {
+        "title": "HỖ TRỢ 24/7",
+        "content": "Liên hệ với chúng tôi 24 giờ một ngày, 7 ngày một tuần"
+      },
+      "return-title": {
+        "title": "30 HOÀN TRẢ HOÀN",
+        "content": "Chỉ cần trả lại nó trong vòng 30 ngày"
+      }
+    },
+    "bicycle-part": {
+      "title": "Chi tiết xe đạp",
+      "item": {
+        "brand": "NHÃN HIỆU",
+        "type": "LOẠI HÌNH",
+        "gender": "GIỚI TÍNH",
+        "material": "CHẤT LIỆU",
+        "groupset": "GROUPSET",
+        "braking-type": "LOẠI PHANH",
+        "item-condition": "TÌNH TRẠNG",
+        "availability": "KHẢ DỤNG"
+      } 
+    }
+  },
+
+  "admin_page": {
+    "table": {
+      "name": "Tên",
+      "brand": "Thương hiệu",
+      "price": "Giá ($)",
+      "type": "Loại hình",
+      "action": {
+        "title": "Hành động",
+        "content": "Xóa lựa chọn"
+      }
+    }, 
+    
+    "side_bar": {
+      "dashboard": "Bảng Điều Khiển",
+      "bicycle": "Xe đạp",
+      "order": "Đơn đặt hàng"
+    },
+
+    "order_table": {
+      "bicycle": "Xe đạp",
+      "quantity": "Số lượng",
+      "customer": "Khách hàng",
+      "phone_number": "Số điện thoại",
+      "action": {
+        "title": "Hành động",
+        "content": "Xóa lựa chọn"
+      }
+    },
+
+    "form": {
+      "add_form": {
+        "title": "Thêm xe đạp"
+      },
+      "edit_form": {
+        "title": "Sửa thông tin xe"
+      },
+      "name": "Tên",
+      "brand": "Thương hiệu",
+      "gender": "Giới tính",
+      "material": "Chất liệu",
+      "price": "Giá",
+      "type": "Loại hình",
+      "variants": "Bổ sung",
+      "description": "Mô tả",
+      "image": "Hình"
+    }
+  },
+
   "common": {
     "update": "Update",
     "update_confirm": "Are you sure to save this update ?",
     "delete_confirm": "Are you sure to delete ?",
-    "order": "Order",
+    "order": "SẮP XẾP",
     "file_id": "File ID",
     "available": "Available",
     "disabled": "Disabled",
@@ -54,8 +243,11 @@
     "to": "To",
     "action": "Action",
     "history": "History",
-    "supplier_number": "{{number}} suppliers"
+    "supplier_number": "{{number}} suppliers",
+    "asc": "Thấp đến cao",
+    "desc": "Cao đến thấp"
   },
+
   "field": {
     "no": "No",
     "order_id": "Order ID",
@@ -88,7 +280,7 @@
     "item_id": "Item ID",
     "supplier_sku": "Supplier SKU",
     "description": "Description",
-    "quantity": "Quantity",
+    "quantity": "Số lượng",
     "net_base_price": "Net Base Price",
     "net_price": "Net Price",
     "user": "User",
@@ -101,7 +293,8 @@
     "remarks": "Remarks",
     "thresholds": "Thresholds",
     "delivery_date": "Delivery Date",
-    "duration": "Duration"
+    "duration": "Duration",
+    "select_detail_page": "Hãy chọn màu, khung và kích cỡ của xe"
   },
   "error": {
     "order_upload": {

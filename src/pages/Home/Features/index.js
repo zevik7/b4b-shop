@@ -7,14 +7,17 @@ import ride from '../../../assets/images/features/ride.avif'
 import bikehelp from '../../../assets/images/features/bikehelp.gif'
 
 import './style.less'
+import { useTranslation } from 'react-i18next'
 
 const { Title } = Typography
 
 const Features = () => {
+  const { t } = useTranslation()
+
   return (
     <div className="features">
       <div className="features-list">
-        <Title level={2}>OUR FEATURED RETAILERS</Title>
+        <Title level={2}>{t('home-page.retailer.title')}</Title>
         <Row
           gutter={[
             {
@@ -44,10 +47,7 @@ const Features = () => {
         <Row>
           <Col span={12} offset={6}>
             <p className="content-center">
-              B4B Shop is the place to buy or sell any bike, accessory,
-              component or part from anyone, anywhere, anytime. Shop and browse
-              through thousands of bikes & cycling products for sale from
-              hundreds of bike shops and thousands of brands nationwide.
+              {t('home-page.retailer.description')}
             </p>
           </Col>
         </Row>

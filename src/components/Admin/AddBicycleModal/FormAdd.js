@@ -16,15 +16,17 @@ import {
   PlusOutlined,
 } from '@ant-design/icons'
 import TextArea from 'antd/es/input/TextArea'
+import { useTranslation } from 'react-i18next'
 
 function FormAdd({ form }) {
+  const { t } = useTranslation()
   return (
     <Form form={form} layout="vertical" name="formAddBicycle">
       <Row gutter={8}>
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="name"
-            label="Name"
+            label={t('admin_page.form.name')}
             rules={[
               {
                 required: true,
@@ -38,7 +40,7 @@ function FormAdd({ form }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="price"
-            label="Price"
+            label={t('admin_page.form.price')}
             rules={[
               {
                 required: true,
@@ -52,7 +54,7 @@ function FormAdd({ form }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="brand"
-            label="Brand"
+            label={t('admin_page.form.brand')}
             rules={[
               {
                 required: true,
@@ -72,7 +74,7 @@ function FormAdd({ form }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="type"
-            label="Type"
+            label={t('admin_page.form.type')}
             rules={[
               {
                 required: true,
@@ -96,7 +98,7 @@ function FormAdd({ form }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="gender"
-            label="Gender"
+            label={t('admin_page.form.gender')}
             rules={[
               {
                 required: true,
@@ -114,7 +116,7 @@ function FormAdd({ form }) {
         <Col xxl={8} sm={12} xs={24}>
           <Form.Item
             name="material"
-            label="Material"
+            label={t('admin_page.form.material')}
             rules={[
               {
                 required: true,
@@ -125,7 +127,7 @@ function FormAdd({ form }) {
             <Input />
           </Form.Item>
         </Col>
-        <Col span={24}>Variants</Col>
+        <Col span={24}>{t('admin_page.form.variants')}</Col>
         <Col span={24}>
           <Form.List name="variants">
             {(fields, { add, remove }) => (
@@ -207,7 +209,7 @@ function FormAdd({ form }) {
                     block
                     icon={<PlusOutlined />}
                   >
-                    Add variant
+                    {t('cta.add')}
                   </Button>
                 </Form.Item>
               </>
@@ -215,14 +217,17 @@ function FormAdd({ form }) {
           </Form.List>
         </Col>
         <Col xxl={24} sm={24} xs={24}>
-          <Form.Item name="description" label="Description">
+          <Form.Item
+            name="description"
+            label={t('admin_page.form.description')}
+          >
             <TextArea rows={2} />
           </Form.Item>
         </Col>
         <Col xxl={24} sm={24} xs={24}>
           <Form.Item
             name="images"
-            label="Images"
+            label={t('admin_page.form.image')}
             rules={[
               {
                 required: true,

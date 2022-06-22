@@ -8,6 +8,9 @@ function TableManagement({ rowSelection, columns, data, onClickRow, loading }) {
       columns={columns}
       dataSource={data}
       loading={loading}
+      scroll={{
+        x: 'max-content',
+      }}
     />
   )
 }

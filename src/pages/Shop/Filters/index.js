@@ -23,79 +23,11 @@ import { BicycleCard } from '../../../components'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import filterSlice from '../../../redux/slices/filterSlice'
-import { useLayoutEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const { Title } = Typography
 const { Panel } = Collapse
 const { Content } = Layout
-
-const optionTypes = [
-  {
-    label: 'Mountain Bikes',
-    value: 'Mountain Bikes',
-  },
-  {
-    label: 'Road Bikes',
-    value: 'Road Bikes',
-  },
-  {
-    label: 'Kids Bikes',
-    value: 'Kids Bikes',
-  },
-  {
-    label: 'Folding Bikes',
-    value: 'Folding Bikes',
-  },
-  {
-    label: 'Electric Bikes',
-    value: 'Electric Bikes',
-  },
-]
-
-const optionGenders = [
-  {
-    label: 'Mens',
-    value: 'Mens',
-  },
-  {
-    label: 'Womens',
-    value: 'Womens',
-  },
-  {
-    label: 'Unisex',
-    value: 'Unisex',
-  },
-]
-
-const optionBrands = [
-  {
-    label: 'Marin',
-    value: 'Marin',
-  },
-  {
-    label: 'Scott',
-    value: 'Scott',
-  },
-  {
-    label: 'Giant',
-    value: 'Giant',
-  },
-  {
-    label: 'Fuji',
-    value: 'Fuji',
-  },
-]
-
-const optionMaterials = [
-  {
-    label: 'Carbon',
-    value: 'Carbon',
-  },
-  {
-    label: 'Aluminum',
-    value: 'Aluminum',
-  },
-]
 
 const Filter = () => {
   const priceSelector = useSelector((state) => state.shopFilter.price)
@@ -103,6 +35,76 @@ const Filter = () => {
 
   const [inputValue, setInputValue] = useState(priceSelector[0])
   const [inputValue2, setInputValue2] = useState(priceSelector[1])
+
+  const { t } = useTranslation()
+
+  const optionTypes = [
+    {
+      label: `${t('filter.filter-bar.type.mountain-bike')}`,
+      value: 'Mountain Bikes',
+    },
+    {
+      label: `${t('filter.filter-bar.type.road-bike')}`,
+      value: 'Road Bikes',
+    },
+    {
+      label: `${t('filter.filter-bar.type.kid-bike')}`,
+      value: 'Kid Bikes',
+    },
+    {
+      label: `${t('filter.filter-bar.type.gravel-bike')}`,
+      value: 'Gravel Bikes',
+    },
+    {
+      label: `${t('filter.filter-bar.type.electric-bike')}`,
+      value: 'Electric Bikes',
+    },
+  ]
+
+  const optionGenders = [
+    {
+      label: `${t('filter.filter-bar.gender.men')}`,
+      value: 'Mens',
+    },
+    {
+      label: `${t('filter.filter-bar.gender.women')}`,
+      value: 'Womens',
+    },
+    {
+      label: `${t('filter.filter-bar.gender.unisex')}`,
+      value: 'Unisex',
+    },
+  ]
+
+  const optionBrands = [
+    {
+      label: 'Marin',
+      value: 'Marin',
+    },
+    {
+      label: 'Scott',
+      value: 'Scott',
+    },
+    {
+      label: 'Giant',
+      value: 'Giant',
+    },
+    {
+      label: 'Fuji',
+      value: 'Fuji',
+    },
+  ]
+
+  const optionMaterials = [
+    {
+      label: `${t('filter.filter-bar.material.carbon')}`,
+      value: 'Carbon',
+    },
+    {
+      label: `${t('filter.filter-bar.material.aluminum')}`,
+      value: 'Aluminum',
+    },
+  ]
 
   const onChange = (value) => {
     console.log('onChange: ', value)
@@ -154,7 +156,7 @@ const Filter = () => {
           header={
             <Title level={5}>
               <DollarOutlined className="icon-antd" />
-              Price
+              {t('filter.filter-bar.price.title')}
             </Title>
           }
           key="1"
@@ -193,7 +195,7 @@ const Filter = () => {
           header={
             <Title level={5}>
               <RocketOutlined className="icon-antd" />
-              Brand
+              {t('filter.filter-bar.brand.title')}
             </Title>
           }
           key="2"
@@ -209,7 +211,7 @@ const Filter = () => {
           header={
             <Title level={5}>
               <SketchOutlined className="icon-antd" />
-              Material
+              {t('filter.filter-bar.material.title')}
             </Title>
           }
           key="3"
@@ -224,7 +226,8 @@ const Filter = () => {
         <Panel
           header={
             <Title level={5}>
-              <ManOutlined className="icon-antd" /> Gender
+              <ManOutlined className="icon-antd" />{' '}
+              {t('filter.filter-bar.gender.title')}
             </Title>
           }
           key="4"
@@ -240,7 +243,7 @@ const Filter = () => {
           header={
             <Title level={5}>
               <DashboardOutlined className="icon-antd" />
-              Type
+              {t('filter.filter-bar.type.title')}
             </Title>
           }
           key="5"
