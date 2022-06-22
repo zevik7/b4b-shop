@@ -5,8 +5,10 @@ import {
   DownOutlined,
   PlusCircleOutlined,
 } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
 
 function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
+  const { t } = useTranslation()
   const actionForMenu = {
     1: handleDelete,
   }
@@ -19,7 +21,7 @@ function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
         {
           key: '1',
           icon: <DeleteOutlined />,
-          label: 'Delete Selected',
+          label: `${t('admin_page.table.action.content')}`,
         },
       ]}
     />
@@ -28,14 +30,16 @@ function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
   return (
     <div className="action">
       <Dropdown disabled={disabledActions} overlay={menu}>
-        <Button icon={<DownOutlined />}>Actions</Button>
+        <Button icon={<DownOutlined />}>
+          {t('admin_page.table.action.title')}
+        </Button>
       </Dropdown>
       <Button
         icon={<PlusCircleOutlined />}
         type="default"
         onClick={(e) => setVisibleAdd(true)}
       >
-        Add
+        {t('cta.add')}
       </Button>
     </div>
   )

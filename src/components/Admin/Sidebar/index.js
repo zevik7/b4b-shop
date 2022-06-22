@@ -6,12 +6,14 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons'
 import Sider from 'antd/es/layout/Sider'
-import { Logo } from '../../../components'
+import { Logo, NavLink } from '../../../components'
 import { Link, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function Sidebar(props) {
   const { collapsed } = props
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const getItem = (label, key, icon, children) => {
     return {

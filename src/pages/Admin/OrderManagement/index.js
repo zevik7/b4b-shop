@@ -5,10 +5,13 @@ import OrderDetailModal from '../../../components/Admin/OrderDetailModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCheckouts, updateCheckout } from '../../../redux/slices'
 import { checkoutDataSelector } from '../../../redux/selectors'
+import { useTranslation } from 'react-i18next'
+
 import _ from 'lodash'
 
 function OrderManagement(props) {
   //Initialization
+  const { t } = useTranslation()
   const checkoutData = useSelector(checkoutDataSelector)
   const [showDetail, setShowDetail] = useState(false)
   const [checkouts, setCheckouts] = useState([])
@@ -48,22 +51,22 @@ function OrderManagement(props) {
   //columns data for table list bicycles
   const columns = [
     {
-      title: 'Bicycle',
+      title: `${t('admin_page.order_table.bicycle')}`,
       dataIndex: 'bicycleName',
       sorter: (a, b) => a.bicycleName.length - b.bicycleName.length,
     },
     {
-      title: 'Quantity',
+      title: `${t('admin_page.order_table.quantity')}`,
       dataIndex: 'quantity',
       sorter: (a, b) => a.quantity.length - b.quantity.length,
     },
     {
-      title: 'Customer',
+      title: `${t('admin_page.order_table.customer')}`,
       dataIndex: 'customer',
       sorter: (a, b) => a.customer.length - b.customer.length,
     },
     {
-      title: 'Phone Number',
+      title: `${t('admin_page.order_table.phone_number')}`,
       dataIndex: 'phone',
       sorter: (a, b) => a.phone.length - b.phone.length,
     },
@@ -73,7 +76,7 @@ function OrderManagement(props) {
       sorter: (a, b) => a.status.length - b.status.length,
     },
     {
-      title: 'Action',
+      title: `${t('admin_page.order_table.action.title')}`,
       key: 'action',
       align: 'center',
       fixed: 'right',
