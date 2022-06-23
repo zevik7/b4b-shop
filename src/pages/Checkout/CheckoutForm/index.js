@@ -31,8 +31,7 @@ const CheckoutForm = () => {
     }
     dispatch(createCheckout(data))
     message.success('Order successful!')
-
-    setTimeout(() => dispatch(resetCheckout()), 2000)
+    localStorage.removeItem('bicycleInfos')
   }
 
   return (

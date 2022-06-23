@@ -1,14 +1,23 @@
 import { Col, List, Row, Typography } from 'antd'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { checkoutSelector } from '../../../redux/selectors'
 import './index.less'
 
 const { Title, Text } = Typography
 
 const CheckoutInfo = () => {
-  const checkout = useSelector(checkoutSelector)
+  const navigate = useNavigate()
+  const [checkout, setCheckout] = useState({})
+
+  useEffect(() => {
+    if (!localStorage.getItem('bicycleInfos')) {
+      navigate('/*')
+    }
+    setCheckout(JSON.parse(localStorage.getItem('bicycleInfos')))
+  }, [navigate])
+
+  if (Object.keys(checkout).length === 0) return
 
   return (
     <div className="info-ctn">
@@ -23,8 +32,7 @@ const CheckoutInfo = () => {
                 title={<Text strong>Type</Text>}
                 description={
                   <Text italic>
-                    Number: {checkout.bicycle.variant.quantity} x $
-                    {checkout.bicycle.price}
+                    Number: {checkout.variant.quantity} x ${checkout.price}
                   </Text>
                 }
               />
@@ -32,7 +40,7 @@ const CheckoutInfo = () => {
             <Col span={12}>
               <div>
                 <Text strong className="name-bicycle">
-                  {checkout.bicycle.name}
+                  {checkout.name}
                 </Text>
               </div>
             </Col>
@@ -40,14 +48,12 @@ const CheckoutInfo = () => {
         </List.Item>
         <List.Item>
           <Text strong>Provisional</Text>
-          <Text italic>
-            ${checkout.bicycle.variant.quantity * checkout.bicycle.price}
-          </Text>
+          <Text italic>${checkout.variant.quantity * checkout.price}</Text>
         </List.Item>
         <List.Item>
           <Text strong>Total</Text>
           <Text type="danger">
-            ${checkout.bicycle.variant.quantity * checkout.bicycle.price}
+            ${checkout.variant.quantity * checkout.price}
           </Text>
         </List.Item>
         <List.Item style={{ justifyContent: 'center' }}>
