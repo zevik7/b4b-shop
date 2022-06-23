@@ -1,35 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
 import {
-  Col,
-  Row,
-  Layout,
-  Typography,
-  InputNumber,
-  Rate,
-  Button,
-  Divider,
-  Form,
-} from 'antd'
-import {
-  SendOutlined,
-  RollbackOutlined,
   CustomerServiceOutlined,
+  RollbackOutlined,
+  SendOutlined,
 } from '@ant-design/icons'
 import {
-  ImgCarousel,
-  HomeNavigation,
-  Table,
-  Select,
-  HomeFooter,
-} from '../../components'
-
-// Redux
+  Button,
+  Col,
+  Divider,
+  Form,
+  InputNumber,
+  Layout,
+  Rate,
+  Row,
+  Typography,
+} from 'antd'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+
+import {
+  HomeFooter,
+  HomeNavigation,
+  ImgCarousel,
+  Select,
+  Table,
+} from '../../components'
 import { bicycleSelectedSelector } from '../../redux/selectors'
 import { getBicycle, setCheckoutBicycle } from '../../redux/slices'
 import './style.less'
-import { useTranslation } from 'react-i18next'
 
 const detailComponentsColumns = [
   {
@@ -45,8 +44,8 @@ const detailComponentsColumns = [
   },
 ]
 
-const { Text, Link, Title, Paragraph } = Typography
-const { Header, Footer, Sider, Content } = Layout
+const { Text, Title, Paragraph } = Typography
+const { Content } = Layout
 
 const BicycleDetail = () => {
   const navigate = useNavigate()
@@ -62,46 +61,46 @@ const BicycleDetail = () => {
 
   useEffect(() => {
     dispatch(getBicycle(id))
-  }, [])
+  }, [dispatch])
 
   const detailComponentsData = [
     {
-      key: '1',
+      key: 1,
       name: `${t('detail-page.bicycle-part.item.brand')}`,
       value: bicycle.brand,
     },
     {
-      key: '2',
+      key: 2,
       name: `${t('detail-page.bicycle-part.item.type')}`,
       value: bicycle.type,
     },
     {
-      key: '3',
+      key: 3,
       name: `${t('detail-page.bicycle-part.item.gender')}`,
       value: bicycle.gender,
     },
     {
-      key: '4',
+      key: 4,
       name: `${t('detail-page.bicycle-part.item.material')}`,
       value: bicycle.material,
     },
     {
-      key: '5',
+      key: 5,
       name: `${t('detail-page.bicycle-part.item.groupset')}`,
       value: 'Shimano Claris',
     },
     {
-      key: '6',
+      key: 6,
       name: `${t('detail-page.bicycle-part.item.braking-type')}`,
       value: 'Rim Brakes',
     },
     {
-      key: '7',
+      key: 7,
       name: `${t('detail-page.bicycle-part.item.item-condition')}`,
       value: 'New',
     },
     {
-      key: '8',
+      key: 8,
       name: `${t('detail-page.bicycle-part.item.availability')}`,
       value: 'Buy online, In-store',
     },
@@ -118,7 +117,7 @@ const BicycleDetail = () => {
 
   const handleSubmit = () => {
     const variant = bicycle.variants.find(
-      (variant, i) => i == form.variantIndex
+      (variant, i) => i === form.variantIndex
     )
 
     const bicycleCheckout = {

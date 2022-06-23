@@ -1,11 +1,8 @@
-import { ImgCarousel } from '../../../components'
-
 import Background1 from '../../../assets/images/ads-carousel1.avif'
 import Background2 from '../../../assets/images/ads-carousel2.avif'
 import Background3 from '../../../assets/images/ads-carousel3.avif'
 import Background4 from '../../../assets/images/ads-carousel4.avif'
-
-import './style.less'
+import { ImgCarousel } from '../../../components'
 
 const images = [
   {

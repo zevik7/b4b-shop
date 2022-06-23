@@ -1,10 +1,10 @@
-import React from 'react'
-import { Button, Dropdown, Menu } from 'antd'
 import {
   DeleteOutlined,
   DownOutlined,
   PlusCircleOutlined,
 } from '@ant-design/icons'
+import { Button, Dropdown, Menu } from 'antd'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
@@ -37,7 +37,7 @@ function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
       <Button
         icon={<PlusCircleOutlined />}
         type="default"
-        onClick={(e) => setVisibleAdd(true)}
+        onClick={() => setVisibleAdd(true)}
       >
         {t('cta.add')}
       </Button>

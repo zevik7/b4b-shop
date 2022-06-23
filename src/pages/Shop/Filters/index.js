@@ -1,15 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import './style.less'
-import { Col, Row } from 'antd'
-import {
-  Checkbox,
-  Collapse,
-  InputNumber,
-  Slider,
-  Space,
-  Typography,
-  Layout,
-} from 'antd'
 import {
   DashboardOutlined,
   DollarOutlined,
@@ -17,17 +5,23 @@ import {
   RocketOutlined,
   SketchOutlined,
 } from '@ant-design/icons'
-
-import { BicycleCard } from '../../../components'
-
-// Redux
-import { useDispatch, useSelector } from 'react-redux'
-import filterSlice from '../../../redux/slices/filterSlice'
+import {
+  Checkbox,
+  Collapse,
+  InputNumber,
+  Slider,
+  Space,
+  Typography,
+} from 'antd'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+
+import filterSlice from '../../../redux/slices/filterSlice'
+import './style.less'
 
 const { Title } = Typography
 const { Panel } = Collapse
-const { Content } = Layout
 
 const Filter = () => {
   const priceSelector = useSelector((state) => state.shopFilter.price)
@@ -112,10 +106,6 @@ const Filter = () => {
 
   const handleTypeChange = (value) => {
     dispatch(filterSlice.actions.typeChange(value))
-  }
-
-  const handleColorChange = (value) => {
-    dispatch(filterSlice.actions.colorChange(value))
   }
 
   const handleGenderChange = (value) => {

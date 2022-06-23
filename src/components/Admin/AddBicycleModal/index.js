@@ -1,7 +1,8 @@
-import React from 'react'
-import FormAdd from './FormAdd'
 import { Form, Modal } from 'antd'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
+
+import FormAdd from './FormAdd'
 
 function ModalAddBicycle({ visible, onCreate, onCancel }) {
   const [form] = Form.useForm()

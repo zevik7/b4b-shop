@@ -1,10 +1,10 @@
+import { Button, Layout, Space } from 'antd'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Button, Layout, Space } from 'antd'
+
+import { LanguageSelect, Logo, NavLink } from '../../components'
 import './style.less'
-import { Logo, NavLink, LanguageSelect } from '../../components'
 
 const { Header } = Layout
 

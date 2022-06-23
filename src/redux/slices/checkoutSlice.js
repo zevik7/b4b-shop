@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import _ from 'lodash'
+
 import { checkout } from '../../api'
 
 const initialState = {
@@ -18,10 +19,10 @@ const checkoutSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // fetch all
-      .addCase(fetchCheckouts.pending, (state, action) => {
+      .addCase(fetchCheckouts.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(fetchCheckouts.rejected, (state, action) => {
+      .addCase(fetchCheckouts.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(fetchCheckouts.fulfilled, (state, action) => {
@@ -29,10 +30,10 @@ const checkoutSlice = createSlice({
         state.status = 'idle'
       })
       // fetch
-      .addCase(getCheckout.pending, (state, action) => {
+      .addCase(getCheckout.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(getCheckout.rejected, (state, action) => {
+      .addCase(getCheckout.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(getCheckout.fulfilled, (state, action) => {
@@ -40,20 +41,20 @@ const checkoutSlice = createSlice({
         state.status = 'idle'
       })
       // create
-      .addCase(createCheckout.pending, (state, action) => {
+      .addCase(createCheckout.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(createCheckout.rejected, (state, action) => {
+      .addCase(createCheckout.rejected, (state) => {
         state.status = 'error'
       })
-      .addCase(createCheckout.fulfilled, (state, action) => {
+      .addCase(createCheckout.fulfilled, (state) => {
         state.status = 'idle'
       })
       // update
-      .addCase(updateCheckout.pending, (state, action) => {
+      .addCase(updateCheckout.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(updateCheckout.rejected, (state, action) => {
+      .addCase(updateCheckout.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(updateCheckout.fulfilled, (state, action) => {
@@ -65,13 +66,13 @@ const checkoutSlice = createSlice({
         state.data[index] = action.payload
       })
       // delete
-      .addCase(deleteCheckout.pending, (state, action) => {
+      .addCase(deleteCheckout.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(deleteCheckout.rejected, (state, action) => {
+      .addCase(deleteCheckout.rejected, (state) => {
         state.status = 'error'
       })
-      .addCase(deleteCheckout.fulfilled, (state, action) => {
+      .addCase(deleteCheckout.fulfilled, (state) => {
         state.status = 'idle'
       })
   },

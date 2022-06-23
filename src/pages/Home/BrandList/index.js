@@ -1,4 +1,4 @@
-import { Col, Divider, Row, Typography } from 'antd'
+import { Col, Row, Typography } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -10,7 +10,6 @@ import fouriii from '../../../assets/images/brands/fouriii.avif'
 import fuji from '../../../assets/images/brands/fuji.avif'
 import giant from '../../../assets/images/brands/giant.avif'
 import sole from '../../../assets/images/brands/sole.avif'
-
 import './style.less'
 
 const { Title } = Typography
