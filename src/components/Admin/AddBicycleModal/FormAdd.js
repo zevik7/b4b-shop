@@ -13,10 +13,10 @@ import {
   Select,
   Upload,
 } from 'antd'
-import TextArea from 'antd/es/input/TextArea'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+const { TextArea } = Input
 function FormAdd({ form }) {
   const { t } = useTranslation()
   return (
