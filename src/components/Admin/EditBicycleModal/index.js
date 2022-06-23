@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import FormEdit from './FormEdit'
 import { Form, Modal } from 'antd'
-import _ from 'lodash'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
+
+import FormEdit from './FormEdit'
 
 function ModalEditBicycle({ visible, onUpdate, onCancel, editData }) {
   const [form] = Form.useForm()
   const { t } = useTranslation()
+
   return (
     <Modal
       className="modalEditBicycle"
@@ -15,7 +16,7 @@ function ModalEditBicycle({ visible, onUpdate, onCancel, editData }) {
       onCancel={onCancel}
       okText={t('cta.update')}
       cancelText={t('cta.cancle')}
-      onOk={(e) => {
+      onOk={() => {
         form
           .validateFields()
           .then((values) => {

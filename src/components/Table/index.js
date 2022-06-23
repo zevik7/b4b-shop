@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Table } from 'antd'
 
 const TableCustom = (props) => {

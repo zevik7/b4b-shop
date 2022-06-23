@@ -1,9 +1,9 @@
-import { Skeleton, Card, Typography, Space } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { Card, Skeleton, Space, Typography } from 'antd'
 import { Col, Row } from 'antd'
+import { useNavigate } from 'react-router-dom'
+
 import './index.less'
 
-const { Meta } = Card
 const { Title, Text } = Typography
 
 const BicycleCard = (props) => {

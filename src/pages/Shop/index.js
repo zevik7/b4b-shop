@@ -1,52 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import { Col, Row, Skeleton } from 'antd'
-import './index.less'
-
-import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
-
-import {
-  Button,
-  Checkbox,
-  Collapse,
-  InputNumber,
-  Slider,
-  Space,
-  Tooltip,
-  Typography,
-  Layout,
-} from 'antd'
-import './index.less'
-import { DeleteOutlined } from '@ant-design/icons'
-import HomeFooter from '../../components/HomeFooter'
+import { Col, Row } from 'antd'
+import { Layout, Space, Typography } from 'antd'
+import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
 
 import {
-  HomeNavigation,
-  SearchInput,
-  LoadingAnimation,
-  Pagination,
   BicycleCard,
+  EmptyData,
+  HomeFooter,
+  HomeNavigation,
+  Pagination,
+  SearchInput,
   Select,
 } from '../../components'
-
-import Filter from './Filters'
-
-// Redux
-import { useDispatch, useSelector } from 'react-redux'
+import { bicyclesRemainingSelector } from '../../redux/selectors'
 import {
-  bicyclesSelector,
-  bicyclesRemainingSelector,
-} from '../../redux/selectors'
-import {
+  changeCurrentPage,
   fetchBicycles,
   orderPriceChange,
-  changeCurrentPage,
 } from '../../redux/slices'
-import EmptyData from '../../components/EmptyData'
-import { t } from 'i18next'
-import { useTranslation } from 'react-i18next'
+import Filter from './Filters'
+import './index.less'
+import './index.less'
 
-const { Title, Text } = Typography
-const { Panel } = Collapse
+const { Text } = Typography
 const { Content } = Layout
 
 const Shop = () => {
@@ -58,7 +35,7 @@ const Shop = () => {
   // Load data
   useEffect(() => {
     dispatch(fetchBicycles())
-  }, [])
+  }, [dispatch])
 
   const handleChangeOrderPrice = (value) => {
     dispatch(orderPriceChange(value))

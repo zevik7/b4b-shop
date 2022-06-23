@@ -1,14 +1,8 @@
-import { useState } from 'react'
-import { useTranslation, Trans } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { Button, Layout, Menu } from 'antd'
-import { Logo, NavLink, Select } from '../../components'
+import { useTranslation } from 'react-i18next'
 
-import vietnameIcon from '../../assets/icons/vietnam.png'
 import englishIcon from '../../assets/icons/united-kingdom.png'
-
-const { Header } = Layout
+import vietnameIcon from '../../assets/icons/vietnam.png'
+import { Select } from '../../components'
 
 const languageOptions = [
   {
@@ -24,7 +18,7 @@ const languageOptions = [
 ]
 
 const LanguageSelect = () => {
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng)

@@ -1,8 +1,9 @@
-import { List, Typography, Col, Row } from 'antd'
+import { Col, List, Row, Typography } from 'antd'
 import React from 'react'
-import './index.less'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+
 import { checkoutSelector } from '../../../redux/selectors'
+import './index.less'
 
 const { Title, Text } = Typography
 

@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react'
-import { Menu } from 'antd'
 import {
   CheckSquareOutlined,
   DashboardOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
+import { Menu } from 'antd'
 import Sider from 'antd/es/layout/Sider'
-import { Logo, NavLink } from '../../../components'
-import { Link, useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+import { Logo } from '../../../components'
 
 function Sidebar(props) {
   const { collapsed } = props
-  const navigate = useNavigate()
-  const { t } = useTranslation()
 
   const getItem = (label, key, icon, children) => {
     return {
