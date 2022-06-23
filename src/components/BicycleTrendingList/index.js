@@ -1,4 +1,4 @@
-import { useEffect, useState, useLayoutEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { bicyclesSelector } from '../../redux/selectors'
@@ -32,7 +32,7 @@ const BicycleTrendingList = () => {
 
     return () => window.removeEventListener('resize', setSize)
   }, [])
-  
+
   return (
     <div className="mutli-trending">
       <div
