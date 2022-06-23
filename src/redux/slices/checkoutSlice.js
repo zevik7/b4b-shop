@@ -11,11 +11,7 @@ const initialState = {
 const checkoutSlice = createSlice({
   name: 'checkoutSlice',
   initialState,
-  reducers: {
-    setCheckoutBicycle: (state, action) => {
-      state.bicycle = _.cloneDeep(action.payload)
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       // fetch all
@@ -79,8 +75,6 @@ const checkoutSlice = createSlice({
 })
 
 export default checkoutSlice
-
-export const { setCheckoutBicycle } = checkoutSlice.actions
 
 export const fetchCheckouts = createAsyncThunk(
   'checkout/fetchCheckouts',
