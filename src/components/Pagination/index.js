@@ -1,8 +1,8 @@
-import { Pagination } from 'antd'
-import React from 'react'
+import { Pagination } from "antd";
+import React from "react";
 
 const CustomPagination = (props) => {
-  const { total, pageSize, current, onChange } = props
+  const { total, pageSize, current, onChange } = props;
 
   return (
     <Pagination
@@ -11,7 +11,7 @@ const CustomPagination = (props) => {
       total={total}
       pageSize={pageSize}
     />
-  )
-}
+  );
+};
 
-export default CustomPagination
+export default CustomPagination;
