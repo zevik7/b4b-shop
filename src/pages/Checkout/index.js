@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons'
 import { Col, Form, Input, Layout, List, Row, Typography, message } from 'antd'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,6 +22,8 @@ const Checkout = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [bicycle, setBicycle] = useState({})
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (!localStorage.getItem('bicycleInfos')) {
@@ -59,12 +62,14 @@ const Checkout = () => {
         <Content>
           <div className="container checkout-ctn">
             <div className="checkout-content">
-              <Title level={2}>CHECKOUT DETAILS</Title>
+              <Title level={2}>{t('checkout_page.title')}</Title>
               <Row style={{ gap: '2rem' }}>
                 <Col xxl={14} xl={14} lg={14} md={24} sm={24} xs={24}>
                   <div className="form-ctn">
                     <div className="form-header">
-                      <Title level={5}>Check Out Details</Title>
+                      <Title level={5}>
+                        {t('checkout_page.left_form.title')}
+                      </Title>
                     </div>
                     <Form
                       size="large"
@@ -90,7 +95,7 @@ const Checkout = () => {
                           prefix={
                             <UserOutlined className="site-form-item-icon" />
                           }
-                          placeholder="Full Name"
+                          placeholder={t('checkout_page.left_form.fullname')}
                         />
                       </Form.Item>
                       <Form.Item
@@ -106,7 +111,7 @@ const Checkout = () => {
                           prefix={
                             <MailOutlined className="site-form-item-icon" />
                           }
-                          placeholder="Email"
+                          placeholder={t('checkout_page.left_form.email')}
                           rules={[
                             {
                               type: 'email',
@@ -132,7 +137,7 @@ const Checkout = () => {
                           prefix={
                             <HomeOutlined className="site-form-item-icon" />
                           }
-                          placeholder="Address"
+                          placeholder={t('checkout_page.left_form.address')}
                         />
                       </Form.Item>
 
@@ -146,7 +151,7 @@ const Checkout = () => {
                         ]}
                       >
                         <Input
-                          placeholder="Phone Number"
+                          placeholder={t('checkout_page.left_form.phone')}
                           prefix={
                             <PhoneOutlined className="site-form-item-icon" />
                           }
@@ -158,7 +163,7 @@ const Checkout = () => {
                           showCount
                           maxLength={500}
                           rows={6}
-                          placeholder="Write your note here ..."
+                          placeholder={t('checkout_page.left_form.note')}
                         />
                       </Form.Item>
 
@@ -171,18 +176,24 @@ const Checkout = () => {
                 <Col xxl={9} xl={9} lg={9} md={24} sm={24} xs={24}>
                   <div className="info-ctn">
                     <div className="info-header">
-                      <Title level={5}>Info Details</Title>
+                      <Title level={5}>
+                        {t('checkout_page.right_form.title')}
+                      </Title>
                     </div>
                     <List>
                       <List.Item>
                         <Row>
                           <Col span={12}>
                             <List.Item.Meta
-                              title={<Text strong>Type</Text>}
+                              title={
+                                <Text strong>
+                                  {t('checkout_page.right_form.type')}
+                                </Text>
+                              }
                               description={
                                 <Text italic>
-                                  Number: {bicycle.variant.quantity} x $
-                                  {bicycle.price}
+                                  {t('checkout_page.right_form.number')}{' '}
+                                  {bicycle.variant.quantity} x ${bicycle.price}
                                 </Text>
                               }
                             />
@@ -197,19 +208,23 @@ const Checkout = () => {
                         </Row>
                       </List.Item>
                       <List.Item>
-                        <Text strong>Provisional</Text>
+                        <Text strong>
+                          {t('checkout_page.right_form.provisional')}
+                        </Text>
                         <Text italic>
                           ${bicycle.variant.quantity * bicycle.price}
                         </Text>
                       </List.Item>
                       <List.Item>
-                        <Text strong>Total</Text>
+                        <Text strong>
+                          {t('checkout_page.right_form.total')}
+                        </Text>
                         <Text type="danger">
                           ${bicycle.variant.quantity * bicycle.price}
                         </Text>
                       </List.Item>
                       <List.Item style={{ justifyContent: 'center' }}>
-                        10% TAX NOT INCLUDED
+                        {t('checkout_page.right_form.slogan')}
                       </List.Item>
                     </List>
                   </div>
