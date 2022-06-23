@@ -10,10 +10,12 @@ const update = (id, data) => axios.put(`/bicycles/${id}`, data)
 
 const destroy = (id) => axios.delete(`/bicycles/${id}`)
 
-export default {
+const bicycleApi = {
   getList,
   get,
   create,
   update,
   destroy,
 }
+
+export default bicycleApi

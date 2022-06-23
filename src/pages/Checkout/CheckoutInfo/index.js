@@ -1,9 +1,8 @@
-import { List, Typography, Col, Row } from 'antd'
+import { Col, List, Row, Typography } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import './index.less'
-import { useDispatch, useSelector } from 'react-redux'
-import { checkoutSelector } from '../../../redux/selectors'
-import { Navigate, useNavigate } from 'react-router-dom'
 
 const { Title, Text } = Typography
 
@@ -16,7 +15,7 @@ const CheckoutInfo = () => {
       navigate('/*')
     }
     setCheckout(JSON.parse(localStorage.getItem('bicycleInfos')))
-  }, [])
+  }, [navigate])
 
   if (Object.keys(checkout).length === 0) return
 

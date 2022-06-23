@@ -46,7 +46,7 @@
   },
 
   "home-page": {
-    "categories":  {
+    "categories": {
       "title": "CÁC DANH MỤC PHỔ BIẾN",
       "item": {
         "electric-bike": "Xe đạp điện",
@@ -163,7 +163,7 @@
         "braking-type": "LOẠI PHANH",
         "item-condition": "TÌNH TRẠNG",
         "availability": "KHẢ DỤNG"
-      } 
+      }
     }
   },
 
@@ -177,8 +177,8 @@
         "title": "Hành động",
         "content": "Xóa lựa chọn"
       }
-    }, 
-    
+    },
+
     "side_bar": {
       "dashboard": "Bảng Điều Khiển",
       "bicycle": "Xe đạp",

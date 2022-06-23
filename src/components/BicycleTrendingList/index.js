@@ -1,9 +1,10 @@
+import { useEffect, useLayoutEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { bicyclesSelector } from '../../redux/selectors'
 import { fetchBicycles } from '../../redux/slices'
 import BicycletCard from '../BicycleCard'
 import BicycleTrending from '../BicycleTrending'
-import { useState, useEffect, useLayoutEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 const BicycleTrendingList = () => {
   const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const BicycleTrendingList = () => {
 
   useEffect(() => {
     dispatch(fetchBicycles())
-  }, [])
+  }, [dispatch])
 
   const setSize = () => {
     if (window.innerWidth >= 992) {
@@ -31,6 +32,7 @@ const BicycleTrendingList = () => {
 
     return () => window.removeEventListener('resize', setSize)
   }, [])
+
   return (
     <div className="mutli-trending">
       <div

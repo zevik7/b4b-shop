@@ -1,16 +1,16 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import Home from '../pages/Home'
-import Shop from '../pages/Shop'
-import Checkout from '../pages/Checkout'
-import BicycleDetail from '../pages/BicycleDetail'
-import BicycleManagement from '../pages/Admin/BicycleManagement'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import NoMatch from '../pages/NoMatch'
-import OrderManagement from '../pages/Admin/OrderManagement'
 import Admin from '../pages/Admin'
+import BicycleManagement from '../pages/Admin/BicycleManagement'
+import OrderManagement from '../pages/Admin/OrderManagement'
+import BicycleDetail from '../pages/BicycleDetail'
+import Checkout from '../pages/Checkout'
+import Home from '../pages/Home'
+import Login from '../pages/Login'
+import NoMatch from '../pages/NoMatch'
+import Register from '../pages/Register'
+import Shop from '../pages/Shop'
 
 const RoutesApp = () => {
   return (

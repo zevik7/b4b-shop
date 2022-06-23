@@ -19,7 +19,7 @@ const UploadImage = ({ disabled, images }) => {
   const [fileList, setFileList] = useState([])
 
   useEffect(() => {
-    const imagesList = images.map((image, index) => ({
+    const imagesList = images.map((image) => ({
       name: image,
       status: 'done',
       url: '/images/bikes/' + image,

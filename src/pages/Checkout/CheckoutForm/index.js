@@ -4,12 +4,13 @@ import {
   PhoneOutlined,
   UserOutlined,
 } from '@ant-design/icons'
-import { Button, Form, Input, Typography, message } from 'antd'
-import MessageButton from '../../../components/MessageButton'
-import './index.less'
+import { Form, Input, Typography, message } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { createCheckout } from '../../../redux/slices'
+
+import MessageButton from '../../../components/MessageButton'
 import { checkoutSelector } from '../../../redux/selectors'
+import { createCheckout } from '../../../redux/slices'
+import './index.less'
 
 const { Title } = Typography
 

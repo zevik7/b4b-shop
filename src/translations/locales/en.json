@@ -46,7 +46,7 @@
   },
 
   "home-page": {
-    "categories":  {
+    "categories": {
       "title": "POPULAR CATEGORIES",
       "item": {
         "electric-bike": "Electric Bikes",
@@ -163,7 +163,7 @@
         "braking-type": "BRAKING TYPE",
         "item-condition": "ITEM CONDITION",
         "availability": "AVAILABILITY"
-      } 
+      }
     }
   },
 
@@ -177,8 +177,8 @@
         "title": "Action",
         "content": "Delete Selected"
       }
-    }, 
-    
+    },
+
     "side_bar": {
       "dashboard": "Dashboard",
       "bicycle": "Bicycle",

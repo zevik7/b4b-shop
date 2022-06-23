@@ -46,12 +46,12 @@ export const bicyclesRemainingSelector = createSelector(
       })
       .filter((item) => {
         if (search === '') return true
-        return item.name.toLowerCase().includes(search.toLowerCase()) // Need optimize performance?
+        return item.name.toLowerCase().includes(search.toLowerCase())
       })
       .sort((a, b) => {
-        if (orderPrice === 'default') return 0
         if (orderPrice === 'asc') return a.price - b.price
         if (orderPrice === 'desc') return b.price - a.price
+        return 0
       })
       .slice(
         (bicycle.pagination.current - 1) * bicycle.pagination.pageSize,

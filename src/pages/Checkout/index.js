@@ -1,15 +1,13 @@
 import { Col, Layout, Row, Typography } from 'antd'
+
 import '../../assets/less/grid.less'
 import { HomeFooter, HomeNavigation } from '../../components'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import CheckoutForm from './CheckoutForm'
 import CheckoutInfo from './CheckoutInfo'
-import { fetchCheckouts, getCheckout } from '../../redux/slices'
 import './index.less'
 
 const { Title } = Typography
-const { Header, Content, Footer } = Layout
+const { Content } = Layout
 
 const Checkout = () => {
   return (

@@ -1,17 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
-import { Input, Space } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  bicyclesSelector,
-  searchSelector,
-  bicyclesRemainingSelector,
-} from '../../redux/selectors'
-import { fetchBicycles, onChange, setLoading } from '../../redux/slices'
-
-import _ from 'lodash'
-
-import { AudioOutlined } from '@ant-design/icons'
+import { Input } from 'antd'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
+
+import { fetchBicycles, onChange } from '../../redux/slices'
 
 const { Search } = Input
 
@@ -35,7 +27,7 @@ const SearchCustom = (props) => {
     }, 500)
 
     return () => clearTimeout(timerId)
-  }, [text])
+  }, [text, dispatch])
 
   return (
     <Search
