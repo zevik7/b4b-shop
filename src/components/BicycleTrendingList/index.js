@@ -1,16 +1,35 @@
-import { useState, useEffect } from 'react'
-import BicycleTrending from '../BicycleTrending'
-import BicycletCard from '../BicycleCard'
-import { useDispatch, useSelector } from 'react-redux'
 import { bicyclesSelector } from '../../redux/selectors'
 import { fetchBicycles } from '../../redux/slices'
+import BicycletCard from '../BicycleCard'
+import BicycleTrending from '../BicycleTrending'
+import { useState, useEffect, useLayoutEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const BicycleTrendingList = () => {
   const dispatch = useDispatch()
   const bicycles = useSelector(bicyclesSelector)
+  const [show, setShow] = useState(4)
 
   useEffect(() => {
     dispatch(fetchBicycles())
+  }, [])
+
+  const setSize = () => {
+    if (window.innerWidth >= 992) {
+      setShow(4)
+    } else if (window.innerWidth >= 768 && window.innerWidth <= 992) {
+      setShow(3)
+    } else if (window.innerWidth >= 600 && window.innerWidth <= 768) {
+      setShow(2)
+    } else if (window.innerWidth < 600) {
+      setShow(1)
+    } else return
+  }
+
+  useLayoutEffect(() => {
+    window.addEventListener('resize', setSize)
+
+    return () => window.removeEventListener('resize', setSize)
   }, [])
   return (
     <div className="mutli-trending">
@@ -22,7 +41,7 @@ const BicycleTrendingList = () => {
           marginTop: 64,
         }}
       >
-        <BicycleTrending show={4}>
+        <BicycleTrending show={show}>
           {bicycles.status === 'loading' ? (
             <h1>Loading</h1>
           ) : (
