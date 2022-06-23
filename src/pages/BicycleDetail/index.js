@@ -61,7 +61,7 @@ const BicycleDetail = () => {
 
   useEffect(() => {
     dispatch(getBicycle(id))
-  }, [id, dispatch])
+  }, [dispatch])
 
   const detailComponentsData = [
     {

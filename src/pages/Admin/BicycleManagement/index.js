@@ -89,19 +89,18 @@ function BicycleManagement() {
     setTimeout(() => {
       dispatch(fetchBicycles())
     }, 500)
-  }, [bicyclesData, dispatch])
+  }, [dispatch])
 
   useEffect(() => {
     if (!_.isEmpty(bicyclesData)) {
-      let newState = []
-      bicyclesData.map((bikeData) => ({
+      const bicycles = bicyclesData.map((bikeData) => ({
         ...bikeData,
         key: bikeData.id,
       }))
-      setBicycleState(newState)
+      setBicycleState(bicycles)
       setLoading(false)
     }
-  }, [bicyclesData, dispatch])
+  }, [dispatch])
 
   const handleSelectChange = (selectedRowKeys) => {
     setSelectedKey(selectedRowKeys)

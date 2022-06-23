@@ -35,7 +35,7 @@ const Shop = () => {
   // Load data
   useEffect(() => {
     dispatch(fetchBicycles())
-  }, [bicycles, dispatch])
+  }, [dispatch])
 
   const handleChangeOrderPrice = (value) => {
     dispatch(orderPriceChange(value))

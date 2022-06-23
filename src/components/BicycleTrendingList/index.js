@@ -12,7 +12,7 @@ const BicycleTrendingList = () => {
 
   useEffect(() => {
     dispatch(fetchBicycles())
-  }, [bicycles, dispatch])
+  }, [dispatch])
 
   return (
     <div className="mutli-trending">
