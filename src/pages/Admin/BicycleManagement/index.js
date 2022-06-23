@@ -100,7 +100,7 @@ function BicycleManagement() {
       setBicycleState(bicycles)
       setLoading(false)
     }
-  }, [dispatch])
+  }, [bicyclesData, dispatch])
 
   const handleSelectChange = (selectedRowKeys) => {
     setSelectedKey(selectedRowKeys)
