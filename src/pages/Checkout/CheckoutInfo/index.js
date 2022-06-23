@@ -10,8 +10,6 @@ const { Title, Text } = Typography
 const CheckoutInfo = () => {
   const checkout = useSelector(checkoutSelector)
 
-  console.log(checkout)
-
   return (
     <div className="info-ctn">
       <div className="info-header">

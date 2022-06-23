@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import MessageButton from '../../../components/MessageButton'
 import { checkoutSelector } from '../../../redux/selectors'
-import { createCheckout } from '../../../redux/slices'
+import { createCheckout, resetCheckout } from '../../../redux/slices'
 import './index.less'
 
 const { Title } = Typography
@@ -31,7 +31,8 @@ const CheckoutForm = () => {
     }
     dispatch(createCheckout(data))
     message.success('Order successful!')
-    console.log('Received values of form: ', data)
+
+    setTimeout(() => dispatch(resetCheckout()), 2000)
   }
 
   return (

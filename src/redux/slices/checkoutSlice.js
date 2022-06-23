@@ -5,6 +5,7 @@ import { checkout } from '../../api'
 
 const initialState = {
   status: '',
+  bicycle: {},
   data: [],
 }
 
@@ -13,7 +14,10 @@ const checkoutSlice = createSlice({
   initialState,
   reducers: {
     setCheckoutBicycle: (state, action) => {
-      state.bicycle = _.cloneDeep(action.payload)
+      state.bicycle = action.payload
+    },
+    resetCheckout: (state) => {
+      state.bicycle = {}
     },
   },
   extraReducers: (builder) => {
@@ -80,7 +84,7 @@ const checkoutSlice = createSlice({
 
 export default checkoutSlice
 
-export const { setCheckoutBicycle } = checkoutSlice.actions
+export const { setCheckoutBicycle, resetCheckout } = checkoutSlice.actions
 
 export const fetchCheckouts = createAsyncThunk(
   'checkout/fetchCheckouts',
