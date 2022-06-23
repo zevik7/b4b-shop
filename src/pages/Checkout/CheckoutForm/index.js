@@ -31,6 +31,7 @@ const CheckoutForm = () => {
     }
     dispatch(createCheckout(data))
     message.success('Order successful!')
+    localStorage.removeItem('bicycleInfos')
     console.log('Received values of form: ', data)
   }
 

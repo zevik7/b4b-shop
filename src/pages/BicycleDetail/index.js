@@ -128,6 +128,7 @@ const BicycleDetail = () => {
     }
 
     dispatch(setCheckoutBicycle(bicycleCheckout))
+    localStorage.setItem('bicycleInfos', JSON.stringify(bicycleCheckout))
     navigate('/checkout')
   }
 
