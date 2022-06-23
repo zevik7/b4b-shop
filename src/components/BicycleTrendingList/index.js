@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { bicyclesSelector } from '../../redux/selectors'
@@ -12,7 +12,8 @@ const BicycleTrendingList = () => {
 
   useEffect(() => {
     dispatch(fetchBicycles())
-  }, [])
+  }, [bicycles, dispatch])
+
   return (
     <div className="mutli-trending">
       <div

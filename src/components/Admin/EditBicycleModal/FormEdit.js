@@ -1,22 +1,7 @@
-import {
-  MinusCircleOutlined,
-  PlusOutlined,
-  UploadOutlined,
-} from '@ant-design/icons'
-import {
-  Button,
-  Col,
-  Form,
-  Image,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  Upload,
-} from 'antd'
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
+import { Button, Col, Form, Input, InputNumber, Row, Select } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
-import _ from 'lodash'
-import React, { useState } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UploadImage } from '../../index'

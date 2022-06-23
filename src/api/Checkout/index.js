@@ -10,10 +10,12 @@ const update = ({ id, data }) => axios.put(`/checkouts/${id}`, data)
 
 const destroy = (id) => axios.delete(`/checkouts/${id}`)
 
-export default {
+const checkoutApi = {
   getList,
   get,
   create,
   update,
   destroy,
 }
+
+export default checkoutApi

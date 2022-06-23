@@ -1,4 +1,4 @@
-import { Button, Space, message } from 'antd'
+import { Button, Space } from 'antd'
 
 const MessageButton = (props) => {
   return (

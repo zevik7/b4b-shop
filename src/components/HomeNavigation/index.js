@@ -1,5 +1,4 @@
 import { Button, Layout, Space } from 'antd'
-import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'

@@ -17,7 +17,7 @@ const NoMatch = () => {
         }}
         title="404"
         subTitle="Sorry, the page you visited does not exist."
-        icon={<img src={NotFoundIcon} />}
+        icon={<img alt="No match icon" src={NotFoundIcon} />}
         extra={
           <Button type="primary" onClick={() => navigate('/')}>
             Back Home

@@ -1,6 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-
-import { getBicycles } from '../../api'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: '',

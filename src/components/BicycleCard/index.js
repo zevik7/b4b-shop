@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 
 import './index.less'
 
-const { Meta } = Card
 const { Title, Text } = Typography
 
 const BicycleCard = (props) => {

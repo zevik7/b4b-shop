@@ -11,7 +11,6 @@ import {
   InputNumber,
   Row,
   Select,
-  Space,
   Upload,
 } from 'antd'
 import TextArea from 'antd/es/input/TextArea'

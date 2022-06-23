@@ -4,13 +4,11 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { TableManagement } from '../../../components'
-import OrderDetailModal from '../../../components/Admin/OrderDetailModal'
+import { OrderDetailModal, TableManagement } from '../../../components'
 import { checkoutDataSelector } from '../../../redux/selectors'
 import { fetchCheckouts, updateCheckout } from '../../../redux/slices'
 
-function OrderManagement(props) {
-  //Initialization
+function OrderManagement() {
   const { t } = useTranslation()
   const checkoutData = useSelector(checkoutDataSelector)
   const [showDetail, setShowDetail] = useState(false)
@@ -25,10 +23,11 @@ function OrderManagement(props) {
     setTimeout(() => {
       dispatch(fetchCheckouts())
     }, 500)
-  }, [])
+  }, [dispatch])
+
   useEffect(() => {
     if (!_.isEmpty(checkoutData)) {
-      const checkouts = checkoutData.map((checkout, index) => ({
+      const checkouts = checkoutData.map((checkout) => ({
         customer: checkout.user.name,
         email: checkout.user.email,
         phone: checkout.user.phone,
@@ -84,7 +83,7 @@ function OrderManagement(props) {
         <Button
           type="default"
           shape="default"
-          onClick={(e) => handleShowDetail(record)}
+          onClick={() => handleShowDetail(record)}
         >
           View
         </Button>
@@ -92,7 +91,6 @@ function OrderManagement(props) {
     },
   ]
 
-  //func handle showDetail
   const handleShowDetail = (record) => {
     setShowDetail(true)
     setCheckoutDetail(record)

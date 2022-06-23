@@ -42,11 +42,25 @@
       "react-app/jest",
       "plugin:prettier/recommended"
     ],
+    "plugins": [
+      "unused-imports"
+    ],
     "rules": {
       "prettier/prettier": [
         "warn",
         {
           "endOfLine": "auto"
+        }
+      ],
+      "no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "warn",
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          "vars": "all",
+          "varsIgnorePattern": "^_",
+          "args": "after-used",
+          "argsIgnorePattern": "^_"
         }
       ]
     }
@@ -69,6 +83,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1"

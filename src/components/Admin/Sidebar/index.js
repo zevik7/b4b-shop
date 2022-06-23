@@ -5,16 +5,13 @@ import {
 } from '@ant-design/icons'
 import { Menu } from 'antd'
 import Sider from 'antd/es/layout/Sider'
-import React, { useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { Logo, NavLink } from '../../../components'
+import { Logo } from '../../../components'
 
 function Sidebar(props) {
   const { collapsed } = props
-  const navigate = useNavigate()
-  const { t } = useTranslation()
 
   const getItem = (label, key, icon, children) => {
     return {

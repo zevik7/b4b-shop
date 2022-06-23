@@ -1,4 +1,4 @@
-import { Col, Divider, Row, Typography } from 'antd'
+import { Col, Row, Typography } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 

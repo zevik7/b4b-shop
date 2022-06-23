@@ -1,5 +1,4 @@
-import { Layout, Space, Typography } from 'antd'
-import { useState } from 'react'
+import { Layout } from 'antd'
 
 import { HomeFooter, HomeNavigation } from '../../components'
 import BicycleTrendingList from '../../components/BicycleTrendingList'
@@ -7,10 +6,8 @@ import AdsCarousel from './AdsCarousel'
 import Banner from './Banner'
 import BrandList from './BrandList'
 import Features from './Features'
-import './index.less'
 
-const { Title, Text } = Typography
-const { Header, Content, Footer } = Layout
+const { Content } = Layout
 
 const Landing = () => {
   return (

@@ -1,6 +1,6 @@
 import { Col, List, Row, Typography } from 'antd'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { checkoutSelector } from '../../../redux/selectors'
 import './index.less'

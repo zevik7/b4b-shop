@@ -26,9 +26,7 @@ function HeaderComponent(props) {
       <div className="header__right-control">
         <LanguageSelect />
         <Dropdown overlay={<ProfileMenu />}>
-          <a onClick={(e) => e.preventDefault()}>
-            <Avatar size="large" icon={<UserOutlined />} />
-          </a>
+          <Avatar size="large" icon={<UserOutlined />} />
         </Dropdown>
       </div>
     </Header>

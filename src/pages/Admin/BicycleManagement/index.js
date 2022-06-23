@@ -19,12 +19,10 @@ import {
   updateBicycle,
 } from '../../../redux/slices'
 
-function BicycleManagement(props) {
-  //Initialization
+function BicycleManagement() {
   const dispatch = useDispatch()
   const bicyclesData = useSelector(bicycleDataSelector)
   const { t } = useTranslation()
-  //State
   const [bicycleState, setBicycleState] = useState([])
   const [loading, setLoading] = useState(false)
   const [visibleAdd, setVisibleAdd] = useState(false)
@@ -32,7 +30,6 @@ function BicycleManagement(props) {
   const [selectedKey, setSelectedKey] = useState([])
   const [editData, setEditData] = useState({})
 
-  //columns data for table list bicycles
   const columns = [
     {
       title: `${t('admin_page.table.name')}`,
@@ -71,7 +68,7 @@ function BicycleManagement(props) {
           <Button
             type="default"
             shape="default"
-            onClick={(e) => showEdit(record)}
+            onClick={() => showEdit(record)}
             icon={<EditOutlined />}
           />
           <Button
@@ -87,40 +84,35 @@ function BicycleManagement(props) {
     },
   ]
 
-  //handle get bicycles
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
       dispatch(fetchBicycles())
     }, 500)
-  }, [])
+  }, [bicyclesData, dispatch])
 
   useEffect(() => {
     if (!_.isEmpty(bicyclesData)) {
       let newState = []
-      bicyclesData.forEach((bikeData) => {
-        bikeData = {
-          ...bikeData,
-          key: bikeData.id,
-        }
-        newState.push(bikeData)
-      })
+      bicyclesData.map((bikeData) => ({
+        ...bikeData,
+        key: bikeData.id,
+      }))
       setBicycleState(newState)
       setLoading(false)
     }
-  }, [bicyclesData])
+  }, [bicyclesData, dispatch])
 
-  //func handle when Bicycle selected change
-  const handleSelectChange = (selectedRowKeys, selectedRows) => {
+  const handleSelectChange = (selectedRowKeys) => {
     setSelectedKey(selectedRowKeys)
   }
-  //func show edit
+
   const showEdit = (record) => {
     setVisibleEdit(true)
     setEditData(record)
     setSelectedKey(record.key)
   }
-  //func handle delete selected
+
   const handleDelete = (id) => {
     // eslint-disable-next-line no-restricted-globals
     if (!confirm('Delete this bikes?')) {
@@ -135,7 +127,7 @@ function BicycleManagement(props) {
     }
     message.success('Delete successes!')
   }
-  //func handle when modal add summit
+
   const handleCreate = (bikeData) => {
     let images = []
     bikeData.images.fileList.forEach((img) => {
@@ -150,7 +142,7 @@ function BicycleManagement(props) {
     setVisibleAdd(false)
     message.success('Add bicycle successes!')
   }
-  //func handle update
+
   const handleUpdate = (value) => {
     dispatch(updateBicycle({ id: selectedKey, data: value }))
     setVisibleEdit(false)

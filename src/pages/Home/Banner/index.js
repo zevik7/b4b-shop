@@ -1,5 +1,4 @@
-import { Layout, Space, Typography } from 'antd'
-import { motion } from 'framer-motion'
+import { Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 
 import ebike from '../../../assets/images/ebike-icon.svg'

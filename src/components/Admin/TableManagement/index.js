@@ -1,7 +1,7 @@
 import { Table } from 'antd'
 import React from 'react'
 
-function TableManagement({ rowSelection, columns, data, onClickRow, loading }) {
+function TableManagement({ rowSelection, columns, data, loading }) {
   return (
     <Table
       rowSelection={rowSelection}

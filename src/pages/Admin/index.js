@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import { HeaderComponent, Sidebar } from '../../components'
 import './style.less'
 
-function Admin(props) {
+function Admin() {
   const [collapsed, setCollapsed] = useState(false)
 
   return (

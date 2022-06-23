@@ -1,8 +1,5 @@
 import { DownOutlined } from '@ant-design/icons'
 import { Select } from 'antd'
-import { useState } from 'react'
-
-import './style.less'
 
 const { Option } = Select
 

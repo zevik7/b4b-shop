@@ -37,7 +37,7 @@ function BicycleManageAction({ setVisibleAdd, handleDelete, disabledActions }) {
       <Button
         icon={<PlusCircleOutlined />}
         type="default"
-        onClick={(e) => setVisibleAdd(true)}
+        onClick={() => setVisibleAdd(true)}
       >
         {t('cta.add')}
       </Button>

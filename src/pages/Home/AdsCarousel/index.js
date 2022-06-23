@@ -3,7 +3,6 @@ import Background2 from '../../../assets/images/ads-carousel2.avif'
 import Background3 from '../../../assets/images/ads-carousel3.avif'
 import Background4 from '../../../assets/images/ads-carousel4.avif'
 import { ImgCarousel } from '../../../components'
-import './style.less'
 
 const images = [
   {

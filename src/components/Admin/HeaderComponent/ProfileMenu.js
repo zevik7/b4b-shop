@@ -3,7 +3,7 @@ import { Avatar, Menu } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-function ProfileMenu(props) {
+function ProfileMenu() {
   const { t } = useTranslation()
   return (
     <Menu

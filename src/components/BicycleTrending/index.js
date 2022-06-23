@@ -1,7 +1,6 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { Typography } from 'antd'
-import { Button, Tooltip } from 'antd'
-import { t } from 'i18next'
+import { Button } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 

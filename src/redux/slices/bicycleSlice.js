@@ -41,10 +41,10 @@ const bicycleSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // fetch all
-      .addCase(fetchBicycles.pending, (state, action) => {
+      .addCase(fetchBicycles.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(fetchBicycles.rejected, (state, action) => {
+      .addCase(fetchBicycles.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(fetchBicycles.fulfilled, (state, action) => {
@@ -53,10 +53,10 @@ const bicycleSlice = createSlice({
         state.pagination.total = action.payload.length
       })
       // fetch
-      .addCase(getBicycle.pending, (state, action) => {
+      .addCase(getBicycle.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(getBicycle.rejected, (state, action) => {
+      .addCase(getBicycle.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(getBicycle.fulfilled, (state, action) => {
@@ -64,10 +64,10 @@ const bicycleSlice = createSlice({
         state.selected = action.payload
       })
       // create
-      .addCase(createBicycle.pending, (state, action) => {
+      .addCase(createBicycle.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(createBicycle.rejected, (state, action) => {
+      .addCase(createBicycle.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(createBicycle.fulfilled, (state, action) => {
@@ -75,10 +75,10 @@ const bicycleSlice = createSlice({
         state.data.push(action.payload)
       })
       // update
-      .addCase(updateBicycle.pending, (state, action) => {
+      .addCase(updateBicycle.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(updateBicycle.rejected, (state, action) => {
+      .addCase(updateBicycle.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(updateBicycle.fulfilled, (state, action) => {
@@ -87,10 +87,10 @@ const bicycleSlice = createSlice({
         state.data[index] = action.payload
       })
       // delete
-      .addCase(deleteBicycle.pending, (state, action) => {
+      .addCase(deleteBicycle.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(deleteBicycle.rejected, (state, action) => {
+      .addCase(deleteBicycle.rejected, (state) => {
         state.status = 'error'
       })
       .addCase(deleteBicycle.fulfilled, (state, action) => {

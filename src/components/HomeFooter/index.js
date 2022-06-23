@@ -1,5 +1,4 @@
 import {
-  AndroidOutlined,
   EnvironmentOutlined,
   FacebookOutlined,
   GoogleOutlined,
@@ -8,7 +7,7 @@ import {
   TwitterOutlined,
   WhatsAppOutlined,
 } from '@ant-design/icons'
-import { Button, Input, Space, Tooltip, Typography } from 'antd'
+import { Button, Input } from 'antd'
 import { Layout } from 'antd'
 import 'antd'
 import React from 'react'
@@ -18,8 +17,8 @@ import Logo from '../Logo'
 import './index.less'
 
 const { Footer } = Layout
-const { Title } = Typography
 const { Search } = Input
+
 const suffix = (
   <MailOutlined
     style={{
@@ -37,104 +36,57 @@ const HomeFooter = () => {
     <Footer className="footer">
       <section className="container">
         <div className="item-1">
-          <li className="footer-title">
-            <a className="logo-img">
-              <Logo />
-            </a>
-          </li>
-          <li className="shop-info">{t('footer.title')}</li>
+          <Logo />
+          <p className="shop-info">{t('footer.title')}</p>
         </div>
         <div className="item-2">
-          <li className="footer-title">{t('footer.shop-by.title')}</li>
-          <li>
-            <a>{t('footer.shop-by.item.your-order')}</a>
-          </li>
-          <li>
-            <a>{t('footer.shop-by.item.payment')}</a>
-          </li>
-          <li>
-            <a>{t('footer.shop-by.item.delivery')}</a>
-          </li>
-          <li>
-            <a>{t('footer.shop-by.item.condition')}</a>
-          </li>
+          <p className="footer-title">{t('footer.shop-by.title')}</p>
+          <p>{t('footer.shop-by.item.your-order')}</p>
+          <p>{t('footer.shop-by.item.payment')}</p>
+          <p>{t('footer.shop-by.item.delivery')}</p>
+          <p>{t('footer.shop-by.item.condition')}</p>
         </div>
         <div className="item-3">
-          <li className="footer-title">{t('footer.product.title')}</li>
-          <li>
-            <a>{t('footer.product.item.new-product')}</a>
-          </li>
-          <li>
-            <a>{t('footer.product.item.best-sale')}</a>
-          </li>
-          <li>
-            <a>{t('footer.product.item.price-drop')}</a>
-          </li>
-          <li>
-            <a>{t('footer.product.item.store')}</a>
-          </li>
+          <p className="footer-title">{t('footer.product.title')}</p>
+          <p>{t('footer.product.item.new-product')}</p>
+          <p>{t('footer.product.item.best-sale')}</p>
+          <p>{t('footer.product.item.price-drop')}</p>
+          <p>{t('footer.product.item.store')}</p>
         </div>
         <div className="item-4">
-          <li className="footer-title">{t('footer.our-company.title')}</li>
-          <li>
-            <a>{t('footer.our-company.item.about-us')}</a>
-          </li>
-          <li>
-            <a>{t('footer.our-company.item.contact-us')}</a>
-          </li>
-          <li>
-            <a>{t('footer.our-company.item.site-map')}</a>
-          </li>
-          <li>
-            <a>{t('footer.our-company.item.help-service')}</a>
-          </li>
+          <p className="footer-title">{t('footer.our-company.title')}</p>
+          <p>{t('footer.our-company.item.about-us')}</p>
+          <p>{t('footer.our-company.item.contact-us')}</p>
+          <p>{t('footer.our-company.item.site-map')}</p>
+          <p>{t('footer.our-company.item.help-service')}</p>
         </div>
         <div className="item-5">
-          <li className="footer-title">{t('footer.contact.title')}</li>
-          <li>
-            <a>
-              <EnvironmentOutlined />
-              {t('footer.contact.item.location')}
-            </a>
-          </li>
-          <li>
-            <a>
-              {' '}
-              <MailOutlined /> B4B@gmail.com
-            </a>
-          </li>
-          <li>
-            <a>
-              {' '}
-              <WhatsAppOutlined /> +84987654321
-            </a>
-          </li>
-          <li className="contact-footer">
-            <a>
-              <Button
-                type="default"
-                shape="circle"
-                icon={<FacebookOutlined />}
-              />
-            </a>
-            <a>
-              <Button
-                type="default"
-                shape="circle"
-                icon={<TwitterOutlined />}
-              />
-            </a>
-            <a>
-              <Button
-                type="default"
-                shape="circle"
-                icon={<InstagramOutlined />}
-              />
-            </a>
-            <a>
-              <Button type="default" shape="circle" icon={<GoogleOutlined />} />
-            </a>
-          </li>
+          <p className="footer-title">{t('footer.contact.title')}</p>
+          <p>
+            <EnvironmentOutlined />
+            {t('footer.contact.item.location')}
+          </p>
+          <p>
+            {' '}
+            <MailOutlined /> B4B@gmail.com
+          </p>
+          <p>
+            {' '}
+            <WhatsAppOutlined /> +84987654321
+          </p>
+          <p className="contact-footer">
+            <Button type="default" shape="circle" icon={<FacebookOutlined />} />
+
+            <Button type="default" shape="circle" icon={<TwitterOutlined />} />
+
+            <Button
+              type="default"
+              shape="circle"
+              icon={<InstagramOutlined />}
+            />
+
+            <Button type="default" shape="circle" icon={<GoogleOutlined />} />
+          </p>
         </div>
         <div className="item-6">
           <div className="search-footer">
