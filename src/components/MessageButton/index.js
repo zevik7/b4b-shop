@@ -1,6 +1,8 @@
 import { Button, Space } from 'antd'
+import { useTranslation } from 'react-i18next'
 
 const MessageButton = (props) => {
+  const { t } = useTranslation()
   return (
     <Space style={{ float: 'right' }}>
       <Button

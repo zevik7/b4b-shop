@@ -3,13 +3,13 @@ import {
   DashboardOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons'
-import { Menu } from 'antd'
-import Sider from 'antd/es/layout/Sider'
+import { Layout, Menu } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Logo } from '../../../components'
 
+const { Sider } = Layout
 function Sidebar(props) {
   const { collapsed } = props
 

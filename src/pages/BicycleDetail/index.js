@@ -7,7 +7,6 @@ import {
   Button,
   Col,
   Divider,
-  Form,
   InputNumber,
   Layout,
   Rate,
@@ -27,7 +26,7 @@ import {
   Table,
 } from '../../components'
 import { bicycleSelectedSelector } from '../../redux/selectors'
-import { getBicycle, setCheckoutBicycle } from '../../redux/slices'
+import { getBicycle } from '../../redux/slices'
 import './style.less'
 
 const detailComponentsColumns = [
@@ -127,7 +126,6 @@ const BicycleDetail = () => {
       variant: { ...variant, quantity: form.quantity },
     }
 
-    dispatch(setCheckoutBicycle(bicycleCheckout))
     localStorage.setItem('bicycleInfos', JSON.stringify(bicycleCheckout))
     navigate('/checkout')
   }
@@ -141,7 +139,7 @@ const BicycleDetail = () => {
             <div className="container">
               <div className="content">
                 <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
-                  <Col lg={18} md={16} sm={24}>
+                  <Col lg={18} md={16} xs={24}>
                     <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
                       <Col lg={12} md={24}>
                         <ImgCarousel
@@ -178,24 +176,18 @@ const BicycleDetail = () => {
                             </Paragraph>
                           </div>
                           <div className="detail-wrapper__buy-box">
-                            <Form layout="vertical" className="form">
-                              <div className="form-content">
-                                <Form.Item
-                                  className="select-item"
-                                  name="select-type"
-                                  label="Select Color, Size CM, and Size"
-                                >
+                            <div layout="vertical" className="wrapper">
+                              <Row gutter={[8, 8]}>
+                                <Col span={16}>
+                                  <Text>Select variant</Text>
                                   <Select
                                     options={selectTypeOptions}
                                     defaultValue={form.variantIndex.toString()}
                                     onChange={handleSelectChange}
                                   />
-                                </Form.Item>
-                                <Form.Item
-                                  className="input-num-item"
-                                  name="quantity"
-                                  label="Quantity"
-                                >
+                                </Col>
+                                <Col span={8}>
+                                  <Text>Quantity</Text>
                                   <InputNumber
                                     min={1}
                                     max={4}
@@ -204,26 +196,24 @@ const BicycleDetail = () => {
                                       setForm({ ...form, quantity: value })
                                     }
                                   />
-                                </Form.Item>
-                              </div>
-                              <Form.Item>
-                                <Button
-                                  className="submit-btn"
-                                  type="primary"
-                                  size="large"
-                                  htmlType="submit"
-                                  onClick={handleSubmit}
-                                >
-                                  BUY IT NOW
-                                </Button>
-                              </Form.Item>
-                            </Form>
+                                </Col>
+                              </Row>
+                              <Button
+                                className="submit-btn"
+                                type="primary"
+                                size="large"
+                                htmlType="submit"
+                                onClick={handleSubmit}
+                              >
+                                BUY IT NOW
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       </Col>
                     </Row>
                   </Col>
-                  <Col lg={6} md={8} sm={24}>
+                  <Col lg={6} md={8} xs={24}>
                     <div className="services">
                       <div className="services-item">
                         <div className="services-item__icon">

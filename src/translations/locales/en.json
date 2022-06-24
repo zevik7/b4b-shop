@@ -167,6 +167,28 @@
     }
   },
 
+  "checkout_page": {
+    "title": "CHECKOUT DETAILS",
+    "left_form": {
+      "title": "Check Out Details",
+      "fullname": "Full Name",
+      "email": "Email",
+      "address": "Address",
+      "phone": "Phone Number",
+      "note": "Write your note here ...",
+      "order": "ORDER"
+    },
+
+    "right_form": {
+      "title": "Info Details",
+      "type": "Type",
+      "number": "Number",
+      "provisional": "Provisional",
+      "total": "Total",
+      "slogan": "10% TAX NOT INCLUDED"
+    }
+  },
+
   "admin_page": {
     "table": {
       "name": "Name",
