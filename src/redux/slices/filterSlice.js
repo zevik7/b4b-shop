@@ -19,9 +19,6 @@ const filterSlice = createSlice({
     typeChange: (state, action) => {
       state.type = action.payload
     },
-    colorChange: (state, action) => {
-      state.color = action.payload
-    },
     genderChange: (state, action) => {
       state.gender = action.payload
     },
@@ -40,7 +37,6 @@ const filterSlice = createSlice({
 export const {
   priceChange,
   typeChange,
-  colorChange,
   genderChange,
   brandChange,
   materialChange,
