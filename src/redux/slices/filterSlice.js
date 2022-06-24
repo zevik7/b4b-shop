@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  price: [100, 10000],
+  price: [0, 10000],
   type: [],
   gender: [],
   brand: [],
