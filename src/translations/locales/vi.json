@@ -167,6 +167,28 @@
     }
   },
 
+  "checkout_page": {
+    "title": "THÔNG TIN ĐƠN HÀNG",
+    "left_form": {
+      "title": "Thông tin đơn hàng",
+      "fullname": "Họ và tên",
+      "email": "Email",
+      "address": "Địa chỉ",
+      "phone": "Số điện thoại",
+      "note": "Ghi chú ...",
+      "order": "ĐẶT HÀNG"
+    },
+
+    "right_form": {
+      "title": "Chi tiết",
+      "type": "Loại hình",
+      "number": "Số lượng",
+      "provisional": "Tạm tính",
+      "total": "Tổng cộng",
+      "slogan": "KHÔNG BAO GỒM 10% THUẾ"
+    }
+  },
+
   "admin_page": {
     "table": {
       "name": "Tên",
