@@ -26,7 +26,7 @@ import {
   Table,
 } from '../../components'
 import { bicycleSelectedSelector } from '../../redux/selectors'
-import { getBicycle, setCheckoutBicycle } from '../../redux/slices'
+import { getBicycle } from '../../redux/slices'
 import './style.less'
 
 const detailComponentsColumns = [
@@ -126,7 +126,6 @@ const BicycleDetail = () => {
       variant: { ...variant, quantity: form.quantity },
     }
 
-    dispatch(setCheckoutBicycle(bicycleCheckout))
     localStorage.setItem('bicycleInfos', JSON.stringify(bicycleCheckout))
     navigate('/checkout')
   }
