@@ -60,6 +60,9 @@ const Shop = () => {
           <Col span={8}>
             <BicycleCard loading={true} />
           </Col>
+          <Col span={8}>
+            <BicycleCard loading={true} />
+          </Col>
         </>
       )
     }

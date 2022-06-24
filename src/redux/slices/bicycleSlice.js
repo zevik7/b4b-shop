@@ -22,7 +22,7 @@ const initialState = {
   data: [],
   pagination: {
     current: 1,
-    pageSize: 3,
+    pageSize: 6,
     total: null,
   },
 }
