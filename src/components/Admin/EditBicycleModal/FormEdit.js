@@ -1,10 +1,11 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
 import { Button, Col, Form, Input, InputNumber, Row, Select } from 'antd'
-import TextArea from 'antd/es/input/TextArea'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { UploadImage } from '../../index'
+
+const { TextArea } = Input
 
 function FormEdit({ form, disabled, initialData }) {
   const { t } = useTranslation()
