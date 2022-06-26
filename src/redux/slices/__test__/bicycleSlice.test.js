@@ -21,7 +21,7 @@ describe('redux/slices/bicycleSlice', () => {
       data: [],
       pagination: {
         current: 1,
-        pageSize: 3,
+        pageSize: 6,
         total: null,
       },
     })
@@ -41,7 +41,7 @@ describe('redux/slices/bicycleSlice', () => {
         {
           pagination: {
             current: 1,
-            pageSize: 3,
+            pageSize: 6,
             total: null,
           },
         },
@@ -50,7 +50,7 @@ describe('redux/slices/bicycleSlice', () => {
     ).toEqual({
       pagination: {
         current: 2,
-        pageSize: 3,
+        pageSize: 6,
         total: null,
       },
     })
