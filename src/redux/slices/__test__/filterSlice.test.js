@@ -7,7 +7,7 @@ import filterSlice, {
 describe('redux/slices/filterSlice', () => {
   test('should return the initial state', () => {
     expect(filterSlice.reducer(undefined, {})).toEqual({
-      price: [100, 10000],
+      price: [0, 10000],
       type: [],
       gender: [],
       brand: [],
